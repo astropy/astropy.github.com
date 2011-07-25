@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coding Guidelines (Draft 2) &mdash; AstroPy v0.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="AstroPy v0.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Documentation for Developers" href="index.html" />
+    <link rel="next" title="Documentation Guidelines (Draft 2)" href="docguide.html" />
+    <link rel="prev" title="Vision for a common Astronomy Python package" href="vision.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="docguide.html" title="Documentation Guidelines (Draft 2)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="vision.html" title="Vision for a common Astronomy Python package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">AstroPy v0.0.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Documentation for Developers</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coding-guidelines-draft-2">
+<h1>Coding Guidelines (Draft 2)<a class="headerlink" href="#coding-guidelines-draft-2" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This document is currently in Draft form and is subject to change.</p>
+</div>
+<div class="section" id="core-requirements-and-recommendations">
+<h2>Core Requirements and Recommendations<a class="headerlink" href="#core-requirements-and-recommendations" title="Permalink to this headline">¶</a></h2>
+<p>This section describes requirements and guidelines that affiliated packages will have to follow before being considered for integration as a module in the core package.</p>
+<ul class="simple">
+<li>The package should meet the interface requirements set out by the coordination committee.</li>
+<li>Packages must be compatible with Python 2.6, 2.7, and 3.x (for 3.x compatibility, the <a class="reference external" href="http://docs.python.org/library/2to3.html">2to3 tool</a> will be used).</li>
+<li>The package should be importable with no dependencies other than components already in the Astropy core, the <a class="reference external" href="http://docs.python.org/release/2.6/library/index.html">Python Standard Library (v2.6)</a>, <a class="reference external" href="http://numpy.scipy.org/">NumPy</a>, <a class="reference external" href="http://www.scipy.org/">SciPy</a>, and <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a> (versions for these packages will be specified in the Astropy <tt class="docutils literal"><span class="pre">setup.py</span></tt> file and on <a class="reference external" href="http://pypi.python.org/pypi">PyPI</a>).</li>
+<li>Additional dependencies are allowed for sub-modules or in function calls, but they must be noted in the package documentation and should only affect the relevant component.</li>
+<li>Docstrings must be present for all public classes/methods/functions, and must follow the form outlined in the <a class="reference internal" href="docguide.html"><em>Documentation Guidelines (Draft 2)</em></a> document.</li>
+<li>Unit tests are encouraged for all public methods and functions, and should adhere to the standards set in the <a class="reference internal" href="testguide.html"><em>Testing Guidelines (Draft)</em></a> document.</li>
+<li>C extensions are only allowed when they provide a significant performance enhancement over pure python, or a C library already exists to provided the needed functionality.  When C extensions are used, the python interface must meet interface guidelines.</li>
+<li>The use of <a class="reference external" href="http://cython.org/">Cython</a> is strongly recommended for C extensions, as per the example in the template package. Cython extensions should store <tt class="docutils literal"><span class="pre">.pyx</span></tt> files in the source code repository, but they should be compiled to <tt class="docutils literal"><span class="pre">.c</span></tt> files that are updated in the repository when important changes are made to the <tt class="docutils literal"><span class="pre">.pyx</span></tt> file.</li>
+<li>If a C extension has a dependency on an external C library, the source code for the library should be bundled with the Astropy core. Additionally, the package must be compatible with using a system-installed library in place of the library included in Astropy.</li>
+<li>Packages can include data in <tt class="docutils literal"><span class="pre">path</span> <span class="pre">TBD</span></tt> as long as it is less than about 100 kb. These data should be accessed via the <tt class="xref py py-func docutils literal"><span class="pre">astropy.config.[funcname</span> <span class="pre">TBD]()</span></tt> mechanism. If the data exceeds this size, it should be hosted outside the source code repository and downloaded using the <tt class="xref py py-func docutils literal"><span class="pre">astropy.config.[funcname</span> <span class="pre">TBD]()</span></tt> mechanism. Exceptions to this size limit may be allowed if there are version dependencies between data and code.</li>
+<li>All persistent configuration should be stored using the functions in <tt class="xref py py-mod docutils literal"><span class="pre">astropy.config</span></tt>, which make use of the <tt class="xref py py-class docutils literal"><span class="pre">ConfigObj</span></tt> class and associated file format (<a class="reference external" href="http://www.voidspace.org.uk/python/configobj.html">http://www.voidspace.org.uk/python/configobj.html</a>.</li>
+<li>General utilities necessary for but not specific to the package should be placed in the <tt class="xref py py-mod docutils literal"><span class="pre">packagename.utils</span></tt> module. These utilities will be moved to the <tt class="xref py py-mod docutils literal"><span class="pre">astropy.utils</span></tt> module when the package is integrated into the core package. If a utility is already present in <tt class="xref py py-mod docutils literal"><span class="pre">astropy.utils</span></tt>, the package should always use that utility instead of re-implementing it in <tt class="xref py py-mod docutils literal"><span class="pre">packagename.utils</span></tt>.</li>
+<li>Packages implementing many classes/functions not relevant to the component requested will not be accepted - the package should only include the required functionality and relevant extensions.</li>
+<li>The package should follow the additional style guides in the next section.</li>
+</ul>
+</div>
+<div class="section" id="coding-style-conventions">
+<h2>Coding Style/Conventions<a class="headerlink" href="#coding-style-conventions" title="Permalink to this headline">¶</a></h2>
+<p>These guidelines are additional style requirements for the Astropy core and recommendations for affiliated packages that are not candidates for merger into the core:</p>
+<ul class="simple">
+<li>The code will follow the standard <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP8 Style Guide for Python Code</a>. In particular, this includes using only 4 spaces for indentation, and never tabs.</li>
+<li>One exception is to be made from the PEP8 style: new style relative imports of the form <tt class="docutils literal"><span class="pre">from</span> <span class="pre">.</span> <span class="pre">import</span> <span class="pre">modname</span></tt> are allowed and required for Astropy, as opposed to absolute (as PEP8 suggets) or the simpler <tt class="docutils literal"><span class="pre">import</span> <span class="pre">modname</span></tt> syntax.  This is primarily due to improved relative import support since PEP8 was developed, and to simplify the process of moving modules.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A pep8.py checker script is available at <a class="reference external" href="http://pypi.python.org/pypi/pep8">http://pypi.python.org/pypi/pep8</a>.</p>
+</div>
+<ul class="simple">
+<li>In cases where C extensions are needed but Cython cannot be used, the <a class="reference external" href="http://www.python.org/dev/peps/pep-0007/">PEP 7 Style Guide for C Code</a> is recommended.</li>
+<li>The <tt class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></tt>, <tt class="docutils literal"><span class="pre">import</span> <span class="pre">matplotlib</span> <span class="pre">as</span> <span class="pre">mpl</span></tt>, and <tt class="docutils literal"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></tt> naming conventions should be used wherever relevant. <tt class="docutils literal"><span class="pre">from</span> <span class="pre">packagename</span> <span class="pre">import</span> <span class="pre">*</span></tt> should never be used, except as a tool to flatten the namespace of a module. An example of the allowed usage is given below.</li>
+<li>Classes should either use direct variable access, or python’s property mechanism for setting object instance variables. <tt class="docutils literal"><span class="pre">get_value</span></tt>/<tt class="docutils literal"><span class="pre">set_value</span></tt> style methods should be used only when getting and setting the values requires a computationally-expensive operation. The example below illustrates this guideline.</li>
+<li>Classes are discouraged from using the builtin python <tt class="xref py py-func docutils literal"><span class="pre">super()</span></tt> function, unless absolutely needed. If used, it should be used consistentently by all subclasses, and noted in the class’s docstrings. An example illustrating why this is important (and alternative solutions) is included below.</li>
+<li>Affiliated packages are recommended to follow the layout and documentation form of the template package included in the core package source distribution.</li>
+<li>Affiliated packages are encouraged (but not required) to follow the Astropy core <a class="reference internal" href="docguide.html"><em>Documentation Guidelines (Draft 2)</em></a> and <a class="reference internal" href="testguide.html"><em>Testing Guidelines (Draft)</em></a>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more info on the pros and cons of using super, see <a class="reference external" href="http://rhettinger.wordpress.com/2011/05/26/super-considered-super/">http://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a> or <a class="reference external" href="http://keithdevens.com/weblog/archive/2011/Mar/16/Python.super">http://keithdevens.com/weblog/archive/2011/Mar/16/Python.super</a>)</p>
+</div>
+</div>
+<div class="section" id="affiliated-package-requirements">
+<h2>Affiliated Package Requirements<a class="headerlink" href="#affiliated-package-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The following additional rules apply for affiliated packages, regardless of whether or not they are to be used in the core:</p>
+<ul class="simple">
+<li>Affiliated packages must be registered on the <a class="reference external" href="http://pypi.python.org/pypi">Python Package Index</a>, with proper metadata for downloading and installing the source package.</li>
+<li>The <tt class="xref py py-mod docutils literal"><span class="pre">astropy</span></tt> root package name should not be used by affiliated packages - it is reserved for use by the core package. Recommended naming conventions for an affiliated package are either simply <tt class="xref py py-mod docutils literal"><span class="pre">packagename</span></tt> or <tt class="xref py py-mod docutils literal"><span class="pre">awastropy.packagename</span></tt> (&#8220;affiliated with Astropy&#8221;).</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>This section shows a few examples (not all of which are correct!) to illustrate points from the guidelines. These will be moved into the template project once it has been written.</p>
+<div class="section" id="properties-vs-get-set">
+<h3>Properties vs. get_/set_<a class="headerlink" href="#properties-vs-get-set" title="Permalink to this headline">¶</a></h3>
+<p>This example shows a sample class illustrating the guideline regarding the use of properties as opposed to getter/setter methods.</p>
+<p>Let&#8217;s assuming you&#8217;ve defined a <tt class="xref py py-class docutils literal"><span class="pre">Star</span></tt> class and create an instance like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Star</span><span class="p">(</span><span class="n">B</span><span class="o">=</span><span class="mf">5.48</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="mf">4.83</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should always use attribute syntax like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">color</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+<p>Rather than like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>  <span class="c">#Bad form!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>  <span class="c">#Bad form!</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+<p>Using python properties, attribute syntax can still do anything possible with a get/set method.  For lengthy or complex calculations, however, use a method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">compute_color</span><span class="p">(</span><span class="mi">5800</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mf">5e9</span><span class="p">)</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="super-vs-direct-calling">
+<h3>super() vs. direct calling<a class="headerlink" href="#super-vs-direct-calling" title="Permalink to this headline">¶</a></h3>
+<p>This example shows why the use of <tt class="xref py py-func docutils literal"><span class="pre">super()</span></tt> can be confusing for subclasses, and gives an alternative syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#This is dangerous and bug-prone!</span>
+
+<span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&#39;Doing A&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;Doing B&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;Doing C&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&#39;Doing D&#39;</span>
+</pre></div>
+</div>
+<p>if you then do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>you will see:</p>
+<div class="highlight-python"><pre>Doing A
+Doing B</pre>
+</div>
+<p>which is what you expect, and similarly for C. However, if you do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>you might expect to have it call both method in the order A,C,B,D. But it doesn&#8217;t - instead you see:</p>
+<div class="highlight-python"><pre>Doing A
+Doing C
+Doing D</pre>
+</div>
+<p>because the the <tt class="docutils literal"><span class="pre">A.method(self)</span></tt> in C effectively short-circuits the super mechanism. Thus, it&#8217;s crucial that all classes in an inheritance hierarchy consistently use super and not mix super with the direct syntax. The simplest approach is to explicitly call each class&#8217; method and avoid super completely:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#This is safer</span>
+<span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span>
+
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="n">B</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">C</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="acceptable-use-of-from-module-import">
+<h3>Acceptable use of <tt class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></tt><a class="headerlink" href="#acceptable-use-of-from-module-import" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></tt> is discouraged in a module that contains implementation code, as it impedes clarity and often imports unused variables. It can, however, be used for a package that is laid out in the following manner:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">packagename</span>
+<span class="n">packagename</span><span class="o">/</span><span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="n">packagename</span><span class="o">/</span><span class="n">submodule1</span><span class="o">.</span><span class="n">py</span>
+<span class="n">packagename</span><span class="o">/</span><span class="n">submodule2</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>In this case, <tt class="docutils literal"><span class="pre">packagename/__init__.py</span></tt> may be:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A docstring describing the package goes here</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">submodule1</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">submodule2</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>This allows functions or classes in the submodules to be used directly as <tt class="docutils literal"><span class="pre">packagename.foo</span></tt> rather than <tt class="docutils literal"><span class="pre">packagename.submodule1.foo</span></tt>.  If this is used, it is strongly recommended that the submodules make use of the __all__ variable to specify which modules should be imported.  Thus, submodule2.py might read:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span><span class="n">linspace</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="s">&#39;AClass&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+    <span class="c">#the function would be defined here</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">AClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c">#the class is defined here</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This ensures that <tt class="docutils literal"><span class="pre">from</span> <span class="pre">submodule</span> <span class="pre">import</span> <span class="pre">*</span></tt> only imports <tt class="xref py py-func docutils literal"><span class="pre">foo()</span></tt> and <tt class="xref py py-class docutils literal"><span class="pre">AClass</span></tt>, but not <tt class="xref py py-class docutils literal"><span class="pre">numpy.array</span></tt> or <tt class="xref py py-func docutils literal"><span class="pre">numpy.linspace()</span></tt>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Coding Guidelines (Draft 2)</a><ul>
+<li><a class="reference internal" href="#core-requirements-and-recommendations">Core Requirements and Recommendations</a></li>
+<li><a class="reference internal" href="#coding-style-conventions">Coding Style/Conventions</a></li>
+<li><a class="reference internal" href="#affiliated-package-requirements">Affiliated Package Requirements</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#properties-vs-get-set">Properties vs. get_/set_</a></li>
+<li><a class="reference internal" href="#super-vs-direct-calling">super() vs. direct calling</a></li>
+<li><a class="reference internal" href="#acceptable-use-of-from-module-import">Acceptable use of <tt class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></tt></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="vision.html"
+                        title="previous chapter">Vision for a common Astronomy Python package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="docguide.html"
+                        title="next chapter">Documentation Guidelines (Draft 2)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/development/codeguide.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="docguide.html" title="Documentation Guidelines (Draft 2)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="vision.html" title="Vision for a common Astronomy Python package"
+             >previous</a> |</li>
+        <li><a href="../index.html">AstroPy v0.0.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Documentation for Developers</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Python Astronomy Community.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
