@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Maintainer workflow &mdash; Astropy v0.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy v0.0.0 documentation" href="../../index.html" />
+    <link rel="up" title="Contributing To/Developing Astropy or Affiliated Packages" href="index.html" />
+    <link rel="next" title="Coding Guidelines (Draft 3)" href="../codeguide.html" />
+    <link rel="prev" title="Development Workflow (Advanced)" href="development_workflow_advanced.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../codeguide.html" title="Coding Guidelines (Draft 3)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="development_workflow_advanced.html" title="Development Workflow (Advanced)"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Astropy v0.0.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Documentation for Developers</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Contributing To/Developing Astropy or Affiliated Packages</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="maintainer-workflow">
+<span id="id1"></span><h1>Maintainer workflow<a class="headerlink" href="#maintainer-workflow" title="Permalink to this headline">¶</a></h1>
+<p>This page is for maintainers — those of us who merge our own or other
+peoples&#8217; changes into the upstream repository.</p>
+<p>Being as how you&#8217;re a maintainer, you are completely on top of the basic stuff
+in <a class="reference internal" href="development_workflow.html#development-workflow"><em>Development workflow</em></a>.</p>
+<div class="section" id="integrating-changes-via-the-web-interface-recommended">
+<h2>Integrating changes via the web interface (recommended)<a class="headerlink" href="#integrating-changes-via-the-web-interface-recommended" title="Permalink to this headline">¶</a></h2>
+<p>Whenever possible, merge pull requests automatically via the pull request manager on GitHub. Merging should only be done manually if there is a really good reason to do this!</p>
+<p>Make sure that pull requests do not contain a messy history with merges, etc. If this is the case, then follow the manual instructions, and make sure the fork is rebased to tidy the history before committing.</p>
+</div>
+<div class="section" id="integrating-changes-manually">
+<h2>Integrating changes manually<a class="headerlink" href="#integrating-changes-manually" title="Permalink to this headline">¶</a></h2>
+<p>First, check out the <tt class="docutils literal"><span class="pre">astropy</span></tt> repository. The instructions in <a class="reference internal" href="development_workflow_advanced.html#linking-to-upstream"><em>Overview</em></a> add a remote that has read-only
+access to the upstream repo.  Being a maintainer, you&#8217;ve got read-write access.</p>
+<p>It&#8217;s good to have your upstream remote have a scary name, to remind you that
+it&#8217;s a read-write remote:</p>
+<div class="highlight-python"><pre>git remote add upstream-rw git@github.com:astropy/astropy.git
+git fetch upstream-rw</pre>
+</div>
+<p>Let&#8217;s say you have some changes that need to go into trunk
+(<tt class="docutils literal"><span class="pre">upstream-rw/master</span></tt>).</p>
+<p>The changes are in some branch that you are currently on. For example, you are
+looking at someone&#8217;s changes like this:</p>
+<div class="highlight-python"><pre>git remote add someone git://github.com/someone/astropy.git
+git fetch someone
+git branch cool-feature --track someone/cool-feature
+git checkout cool-feature</pre>
+</div>
+<p>So now you are on the branch with the changes to be incorporated upstream. The
+rest of this section assumes you are on this branch.</p>
+<div class="section" id="a-few-commits">
+<h3>A few commits<a class="headerlink" href="#a-few-commits" title="Permalink to this headline">¶</a></h3>
+<p>If there are only a few commits, consider rebasing to upstream:</p>
+<div class="highlight-python"><pre># Fetch upstream changes
+git fetch upstream-rw
+
+# Rebase
+git rebase upstream-rw/master</pre>
+</div>
+<p>Remember that, if you do a rebase, and push that, you&#8217;ll have to close any
+github pull requests manually, because github will not be able to detect the
+changes have already been merged.</p>
+</div>
+<div class="section" id="a-long-series-of-commits">
+<h3>A long series of commits<a class="headerlink" href="#a-long-series-of-commits" title="Permalink to this headline">¶</a></h3>
+<p>If there are a longer series of related commits, consider a merge instead:</p>
+<div class="highlight-python"><pre>git fetch upstream-rw
+git merge --no-ff upstream-rw/master</pre>
+</div>
+<p>The merge will be detected by github, and should close any related pull
+requests automatically.</p>
+<p>Note the <tt class="docutils literal"><span class="pre">--no-ff</span></tt> above. This forces git to make a merge commit, rather
+than doing a fast-forward, so that these set of commits branch off trunk then
+rejoin the main history with a merge, rather than appearing to have been made
+directly on top of trunk.</p>
+</div>
+<div class="section" id="check-the-history">
+<h3>Check the history<a class="headerlink" href="#check-the-history" title="Permalink to this headline">¶</a></h3>
+<p>Now, in either case, you should check that the history is sensible and you
+have the right commits:</p>
+<div class="highlight-python"><pre>git log --oneline --graph
+git log -p upstream-rw/master..</pre>
+</div>
+<p>The first line above just shows the history in a compact way, with a text
+representation of the history graph. The second line shows the log of commits
+excluding those that can be reached from trunk (<tt class="docutils literal"><span class="pre">upstream-rw/master</span></tt>), and
+including those that can be reached from current HEAD (implied with the <tt class="docutils literal"><span class="pre">..</span></tt>
+at the end). So, it shows the commits unique to this branch compared to trunk.
+The <tt class="docutils literal"><span class="pre">-p</span></tt> option shows the diff for these commits in patch form.</p>
+</div>
+<div class="section" id="push-to-trunk">
+<h3>Push to trunk<a class="headerlink" href="#push-to-trunk" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>git push upstream-rw my-new-feature:master</pre>
+</div>
+<p>This pushes the <tt class="docutils literal"><span class="pre">my-new-feature</span></tt> branch in this repository to the <tt class="docutils literal"><span class="pre">master</span></tt>
+branch in the <tt class="docutils literal"><span class="pre">upstream-rw</span></tt> repository.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Maintainer workflow</a><ul>
+<li><a class="reference internal" href="#integrating-changes-via-the-web-interface-recommended">Integrating changes via the web interface (recommended)</a></li>
+<li><a class="reference internal" href="#integrating-changes-manually">Integrating changes manually</a><ul>
+<li><a class="reference internal" href="#a-few-commits">A few commits</a></li>
+<li><a class="reference internal" href="#a-long-series-of-commits">A long series of commits</a></li>
+<li><a class="reference internal" href="#check-the-history">Check the history</a></li>
+<li><a class="reference internal" href="#push-to-trunk">Push to trunk</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="development_workflow_advanced.html"
+                        title="previous chapter">Development Workflow (Advanced)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../codeguide.html"
+                        title="next chapter">Coding Guidelines (Draft 3)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/development/workflow/maintainer_workflow.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../codeguide.html" title="Coding Guidelines (Draft 3)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="development_workflow_advanced.html" title="Development Workflow (Advanced)"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Astropy v0.0.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Documentation for Developers</a> &raquo;</li>
+          <li><a href="index.html" >Contributing To/Developing Astropy or Affiliated Packages</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Erik Tollerud, Thomas Robitaille, Perry Greenfield, and the Astropy Collaboration.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
