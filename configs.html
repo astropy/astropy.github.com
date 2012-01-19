@@ -1,0 +1,938 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration system Documentation &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="index.html" />
+    <link rel="next" title="astropy.wcs Documentation" href="wcs/index.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="wcs/index.html" title="astropy.wcs Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuration-system-documentation">
+<h1>Configuration system Documentation<a class="headerlink" href="#configuration-system-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The astropy configuration system is designed to give users control of various
+parameters used in astropy or affiliated packages without delving into the
+source code to make those changes.</p>
+<div class="section" id="for-users">
+<h2>For Users<a class="headerlink" href="#for-users" title="Permalink to this headline">¶</a></h2>
+<p>To see the configuration options, look for your astropy configuration file.
+You can find it by doing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_config_dir</span>
+
+<span class="k">print</span> <span class="n">get_config_dir</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And you should see the location of your configuration directory. The standard
+scheme generally puts your configuration directory in <tt class="docutils literal"><span class="pre">$HOME/.astropy/config</span></tt>,
+but if you&#8217;ve set the environment variable <tt class="xref py py-obj docutils literal"><span class="pre">XDG_CONFIG_HOME</span></tt> and the
+<tt class="docutils literal"><span class="pre">$XDG_CONFIG_HOME/astropy</span></tt> directory exists, it will instead be there.</p>
+<p>Once you&#8217;ve found the configuration file, open it with your favorite editor.
+It should have all of the sections you might want, with descriptions and the
+type of the value that is accepted.  Feel free to edit this as you wish, and
+any of these changes will be reflected when you next start Astropy.  Or, if you
+want to see your changes immediately in your current Astropy session, just do:</p>
+<div class="highlight-python"><pre>from astropy.config import reload_config()
+
+reload_config()</pre>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The above is not true yet, because the setup doesn&#8217;t automatically
+populate the configuration files.  Hopefully it will be true soon, though.
+The <tt class="xref py py-func docutils literal"><span class="pre">astropy.config.configs._generate_all_config_items()</span></tt> function will
+already do this, basically, but there has to be some thought about how to
+make driver scripts that actually do this for each user, and coordinate
+when they get run so that everything is already built.</p>
+</div>
+</div>
+<div class="section" id="for-developers">
+<h2>For Developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h2>
+<p>The Reference guide below describes the full interface - this is a summary of
+typical practices.  The most common way to use the configuration system is as
+follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot; This is the docstring at the beginning of a module</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">ConfigurationItem</span>
+
+<span class="n">SOME_OPTION</span> <span class="o">=</span> <span class="n">ConfigurationItem</span><span class="p">(</span><span class="s">&#39;some_opt&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;A description.&#39;</span><span class="p">)</span>
+<span class="n">ANOTHER_OPTION</span> <span class="o">=</span> <span class="n">ConfigurationItem</span><span class="p">(</span><span class="s">&#39;anno_opt&#39;</span><span class="p">,</span><span class="s">&#39;a string val&#39;</span><span class="p">,</span>
+                        <span class="s">&#39;A longer description of what this does.&#39;</span><span class="p">)</span>
+
+<span class="o">...</span> <span class="n">implementation</span> <span class="o">...</span>
+<span class="k">def</span> <span class="nf">some_func</span><span class="p">():</span>
+    <span class="c">#to get the value of these options, I might do:</span>
+    <span class="n">something</span> <span class="o">=</span> <span class="n">SOME_OPTION</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">ANOTHER_OPTION</span><span class="p">()</span><span class="o">+</span><span class="s">&#39; Also, I added text.&#39;</span>
+</pre></div>
+</div>
+<p>It is highly recommended that any configuration items be placed at the top of a
+module like this, as they can then be easily found when viewing the source code
+and the automated tools to generate the default configuration files can also
+locate these items.</p>
+</div>
+<div class="section" id="reference-api">
+<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<p>Below are the reference documentation for the three main config sub-packages:
+<a class="reference internal" href="#module-astropy.config.paths" title="astropy.config.paths"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.paths</span></tt></a>, <a class="reference internal" href="#module-astropy.config.configs" title="astropy.config.configs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.configs</span></tt></a>, and <a class="reference internal" href="#module-astropy.config.data" title="astropy.config.data"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.data</span></tt></a>.
+Note that all the public classes and functions in these sub-packages are
+imported into <tt class="xref py py-obj docutils literal"><span class="pre">astropy.config</span></tt>, so the recommended usage is simply
+<tt class="docutils literal"><span class="pre">from</span> <span class="pre">astropy.config</span> <span class="pre">import</span> <span class="pre">foo</span></tt>.</p>
+<div class="section" id="module-astropy.config.paths">
+<span id="astropy-config-paths"></span><h3><a class="reference internal" href="#module-astropy.config.paths" title="astropy.config.paths"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.paths</span></tt></a><a class="headerlink" href="#module-astropy.config.paths" title="Permalink to this headline">¶</a></h3>
+<p>This module contains functions to determine where configuration and
+data/cache files used by Astropy should be placed.</p>
+<dl class="function">
+<dt id="astropy.config.paths.get_config_dir">
+<tt class="descclassname">astropy.config.paths.</tt><tt class="descname">get_config_dir</tt><big>(</big><em>create=True</em><big>)</big><a class="reference internal" href="_modules/astropy/config/paths.html#get_config_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.paths.get_config_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the Astropy configuration directory name and creates the
+directory if it doesn&#8217;t exist.</p>
+<p>This directory is typically <tt class="docutils literal"><span class="pre">$HOME/.astropy/config</span></tt>, but if the
+XDG_CONFIG_HOME environment variable is set and the
+<tt class="docutils literal"><span class="pre">$XDG_CONFIG_HOME/astropy</span></tt> directory exists, it will be that directory.
+If neither exists, the former will be created and symlinked to the latter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>configdir</strong> : str</p>
+<blockquote class="last">
+<div><p>The absolute path to the configuration directory.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.paths.get_cache_dir">
+<tt class="descclassname">astropy.config.paths.</tt><tt class="descname">get_cache_dir</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/astropy/config/paths.html#get_cache_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.paths.get_cache_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the Astropy cache directory name and creates the directory if it
+doesn&#8217;t exist.</p>
+<p>This directory is typically <tt class="docutils literal"><span class="pre">$HOME/.astropy/cache</span></tt>, but if the
+XDG_CACHE_HOME environment variable is set and the
+<tt class="docutils literal"><span class="pre">$XDG_CACHE_HOME/astropy</span></tt> directory exists, it will be that directory.
+If neither exists, the former will be created and symlinked to the latter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>cachedir</strong> : str</p>
+<blockquote class="last">
+<div><p>The absolute path to the cache directory.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-astropy.config.configs">
+<span id="astropy-config-configs"></span><h3><a class="reference internal" href="#module-astropy.config.configs" title="astropy.config.configs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.configs</span></tt></a><a class="headerlink" href="#module-astropy.config.configs" title="Permalink to this headline">¶</a></h3>
+<p>This module contains classes and functions to standardize access to
+configuration files for Astropy and affiliated packages.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The configuration system makes use of the &#8216;configobj&#8217; package, which stores
+configuration in a text format like that used in the standard library
+<a class="reference external" href="http://docs.python.org/library/configparser.html#module-ConfigParser" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigParser</span></tt></a>. More information and documentation for configobj can be
+found at <a class="reference external" href="http://www.voidspace.org.uk/python/configobj.html">http://www.voidspace.org.uk/python/configobj.html</a>.</p>
+</div>
+<dl class="class">
+<dt id="astropy.config.configs.ConfigurationItem">
+<em class="property">class </em><tt class="descclassname">astropy.config.configs.</tt><tt class="descname">ConfigurationItem</tt><big>(</big><em>name</em>, <em>defaultvalue=''</em>, <em>description=None</em>, <em>cfgtype=None</em>, <em>module=None</em><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#ConfigurationItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.ConfigurationItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>A setting and associated value stored in the astropy configuration
+files.</p>
+<p>These objects are typically defined at the top of astropy subpackages
+or affiliated packages, and store values or option settings that can be
+modified by the user to</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
+<blockquote>
+<div><p>The (case-sensitive) name of this parameter, as shown in the
+configuration file.</p>
+</div></blockquote>
+<p><strong>defaultvalue</strong> :</p>
+<blockquote>
+<div><p>The default value for this item. If this is a list of strings, this item
+will be interpreted as an &#8216;options&#8217; value - this item must be one of
+those values, and the first in the list will be taken as the default
+value.</p>
+</div></blockquote>
+<p><strong>description</strong> : str or None</p>
+<blockquote>
+<div><p>A description of this item (will be shown as a comment in the
+configuration file)</p>
+</div></blockquote>
+<p><strong>cfgtype</strong> : str or None</p>
+<blockquote>
+<div><p>A type specifier like those used as the <em>values</em> of a particular key in
+a <tt class="xref py py-obj docutils literal"><span class="pre">configspec</span></tt> file of <tt class="xref py py-obj docutils literal"><span class="pre">configobj</span></tt>. If None, the type will be inferred
+from the default value.</p>
+</div></blockquote>
+<p><strong>module</strong> : str or None</p>
+<blockquote>
+<div><p>The full module name that this item is associated with. The first
+element (e.g. &#8216;astropy&#8217; if this is &#8216;astropy.config.configs&#8217;) will be
+used to determine the name of the configuration file, while the
+remaining items determine the section. If None, the package will be
+inferred from the package within whiich this object&#8217;s initializer is
+called.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>RuntimeError</strong> :</p>
+<blockquote class="last">
+<div><p>If <tt class="xref py py-obj docutils literal"><span class="pre">module</span></tt> is None, but the module this item is created from cannot
+be determined.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>The following example will create an item &#8216;cfgoption = 42&#8217; in the
+&#8216;[configs]&#8217; section of astropy.cfg (located in the directory that
+<a class="reference internal" href="#astropy.config.paths.get_config_dir" title="astropy.config.paths.get_config_dir"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.paths.get_config_dir</span></tt></a> returns), or if the option is already
+set, it will take the value from the configuration file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">ConfigurationItem</span>
+
+<span class="n">CFG_OPTION</span> <span class="o">=</span> <span class="n">ConfigurationItem</span><span class="p">(</span><span class="s">&#39;cfgoption&#39;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="n">module</span><span class="o">=</span><span class="s">&#39;astropy.configs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If called as <tt class="docutils literal"><span class="pre">CFG_OPTION()</span></tt>, this will return the value <tt class="docutils literal"><span class="pre">42</span></tt>, or some
+other integer if the <tt class="docutils literal"><span class="pre">astropy.cfg</span></tt> file specifies a different value.</p>
+<p>If this were in the <tt class="docutils literal"><span class="pre">astropy/configs/__init__.py</span></tt> file, the <tt class="xref py py-obj docutils literal"><span class="pre">module</span></tt>
+option would not be necessary, as it would automatically detect the correct
+module.</p>
+<dl class="method">
+<dt id="astropy.config.configs.ConfigurationItem.reload">
+<tt class="descname">reload</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#ConfigurationItem.reload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.ConfigurationItem.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reloads the value of this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a> from the relevant
+configuration file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>val</strong> :</p>
+<blockquote class="last">
+<div><p>The new value loaded from the configuration file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.config.configs.ConfigurationItem.save">
+<tt class="descname">save</tt><big>(</big><em>value=None</em><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#ConfigurationItem.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.ConfigurationItem.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a value for this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a> to the relevant
+configuration file.</p>
+<p>This also writes updated versions of the comments that give the
+description and type information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This only saves the value of this <em>particular</em> <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a>.
+To save all configuration settings for this package at once, see
+<a class="reference internal" href="#astropy.config.configs.save_config" title="astropy.config.configs.save_config"><tt class="xref py py-obj docutils literal"><span class="pre">save_config</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>value</strong> :</p>
+<blockquote>
+<div><p>Save this value to the configuration file. If None, the current
+value of this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a> will be saved.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote class="last">
+<div><p>If the provided <tt class="xref py py-obj docutils literal"><span class="pre">value</span></tt> is not valid for this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.config.configs.ConfigurationItem.set">
+<tt class="descname">set</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#ConfigurationItem.set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.ConfigurationItem.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current value of this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a>.</p>
+<p>This also updates the comments that give the description and type
+information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This does <em>not</em> save the value of this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a> to the
+configuration file.  To do that, use <a class="reference internal" href="#astropy.config.configs.ConfigurationItem.save" title="astropy.config.configs.ConfigurationItem.save"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem.save</span></tt></a> or
+<a class="reference internal" href="#astropy.config.configs.save_config" title="astropy.config.configs.save_config"><tt class="xref py py-obj docutils literal"><span class="pre">save_config</span></tt></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>value</strong> :</p>
+<blockquote>
+<div><p>The value this item should be set to.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote class="last">
+<div><p>If the provided <tt class="xref py py-obj docutils literal"><span class="pre">value</span></tt> is not valid for this <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="astropy.config.configs.InvalidConfigurationItemWarning">
+<em class="property">exception </em><tt class="descclassname">astropy.config.configs.</tt><tt class="descname">InvalidConfigurationItemWarning</tt><a class="reference internal" href="_modules/astropy/config/configs.html#InvalidConfigurationItemWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.InvalidConfigurationItemWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Warning that is issued when the configuration value specified in the
+astropy configuration file does not match the type expected for that
+configuration value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.configs.get_config">
+<tt class="descclassname">astropy.config.configs.</tt><tt class="descname">get_config</tt><big>(</big><em>packageormod=None</em>, <em>reload=False</em><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the configuration object or section associated with a particular
+package or module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>packageormod</strong> : str or None</p>
+<blockquote>
+<div><p>The package for which to retrieve the configuration object. If a string,
+it must be a valid package name, or if None, the package from which this
+function is called will be used.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>cfgobj</strong> : <tt class="xref py py-obj docutils literal"><span class="pre">configobj.ConfigObj</span></tt> or <tt class="xref py py-obj docutils literal"><span class="pre">configobj.Section</span></tt></p>
+<blockquote>
+<div><p>If the requested package is a base package, this will be the
+<tt class="xref py py-obj docutils literal"><span class="pre">configobj.ConfigObj</span></tt> for that package, or if it is a subpackage or
+module, it will return the relevant <tt class="xref py py-obj docutils literal"><span class="pre">configobj.Section</span></tt> object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>RuntimeError</strong> :</p>
+<blockquote class="last">
+<div><p>If <tt class="xref py py-obj docutils literal"><span class="pre">package</span></tt> is None, but the package this item is created from cannot
+be determined.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.configs.save_config">
+<tt class="descclassname">astropy.config.configs.</tt><tt class="descname">save_config</tt><big>(</big><em>packageormod=None</em><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#save_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.save_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves all configuration settings to the configuration file for the
+root package of the requested package/module.</p>
+<p>This overwrites any configuration items that have been changed in
+<a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a> objects that are based on the configuration file
+determined by the <em>root</em> package of <tt class="xref py py-obj docutils literal"><span class="pre">packageormod</span></tt> (e.g. &#8216;astropy.cfg&#8217; for
+the &#8216;astropy.config.configs&#8217; module).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To save only a single item, use the <a class="reference internal" href="#astropy.config.configs.ConfigurationItem.save" title="astropy.config.configs.ConfigurationItem.save"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem.save</span></tt></a> method -
+this will save all options in the current session that may have been
+changed.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>packageormod</strong> : str or None</p>
+<blockquote class="last">
+<div><p>The package or module name - see <a class="reference internal" href="#astropy.config.configs.get_config" title="astropy.config.configs.get_config"><tt class="xref py py-obj docutils literal"><span class="pre">get_config</span></tt></a> for details.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.configs.reload_config">
+<tt class="descclassname">astropy.config.configs.</tt><tt class="descname">reload_config</tt><big>(</big><em>packageormod=None</em><big>)</big><a class="reference internal" href="_modules/astropy/config/configs.html#reload_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.configs.reload_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reloads configuration settings from a configuration file for the root
+package of the requested package/module.</p>
+<p>This overwrites any changes that may have been made in <a class="reference internal" href="#astropy.config.configs.ConfigurationItem" title="astropy.config.configs.ConfigurationItem"><tt class="xref py py-obj docutils literal"><span class="pre">ConfigurationItem</span></tt></a>
+objects.  This applies for any items that are based on this file, which is
+determined by the <em>root</em> package of <tt class="xref py py-obj docutils literal"><span class="pre">packageormod</span></tt> (e.g. &#8216;astropy.cfg&#8217; for
+the &#8216;astropy.config.configs&#8217; module).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>packageormod</strong> : str or None</p>
+<blockquote class="last">
+<div><p>The package or module name - see <a class="reference internal" href="#astropy.config.configs.get_config" title="astropy.config.configs.get_config"><tt class="xref py py-obj docutils literal"><span class="pre">get_config</span></tt></a> for details.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-astropy.config.data">
+<span id="astropy-config-data"></span><h3><a class="reference internal" href="#module-astropy.config.data" title="astropy.config.data"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.config.data</span></tt></a><a class="headerlink" href="#module-astropy.config.data" title="Permalink to this headline">¶</a></h3>
+<p>This module contains helper functions for accessing, downloading, and
+caching data files.</p>
+<dl class="function">
+<dt id="astropy.config.data.get_data_fileobj">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">get_data_fileobj</tt><big>(</big><em>dataname</em>, <em>cache=True</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#get_data_fileobj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.get_data_fileobj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a data file from the standard locations and provides the file as
+a file-like object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>dataname</strong> : str</p>
+<blockquote>
+<div><p>Name/location of the desired data file.  One of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The name of a data file included in the source
+distribution.  The path is relative to the module
+calling this function.  For example, if calling from
+<tt class="xref py py-obj docutils literal"><span class="pre">astropy.pkname</span></tt>, use <tt class="docutils literal"><span class="pre">'data/file.dat'</span></tt> to get the
+file in <tt class="docutils literal"><span class="pre">astropy/pkgname/data/file.dat</span></tt>.  Double-dots
+can be used to go up a level.  In the same example, use
+<tt class="docutils literal"><span class="pre">'../data/file.dat'</span></tt> to get <tt class="docutils literal"><span class="pre">astropy/data/file.dat</span></tt>.</li>
+<li>If a matching local file does not exist, the Astropy
+data server will be queried for the file.</li>
+<li>A hash like that produced by <a class="reference internal" href="#astropy.config.data.compute_hash" title="astropy.config.data.compute_hash"><tt class="xref py py-obj docutils literal"><span class="pre">compute_hash</span></tt></a> can be
+requested, prefixed by &#8216;hash/&#8217;
+e.g. &#8216;hash/395dd6493cc584df1e78b474fb150840&#8217;.  The hash
+will first be searched for locally, and if not found,
+the Astropy data server will be queried.</li>
+<li>A URL to some other file.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>cache</strong> : bool</p>
+<blockquote>
+<div><p>If True, the file will be downloaded and saved locally or the
+already-cached local copy will be accessed. If False, the file-like
+object will directly access the resource (e.g. if a remote URL is
+accessed, an object like that from <a class="reference external" href="http://docs.python.org/library/urllib2.html#urllib2.urlopen" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">urllib2.urlopen</span></tt></a> is returned).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>fileobj</strong> : file-like</p>
+<blockquote>
+<div><p>An object with the contents of the data file available via <tt class="xref py py-func docutils literal"><span class="pre">read()</span></tt>.
+Can be used as part of a <tt class="docutils literal"><span class="pre">with</span></tt> statement, automatically closing
+itself after the <tt class="docutils literal"><span class="pre">with</span></tt> block.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>urllib2.URLError</strong> :</p>
+<blockquote>
+<div><p>If a remote file cannot be found.</p>
+</div></blockquote>
+<p><strong>IOError</strong> :</p>
+<blockquote class="last">
+<div><p>If problems occur writing or reading a local file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#astropy.config.data.get_data_contents" title="astropy.config.data.get_data_contents"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_contents</span></tt></a></dt>
+<dd>returns the contents of a file or url as a bytes object</dd>
+<dt><a class="reference internal" href="#astropy.config.data.get_data_filename" title="astropy.config.data.get_data_filename"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_filename</span></tt></a></dt>
+<dd>returns a local name for a file containing the data</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>This will retrieve a data file and its contents for the <a class="reference internal" href="wcs/index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a>
+tests:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_data_fileobj</span>
+
+<span class="k">with</span> <span class="n">get_data_fileobj</span><span class="p">(</span><span class="s">&#39;data/3d_cd.hdr&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+    <span class="n">fcontents</span> <span class="o">=</span> <span class="n">fobj</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This downloads a data file and its contents from a specified URL, and does
+<em>not</em> cache it remotely:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_data_fileobj</span>
+
+<span class="n">vegaurl</span> <span class="o">=</span> <span class="s">&#39;ftp://ftp.stsci.edu/cdbs/grid/k93models/standards/vega.fits&#39;</span>
+<span class="k">with</span> <span class="n">get_data_fileobj</span><span class="p">(</span><span class="n">vegaurl</span><span class="p">,</span><span class="bp">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+    <span class="n">fcontents</span> <span class="o">=</span> <span class="n">fobj</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.data.get_data_filename">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">get_data_filename</tt><big>(</big><em>dataname</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#get_data_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.get_data_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a data file from the standard locations and provides the local
+name of the file.</p>
+<p>This function is similar to <a class="reference internal" href="#astropy.config.data.get_data_fileobj" title="astropy.config.data.get_data_fileobj"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_fileobj</span></tt></a> but returns the file <em>name</em>
+instead of a readable file-like object.  This means that this function must
+always cache remote files locally, unlike <a class="reference internal" href="#astropy.config.data.get_data_fileobj" title="astropy.config.data.get_data_fileobj"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_fileobj</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>dataname</strong> : str</p>
+<blockquote>
+<div><p>Name/location of the desired data file.  One of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The name of a data file included in the source
+distribution.  The path is relative to the module
+calling this function.  For example, if calling from
+<tt class="xref py py-obj docutils literal"><span class="pre">astropy.pkname</span></tt>, use <tt class="docutils literal"><span class="pre">'data/file.dat'</span></tt> to get the
+file in <tt class="docutils literal"><span class="pre">astropy/pkgname/data/file.dat</span></tt>.  Double-dots
+can be used to go up a level.  In the same example, use
+<tt class="docutils literal"><span class="pre">'../data/file.dat'</span></tt> to get <tt class="docutils literal"><span class="pre">astropy/data/file.dat</span></tt>.</li>
+<li>If a matching local file does not exist, the Astropy
+data server will be queried for the file.</li>
+<li>A hash like that produced by <a class="reference internal" href="#astropy.config.data.compute_hash" title="astropy.config.data.compute_hash"><tt class="xref py py-obj docutils literal"><span class="pre">compute_hash</span></tt></a> can be
+requested, prefixed by &#8216;hash/&#8217;
+e.g. &#8216;hash/395dd6493cc584df1e78b474fb150840&#8217;.  The hash
+will first be searched for locally, and if not found,
+the Astropy data server will be queried.</li>
+<li>A URL to some other file.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
+<blockquote>
+<div><p>A file path on the local file system corresponding to the data
+requested in <tt class="xref py py-obj docutils literal"><span class="pre">dataname</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>urllib2.URLError</strong> :</p>
+<blockquote>
+<div><p>If a remote file cannot be found.</p>
+</div></blockquote>
+<p><strong>IOError</strong> :</p>
+<blockquote class="last">
+<div><p>If problems occur writing or reading a local file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#astropy.config.data.get_data_contents" title="astropy.config.data.get_data_contents"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_contents</span></tt></a></dt>
+<dd>returns the contents of a file or url as a bytes object</dd>
+<dt><a class="reference internal" href="#astropy.config.data.get_data_fileobj" title="astropy.config.data.get_data_fileobj"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_fileobj</span></tt></a></dt>
+<dd>returns a file-like object with the data</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>This will retrieve the contents of the data file for the <a class="reference internal" href="wcs/index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a>
+tests:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_data_filename</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">get_data_filename</span><span class="p">(</span><span class="s">&#39;data/3d_cd.hdr&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">fcontents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This retrieves a data file by hash either locally or from the astropy data
+server:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_data_filename</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">get_data_filename</span><span class="p">(</span><span class="s">&#39;hash/da34a7b07ef153eede67387bf950bb32&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">fcontents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.data.get_data_contents">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">get_data_contents</tt><big>(</big><em>dataname</em>, <em>cache=True</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#get_data_contents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.get_data_contents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a data file from the standard locations and returns its
+contents as a bytes object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>dataname</strong> : str</p>
+<blockquote>
+<div><p>Name/location of the desired data file.  One of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The name of a data file included in the source
+distribution.  The path is relative to the module
+calling this function.  For example, if calling from
+<tt class="xref py py-obj docutils literal"><span class="pre">astropy.pkname</span></tt>, use <tt class="docutils literal"><span class="pre">'data/file.dat'</span></tt> to get the
+file in <tt class="docutils literal"><span class="pre">astropy/pkgname/data/file.dat</span></tt>.  Double-dots
+can be used to go up a level.  In the same example, use
+<tt class="docutils literal"><span class="pre">'../data/file.dat'</span></tt> to get <tt class="docutils literal"><span class="pre">astropy/data/file.dat</span></tt>.</li>
+<li>If a matching local file does not exist, the Astropy
+data server will be queried for the file.</li>
+<li>A hash like that produced by <a class="reference internal" href="#astropy.config.data.compute_hash" title="astropy.config.data.compute_hash"><tt class="xref py py-obj docutils literal"><span class="pre">compute_hash</span></tt></a> can be
+requested, prefixed by &#8216;hash/&#8217;
+e.g. &#8216;hash/395dd6493cc584df1e78b474fb150840&#8217;.  The hash
+will first be searched for locally, and if not found,
+the Astropy data server will be queried.</li>
+<li>A URL to some other file.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>cache</strong> : bool</p>
+<blockquote>
+<div><p>If True, the file will be downloaded and saved locally or the
+already-cached local copy will be accessed. If False, the file-like
+object will directly access the resource (e.g. if a remote URL is
+accessed, an object like that from <a class="reference external" href="http://docs.python.org/library/urllib2.html#urllib2.urlopen" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">urllib2.urlopen</span></tt></a> is returned).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>contents</strong> : bytes</p>
+<blockquote>
+<div><p>The complete contents of the file as a bytes object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>urllib2.URLError</strong> :</p>
+<blockquote>
+<div><p>If a remote file cannot be found.</p>
+</div></blockquote>
+<p><strong>IOError</strong> :</p>
+<blockquote class="last">
+<div><p>If problems occur writing or reading a local file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#astropy.config.data.get_data_fileobj" title="astropy.config.data.get_data_fileobj"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_fileobj</span></tt></a></dt>
+<dd>returns a file-like object with the data</dd>
+<dt><a class="reference internal" href="#astropy.config.data.get_data_filename" title="astropy.config.data.get_data_filename"><tt class="xref py py-obj docutils literal"><span class="pre">get_data_filename</span></tt></a></dt>
+<dd>returns a local name for a file containing the data</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.data.get_data_fileobjs">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">get_data_fileobjs</tt><big>(</big><em>datadir</em>, <em>pattern='*'</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#get_data_fileobjs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.get_data_fileobjs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns readable file objects for all of the data files in a given
+directory that match a given glob pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>datadir</strong> : str</p>
+<blockquote>
+<div><p>Name/location of the desired data files.  One of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The name of a directory included in the source
+distribution.  The path is relative to the module
+calling this function.  For example, if calling from
+<tt class="xref py py-obj docutils literal"><span class="pre">astropy.pkname</span></tt>, use <tt class="docutils literal"><span class="pre">'data'</span></tt> to get the
+files in <tt class="docutils literal"><span class="pre">astropy/pkgname/data</span></tt></li>
+<li>Remote URLs are not currently supported</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>pattern</strong> : str, optional</p>
+<blockquote>
+<div><p>A UNIX-style filename glob pattern to match files.  See the
+<a class="reference external" href="http://docs.python.org/library/glob.html#module-glob" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">glob</span></tt></a> module in the standard library for more information.
+By default, matches all files.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>fileobjs</strong> : iterator of file objects</p>
+<blockquote class="last">
+<div><p>File objects for each of the files on the local filesystem in
+<em>datadir</em> matching <em>pattern</em>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>This will retrieve the contents of the data file for the <a class="reference internal" href="wcs/index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a>
+tests:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_data_filenames</span>
+
+<span class="k">for</span> <span class="n">fd</span> <span class="ow">in</span> <span class="n">get_data_filename</span><span class="p">(</span><span class="s">&#39;maps&#39;</span><span class="p">,</span> <span class="s">&#39;*.hdr&#39;</span><span class="p">):</span>
+    <span class="n">fcontents</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.data.get_data_filenames">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">get_data_filenames</tt><big>(</big><em>datadir</em>, <em>pattern='*'</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#get_data_filenames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.get_data_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path of all of the data files in a given directory
+that match a given glob pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>datadir</strong> : str</p>
+<blockquote>
+<div><p>Name/location of the desired data files.  One of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The name of a directory included in the source
+distribution.  The path is relative to the module
+calling this function.  For example, if calling from
+<tt class="xref py py-obj docutils literal"><span class="pre">astropy.pkname</span></tt>, use <tt class="docutils literal"><span class="pre">'data'</span></tt> to get the
+files in <tt class="docutils literal"><span class="pre">astropy/pkgname/data</span></tt>.</li>
+<li>Remote URLs are not currently supported.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>pattern</strong> : str, optional</p>
+<blockquote>
+<div><p>A UNIX-style filename glob pattern to match files.  See the
+<a class="reference external" href="http://docs.python.org/library/glob.html#module-glob" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">glob</span></tt></a> module in the standard library for more information.
+By default, matches all files.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>filenames</strong> : iterator of str</p>
+<blockquote class="last">
+<div><p>Paths on the local filesystem in <em>datadir</em> matching <em>pattern</em>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>This will retrieve the contents of the data file for the <a class="reference internal" href="wcs/index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a>
+tests:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.config</span> <span class="kn">import</span> <span class="n">get_data_filenames</span>
+
+<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">get_data_filename</span><span class="p">(</span><span class="s">&#39;maps&#39;</span><span class="p">,</span> <span class="s">&#39;*.hdr&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">fcontents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.data.compute_hash">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">compute_hash</tt><big>(</big><em>localfn</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#compute_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.compute_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the MD5 hash for a file.</p>
+<p>The hash for a data file is used for looking up data files in a unique
+fashion. This is of particular use for tests; a test may require a
+particular version of a particular file, in which case it can be accessed
+via hash to get the appropriate version.</p>
+<p>Typically, if you wish to write a test that requires a particular data
+file, you will want to submit that file to the astropy data servers, and
+use e.g. <tt class="docutils literal"><span class="pre">get_data_filename('hash/a725fa6ba642587436612c2df0451956')</span></tt>,
+but with the hash for your file in place of the hash in the example.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>localfn</strong> : str</p>
+<blockquote>
+<div><p>The path to the file for which the hash should be generated.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>md5hash</strong> : str</p>
+<blockquote class="last">
+<div><p>The hex digest of the MD5 hash for the contents of the <tt class="xref py py-obj docutils literal"><span class="pre">localfn</span></tt> file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.config.data.clear_data_cache">
+<tt class="descclassname">astropy.config.data.</tt><tt class="descname">clear_data_cache</tt><big>(</big><em>hashorurl=None</em><big>)</big><a class="reference internal" href="_modules/astropy/config/data.html#clear_data_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.config.data.clear_data_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the data file cache by deleting the local file(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>hashorurl</strong> : str or None</p>
+<blockquote>
+<div><p>If None, the whole cache is cleared.  Otherwise, either specifies a hash
+for the cached file that is supposed to be deleted, or a URL that has
+previously been downloaded to the cache.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>OSEerror</strong> :</p>
+<blockquote class="last">
+<div><p>If the requested filename is not present in the data directory.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration system Documentation</a><ul>
+<li><a class="reference internal" href="#for-users">For Users</a></li>
+<li><a class="reference internal" href="#for-developers">For Developers</a></li>
+<li><a class="reference internal" href="#reference-api">Reference/API</a><ul>
+<li><a class="reference internal" href="#module-astropy.config.paths"><tt class="docutils literal"><span class="pre">astropy.config.paths</span></tt></a></li>
+<li><a class="reference internal" href="#module-astropy.config.configs"><tt class="docutils literal"><span class="pre">astropy.config.configs</span></tt></a></li>
+<li><a class="reference internal" href="#module-astropy.config.data"><tt class="docutils literal"><span class="pre">astropy.config.data</span></tt></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wcs/index.html"
+                        title="next chapter">astropy.wcs Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/configs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="wcs/index.html" title="astropy.wcs Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

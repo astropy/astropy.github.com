@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Example Usage &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="astropy.wcs Documentation" href="index.html" />
+    <link rel="next" title="API Documentation" href="api.html" />
+    <link rel="prev" title="astropy.wcs Documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="astropy.wcs Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">astropy.wcs Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="example-usage">
+<h1>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="loading-wcs-information-from-a-fits-file">
+<h2>Loading WCS information from a FITS file<a class="headerlink" href="#loading-wcs-information-from-a-fits-file" title="Permalink to this headline">¶</a></h2>
+<p>This example loads a FITS file (supplied on the commandline) and uses
+the WCS cards in its primary header to transform.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Load the WCS information from a fits header, and use it</span>
+<span class="c"># to convert pixel coordinates to world coordinates.</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span> <span class="c"># confidence high</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">wcs</span>
+<span class="kn">import</span> <span class="nn">pyfits</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c"># Load the FITS hdulist using pyfits</span>
+<span class="n">hdulist</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c"># Parse the WCS keywords in the primary HDU</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">WCS</span><span class="p">(</span><span class="n">hdulist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+
+<span class="c"># Print out the &quot;name&quot; of the WCS, as defined in the FITS header</span>
+<span class="k">print</span> <span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">name</span>
+
+<span class="c"># Print out all of the settings that were parsed from the header</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">print_contents</span><span class="p">()</span>
+
+<span class="c"># Some pixel coordinates of interest.</span>
+<span class="n">pixcrd</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">24</span><span class="p">,</span><span class="mi">38</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">98</span><span class="p">]],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float_</span><span class="p">)</span>
+
+<span class="c"># Convert pixel coordinates to world coordinates</span>
+<span class="c"># The second argument is &quot;origin&quot; -- in this case we&#39;re declaring we</span>
+<span class="c"># have 1-based (Fortran-like) coordinates.</span>
+<span class="n">sky</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">wcs_pix2sky</span><span class="p">(</span><span class="n">pixcrd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">sky</span>
+
+<span class="c"># Convert the same coordinates back to pixel coordinates.</span>
+<span class="n">pixcrd2</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">wcs_sky2pix</span><span class="p">(</span><span class="n">sky</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">pixcrd2</span>
+
+<span class="c"># These should be the same as the original pixel coordinates, modulo</span>
+<span class="c"># some floating-point error.</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pixcrd</span> <span class="o">-</span> <span class="n">pixcrd2</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-a-wcs-structure-programmatically">
+<h2>Building a WCS structure programmatically<a class="headerlink" href="#building-a-wcs-structure-programmatically" title="Permalink to this headline">¶</a></h2>
+<p>This example, rather than starting from a FITS header, sets WCS values
+programmatically, uses those settings to transform some points, and then
+saves those settings to a new FITS header.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Set the WCS information manually by setting properties of the WCS</span>
+<span class="c"># object.</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span> <span class="c"># confidence high</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">wcs</span>
+<span class="kn">import</span> <span class="nn">pyfits</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c"># Create a new WCS object.  The number of axes must be set</span>
+<span class="c"># from the start</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">WCS</span><span class="p">(</span><span class="n">naxis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># Set up an &quot;Airy&#39;s zenithal&quot; projection</span>
+<span class="c"># Vector properties may be set with Python lists, or Numpy arrays</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crpix</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">234.75</span><span class="p">,</span> <span class="mf">8.3393</span><span class="p">]</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cdelt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.066667</span><span class="p">,</span> <span class="mf">0.066667</span><span class="p">])</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">]</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">ctype</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;RA---AIR&quot;</span><span class="p">,</span> <span class="s">&quot;DEC--AIR&quot;</span><span class="p">]</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">set_pv</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">)])</span>
+
+<span class="c"># Print out all of the contents of the WCS object</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">print_contents</span><span class="p">()</span>
+
+<span class="c"># Some pixel coordinates of interest.</span>
+<span class="n">pixcrd</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">24</span><span class="p">,</span><span class="mi">38</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">98</span><span class="p">]],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float_</span><span class="p">)</span>
+
+<span class="c"># Convert pixel coordinates to world coordinates</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">wcs_pix2sky</span><span class="p">(</span><span class="n">pixcrd</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">world</span>
+
+<span class="c"># Convert the same coordinates back to pixel coordinates.</span>
+<span class="n">pixcrd2</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">wcs_sky2pix</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">pixcrd2</span>
+
+<span class="c"># These should be the same as the original pixel coordinates, modulo</span>
+<span class="c"># some floating-point error.</span>
+<span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pixcrd</span> <span class="o">-</span> <span class="n">pixcrd2</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-6</span>
+
+<span class="c"># Now, write out the WCS object as a FITS header</span>
+<span class="n">header</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_header</span><span class="p">()</span>
+
+<span class="c"># header is a PyFITS Header object.  We can use it to create a new</span>
+<span class="c"># PrimaryHDU and write it to a file.</span>
+<span class="n">hdu</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
+<span class="n">hdu</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;test.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Example Usage</a><ul>
+<li><a class="reference internal" href="#loading-wcs-information-from-a-fits-file">Loading WCS information from a FITS file</a></li>
+<li><a class="reference internal" href="#building-a-wcs-structure-programmatically">Building a WCS structure programmatically</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">astropy.wcs Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">API Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wcs/examples.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="astropy.wcs Documentation"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

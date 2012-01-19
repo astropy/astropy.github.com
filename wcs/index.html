@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.wcs Documentation &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="next" title="Example Usage" href="examples.html" />
+    <link rel="prev" title="Configuration system Documentation" href="../configs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Example Usage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../configs.html" title="Configuration system Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="astropy-wcs-documentation">
+<h1>astropy.wcs Documentation<a class="headerlink" href="#astropy-wcs-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Python wrappers, SIP, Paper IV support (BSD License):</p>
+<blockquote>
+<div><p><a class="reference external" href="mailto:mdroe&#37;&#52;&#48;stsci&#46;edu">Michael Droettboom</a>, Nadia Dencheva</p>
+<p>Space Telescope Science Institute</p>
+</div></blockquote>
+<p>wcslib (LGPL License):</p>
+<blockquote>
+<div><p>Mark Calabretta</p>
+<p>Australia Telescope National Facility, CSIRO (wcslib)</p>
+</div></blockquote>
+<span class="target" id="module-astropy.wcs"></span><p>astropy.wcs provides transformations following the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> conventions,
+<a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table lookup distortion, and the core WCS functionality
+provided by <a class="reference external" href="http://www.atnf.csiro.au/~mcalabre/WCS/">wcslib</a>.  Each of these transformations can be used
+independently or together in a standard pipeline.</p>
+<p>The basic workflow is as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">from</span> <span class="pre">astropy</span> <span class="pre">import</span> <span class="pre">wcs</span></tt></li>
+<li>Call the <tt class="xref py py-obj docutils literal"><span class="pre">wcs.WCS</span></tt> constructor with a <a class="reference external" href="http://www.stsci.edu/resources/software_hardware/pyfits">pyfits</a> header
+and/or hdulist object.</li>
+<li>Optionally, if the FITS file uses any deprecated or
+non-standard features, you may need to call one of the
+<tt class="xref py py-obj docutils literal"><span class="pre">fix</span></tt> methods on the object.</li>
+<li>Use one of the following transformation methods:<ul>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.all_pix2sky" title="astropy.wcs.WCS.all_pix2sky"><tt class="xref py py-obj docutils literal"><span class="pre">all_pix2sky</span></tt></a>: Perform all three transformations from
+pixel to sky coordinates.</li>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.wcs_pix2sky" title="astropy.wcs.WCS.wcs_pix2sky"><tt class="xref py py-obj docutils literal"><span class="pre">wcs_pix2sky</span></tt></a>: Perform just the core WCS transformation
+from pixel to sky coordinates.</li>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.wcs_sky2pix" title="astropy.wcs.WCS.wcs_sky2pix"><tt class="xref py py-obj docutils literal"><span class="pre">wcs_sky2pix</span></tt></a>: Perform just the core WCS transformation
+from sky to pixel coordinates.</li>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.sip_pix2foc" title="astropy.wcs.WCS.sip_pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">sip_pix2foc</span></tt></a>: Convert from pixel to focal plane
+coordinates using the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> polynomial coefficients.</li>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.sip_foc2pix" title="astropy.wcs.WCS.sip_foc2pix"><tt class="xref py py-obj docutils literal"><span class="pre">sip_foc2pix</span></tt></a>: Convert from focal plane to pixel
+coordinates using the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> polynomial coefficients.</li>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.p4_pix2foc" title="astropy.wcs.WCS.p4_pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">p4_pix2foc</span></tt></a>: Convert from pixel to focal plane
+coordinates using the table lookup distortion method
+described in <a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a>.</li>
+<li><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.det2im" title="astropy.wcs.WCS.det2im"><tt class="xref py py-obj docutils literal"><span class="pre">det2im</span></tt></a>: Convert from detector coordinates to image
+coordinates.  Commonly used for narrow column correction.</li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#loading-wcs-information-from-a-fits-file">Loading WCS information from a FITS file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#building-a-wcs-structure-programmatically">Building a WCS structure programmatically</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-astropy.wcs.wcs"><tt class="docutils literal"><span class="pre">astropy.wcs</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">astropy.wcs History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#pywcs-version-1-11">pywcs Version 1.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#pywcs-version-1-10">pywcs Version 1.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#pywcs-version-1-9">pywcs Version 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#pywcs-version-1-3a1">pywcs Version 1.3a1</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../configs.html"
+                        title="previous chapter">Configuration system Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="next chapter">Example Usage</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wcs/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Example Usage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../configs.html" title="Configuration system Documentation"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

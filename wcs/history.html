@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.wcs History &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="astropy.wcs Documentation" href="index.html" />
+    <link rel="next" title="astropy.io.vo Documentation" href="../vo/index.html" />
+    <link rel="prev" title="Relax constants" href="relax.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../vo/index.html" title="astropy.io.vo Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="relax.html" title="Relax constants"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">astropy.wcs Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="astropy-wcs-history">
+<h1>astropy.wcs History<a class="headerlink" href="#astropy-wcs-history" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a> began life as <tt class="xref py py-obj docutils literal"><span class="pre">pywcs</span></tt>.  Earlier version numbers refer to
+that package.</p>
+<div class="section" id="pywcs-version-1-11">
+<h2>pywcs Version 1.11<a class="headerlink" href="#pywcs-version-1-11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Updated to wcslib version 4.8, which gives much more detailed error
+messages.</li>
+<li>Added functions get_pc() and get_cdelt().  These provide a way to
+always get the canonical representation of the linear transformation
+matrix, whether the header specified it in PC, CD or CROTA form.</li>
+<li>Long-running process will now release the Python GIL to better
+support Python multithreading.</li>
+<li>The dimensions of the <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.cd" title="astropy.wcs.Wcsprm.cd"><tt class="xref py py-obj docutils literal"><span class="pre">cd</span></tt></a> and
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.pc" title="astropy.wcs.Wcsprm.pc"><tt class="xref py py-obj docutils literal"><span class="pre">pc</span></tt></a> matrices were always returned as 2x2.  They
+now are sized according to naxis.</li>
+<li>Supports Python 3.x</li>
+<li>Builds on Microsoft Windows without severely patching wcslib.</li>
+<li>Lots of new unit tests</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">pywcs</span></tt> will now run without <tt class="xref py py-obj docutils literal"><span class="pre">pyfits</span></tt>, though the SIP and distortion
+lookup table functionality is unavailable.</li>
+<li>Setting <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.cunit" title="astropy.wcs.Wcsprm.cunit"><tt class="xref py py-obj docutils literal"><span class="pre">cunit</span></tt></a> will now verify that the values
+are valid unit strings.</li>
+</ul>
+</div>
+<div class="section" id="pywcs-version-1-10">
+<h2>pywcs Version 1.10<a class="headerlink" href="#pywcs-version-1-10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Adds a <tt class="xref py py-obj docutils literal"><span class="pre">UnitConversion</span></tt> class, which gives access to wcslib&#8217;s unit
+conversion functionality.  Given two convertible unit strings, pywcs
+can convert arrays of values from one to the other.</li>
+<li>Now uses wcslib 4.7</li>
+<li>Changes to some wcs values would not always calculate secondary values.</li>
+</ul>
+</div>
+<div class="section" id="pywcs-version-1-9">
+<h2>pywcs Version 1.9<a class="headerlink" href="#pywcs-version-1-9" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Support binary image arrays and pixel list format WCS by presenting
+a way to call wcslib&#8217;s <tt class="xref py py-obj docutils literal"><span class="pre">wcsbth()</span></tt></p>
+</li>
+<li><p class="first">Updated underlying wcslib to version 4.5, which fixes the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Fixed the interpretation of VELREF when translating
+AIPS-convention spectral types.  Such translation is now handled
+by a new special- purpose function, spcaips().  The wcsprm
+struct has been augmented with an entry for velref which is
+filled by wcspih() and wcsbth().  Previously, selection by
+VELREF of the radio or optical velocity convention for type VELO
+was not properly handled.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="bugs">
+<h3>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.pc" title="astropy.wcs.Wcsprm.pc"><tt class="xref py py-obj docutils literal"><span class="pre">pc</span></tt></a> member is now available with a default
+raw <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a> object.</li>
+<li>Make properties that return arrays read-only, since modifying a
+(mutable) array could result in secondary values not being
+recomputed based on those changes.</li>
+<li><a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a> properties can now be set using <a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a> values</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pywcs-version-1-3a1">
+<h2>pywcs Version 1.3a1<a class="headerlink" href="#pywcs-version-1-3a1" title="Permalink to this headline">¶</a></h2>
+<p>Earlier versions of pywcs had two versions of every conversion method:</p>
+<div class="highlight-python"><pre>X(...)      -- treats the origin of pixel coordinates at (0, 0)
+X_fits(...) -- treats the origin of pixel coordinates at (1, 1)</pre>
+</div>
+<p>From version 1.3 onwards, there is only one method for each
+conversion, with an &#8216;origin&#8217; argument:</p>
+<blockquote>
+<div><ul class="simple">
+<li>0: places the origin at (0, 0), which is the C/Numpy convention.</li>
+<li>1: places the origin at (1, 1), which is the Fortran/FITS
+convention.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">astropy.wcs History</a><ul>
+<li><a class="reference internal" href="#pywcs-version-1-11">pywcs Version 1.11</a></li>
+<li><a class="reference internal" href="#pywcs-version-1-10">pywcs Version 1.10</a></li>
+<li><a class="reference internal" href="#pywcs-version-1-9">pywcs Version 1.9</a><ul>
+<li><a class="reference internal" href="#bugs">Bugs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pywcs-version-1-3a1">pywcs Version 1.3a1</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="relax.html"
+                        title="previous chapter">Relax constants</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../vo/index.html"
+                        title="next chapter">astropy.io.vo Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wcs/history.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../vo/index.html" title="astropy.io.vo Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="relax.html" title="Relax constants"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

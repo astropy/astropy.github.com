@@ -3,17 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Documentation Guidelines (Draft 2) &mdash; Astropy v0.0.0 documentation</title>
+    <title>Documentation Guidelines (Draft) &mdash; Astropy 0.0.dev664 documentation</title>
+    
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.0.0',
+        VERSION:     '0.0.dev664',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
-    <link rel="top" title="Astropy v0.0.0 documentation" href="../index.html" />
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
     <link rel="up" title="Documentation for Developers" href="index.html" />
     <link rel="next" title="Testing Guidelines (Draft)" href="testguide.html" />
     <link rel="prev" title="Emacs setup for following coding guidelines" href="codeguide_emacs.html" /> 
@@ -36,12 +39,18 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="testguide.html" title="Testing Guidelines (Draft)"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="codeguide_emacs.html" title="Emacs setup for following coding guidelines"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Astropy v0.0.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Documentation for Developers</a> &raquo;</li> 
       </ul>
     </div>  
@@ -51,24 +60,26 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="documentation-guidelines-draft-2">
-<h1>Documentation Guidelines (Draft 2)<a class="headerlink" href="#documentation-guidelines-draft-2" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="documentation-guidelines-draft">
+<h1>Documentation Guidelines (Draft)<a class="headerlink" href="#documentation-guidelines-draft" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This document is currently in Draft form and is subject to change.</p>
 </div>
+<p>TODO: Detailed information about building the documentation should be
+added here.</p>
 <div class="section" id="astropy-documentation-rules-and-recommendations">
-<h2>AstroPy Documentation Rules and Recommendations<a class="headerlink" href="#astropy-documentation-rules-and-recommendations" title="Permalink to this headline">¶</a></h2>
+<h2>Astropy Documentation Rules and Recommendations<a class="headerlink" href="#astropy-documentation-rules-and-recommendations" title="Permalink to this headline">¶</a></h2>
 <p>This section describes the standards for documentation format affiliated
 packages that must follow for consideration of integration into the core
-module, as well as the standard AstroPy docstring format.</p>
+module, as well as the standard Astropy docstring format.</p>
 <ul class="simple">
 <li>Documentation shall use the Sphinx documentation tool.</li>
 <li>The template package will provide a recommended general structure for
 documentation.</li>
 <li>Docstrings must be provided for all public classes, methods, and functions.</li>
 <li>Docstrings will be incorporated into the documentation using a version of
-numpydoc included with AstroPy, and should follow the <a class="reference external" href="http://numpy.scipy.org/">NumPy</a>/<a class="reference external" href="http://www.scipy.org">SciPy</a>
+numpydoc included with Astropy, and should follow the <a class="reference external" href="http://numpy.scipy.org/">NumPy</a>/<a class="reference external" href="http://www.scipy.org">SciPy</a>
 docstring standards, included below.</li>
 <li>Examples and/or tutorials are strongly encouraged for typical use-cases of a
 particular module or class.</li>
@@ -83,7 +94,7 @@ explicitly mentioned in the documentation.</li>
 <p>The original source for these docstring standards is the <a class="reference external" href="http://numpy.scipy.org/">NumPy</a> project, and
 the associated <a class="reference external" href="http://pypi.python.org/pypi/numpydoc/0.3.1">numpydoc</a> tools. The most up-to-date version of these standards
 can be found at <a class="reference external" href="http://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">numpy&#8217;s github site</a>. The
-guidelines below have been adapted to the AstroPy pacakge.</p>
+guidelines below have been adapted to the Astropy pacakge.</p>
 <div class="section" id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
 <p>In general, we follow the standard Python style conventions as described here:</p>
@@ -109,7 +120,7 @@ guidelines below have been adapted to the AstroPy pacakge.</p>
 <li><a class="reference external" href="https://github.com/jcrocholl/pep8">pep8.py</a></li>
 </ul>
 </div></blockquote>
-<p>The following import conventions are used throughout the AstroPy source
+<p>The following import conventions are used throughout the Astropy source
 and documentation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
@@ -145,7 +156,7 @@ triple double quotes, i.e.:</p>
 </div>
 <p><a class="reference external" href="http://numpy.scipy.org/">NumPy</a> and <a class="reference external" href="http://www.scipy.org">SciPy</a> have defined a common convention for docstrings that
 provides for consistency, while also allowing our toolchain to produce
-well-formatted reference guides. This format should be used for AstroPy
+well-formatted reference guides. This format should be used for Astropy
 docstrings.</p>
 <p>This docstring standard uses <a class="reference external" href="http://docutils.sourceforge.net/rst.html">re-structured text (reST)</a> syntax and is rendered
 using <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a> (a pre-processor that understands the particular
@@ -189,7 +200,7 @@ it as the first line of the docstring:</p>
 <p>A section (use if applicable) to warn users that the object is deprecated.
 Section contents should include:</p>
 <ul class="simple">
-<li>In what AstroPy version the object was deprecated, and when it will
+<li>In what Astropy version the object was deprecated, and when it will
 be removed.</li>
 <li>Reason for deprecation if this is useful information (e.g., object
 is superseded, duplicates functionality found elsewhere, etc.).</li>
@@ -197,8 +208,8 @@ is superseded, duplicates functionality found elsewhere, etc.).</li>
 </ul>
 <p>This section should use the note Sphinx directive instead of an
 underlined section header.</p>
-<div class="highlight-python"><pre>.. note:: Deprecated in AstroPy 1.2
-          `ndobj_old` will be removed in AstroPy 2.0, it is replaced by
+<div class="highlight-python"><pre>.. note:: Deprecated in Astropy 1.2
+          `ndobj_old` will be removed in Astropy 2.0, it is replaced by
           `ndobj_new` because the latter works also with array subclasses.</pre>
 </div>
 </li>
@@ -406,8 +417,8 @@ for plotting, but should import it explicitly, e.g., <tt class="docutils literal
 </div>
 <div class="section" id="documenting-classes">
 <h3>Documenting classes<a class="headerlink" href="#documenting-classes" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="class-docstring">
-<h4>Class docstring<a class="headerlink" href="#class-docstring" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="class-docstrings">
+<h4>Class docstrings<a class="headerlink" href="#class-docstrings" title="Permalink to this headline">¶</a></h4>
 <p>Use the same sections as outlined above (all except <tt class="docutils literal"><span class="pre">Returns</span></tt> are
 applicable). The constructor (<tt class="docutils literal"><span class="pre">__init__</span></tt>) should also be documented here,
 the <strong>parameters</strong> section of the docstring details the constructors
@@ -473,7 +484,7 @@ put brief summary and See Also sections in the method docstring.</p>
 </div>
 <div class="section" id="documenting-class-instances">
 <h3>Documenting class instances<a class="headerlink" href="#documenting-class-instances" title="Permalink to this headline">¶</a></h3>
-<p>Instances of classes that are part of the AstroPy API may require some care.
+<p>Instances of classes that are part of the Astropy API may require some care.
 To give these instances a useful docstring, we do the following:</p>
 <ul class="simple">
 <li>Single instance: If only a single instance of a class is exposed, document
@@ -536,9 +547,9 @@ that are not answered in this document, refer to
 <a class="reference external" href="http://docs.scipy.org/numpy/Questions+Answers/">http://docs.scipy.org/numpy/Questions+Answers/</a>.</p>
 </li>
 <li><p class="first">array_like : For functions that take arguments which can have not only
-a type <cite>ndarray</cite>, but also types that can be converted to an ndarray
+a type <tt class="xref py py-obj docutils literal"><span class="pre">ndarray</span></tt>, but also types that can be converted to an ndarray
 (i.e. scalar types, sequence types), those arguments can be documented
-with type <cite>array_like</cite>.</p>
+with type <tt class="xref py py-obj docutils literal"><span class="pre">array_like</span></tt>.</p>
 </li>
 </ul>
 </div>
@@ -557,7 +568,7 @@ useful while editing.</p>
 <div class="section" id="conclusion">
 <h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://github.com/numpy/numpy/blob/master/doc/example.py">An example</a> of the
-format shown here is available.  Refer to <a class="reference external" href="http://github.com/numpy/numpy/blob/master/doc/HOWTO_BUILD_DOCS.txt">How to Build API/Reference
+format shown here is available.  Refer to <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_BUILD_DOCS.rst.txt">How to Build API/Reference
 Documentation</a>
 on how to use <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a> to build the manual.</p>
 </div>
@@ -575,14 +586,14 @@ on how to use <a class="reference external" href="http://sphinx.pocoo.org">Sphin
             </a></p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Documentation Guidelines (Draft 2)</a><ul>
-<li><a class="reference internal" href="#astropy-documentation-rules-and-recommendations">AstroPy Documentation Rules and Recommendations</a></li>
+<li><a class="reference internal" href="#">Documentation Guidelines (Draft)</a><ul>
+<li><a class="reference internal" href="#astropy-documentation-rules-and-recommendations">Astropy Documentation Rules and Recommendations</a></li>
 <li><a class="reference internal" href="#numpy-scipy-docstring-rules">NumPy/SciPy Docstring Rules</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#docstring-standard">Docstring Standard</a></li>
 <li><a class="reference internal" href="#sections">Sections</a></li>
 <li><a class="reference internal" href="#documenting-classes">Documenting classes</a><ul>
-<li><a class="reference internal" href="#class-docstring">Class docstring</a></li>
+<li><a class="reference internal" href="#class-docstrings">Class docstrings</a></li>
 <li><a class="reference internal" href="#method-docstrings">Method docstrings</a></li>
 </ul>
 </li>
@@ -612,7 +623,7 @@ on how to use <a class="reference external" href="http://sphinx.pocoo.org">Sphin
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -633,18 +644,24 @@ on how to use <a class="reference external" href="http://sphinx.pocoo.org">Sphin
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="testguide.html" title="Testing Guidelines (Draft)"
              >next</a> |</li>
         <li class="right" >
           <a href="codeguide_emacs.html" title="Emacs setup for following coding guidelines"
              >previous</a> |</li>
-        <li><a href="../index.html">Astropy v0.0.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
           <li><a href="index.html" >Documentation for Developers</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Erik Tollerud, Thomas Robitaille, Perry Greenfield, and the Astropy Collaboration.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

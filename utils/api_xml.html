@@ -1,0 +1,532 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.utils.xml: Utilities related to XML &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="astropy.utils documentation" href="index.html" />
+    <link rel="next" title="astropy.utils.misc: Miscellaneous/uncategorized Utilities" href="api_misc.html" />
+    <link rel="prev" title="astropy.utils.console: Utilities for console output" href="api_console.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_misc.html" title="astropy.utils.misc: Miscellaneous/uncategorized Utilities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_console.html" title="astropy.utils.console: Utilities for console output"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U"><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="astropy-utils-xml-utilities-related-to-xml">
+<h1><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.xml</span></tt>: Utilities related to XML<a class="headerlink" href="#astropy-utils-xml-utilities-related-to-xml" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-astropy.utils.xml.check">
+<span id="astropy-utils-xml-check"></span><h2><a class="reference internal" href="#module-astropy.utils.xml.check" title="astropy.utils.xml.check"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.xml.check</span></tt></a><a class="headerlink" href="#module-astropy.utils.xml.check" title="Permalink to this headline">¶</a></h2>
+<p>A collection of functions for checking various XML-related strings for
+standards compliance.</p>
+<dl class="function">
+<dt id="astropy.utils.xml.check.check_anyuri">
+<tt class="descclassname">astropy.utils.xml.check.</tt><tt class="descname">check_anyuri</tt><big>(</big><em>uri</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/check.html#check_anyuri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.check.check_anyuri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> if <em>uri</em> is a valid URI as defined in RFC 2396.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.check.check_id">
+<tt class="descclassname">astropy.utils.xml.check.</tt><tt class="descname">check_id</tt><big>(</big><em>ID</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/check.html#check_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.check.check_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> if <em>ID</em> is a valid XML ID.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.check.check_mime_content_type">
+<tt class="descclassname">astropy.utils.xml.check.</tt><tt class="descname">check_mime_content_type</tt><big>(</big><em>content_type</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/check.html#check_mime_content_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.check.check_mime_content_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> if <em>content_type</em> is a valid MIME content type
+(syntactically at least), as defined by RFC 2045.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.check.check_token">
+<tt class="descclassname">astropy.utils.xml.check.</tt><tt class="descname">check_token</tt><big>(</big><em>token</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/check.html#check_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.check.check_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> if <em>token</em> is a valid XML token, as defined by XML
+Schema Part 2.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.check.fix_id">
+<tt class="descclassname">astropy.utils.xml.check.</tt><tt class="descname">fix_id</tt><big>(</big><em>ID</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/check.html#fix_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.check.fix_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an arbitrary string, create one that can be used as an xml
+id.  This is rather simplistic at the moment, since it just
+replaces non-valid characters with underscores.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-astropy.utils.xml.iterparser">
+<span id="astropy-utils-xml-iterparser"></span><h2><a class="reference internal" href="#module-astropy.utils.xml.iterparser" title="astropy.utils.xml.iterparser"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.xml.iterparser</span></tt></a><a class="headerlink" href="#module-astropy.utils.xml.iterparser" title="Permalink to this headline">¶</a></h2>
+<p>This module includes a fast iterator-based XML parser.</p>
+<dl class="function">
+<dt id="astropy.utils.xml.iterparser.get_xml_iterator">
+<tt class="descclassname">astropy.utils.xml.iterparser.</tt><tt class="descname">get_xml_iterator</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/iterparser.html#get_xml_iterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.iterparser.get_xml_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an iterator over the elements of an XML file.</p>
+<p>The iterator doesn&#8217;t ever build a tree, so it is much more memory
+and time efficient than the alternative in <tt class="xref py py-obj docutils literal"><span class="pre">cElementTree</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>fd</strong> : readable file-like object or read function</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>parts</strong> : iterator</p>
+<blockquote class="last">
+<div><p>The iterator returns 4-tuples (<em>start</em>, <em>tag</em>, <em>data</em>, <em>pos</em>):</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><em>start</em>: when <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> is a start element event, otherwise
+an end element event.</p>
+</li>
+<li><p class="first"><em>tag</em>: The name of the element</p>
+</li>
+<li><p class="first"><em>data</em>: Depends on the value of <em>event</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>if <em>start</em> == <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, data is a dictionary of
+attributes</li>
+<li>if <em>start</em> == <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a>, data is a string containing
+the text content of the element</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>pos</em>: Tuple (<em>line</em>, <em>col</em>) indicating the source of the
+event.</p>
+</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.iterparser.get_xml_encoding">
+<tt class="descclassname">astropy.utils.xml.iterparser.</tt><tt class="descname">get_xml_encoding</tt><big>(</big><em>source</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/iterparser.html#get_xml_encoding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.iterparser.get_xml_encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the encoding of an XML file by reading its header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>source</strong> : readable file-like object, read function or str path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>encoding</strong> : str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.iterparser.xml_readlines">
+<tt class="descclassname">astropy.utils.xml.iterparser.</tt><tt class="descname">xml_readlines</tt><big>(</big><em>source</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/iterparser.html#xml_readlines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.iterparser.xml_readlines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the lines from a given XML file.  Correctly determines the
+encoding and always returns unicode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>source</strong> : readable file-like object, read function or str path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>lines</strong> : list of unicode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-astropy.utils.xml.validate">
+<span id="astropy-utils-xml-validate"></span><h2><a class="reference internal" href="#module-astropy.utils.xml.validate" title="astropy.utils.xml.validate"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.xml.validate</span></tt></a><a class="headerlink" href="#module-astropy.utils.xml.validate" title="Permalink to this headline">¶</a></h2>
+<p>Functions to do XML schema and DTD validation.  At the moment, this
+makes a subprocess call to xmllint.  This could use a Python-based
+library at some point in the future, if something appropriate could be
+found.</p>
+<dl class="function">
+<dt id="astropy.utils.xml.validate.validate_schema">
+<tt class="descclassname">astropy.utils.xml.validate.</tt><tt class="descname">validate_schema</tt><big>(</big><em>filename</em>, <em>schema_file</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/validate.html#validate_schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.validate.validate_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates an XML file against a schema or DTD.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
+<blockquote>
+<div><p>The path to the XML file to validate</p>
+</div></blockquote>
+<p><strong>schema</strong> : str</p>
+<blockquote>
+<div><p>The path to the XML schema or DTD</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>returncode, stdout, stderr</strong> : int, str, str</p>
+<blockquote class="last">
+<div><p>Returns the returncode from xmllint and the stdout and stderr
+as strings</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-astropy.utils.xml.writer">
+<span id="astropy-utils-xml-writer"></span><h2><a class="reference internal" href="#module-astropy.utils.xml.writer" title="astropy.utils.xml.writer"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.xml.writer</span></tt></a><a class="headerlink" href="#module-astropy.utils.xml.writer" title="Permalink to this headline">¶</a></h2>
+<p>Contains a class that makes it simple to stream out well-formed and
+nicely-indented XML.</p>
+<dl class="class">
+<dt id="astropy.utils.xml.writer.XMLWriter">
+<em class="property">class </em><tt class="descclassname">astropy.utils.xml.writer.</tt><tt class="descname">XMLWriter</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to write well-formed and nicely indented XML.</p>
+<p>Use like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">w</span> <span class="o">=</span> <span class="n">XMLWriter</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">w</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;html&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">w</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">):</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s">&#39;This is the content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which produces:</p>
+<div class="highlight-python"><pre>&lt;html&gt;
+ &lt;body&gt;
+  This is the content
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>file</strong> : writable file-like object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.utils.xml.writer.XMLWriter.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'astropy.utils.xml.writer'</em><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.close">
+<tt class="descname">close</tt><big>(</big><em>id</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes open elements, up to (and including) the element identified
+by the given identifier.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>id</strong> : int</p>
+<blockquote class="last">
+<div><p>Element identifier, as returned by the <a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.start" title="astropy.utils.xml.writer.XMLWriter.start"><tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt></a> method.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.comment">
+<tt class="descname">comment</tt><big>(</big><em>comment</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.comment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a comment to the output stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>comment</strong> : str</p>
+<blockquote class="last">
+<div><p>Comment text, as a Unicode string.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.data">
+<tt class="descname">data</tt><big>(</big><em>text</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds character data to the output stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>text</strong> : str</p>
+<blockquote class="last">
+<div><p>Character data, as a Unicode string.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.element">
+<tt class="descname">element</tt><big>(</big><em>tag</em>, <em>text=None</em>, <em>wrap=False</em>, <em>attrib={}</em>, <em>**extra</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an entire element.  This is the same as calling <a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.start" title="astropy.utils.xml.writer.XMLWriter.start"><tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt></a>,
+<a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.data" title="astropy.utils.xml.writer.XMLWriter.data"><tt class="xref py py-obj docutils literal"><span class="pre">data</span></tt></a>, and <a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.end" title="astropy.utils.xml.writer.XMLWriter.end"><tt class="xref py py-obj docutils literal"><span class="pre">end</span></tt></a> in sequence. The <tt class="xref py py-obj docutils literal"><span class="pre">text</span></tt> argument
+can be omitted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.end">
+<tt class="descname">end</tt><big>(</big><em>tag=None</em>, <em>indent=True</em>, <em>wrap=False</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the current element (opened by the most recent call to
+<a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.start" title="astropy.utils.xml.writer.XMLWriter.start"><tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt></a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>tag</strong> : str</p>
+<blockquote class="last">
+<div><p>Element name.  If given, the tag must match the start tag.
+If omitted, the current element is closed.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.flush">
+<tt class="descname">flush</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.flush" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.get_indentation">
+<tt class="descname">get_indentation</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.get_indentation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.get_indentation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of indentation levels the file is currently
+in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.get_indentation_spaces">
+<tt class="descname">get_indentation_spaces</tt><big>(</big><em>offset=0</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.get_indentation_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.get_indentation_spaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string of spaces that matches the current
+indentation level.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="astropy.utils.xml.writer.XMLWriter.object_attrs">
+<em class="property">static </em><tt class="descname">object_attrs</tt><big>(</big><em>obj</em>, <em>attrs</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.object_attrs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.object_attrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an object with a bunch of attributes on an object
+into a dictionary for use by the <a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter" title="astropy.utils.xml.writer.XMLWriter"><tt class="xref py py-obj docutils literal"><span class="pre">XMLWriter</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obj</strong> : object</p>
+<blockquote>
+<div><p>Any Python object</p>
+</div></blockquote>
+<p><strong>attrs</strong> : sequence of str</p>
+<blockquote>
+<div><p>Attribute names to pull from the object</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>attrs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Maps attribute names to the values retrieved from
+<tt class="xref py py-obj docutils literal"><span class="pre">obj.attr</span></tt>.  If any of the attributes is <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">None</span></tt></a>, it will
+not appear in the output dictionary.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.start">
+<tt class="descname">start</tt><big>(</big><em>tag</em>, <em>attrib={}</em>, <em>**extra</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a new element.  Attributes can be given as keyword
+arguments, or as a string/string dictionary.  The method
+returns an opaque identifier that can be passed to the
+<a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.close" title="astropy.utils.xml.writer.XMLWriter.close"><tt class="xref py py-meth docutils literal"><span class="pre">close()</span></tt></a> method, to close all open elements up to and
+including this one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>tag</strong> : str</p>
+<blockquote>
+<div><p>The element name</p>
+</div></blockquote>
+<p><strong>attrib</strong> : dict of str -&gt; str</p>
+<blockquote>
+<div><p>Attribute dictionary.  Alternatively, attributes can
+be given as keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>id</strong> : int</p>
+<blockquote class="last">
+<div><p>Returns an element identifier.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.xml.writer.XMLWriter.tag">
+<tt class="descname">tag</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#XMLWriter.tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.XMLWriter.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience method for use with the <tt class="xref py py-obj docutils literal"><span class="pre">with</span></tt> statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">writer</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">):</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s">&#39;bar&#39;</span><span class="p">)</span>
+<span class="c"># &lt;/foo&gt; is implicitly closed here</span>
+</pre></div>
+</div>
+<p>Parameters are the same as to <a class="reference internal" href="#astropy.utils.xml.writer.XMLWriter.start" title="astropy.utils.xml.writer.XMLWriter.start"><tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.writer.xml_escape">
+<tt class="descclassname">astropy.utils.xml.writer.</tt><tt class="descname">xml_escape</tt><big>(</big><em>s</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#xml_escape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.xml_escape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Escapes &amp;, &#8216;, &#8221;, &lt; and &gt; in an XML attribute value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.xml.writer.xml_escape_cdata">
+<tt class="descclassname">astropy.utils.xml.writer.</tt><tt class="descname">xml_escape_cdata</tt><big>(</big><em>s</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/xml/writer.html#xml_escape_cdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.xml.writer.xml_escape_cdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Escapes &amp;, &lt; and &gt; in an XML CDATA string.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">astropy.utils.xml</span></tt>: Utilities related to XML</a><ul>
+<li><a class="reference internal" href="#module-astropy.utils.xml.check"><tt class="docutils literal"><span class="pre">astropy.utils.xml.check</span></tt></a></li>
+<li><a class="reference internal" href="#module-astropy.utils.xml.iterparser"><tt class="docutils literal"><span class="pre">astropy.utils.xml.iterparser</span></tt></a></li>
+<li><a class="reference internal" href="#module-astropy.utils.xml.validate"><tt class="docutils literal"><span class="pre">astropy.utils.xml.validate</span></tt></a></li>
+<li><a class="reference internal" href="#module-astropy.utils.xml.writer"><tt class="docutils literal"><span class="pre">astropy.utils.xml.writer</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_console.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">astropy.utils.console</span></tt>: Utilities for console output</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_misc.html"
+                        title="next chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">astropy.utils.misc</span></tt>: Miscellaneous/uncategorized Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/utils/api_xml.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_misc.html" title="astropy.utils.misc: Miscellaneous/uncategorized Utilities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_console.html" title="astropy.utils.console: Utilities for console output"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" ><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.utils.misc: Miscellaneous/uncategorized Utilities &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="astropy.utils documentation" href="index.html" />
+    <link rel="next" title="Documentation for Developers" href="../development/index.html" />
+    <link rel="prev" title="astropy.utils.xml: Utilities related to XML" href="api_xml.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../development/index.html" title="Documentation for Developers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_xml.html" title="astropy.utils.xml: Utilities related to XML"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U"><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-astropy.utils.misc">
+<span id="astropy-utils-misc-miscellaneous-uncategorized-utilities"></span><h1><a class="reference internal" href="#module-astropy.utils.misc" title="astropy.utils.misc"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.misc</span></tt></a>: Miscellaneous/uncategorized Utilities<a class="headerlink" href="#module-astropy.utils.misc" title="Permalink to this headline">¶</a></h1>
+<p>This package contains smallish general-purpose utilities that don&#8217;t have a
+clear other module to live in.</p>
+<p>This module should not be used directly, as everything in <tt class="xref py py-obj docutils literal"><span class="pre">__all__`</span></tt> is
+imported into <tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils</span></tt></p>
+<dl class="function">
+<dt id="astropy.utils.misc.find_current_module">
+<tt class="descclassname">astropy.utils.misc.</tt><tt class="descname">find_current_module</tt><big>(</big><em>depth=1</em>, <em>finddiff=False</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/misc.html#find_current_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.misc.find_current_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the module/package this function is called from.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>depth</strong> : int</p>
+<blockquote>
+<div><p>Specifies how far back to go in the call stack (0-indexed, so that
+passing in 0 gives back <a class="reference internal" href="#module-astropy.utils.misc" title="astropy.utils.misc"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.misc</span></tt></a>).</p>
+</div></blockquote>
+<p><strong>finddiff</strong> : bool</p>
+<blockquote>
+<div><p>If True, once the module at <tt class="xref py py-obj docutils literal"><span class="pre">depth</span></tt> is determined, a search will be
+performed up the call stack until a <em>different</em> module is found
+from the one at <tt class="xref py py-obj docutils literal"><span class="pre">depth</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>mod</strong> : module or None</p>
+<blockquote class="last">
+<div><p>The module object or None if the package cannot be found. The name of
+the module is available as the <tt class="docutils literal"><span class="pre">__name__</span></tt> attribute of the returned
+object (if it isn&#8217;t None).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>The examples below assume that there are two modules in a package named
+<tt class="xref py py-obj docutils literal"><span class="pre">pkg</span></tt>. <tt class="docutils literal"><span class="pre">mod1.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find1</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">astropy.utils</span> <span class="kn">import</span> <span class="n">find_current_module</span>
+    <span class="k">print</span> <span class="n">find_current_module</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span>
+<span class="k">def</span> <span class="nf">find2</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">astropy.utils</span> <span class="kn">import</span> <span class="n">find_current_module</span>
+    <span class="n">cmod</span> <span class="o">=</span> <span class="n">find_current_module</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cmod</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;None&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">cmod</span><span class="o">.</span><span class="n">__name__</span>
+<span class="k">def</span> <span class="nf">find_diff</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">astropy.utils</span> <span class="kn">import</span> <span class="n">find_current_module</span>
+    <span class="k">print</span> <span class="n">find_current_module</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">mod2.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">.mod1</span> <span class="kn">import</span> <span class="n">find2</span>
+    <span class="n">find2</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>With these modules in place, the following occurs:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pkg</span> <span class="kn">import</span> <span class="n">mod1</span><span class="p">,</span> <span class="n">mod2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy.utils</span> <span class="kn">import</span> <span class="n">find_current_module</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mod1</span><span class="o">.</span><span class="n">find1</span><span class="p">()</span>
+<span class="go">pkg.mod1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mod1</span><span class="o">.</span><span class="n">find2</span><span class="p">()</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mod2</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>
+<span class="go">pkg.mod2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">find_current_module</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;module &#39;astropy.utils.misc&#39; from &#39;astropy/utils/misc.py&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mod1</span><span class="o">.</span><span class="n">find_diff</span><span class="p">()</span>
+<span class="go">pkg.mod1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.misc.fnpickle">
+<tt class="descclassname">astropy.utils.misc.</tt><tt class="descname">fnpickle</tt><big>(</big><em>object</em>, <em>fileorname</em>, <em>usecPickle=True</em>, <em>protocol=None</em>, <em>append=False</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/misc.html#fnpickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.misc.fnpickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pickle an object to a specified file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>object</strong> :</p>
+<blockquote>
+<div><p>The python object to pickle.</p>
+</div></blockquote>
+<p><strong>fileorname</strong> : str or <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a>-like</p>
+<blockquote>
+<div><p>The filename or file into which the <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">object</span></tt></a> should be pickled. If a
+file object, it should have been opened in binary mode.</p>
+</div></blockquote>
+<p><strong>usecPickle</strong> : bool</p>
+<blockquote>
+<div><p>If True (default), the <a class="reference external" href="http://docs.python.org/library/pickle.html#module-cPickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">cPickle</span></tt></a> module is to be used in place of
+<a class="reference external" href="http://docs.python.org/library/pickle.html#module-pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> (cPickle is faster). This only applies for python 2.x.</p>
+</div></blockquote>
+<p><strong>protocol</strong> : int or None</p>
+<blockquote>
+<div><p>Pickle protocol to use - see the <a class="reference external" href="http://docs.python.org/library/pickle.html#module-pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> module for details on
+these options. If None, the most recent protocol will be used.</p>
+</div></blockquote>
+<p><strong>append</strong> : bool</p>
+<blockquote class="last">
+<div><p>If True, the object is appended to the end of the file, otherwise the
+file will be overwritten (if a file object is given instead of a
+file name, this has no effect).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.misc.fnunpickle">
+<tt class="descclassname">astropy.utils.misc.</tt><tt class="descname">fnunpickle</tt><big>(</big><em>fileorname</em>, <em>number=0</em>, <em>usecPickle=True</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/misc.html#fnunpickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.misc.fnunpickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpickle pickled objects from a specified file and return the contents.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>fileorname</strong> : str or <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a>-like</p>
+<blockquote>
+<div><p>The file name or file from which to unpickle objects. If a file object,
+it should have been opened in binary mode.</p>
+</div></blockquote>
+<p><strong>number</strong> : int</p>
+<blockquote>
+<div><p>If 0, a single object will be returned (the first in the file). If &gt;0,
+this specifies the number of objects to be unpickled, and a list will be
+returned with exactly that many objects. If &lt;0, all objects in the file
+will be unpickled and returned as a list.</p>
+</div></blockquote>
+<p><strong>usecPickle</strong> : bool</p>
+<blockquote>
+<div><p>If True, the <a class="reference external" href="http://docs.python.org/library/pickle.html#module-cPickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">cPickle</span></tt></a> module is to be used in place of
+<a class="reference external" href="http://docs.python.org/library/pickle.html#module-pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> (cPickle is faster). This only applies for python 2.x.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>contents</strong> : obj or list</p>
+<blockquote>
+<div><p>If <tt class="xref py py-obj docutils literal"><span class="pre">number</span></tt> is 0, this is a individual object - the first one unpickled
+from the file. Otherwise, it is a list of objects unpickled from the
+file.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>EOFError</strong> :</p>
+<blockquote class="last">
+<div><p>If <tt class="xref py py-obj docutils literal"><span class="pre">number</span></tt> is &gt;0 and there are fewer than <tt class="xref py py-obj docutils literal"><span class="pre">number</span></tt> objects in the
+pickled file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_xml.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">astropy.utils.xml</span></tt>: Utilities related to XML</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../development/index.html"
+                        title="next chapter">Documentation for Developers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/utils/api_misc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../development/index.html" title="Documentation for Developers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_xml.html" title="astropy.utils.xml: Utilities related to XML"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" ><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

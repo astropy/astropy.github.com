@@ -1,0 +1,17 @@
+<map id="inheritance14a55a99be" name="inheritance14a55a99be">
+<area shape="rect" id="node1" href="#astropy.io.vo.tree.VOTableFile" title="VOTableFile" alt="" coords="141,78,235,103"/>
+<area shape="rect" id="node2" href="#astropy.io.vo.tree.Element" title="Element" alt="" coords="5,202,80,227"/>
+<area shape="rect" id="node5" href="#astropy.io.vo.tree.SimpleElement" title="SimpleElement" alt="" coords="129,127,247,153"/>
+<area shape="rect" id="node11" href="#astropy.io.vo.tree.Values" title="Values" alt="" coords="152,177,224,202"/>
+<area shape="rect" id="node20" href="#astropy.io.vo.tree.Table" title="Table" alt="" coords="152,226,224,251"/>
+<area shape="rect" id="node22" href="#astropy.io.vo.tree.Resource" title="Resource" alt="" coords="147,275,229,301"/>
+<area shape="rect" id="node28" href="#astropy.io.vo.tree.Group" title="Group" alt="" coords="152,325,224,350"/>
+<area shape="rect" id="node4" href="#astropy.io.vo.tree.Field" title="Field" alt="" coords="359,5,431,30"/>
+<area shape="rect" id="node16" href="#astropy.io.vo.tree.Param" title="Param" alt="" coords="541,5,613,30"/>
+<area shape="rect" id="node7" href="#astropy.io.vo.tree.FieldRef" title="FieldRef" alt="" coords="359,54,431,79"/>
+<area shape="rect" id="node9" href="#astropy.io.vo.tree.SimpleElementWithContent" title="SimpleElementWithContent" alt="" coords="296,103,493,129"/>
+<area shape="rect" id="node14" href="#astropy.io.vo.tree.CooSys" title="CooSys" alt="" coords="359,153,431,178"/>
+<area shape="rect" id="node24" href="#astropy.io.vo.tree.ParamRef" title="ParamRef" alt="" coords="353,202,437,227"/>
+<area shape="rect" id="node26" href="#astropy.io.vo.tree.Link" title="Link" alt="" coords="359,251,431,277"/>
+<area shape="rect" id="node18" href="#astropy.io.vo.tree.Info" title="Info" alt="" coords="541,103,613,129"/>
+</map>

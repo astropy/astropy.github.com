@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.utils.console: Utilities for console output &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="astropy.utils documentation" href="index.html" />
+    <link rel="next" title="astropy.utils.xml: Utilities related to XML" href="api_xml.html" />
+    <link rel="prev" title="astropy.utils.collections: Specialized collection classes" href="api_collections.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_xml.html" title="astropy.utils.xml: Utilities related to XML"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_collections.html" title="astropy.utils.collections: Specialized collection classes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U"><tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-astropy.utils.console">
+<span id="astropy-utils-console-utilities-for-console-output"></span><h1><a class="reference internal" href="#module-astropy.utils.console" title="astropy.utils.console"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.utils.console</span></tt></a>: Utilities for console output<a class="headerlink" href="#module-astropy.utils.console" title="Permalink to this headline">¶</a></h1>
+<p>Utilities for prettifying output to the console.</p>
+<dl class="function">
+<dt id="astropy.utils.console.isatty">
+<tt class="descclassname">astropy.utils.console.</tt><tt class="descname">isatty</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#isatty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.isatty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> if <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> is a tty.</p>
+<p>Most built-in Python file-like objects have an <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a> member,
+but some user-defined types may not, so this assumes those are not
+ttys.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.console.color_print">
+<tt class="descclassname">astropy.utils.console.</tt><tt class="descname">color_print</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#color_print"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.color_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints colors and styles to the terminal uses ANSI escape
+sequences:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">color_print</span><span class="p">(</span><span class="s">&#39;This is the color &#39;</span><span class="p">,</span> <span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="s">&#39;GREEN&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>positional args</strong> : strings</p>
+<blockquote>
+<div><p>The positional arguments come in pairs (<em>msg</em>, <em>color</em>), where
+<em>msg</em> is the string to display and <em>color</em> is the color to
+display it in.</p>
+<p><em>color</em> is an ANSI terminal color name.  Must be one of:
+black, red, green, brown, blue, magenta, cyan, lightgrey,
+default, darkgrey, lightred, lightgreen, yellow, lightblue,
+lightmagenta, lightcyan, white, or &#8216;&#8217; (the empty string).</p>
+</div></blockquote>
+<p><strong>file</strong> : writeable file-like object, optional</p>
+<blockquote>
+<div><p>Where to write to.  Defaults to <a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.  If file is not
+a tty (as determined by calling its <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a> member, if one
+exists), no coloring will be included.</p>
+</div></blockquote>
+<p><strong>end</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>The ending of the message.  Defaults to <tt class="docutils literal"><span class="pre">\n</span></tt>.  The end will
+be printed after resetting any color or font state.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.console.human_time">
+<tt class="descclassname">astropy.utils.console.</tt><tt class="descname">human_time</tt><big>(</big><em>seconds</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#human_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.human_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a human-friendly time string that is always exactly 6
+characters long.</p>
+<p>Depending on the number of seconds given, can be one of:</p>
+<div class="highlight-python"><pre>1w 3d
+2d 4h
+1h 5m
+1m 4s
+  15s</pre>
+</div>
+<p>Will be in color if console coloring is turned on.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>seconds</strong> : int</p>
+<blockquote>
+<div><p>The number of seconds to represent</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>time</strong> : str</p>
+<blockquote class="last">
+<div><p>A human-friendly representation of the given number of seconds
+that is always exactly 6 characters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="astropy.utils.console.ProgressBar">
+<em class="property">class </em><tt class="descclassname">astropy.utils.console.</tt><tt class="descname">ProgressBar</tt><big>(</big><em>total</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to display a progress bar in the terminal.</p>
+<p>It is designed to be used with the <tt class="xref py py-obj docutils literal"><span class="pre">with</span></tt> statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBar.__enter__">
+<tt class="descname">__enter__</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBar.__exit__">
+<tt class="descname">__exit__</tt><big>(</big><em>exc_type</em>, <em>exc_value</em>, <em>traceback</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBar.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>total</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>total</strong> : int</p>
+<blockquote>
+<div><p>The number of increments in the process being tracked.</p>
+</div></blockquote>
+<p><strong>file</strong> : writable file-like object, optional</p>
+<blockquote class="last">
+<div><p>The file to write the progress bar to.  Defaults to
+<a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.  If <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> is not a tty (as determined by
+calling its <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a> member, if any), the scrollbar will
+be completely silent.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.utils.console.ProgressBar.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'astropy.utils.console'</em><a class="headerlink" href="#astropy.utils.console.ProgressBar.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="astropy.utils.console.ProgressBar.iterate">
+<em class="property">classmethod </em><tt class="descname">iterate</tt><big>(</big><em>items</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar.iterate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar.iterate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over a sequence while indicating progress with a progress
+bar in the terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ProgressBar</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>items</strong> : sequence</p>
+<blockquote>
+<div><p>A sequence of items to iterate over</p>
+</div></blockquote>
+<p><strong>file</strong> : writeable file-like object, optional</p>
+<blockquote>
+<div><p>The file to write the progress bar to.  Defaults to
+<a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.  If <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> is not a tty (as determined by
+calling its <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a> member, if any), the scrollbar will
+be completely silent.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>generator :</strong> :</p>
+<blockquote class="last">
+<div><p>A generator over <tt class="xref py py-obj docutils literal"><span class="pre">items</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="astropy.utils.console.ProgressBar.map">
+<em class="property">classmethod </em><tt class="descname">map</tt><big>(</big><em>function</em>, <em>items</em>, <em>multiprocess=False</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar.map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a <a class="reference internal" href="#astropy.utils.console.ProgressBar.map" title="astropy.utils.console.ProgressBar.map"><tt class="xref py py-obj docutils literal"><span class="pre">map</span></tt></a> operation while displaying a progress bar with
+percentage complete:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">work</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">ProgressBar</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">work</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>function</strong> : function</p>
+<blockquote>
+<div><p>Function to call for each step</p>
+</div></blockquote>
+<p><strong>items</strong> : sequence</p>
+<blockquote>
+<div><p>Sequence where each element is a tuple of arguments to pass to
+<em>function</em>.</p>
+</div></blockquote>
+<p><strong>multiprocess</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, use the <a class="reference external" href="http://docs.python.org/library/multiprocessing.html#module-multiprocessing" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">multiprocessing</span></tt></a> module to distribute each
+task to a different processor core.</p>
+</div></blockquote>
+<p><strong>file</strong> : writeable file-like object, optional</p>
+<blockquote class="last">
+<div><p>The file to write the progress bar to.  Defaults to
+<a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.  If <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> is not a tty (as determined by
+calling its <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a> member, if any), the scrollbar will
+be completely silent.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBar.update">
+<tt class="descname">update</tt><big>(</big><em>value=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBar.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBar.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the progress bar to the given value (out of the total
+given to the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="astropy.utils.console.Spinner">
+<em class="property">class </em><tt class="descclassname">astropy.utils.console.</tt><tt class="descname">Spinner</tt><big>(</big><em>msg</em>, <em>color='default'</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em>, <em>step=1</em>, <em>chars=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#Spinner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.Spinner" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to display a spinner in the terminal.</p>
+<p>It is designed to be used with the <tt class="xref py py-obj docutils literal"><span class="pre">with</span></tt> statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Spinner</span><span class="p">(</span><span class="s">&quot;Reticulating splines&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="astropy.utils.console.Spinner.__enter__">
+<tt class="descname">__enter__</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#Spinner.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.Spinner.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.Spinner.__exit__">
+<tt class="descname">__exit__</tt><big>(</big><em>exc_type</em>, <em>exc_value</em>, <em>traceback</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#Spinner.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.Spinner.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.Spinner.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>msg</em>, <em>color='default'</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em>, <em>step=1</em>, <em>chars=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#Spinner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.Spinner.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>msg</strong> : str</p>
+<blockquote>
+<div><p>The message to print</p>
+</div></blockquote>
+<p><strong>color</strong> : str, optional</p>
+<blockquote>
+<div><p>An ANSI terminal color name.  Must be one of: black, red,
+green, brown, blue, magenta, cyan, lightgrey, default,
+darkgrey, lightred, lightgreen, yellow, lightblue,
+lightmagenta, lightcyan, white.</p>
+</div></blockquote>
+<p><strong>file</strong> : writeable file-like object, optional</p>
+<blockquote>
+<div><p>The file to write the spinner to.  Defaults to
+<a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.  If <a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> is not a tty (as determined by
+calling its <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a> member, if any), the scrollbar will
+be completely silent.</p>
+</div></blockquote>
+<p><strong>step</strong> : int, optional</p>
+<blockquote>
+<div><p>Only update the spinner every <em>step</em> steps</p>
+</div></blockquote>
+<p><strong>chars</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>The character sequence to use for the spinner</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.utils.console.Spinner.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'astropy.utils.console'</em><a class="headerlink" href="#astropy.utils.console.Spinner.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.utils.console.print_code_line">
+<tt class="descclassname">astropy.utils.console.</tt><tt class="descname">print_code_line</tt><big>(</big><em>line</em>, <em>col=None</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em>, <em>tabwidth=8</em>, <em>width=70</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#print_code_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.print_code_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a line of source code, highlighting a particular character
+position in the line.  Useful for displaying the context of error
+messages.</p>
+<p>If the line is more than <tt class="xref py py-obj docutils literal"><span class="pre">width</span></tt> characters, the line is truncated
+accordingly and &#8216;…&#8217; characters are inserted at the front and/or
+end.</p>
+<p>It looks like this:</p>
+<div class="highlight-python"><pre>there_is_a_syntax_error_here :
+                             ^</pre>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>line</strong> : unicode</p>
+<blockquote>
+<div><p>The line of code to display</p>
+</div></blockquote>
+<p><strong>col</strong> : int, optional</p>
+<blockquote>
+<div><p>The character in the line to highlight.  <tt class="xref py py-obj docutils literal"><span class="pre">col</span></tt> must be less
+than <tt class="xref py py-obj docutils literal"><span class="pre">len(line)</span></tt>.</p>
+</div></blockquote>
+<p><strong>file</strong> : writeable file-like object, optional</p>
+<blockquote>
+<div><p>Where to write to.  Defaults to <a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.</p>
+</div></blockquote>
+<p><strong>tabwidth</strong> : int, optional</p>
+<blockquote>
+<div><p>The number of spaces per tab (<tt class="docutils literal"><span class="pre">'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">'</span></tt>) character.  Default is
+8.  All tabs will be converted to spaces to ensure that the
+caret lines up with the correct column.</p>
+</div></blockquote>
+<p><strong>width</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>The width of the display, beyond which the line will be
+truncated.  Defaults to 70 (this matches the default in the
+standard library&#8217;s <a class="reference external" href="http://docs.python.org/library/textwrap.html#module-textwrap" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">textwrap</span></tt></a> module).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="astropy.utils.console.ProgressBarOrSpinner">
+<em class="property">class </em><tt class="descclassname">astropy.utils.console.</tt><tt class="descname">ProgressBarOrSpinner</tt><big>(</big><em>total</em>, <em>msg</em>, <em>color='default'</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBarOrSpinner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBarOrSpinner" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that displays either a <a class="reference internal" href="#astropy.utils.console.ProgressBar" title="astropy.utils.console.ProgressBar"><tt class="xref py py-obj docutils literal"><span class="pre">ProgressBar</span></tt></a> or <a class="reference internal" href="#astropy.utils.console.Spinner" title="astropy.utils.console.Spinner"><tt class="xref py py-obj docutils literal"><span class="pre">Spinner</span></tt></a>
+depending on whether the total size of the operation is
+known or not.</p>
+<p>It is designed to be used with the <tt class="xref py py-obj docutils literal"><span class="pre">with</span></tt> statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">has_length</span><span class="p">():</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">get_length</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">bytes_read</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="n">ProgressBarOrSpinner</span><span class="p">(</span><span class="n">length</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+    <span class="k">while</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">blocksize</span><span class="p">):</span>
+        <span class="n">bytes_read</span> <span class="o">+=</span> <span class="n">blocksize</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bytes_read</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBarOrSpinner.__enter__">
+<tt class="descname">__enter__</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBarOrSpinner.__enter__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBarOrSpinner.__enter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBarOrSpinner.__exit__">
+<tt class="descname">__exit__</tt><big>(</big><em>exc_type</em>, <em>exc_value</em>, <em>traceback</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBarOrSpinner.__exit__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBarOrSpinner.__exit__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBarOrSpinner.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>total</em>, <em>msg</em>, <em>color='default'</em>, <em>file=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x240078&gt;</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBarOrSpinner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBarOrSpinner.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>total</strong> : int or None</p>
+<blockquote>
+<div><p>If an int, the number of increments in the process being
+tracked and a <a class="reference internal" href="#astropy.utils.console.ProgressBar" title="astropy.utils.console.ProgressBar"><tt class="xref py py-obj docutils literal"><span class="pre">ProgressBar</span></tt></a> is displayed.  If <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">None</span></tt></a>, a
+<a class="reference internal" href="#astropy.utils.console.Spinner" title="astropy.utils.console.Spinner"><tt class="xref py py-obj docutils literal"><span class="pre">Spinner</span></tt></a> is displayed.</p>
+</div></blockquote>
+<p><strong>msg</strong> : str</p>
+<blockquote>
+<div><p>The message to display above the <a class="reference internal" href="#astropy.utils.console.ProgressBar" title="astropy.utils.console.ProgressBar"><tt class="xref py py-obj docutils literal"><span class="pre">ProgressBar</span></tt></a> or
+alongside the <a class="reference internal" href="#astropy.utils.console.Spinner" title="astropy.utils.console.Spinner"><tt class="xref py py-obj docutils literal"><span class="pre">Spinner</span></tt></a>.</p>
+</div></blockquote>
+<p><strong>color</strong> : str, optional</p>
+<blockquote>
+<div><p>The color of <tt class="xref py py-obj docutils literal"><span class="pre">msg</span></tt>, if any.  Must be an ANSI terminal
+color name.  Must be one of: black, red, green, brown,
+blue, magenta, cyan, lightgrey, default, darkgrey,
+lightred, lightgreen, yellow, lightblue, lightmagenta,
+lightcyan, white.</p>
+</div></blockquote>
+<p><strong>file</strong> : writable file-like object, optional</p>
+<blockquote class="last">
+<div><p>The file to write the to.  Defaults to <a class="reference external" href="http://docs.python.org/library/sys.html#sys.stdout" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.stdout</span></tt></a>.  If
+<a class="reference external" href="http://docs.python.org/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> is not a tty (as determined by calling its <a class="reference internal" href="#astropy.utils.console.isatty" title="astropy.utils.console.isatty"><tt class="xref py py-obj docutils literal"><span class="pre">isatty</span></tt></a>
+member, if any), only <tt class="xref py py-obj docutils literal"><span class="pre">msg</span></tt> will be displayed: the
+<a class="reference internal" href="#astropy.utils.console.ProgressBar" title="astropy.utils.console.ProgressBar"><tt class="xref py py-obj docutils literal"><span class="pre">ProgressBar</span></tt></a> or <a class="reference internal" href="#astropy.utils.console.Spinner" title="astropy.utils.console.Spinner"><tt class="xref py py-obj docutils literal"><span class="pre">Spinner</span></tt></a> will be silent.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.utils.console.ProgressBarOrSpinner.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'astropy.utils.console'</em><a class="headerlink" href="#astropy.utils.console.ProgressBarOrSpinner.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.utils.console.ProgressBarOrSpinner.update">
+<tt class="descname">update</tt><big>(</big><em>value</em><big>)</big><a class="reference internal" href="../_modules/astropy/utils/console.html#ProgressBarOrSpinner.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.utils.console.ProgressBarOrSpinner.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the progress bar to the given value (out of the total
+given to the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_collections.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">astropy.utils.collections</span></tt>: Specialized collection classes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_xml.html"
+                        title="next chapter"><tt class="docutils literal"><span class="pre">astropy.utils.xml</span></tt>: Utilities related to XML</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/utils/api_console.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_xml.html" title="astropy.utils.xml: Utilities related to XML"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_collections.html" title="astropy.utils.collections: Specialized collection classes"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" ><tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

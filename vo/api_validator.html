@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.io.vo.validator: Generates HTML validation reports &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="API documentation" href="api.html" />
+    <link rel="next" title="astropy.io.vo.xmlutil: XML-related utilities used by the library" href="api_xmlutil.html" />
+    <link rel="prev" title="astropy.io.vo.util: Low-level utilities used by the library" href="api_util.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_xmlutil.html" title="astropy.io.vo.xmlutil: XML-related utilities used by the library"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_util.html" title="astropy.io.vo.util: Low-level utilities used by the library"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.io.vo Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-astropy.io.vo.validator">
+<span id="astropy-io-vo-validator-generates-html-validation-reports"></span><h1><a class="reference internal" href="#module-astropy.io.vo.validator" title="astropy.io.vo.validator"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo.validator</span></tt></a>: Generates HTML validation reports<a class="headerlink" href="#module-astropy.io.vo.validator" title="Permalink to this headline">¶</a></h1>
+<p>Validates a large collection of web-accessible VOTable files,
+and generates a report as a directory tree of HTML files.</p>
+<dl class="function">
+<dt id="astropy.io.vo.validator.main.make_validation_report">
+<tt class="descclassname">astropy.io.vo.validator.main.</tt><tt class="descname">make_validation_report</tt><big>(</big><em>urls=None</em>, <em>destdir='astropy.io.vo.validator.results'</em>, <em>multiprocess=True</em>, <em>stilts=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/validator/main.html#make_validation_report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.validator.main.make_validation_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates a large collection of web-accessible VOTable files,
+and generates a report as a directory tree of HTML files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>urls</strong> : list of strings, optional</p>
+<blockquote>
+<div><p>If provided, is a list of HTTP urls to download VOTable files
+from.  If not provided, a built-in set of ~22,000 urls
+compiled by HEASARC will be used.</p>
+</div></blockquote>
+<p><strong>destdir</strong> : path, optional</p>
+<blockquote>
+<div><p>The directory to write the report to.  By default, this is a
+directory called <tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo.validator.results</span></tt> in the
+current directory.  If the directory does not exist, it will
+be created.</p>
+</div></blockquote>
+<p><strong>multiprocess</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> (default), perform validations in parallel using all
+of the cores on this machine.</p>
+</div></blockquote>
+<p><strong>stilts</strong> : path, optional</p>
+<blockquote class="last">
+<div><p>To perform validation with <tt class="xref py py-obj docutils literal"><span class="pre">votlint</span></tt> from the the Java-based
+<a class="reference external" href="http://www.star.bris.ac.uk/~mbt/stilts/">STILTS</a> VOTable
+parser, in addition to <tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo</span></tt>, set this to the path
+of the <tt class="xref py py-obj docutils literal"><span class="pre">stilts.jar</span></tt> file.  <tt class="xref py py-obj docutils literal"><span class="pre">java</span></tt> on the system shell path
+will be used to run it.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Downloads of each given URL will be performed only once and cached
+locally in <em>destdir</em>.  To refresh the cache, remove <em>destdir</em>
+first.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_util.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">astropy.io.vo.util</span></tt>: Low-level utilities used by the library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_xmlutil.html"
+                        title="next chapter"><tt class="docutils literal docutils literal"><span class="pre">astropy.io.vo.xmlutil</span></tt>: XML-related utilities used by the library</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/vo/api_validator.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_xmlutil.html" title="astropy.io.vo.xmlutil: XML-related utilities used by the library"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_util.html" title="astropy.io.vo.util: Low-level utilities used by the library"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.io.vo Documentation</a> &raquo;</li>
+          <li><a href="api.html" >API documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

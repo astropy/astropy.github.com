@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sip &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="api.html" />
+    <link rel="next" title="UnitConverter" href="api_units.html" />
+    <link rel="prev" title="DistortionLookupTable" href="api_distortion.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_units.html" title="UnitConverter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_distortion.html" title="DistortionLookupTable"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="astropy.wcs.Sip">
+<em class="property">class </em><tt class="descclassname">astropy.wcs.</tt><tt class="descname">Sip</tt><a class="headerlink" href="#astropy.wcs.Sip" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#astropy.wcs.Sip" title="astropy.wcs.Sip"><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt></a> class performs polynomial distortion correction
+using the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> convention in both directions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>a</strong> : double array[m+1][m+1]</p>
+<blockquote>
+<div><p>The <tt class="docutils literal"><span class="pre">A_i_j</span></tt> polynomial for pixel to focal plane transformation.
+Its size must be (<em>m</em> + 1, <em>m</em> + 1) where <em>m</em> = <tt class="docutils literal"><span class="pre">A_ORDER</span></tt>.</p>
+</div></blockquote>
+<p><strong>b</strong> : double array[m+1][m+1]</p>
+<blockquote>
+<div><p>The <tt class="docutils literal"><span class="pre">B_i_j</span></tt> polynomial for pixel to focal plane transformation.
+Its size must be (<em>m</em> + 1, <em>m</em> + 1) where <em>m</em> = <tt class="docutils literal"><span class="pre">B_ORDER</span></tt>.</p>
+</div></blockquote>
+<p><strong>ap</strong> : double array[m+1][m+1]</p>
+<blockquote>
+<div><p>The <tt class="docutils literal"><span class="pre">AP_i_j</span></tt> polynomial for pixel to focal plane transformation.
+Its size must be (<em>m</em> + 1, <em>m</em> + 1) where <em>m</em> = <tt class="docutils literal"><span class="pre">AP_ORDER</span></tt>.</p>
+</div></blockquote>
+<p><strong>bp</strong> : double array[m+1][m+1]</p>
+<blockquote>
+<div><p>The <tt class="docutils literal"><span class="pre">BP_i_j</span></tt> polynomial for pixel to focal plane transformation.
+Its size must be (<em>m</em> + 1, <em>m</em> + 1) where <em>m</em> = <tt class="docutils literal"><span class="pre">BP_ORDER</span></tt>.</p>
+</div></blockquote>
+<p><strong>crpix</strong> : double array[2]</p>
+<blockquote class="last">
+<div><p>The reference pixel.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Shupe, D. L., M. Moshir, J. Li, D. Makovoz and R. Narron.  2005.
+&#8220;The SIP Convention for Representing Distortion in FITS Image
+Headers.&#8221;  ADASS XIV.</p>
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.a">
+<tt class="descname">a</tt><a class="headerlink" href="#astropy.wcs.Sip.a" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">double</span> <span class="pre">array[a_order+1][a_order+1]</span></tt></p>
+<p>The <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">A_i_j</span></tt> matrix used for pixel to focal plane
+transformation.</p>
+<p>Its values may be changed in place, but it may not be resized, without
+creating a new <a class="reference internal" href="#astropy.wcs.Sip" title="astropy.wcs.Sip"><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt></a> object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.a_order">
+<tt class="descname">a_order</tt><a class="headerlink" href="#astropy.wcs.Sip.a_order" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">int</span></tt> (read-only)</p>
+<p>The order of the polynomial in the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">A_i_j</span></tt> array (<tt class="docutils literal"><span class="pre">A_ORDER</span></tt>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.ap">
+<tt class="descname">ap</tt><a class="headerlink" href="#astropy.wcs.Sip.ap" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">double</span> <span class="pre">array[ap_order+1][ap_order+1]</span></tt></p>
+<p>The <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">AP_i_j</span></tt> matrix used for focal plane to pixel
+transformation.  Its values may be changed in place, but it may not be
+resized, without creating a new <a class="reference internal" href="#astropy.wcs.Sip" title="astropy.wcs.Sip"><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt></a> object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.ap_order">
+<tt class="descname">ap_order</tt><a class="headerlink" href="#astropy.wcs.Sip.ap_order" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">int</span></tt> (read-only)</p>
+<p>The order of the polynomial in the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">AP_i_j</span></tt> array
+(<tt class="docutils literal"><span class="pre">AP_ORDER</span></tt>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.b">
+<tt class="descname">b</tt><a class="headerlink" href="#astropy.wcs.Sip.b" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">double</span> <span class="pre">array[b_order+1][b_order+1]</span></tt></p>
+<p>The <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">B_i_j</span></tt> matrix used for pixel to focal plane
+transformation.  Its values may be changed in place, but it may not be
+resized, without creating a new <a class="reference internal" href="#astropy.wcs.Sip" title="astropy.wcs.Sip"><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt></a> object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.b_order">
+<tt class="descname">b_order</tt><a class="headerlink" href="#astropy.wcs.Sip.b_order" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">int</span></tt> (read-only)</p>
+<p>The order of the polynomial in the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">B_i_j</span></tt> array
+(<tt class="docutils literal"><span class="pre">B_ORDER</span></tt>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.bp">
+<tt class="descname">bp</tt><a class="headerlink" href="#astropy.wcs.Sip.bp" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">double</span> <span class="pre">array[bp_order+1][bp_order+1]</span></tt></p>
+<p>The <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">BP_i_j</span></tt> matrix used for focal plane to pixel
+transformation.  Its values may be changed in place, but it may not be
+resized, without creating a new <a class="reference internal" href="#astropy.wcs.Sip" title="astropy.wcs.Sip"><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt></a> object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.bp_order">
+<tt class="descname">bp_order</tt><a class="headerlink" href="#astropy.wcs.Sip.bp_order" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">int</span></tt> (read-only)</p>
+<p>The order of the polynomial in the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> <tt class="docutils literal"><span class="pre">BP_i_j</span></tt> array
+(<tt class="docutils literal"><span class="pre">BP_ORDER</span></tt>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.Sip.crpix">
+<tt class="descname">crpix</tt><a class="headerlink" href="#astropy.wcs.Sip.crpix" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">double</span> <span class="pre">array[naxis]</span></tt></p>
+<p>Coordinate reference pixels (<tt class="docutils literal"><span class="pre">CRPIXja</span></tt>) for each pixel axis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.Sip.foc2pix">
+<tt class="descname">foc2pix</tt><big>(</big><big>)</big><a class="headerlink" href="#astropy.wcs.Sip.foc2pix" title="Permalink to this definition">¶</a></dt>
+<dd><p>sip_foc2pix(<em>foccrd, origin</em>) -&gt; double array[ncoord][nelem]</p>
+<p>Convert focal plane coordinates to pixel coordinates using the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a>
+polynomial distortion convention.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>foccrd</strong> : double array[ncoord][nelem]</p>
+<blockquote>
+<div><p>Array of focal plane coordinates.</p>
+</div></blockquote>
+<p><strong>origin</strong> : int</p>
+<blockquote>
+<div><p>Specifies the origin of pixel values.  The Fortran and FITS
+standards use an origin of 1.  Numpy and C use array indexing with
+origin at 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>pixcrd</strong> : double array[ncoord][nelem]</p>
+<blockquote>
+<div><p>Returns an array of pixel coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.Sip.pix2foc">
+<tt class="descname">pix2foc</tt><big>(</big><big>)</big><a class="headerlink" href="#astropy.wcs.Sip.pix2foc" title="Permalink to this definition">¶</a></dt>
+<dd><p>sip_pix2foc(<em>pixcrd, origin</em>) -&gt; double array[ncoord][nelem]</p>
+<p>Convert pixel coordinates to focal plane coordinates using the <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a>
+polynomial distortion convention.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>pixcrd</strong> : double array[ncoord][nelem]</p>
+<blockquote>
+<div><p>Array of pixel coordinates.</p>
+</div></blockquote>
+<p><strong>origin</strong> : int</p>
+<blockquote>
+<div><p>Specifies the origin of pixel values.  The Fortran and FITS
+standards use an origin of 1.  Numpy and C use array indexing with
+origin at 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>foccrd</strong> : double array[ncoord][nelem]</p>
+<blockquote>
+<div><p>Returns an array of focal plane coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_distortion.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">DistortionLookupTable</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_units.html"
+                        title="next chapter"><tt class="docutils literal"><span class="pre">UnitConverter</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wcs/api_sip.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_units.html" title="UnitConverter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_distortion.html" title="DistortionLookupTable"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li>
+          <li><a href="api.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.io.vo.xmlutil: XML-related utilities used by the library &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="API documentation" href="api.html" />
+    <link rel="next" title="astropy.io.vo.converters: Conversions between XML and Numpy datatypes" href="api_converters.html" />
+    <link rel="prev" title="astropy.io.vo.validator: Generates HTML validation reports" href="api_validator.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_converters.html" title="astropy.io.vo.converters: Conversions between XML and Numpy datatypes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_validator.html" title="astropy.io.vo.validator: Generates HTML validation reports"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.io.vo Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-astropy.io.vo.xmlutil">
+<span id="astropy-io-vo-xmlutil-xml-related-utilities-used-by-the-library"></span><h1><a class="reference internal" href="#module-astropy.io.vo.xmlutil" title="astropy.io.vo.xmlutil"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo.xmlutil</span></tt></a>: XML-related utilities used by the library<a class="headerlink" href="#module-astropy.io.vo.xmlutil" title="Permalink to this headline">¶</a></h1>
+<p>Various XML-related utilities</p>
+<dl class="function">
+<dt id="astropy.io.vo.xmlutil.check_id">
+<tt class="descclassname">astropy.io.vo.xmlutil.</tt><tt class="descname">check_id</tt><big>(</big><em>ID</em>, <em>name='ID'</em>, <em>config={}</em>, <em>pos=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/xmlutil.html#check_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.xmlutil.check_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises a <a class="reference internal" href="api_exceptions.html#astropy.io.vo.exceptions.VOTableSpecError" title="astropy.io.vo.exceptions.VOTableSpecError"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo.exceptions.VOTableSpecError</span></tt></a> if <em>ID</em> is not a
+valid XML <a class="reference external" href="http://www.w3.org/TR/REC-xml/#id">ID</a>.  <em>name</em> is the name of the attribute being checked
+(used only for error messages).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.io.vo.xmlutil.fix_id">
+<tt class="descclassname">astropy.io.vo.xmlutil.</tt><tt class="descname">fix_id</tt><big>(</big><em>ID</em>, <em>config={}</em>, <em>pos=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/xmlutil.html#fix_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.xmlutil.fix_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an arbitrary string, create one that can be used as an xml
+id.  This is rather simplistic at the moment, since it just
+replaces non-valid characters with underscores.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.io.vo.xmlutil.check_token">
+<tt class="descclassname">astropy.io.vo.xmlutil.</tt><tt class="descname">check_token</tt><big>(</big><em>token</em>, <em>attr_name</em>, <em>config={}</em>, <em>pos=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/xmlutil.html#check_token"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.xmlutil.check_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises a <tt class="xref py py-obj docutils literal"><span class="pre">ValueError</span></tt> if <em>token</em> is not a valid XML token, as
+defined by XML Schema Part 2.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.io.vo.xmlutil.check_mime_content_type">
+<tt class="descclassname">astropy.io.vo.xmlutil.</tt><tt class="descname">check_mime_content_type</tt><big>(</big><em>content_type</em>, <em>config={}</em>, <em>pos=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/xmlutil.html#check_mime_content_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.xmlutil.check_mime_content_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises a <a class="reference internal" href="api_exceptions.html#astropy.io.vo.exceptions.VOTableSpecError" title="astropy.io.vo.exceptions.VOTableSpecError"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo.exceptions.VOTableSpecError</span></tt></a> if
+<em>content_type</em> is not a valid MIME content type (syntactically at
+least), as defined by RFC 2045.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.io.vo.xmlutil.check_anyuri">
+<tt class="descclassname">astropy.io.vo.xmlutil.</tt><tt class="descname">check_anyuri</tt><big>(</big><em>uri</em>, <em>config={}</em>, <em>pos=None</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/xmlutil.html#check_anyuri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.xmlutil.check_anyuri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises a <a class="reference internal" href="api_exceptions.html#astropy.io.vo.exceptions.VOTableSpecError" title="astropy.io.vo.exceptions.VOTableSpecError"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.io.vo.exceptions.VOTableSpecError</span></tt></a> if <em>uri</em> is
+not a valid URI as defined in RFC 2396.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="astropy.io.vo.xmlutil.validate_schema">
+<tt class="descclassname">astropy.io.vo.xmlutil.</tt><tt class="descname">validate_schema</tt><big>(</big><em>filename</em>, <em>version='1.2'</em><big>)</big><a class="reference internal" href="../_modules/astropy/io/vo/xmlutil.html#validate_schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#astropy.io.vo.xmlutil.validate_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the given file against the appropriate VOTable schema.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
+<blockquote>
+<div><p>The path to the XML file to validate</p>
+</div></blockquote>
+<p><strong>version</strong> : str</p>
+<blockquote>
+<div><p>The VOTABLE version to check, which must be a string &#8220;1.0&#8221;,
+&#8220;1.1&#8221;, or &#8220;1.2&#8221;.</p>
+<p>For version &#8220;1.0&#8221;, it is checked against a DTD, since that
+version did not have an XML Schema.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>returncode, stdout, stderr</strong> : int, str, str</p>
+<blockquote class="last">
+<div><p>Returns the returncode from xmllint and the stdout and stderr
+as strings</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_validator.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">astropy.io.vo.validator</span></tt>: Generates HTML validation reports</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_converters.html"
+                        title="next chapter"><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">astropy.io.vo.converters</span></tt>: Conversions between XML and Numpy datatypes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/vo/api_xmlutil.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_converters.html" title="astropy.io.vo.converters: Conversions between XML and Numpy datatypes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_validator.html" title="astropy.io.vo.validator: Generates HTML validation reports"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.io.vo Documentation</a> &raquo;</li>
+          <li><a href="api.html" >API documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

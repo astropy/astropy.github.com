@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.io.vo.table &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for astropy.io.vo.table</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This file contains a contains the high-level functions to read a</span>
+<span class="sd">VOTable file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="c"># STDLIB</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="c"># LOCAL</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">exceptions</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="kn">from</span> <span class="nn">...utils.xml</span> <span class="kn">import</span> <span class="n">iterparser</span>
+<span class="kn">from</span> <span class="nn">...config</span> <span class="kn">import</span> <span class="n">ConfigurationItem</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;parse&#39;</span><span class="p">,</span> <span class="s">&#39;parse_single_table&#39;</span><span class="p">,</span> <span class="s">&#39;validate&#39;</span><span class="p">]</span>
+
+
+<span class="n">PEDANTIC</span> <span class="o">=</span> <span class="n">ConfigurationItem</span><span class="p">(</span>
+    <span class="s">&#39;pedantic&#39;</span><span class="p">,</span>
+    <span class="bp">True</span><span class="p">,</span>
+    <span class="s">&#39;When True, treat fixable violations of the VOTable spec as exceptions.&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="parse"><a class="viewcode-back" href="../../../../vo/api_table.html#astropy.io.vo.table.parse">[docs]</a><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s">&#39;exception&#39;</span><span class="p">,</span> <span class="n">pedantic</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+          <span class="n">chunk_size</span><span class="o">=</span><span class="n">tree</span><span class="o">.</span><span class="n">DEFAULT_CHUNK_SIZE</span><span class="p">,</span> <span class="n">table_number</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+          <span class="n">filename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+          <span class="n">_debug_python_based_parser</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses a VOTABLE_ xml file (or file-like object), and returns a</span>
+<span class="sd">    `~astropy.io.vo.tree.VOTable` object, with nested</span>
+<span class="sd">    `~astropy.io.vo.tree.Resource` instances and</span>
+<span class="sd">    `~astropy.io.vo.tree.Table` instances.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : str or readable file-like object</span>
+<span class="sd">        Path or file object containing a VOTABLE_ xml file.</span>
+
+<span class="sd">    columns : sequence of str, optional</span>
+<span class="sd">        List of field names to include in the output.  The default is</span>
+<span class="sd">        to include all fields.</span>
+
+<span class="sd">    invalid : str, optional</span>
+<span class="sd">        One of the following values:</span>
+
+<span class="sd">            - &#39;exception&#39;: throw an exception when an invalid value is</span>
+<span class="sd">              encountered (default)</span>
+
+<span class="sd">            - &#39;mask&#39;: mask out invalid values</span>
+
+<span class="sd">    pedantic : bool, optional</span>
+<span class="sd">        When `True`, raise an error when the file violates the spec,</span>
+<span class="sd">        otherwise issue a warning.  Warnings may be controlled using</span>
+<span class="sd">        the standard Python mechanisms.  See the `warnings`</span>
+<span class="sd">        module in the Python standard library for more information.</span>
+<span class="sd">        When not provided, uses the configuration setting</span>
+<span class="sd">        `astropy.io.vo.pedantic`, which defaults to True.</span>
+
+<span class="sd">    chunk_size : int, optional</span>
+<span class="sd">        The number of rows to read before converting to an array.</span>
+<span class="sd">        Higher numbers are likely to be faster, but will consume more</span>
+<span class="sd">        memory.</span>
+
+<span class="sd">    table_number : int, optional</span>
+<span class="sd">        The number of table in the file to read in.  If `None`, all</span>
+<span class="sd">        tables will be read.  If a number, 0 refers to the first table</span>
+<span class="sd">        in the file, and only that numbered table will be parsed and</span>
+<span class="sd">        read in.</span>
+
+<span class="sd">    filename : str, optional</span>
+<span class="sd">        A filename, URL or other identifier to use in error messages.</span>
+<span class="sd">        If *filename* is None and *source* is a string (i.e. a path),</span>
+<span class="sd">        then *source* will be used as a filename for error messages.</span>
+<span class="sd">        Therefore, *filename* is only required when source is a</span>
+<span class="sd">        file-like object.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    votable : `astropy.io.vo.tree.VOTableFile` object</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    astropy.io.vo.exceptions : The exceptions this function may raise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">invalid</span> <span class="o">=</span> <span class="n">invalid</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;exception&#39;</span><span class="p">,</span> <span class="s">&#39;mask&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">pedantic</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">pedantic</span> <span class="o">=</span> <span class="n">PEDANTIC</span><span class="p">()</span>
+
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;columns&#39;</span>      <span class="p">:</span>      <span class="n">columns</span><span class="p">,</span>
+        <span class="s">&#39;invalid&#39;</span>      <span class="p">:</span>      <span class="n">invalid</span><span class="p">,</span>
+        <span class="s">&#39;pedantic&#39;</span>     <span class="p">:</span>     <span class="n">pedantic</span><span class="p">,</span>
+        <span class="s">&#39;chunk_size&#39;</span>   <span class="p">:</span>   <span class="n">chunk_size</span><span class="p">,</span>
+        <span class="s">&#39;table_number&#39;</span> <span class="p">:</span> <span class="n">table_number</span><span class="p">,</span>
+        <span class="s">&#39;filename&#39;</span>     <span class="p">:</span>     <span class="n">filename</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="n">config</span><span class="p">[</span><span class="s">&#39;filename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span>
+
+    <span class="k">with</span> <span class="n">iterparser</span><span class="o">.</span><span class="n">get_xml_iterator</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">,</span>
+        <span class="n">_debug_python_based_parser</span><span class="o">=</span><span class="n">_debug_python_based_parser</span><span class="p">)</span> <span class="k">as</span> <span class="n">iterator</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tree</span><span class="o">.</span><span class="n">VOTableFile</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">iterator</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="parse_single_table"><a class="viewcode-back" href="../../../../vo/api_table.html#astropy.io.vo.table.parse_single_table">[docs]</a><span class="k">def</span> <span class="nf">parse_single_table</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses a VOTABLE_ xml file (or file-like object), reads only the</span>
+<span class="sd">    first TABLE_ element, and returns a `~astropy.io.vo.tree.Table`</span>
+<span class="sd">    instance.</span>
+
+<span class="sd">    See `parse` for a description of the keyword arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    votable : `astropy.io.vo.tree.Table` object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;table_number&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;table_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">votable</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">votable</span><span class="o">.</span><span class="n">get_first_table</span><span class="p">()</span>
+
+</div>
+<div class="viewcode-block" id="validate"><a class="viewcode-back" href="../../../../vo/api_table.html#astropy.io.vo.table.validate">[docs]</a><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">xmllint</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prints a validation report for the given file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str path</span>
+<span class="sd">        Path to a VOTABLE_ xml file.</span>
+
+<span class="sd">    output : writable file-like object, optional</span>
+<span class="sd">        Where to output the report.  Defaults to `sys.stdout`.</span>
+<span class="sd">        If `None`, the output will be returned as a string.</span>
+
+<span class="sd">    xmllint : bool, optional</span>
+<span class="sd">        When `True`, also send the file to `xmllint` for schema and</span>
+<span class="sd">        DTD validation.  Requires that `xmllint` is installed.  The</span>
+<span class="sd">        default is `False`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    is_valid : bool or str</span>
+<span class="sd">        Returns `True` if no warnings were found.  If `output` is</span>
+<span class="sd">        `None`, the return value will be a string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">textwrap</span>
+    <span class="kn">from</span> <span class="nn">...utils.console</span> <span class="kn">import</span> <span class="n">print_code_line</span><span class="p">,</span> <span class="n">color_print</span>
+
+    <span class="n">return_as_str</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">votable</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="c"># This is a special variable used by the Python warnings</span>
+    <span class="c"># infrastructure to keep track of warnings that have already been</span>
+    <span class="c"># seen.  Since we want to get every single warning out of this, we</span>
+    <span class="c"># have to delete it first.</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">exceptions</span><span class="p">,</span> <span class="s">&#39;__warningregistry__&#39;</span><span class="p">):</span>
+        <span class="k">del</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">__warningregistry__</span>
+
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">input</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">warning_lines</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">resetwarnings</span><span class="p">()</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s">&quot;always&quot;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">votable</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">pedantic</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">message</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">warning_lines</span><span class="p">]</span> <span class="o">+</span> <span class="n">lines</span>
+
+    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&quot;Validation report for {0}</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+        <span class="n">xml_lines</span> <span class="o">=</span> <span class="n">iterparser</span><span class="o">.</span><span class="n">xml_readlines</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">warning</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">parse_vowarning</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="p">[</span><span class="s">&#39;is_something&#39;</span><span class="p">]:</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">warning</span><span class="p">)</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">xml_lines</span><span class="p">[</span><span class="n">w</span><span class="p">[</span><span class="s">&#39;nline&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">warning</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="s">&#39;warning&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">warning</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;W&#39;</span><span class="p">):</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;yellow&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;red&#39;</span>
+                <span class="n">color_print</span><span class="p">(</span>
+                    <span class="s">u&#39;{0:d}: &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="s">&#39;nline&#39;</span><span class="p">]),</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">warning</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span>
+                    <span class="s">u&#39;: &#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+                        <span class="n">w</span><span class="p">[</span><span class="s">&#39;message&#39;</span><span class="p">],</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s">u&#39;          &#39;</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s">u&#39;  &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(),</span>
+                    <span class="nb">file</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+                <span class="n">print_code_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="s">&#39;nchar&#39;</span><span class="p">],</span> <span class="nb">file</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&#39;astropy.io.vo found no violations.</span><span class="se">\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+    <span class="n">success</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">xmllint</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">votable</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;1.1&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="n">votable</span><span class="o">.</span><span class="n">version</span>
+        <span class="n">success</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">xmlutil</span><span class="o">.</span><span class="n">validate_schema</span><span class="p">(</span>
+            <span class="n">filename</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">success</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="s">u&#39;xmllint schema violations:</span><span class="se">\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&#39;xmllint passed</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">return_as_str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">success</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../../index.html">
+              <img class="logo" src="../../../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

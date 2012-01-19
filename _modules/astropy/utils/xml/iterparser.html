@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.utils.xml.iterparser &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for astropy.utils.xml.iterparser</h1><div class="highlight"><pre>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module includes a fast iterator-based XML parser.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># STDLIB</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;get_xml_iterator&#39;</span><span class="p">,</span> <span class="s">&#39;get_xml_encoding&#39;</span><span class="p">,</span> <span class="s">&#39;xml_readlines&#39;</span><span class="p">]</span>
+
+
+<span class="c">############################################################</span>
+<span class="c"># TODO: Refactor this into a py3k compatibility module</span>
+<span class="n">IS_PY3K</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">is_callable</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abstracts away the different ways to test for a callable object in</span>
+<span class="sd">        Python 2.x and 3.x.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Callable</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">is_callable</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abstracts away the different ways to test for a callable object in</span>
+<span class="sd">        Python 2.x and 3.x.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">callable</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+<span class="c">############################################################</span>
+
+
+<span class="nd">@contextlib.contextmanager</span>
+<span class="k">def</span> <span class="nf">_convert_to_fd_or_read_function</span><span class="p">(</span><span class="n">fd</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a function suitable for streaming input, or a file object.</span>
+
+<span class="sd">    This function is only useful if passing off to C code where:</span>
+
+<span class="sd">       - If it&#39;s a real file object, we want to use it as a real</span>
+<span class="sd">         C file object to avoid the Python overhead.</span>
+
+<span class="sd">       - If it&#39;s not a real file object, it&#39;s much handier to just</span>
+<span class="sd">         have a Python function to call.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fd : object</span>
+<span class="sd">        May be:</span>
+
+<span class="sd">            - a file object, in which case it is returned verbatim.</span>
+
+<span class="sd">            - a function that reads from a stream, in which case it is</span>
+<span class="sd">              returned verbatim.</span>
+
+<span class="sd">            - a file path, in which case it is opened.  If it ends in</span>
+<span class="sd">              `.gz`, it is assumed to be a gzipped file, and the</span>
+<span class="sd">              :meth:`read` method on the file object is returned.</span>
+<span class="sd">              Otherwise, the raw file object is returned.</span>
+
+<span class="sd">           - an object with a :meth:`read` method, in which case that</span>
+<span class="sd">             method is returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fd : context-dependent</span>
+<span class="sd">        See above.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;win&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">fd</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">fd</span>
+                <span class="k">return</span>
+    <span class="k">if</span> <span class="n">is_callable</span><span class="p">(</span><span class="n">fd</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">fd</span>
+        <span class="k">return</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">fd</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.gz&#39;</span><span class="p">):</span>
+            <span class="kn">from</span> <span class="nn">...utils.compat</span> <span class="kn">import</span> <span class="n">gzip</span>
+            <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">real_fd</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">real_fd</span><span class="o">.</span><span class="n">read</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">real_fd</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;win&#39;</span><span class="p">):</span>
+                    <span class="c"># On Windows, we can&#39;t pass a real file descriptor</span>
+                    <span class="c"># to the C level, so we pass the read method</span>
+                    <span class="k">yield</span> <span class="n">real_fd</span><span class="o">.</span><span class="n">read</span>
+                    <span class="k">return</span>
+                <span class="k">yield</span> <span class="n">real_fd</span>
+                <span class="k">return</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#39;read&#39;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">is_callable</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Can not be coerced to read function&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_fast_iterparse</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffersize</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">xml.parsers</span> <span class="kn">import</span> <span class="n">expat</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_callable</span><span class="p">(</span><span class="n">fd</span><span class="p">):</span>
+        <span class="n">read</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">read</span> <span class="o">=</span> <span class="n">fd</span>
+
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">True</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span>
+                      <span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">CurrentLineNumber</span><span class="p">,</span> <span class="n">parser</span><span class="o">.</span><span class="n">CurrentColumnNumber</span><span class="p">)))</span>
+        <span class="k">del</span> <span class="n">text</span><span class="p">[:]</span>
+
+    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">False</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                      <span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">CurrentLineNumber</span><span class="p">,</span> <span class="n">parser</span><span class="o">.</span><span class="n">CurrentColumnNumber</span><span class="p">)))</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">expat</span><span class="o">.</span><span class="n">ParserCreate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">returns_unicode</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">specified_attributes</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">StartElementHandler</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">EndElementHandler</span> <span class="o">=</span> <span class="n">end</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">CharacterDataHandler</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">append</span>
+    <span class="n">Parse</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">Parse</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">buffersize</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">Parse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">queue</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">elem</span>
+        <span class="k">del</span> <span class="n">queue</span><span class="p">[:]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">buffersize</span><span class="p">)</span>
+
+    <span class="n">Parse</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">elem</span>
+
+
+<span class="c"># Try to import the C version of the iterparser, otherwise fall back</span>
+<span class="c"># to the Python implementation above.</span>
+<span class="n">_slow_iterparse</span> <span class="o">=</span> <span class="n">_fast_iterparse</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_iterparser</span>
+    <span class="n">_fast_iterparse</span> <span class="o">=</span> <span class="n">_iterparser</span><span class="o">.</span><span class="n">IterParser</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="nd">@contextlib.contextmanager</span>
+<div class="viewcode-block" id="get_xml_iterator"><a class="viewcode-back" href="../../../../utils/api_xml.html#astropy.utils.xml.iterparser.get_xml_iterator">[docs]</a><span class="k">def</span> <span class="nf">get_xml_iterator</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">_debug_python_based_parser</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns an iterator over the elements of an XML file.</span>
+
+<span class="sd">    The iterator doesn&#39;t ever build a tree, so it is much more memory</span>
+<span class="sd">    and time efficient than the alternative in `cElementTree`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fd : readable file-like object or read function</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    parts : iterator</span>
+
+<span class="sd">        The iterator returns 4-tuples (*start*, *tag*, *data*, *pos*):</span>
+
+<span class="sd">            - *start*: when `True` is a start element event, otherwise</span>
+<span class="sd">              an end element event.</span>
+
+<span class="sd">            - *tag*: The name of the element</span>
+
+<span class="sd">            - *data*: Depends on the value of *event*:</span>
+
+<span class="sd">                - if *start* == `True`, data is a dictionary of</span>
+<span class="sd">                  attributes</span>
+
+<span class="sd">                - if *start* == `False`, data is a string containing</span>
+<span class="sd">                  the text content of the element</span>
+
+<span class="sd">            - *pos*: Tuple (*line*, *col*) indicating the source of the</span>
+<span class="sd">              event.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">_convert_to_fd_or_read_function</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">_debug_python_based_parser</span><span class="p">:</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="n">_slow_iterparse</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="n">_fast_iterparse</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="nb">iter</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="get_xml_encoding"><a class="viewcode-back" href="../../../../utils/api_xml.html#astropy.utils.xml.iterparser.get_xml_encoding">[docs]</a><span class="k">def</span> <span class="nf">get_xml_encoding</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the encoding of an XML file by reading its header.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : readable file-like object, read function or str path</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    encoding : str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_xml_iterator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="k">as</span> <span class="n">iterator</span><span class="p">:</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">start</span> <span class="ow">or</span> <span class="n">tag</span> <span class="o">!=</span> <span class="s">&#39;xml&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s">&#39;Invalid XML file&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;encoding&#39;</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="xml_readlines"><a class="viewcode-back" href="../../../../utils/api_xml.html#astropy.utils.xml.iterparser.xml_readlines">[docs]</a><span class="k">def</span> <span class="nf">xml_readlines</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the lines from a given XML file.  Correctly determines the</span>
+<span class="sd">    encoding and always returns unicode.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : readable file-like object, read function or str path</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lines : list of unicode</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="n">get_xml_encoding</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;rt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="nb">input</span><span class="p">:</span>
+        <span class="n">xml_lines</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">xml_lines</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../../index.html">
+              <img class="logo" src="../../../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

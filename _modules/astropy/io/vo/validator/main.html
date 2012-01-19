@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.io.vo.validator.main &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for astropy.io.vo.validator.main</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Validates a large collection of web-accessible VOTable files,</span>
+<span class="sd">and generates a report as a directory tree of HTML files.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="c"># STDLIB</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c"># LOCAL</span>
+<span class="kn">from</span> <span class="nn">....config</span> <span class="kn">import</span> <span class="n">get_data_filename</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">html</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">result</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;make_validation_report&#39;</span><span class="p">]</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_srcdir</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_urls</span><span class="p">(</span><span class="n">destdir</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">gzip</span>
+
+    <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;good&#39;</span><span class="p">,</span> <span class="s">&#39;broken&#39;</span><span class="p">,</span> <span class="s">&#39;incorrect&#39;</span><span class="p">]</span>
+
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">get_data_filename</span><span class="p">(</span>
+            <span class="s">&#39;astropy/io/vo/validator/urls/cone.{0}.dat.gz&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
+        <span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">fd</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">url</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">result</span><span class="o">.</span><span class="n">Result</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">destdir</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+                        <span class="n">r</span><span class="p">[</span><span class="s">&#39;expected&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+                    <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+                <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">urls</span>
+
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">destdir</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="k">with</span> <span class="n">result</span><span class="o">.</span><span class="n">Result</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">destdir</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">download_xml_content</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">validate_vo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">destdir</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="k">with</span> <span class="n">result</span><span class="o">.</span><span class="n">Result</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">destdir</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">validate_vo</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">votlint_validate</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">path_to_stilts_jar</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">destdir</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="k">with</span> <span class="n">result</span><span class="o">.</span><span class="n">Result</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">destdir</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s">&#39;network_error&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">validate_with_votlint</span><span class="p">(</span><span class="n">path_to_stilts_jar</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">write_html_result</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">destdir</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="k">with</span> <span class="n">result</span><span class="o">.</span><span class="n">Result</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">destdir</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">write_result</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">write_subindex</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">subset</span><span class="p">,</span> <span class="n">destdir</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">write_index_table</span><span class="p">(</span><span class="n">destdir</span><span class="p">,</span> <span class="o">*</span><span class="n">subset</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="make_validation_report"><a class="viewcode-back" href="../../../../../vo/api_validator.html#astropy.io.vo.validator.main.make_validation_report">[docs]</a><span class="k">def</span> <span class="nf">make_validation_report</span><span class="p">(</span>
+    <span class="n">urls</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">destdir</span><span class="o">=</span><span class="s">&#39;astropy.io.vo.validator.results&#39;</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">stilts</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates a large collection of web-accessible VOTable files,</span>
+<span class="sd">    and generates a report as a directory tree of HTML files.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    urls : list of strings, optional</span>
+<span class="sd">        If provided, is a list of HTTP urls to download VOTable files</span>
+<span class="sd">        from.  If not provided, a built-in set of ~22,000 urls</span>
+<span class="sd">        compiled by HEASARC will be used.</span>
+
+<span class="sd">    destdir : path, optional</span>
+<span class="sd">        The directory to write the report to.  By default, this is a</span>
+<span class="sd">        directory called `astropy.io.vo.validator.results` in the</span>
+<span class="sd">        current directory.  If the directory does not exist, it will</span>
+<span class="sd">        be created.</span>
+
+<span class="sd">    multiprocess : bool, optional</span>
+<span class="sd">        If `True` (default), perform validations in parallel using all</span>
+<span class="sd">        of the cores on this machine.</span>
+
+<span class="sd">    stilts : path, optional</span>
+<span class="sd">        To perform validation with `votlint` from the the Java-based</span>
+<span class="sd">        `STILTS &lt;http://www.star.bris.ac.uk/~mbt/stilts/&gt;`_ VOTable</span>
+<span class="sd">        parser, in addition to `astropy.io.vo`, set this to the path</span>
+<span class="sd">        of the `stilts.jar` file.  `java` on the system shell path</span>
+<span class="sd">        will be used to run it.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Downloads of each given URL will be performed only once and cached</span>
+<span class="sd">    locally in *destdir*.  To refresh the cache, remove *destdir*</span>
+<span class="sd">    first.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">....utils.console</span> <span class="kn">import</span> <span class="p">(</span><span class="n">color_print</span><span class="p">,</span> <span class="n">ProgressBar</span><span class="p">,</span> <span class="n">Spinner</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">stilts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">stilts</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s">&#39;{0} does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stilts</span><span class="p">))</span>
+
+    <span class="n">destdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">destdir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">urls</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">Spinner</span><span class="p">(</span><span class="s">&#39;Loading URLs&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">urls</span> <span class="o">=</span> <span class="n">get_urls</span><span class="p">(</span><span class="n">destdir</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Marking URLs&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">ProgressBar</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">urls</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">result</span><span class="o">.</span><span class="n">Result</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">destdir</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+                <span class="n">r</span><span class="p">[</span><span class="s">&#39;expected&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">url</span><span class="p">,</span> <span class="n">destdir</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
+
+    <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Downloading VO files&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">ProgressBar</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="n">download</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="n">multiprocess</span><span class="p">)</span>
+
+    <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Validating VO files&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">ProgressBar</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="n">validate_vo</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="n">multiprocess</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">stilts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Validating with votlint&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+        <span class="n">votlint_args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">stilts</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">destdir</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
+        <span class="n">ProgressBar</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+            <span class="n">votlint_validate</span><span class="p">,</span> <span class="n">votlint_args</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="n">multiprocess</span><span class="p">)</span>
+
+
+    <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Generating HTML files&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">ProgressBar</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="n">write_html_result</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="n">multiprocess</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">Spinner</span><span class="p">(</span><span class="s">&#39;Grouping results&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">subsets</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_result_subsets</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">destdir</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Generating index&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">write_index</span><span class="p">(</span><span class="n">subsets</span><span class="p">,</span> <span class="n">urls</span><span class="p">,</span> <span class="n">destdir</span><span class="p">)</span>
+
+    <span class="n">color_print</span><span class="p">(</span><span class="s">&#39;Generating subindices&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">subindex_args</span> <span class="o">=</span> <span class="p">[(</span><span class="n">subset</span><span class="p">,</span> <span class="n">destdir</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">))</span> <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">subsets</span><span class="p">]</span>
+    <span class="n">ProgressBar</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="n">write_subindex</span><span class="p">,</span> <span class="n">subindex_args</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="n">multiprocess</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../../../index.html">
+              <img class="logo" src="../../../../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

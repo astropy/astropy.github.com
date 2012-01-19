@@ -1,0 +1,1285 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.io.vo.converters &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for astropy.io.vo.converters</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module handles the conversion of various VOTABLE datatypes</span>
+<span class="sd">to/from TABLEDATA_ and BINARY_ formats.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="c"># STDLIB</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">unpack</span> <span class="k">as</span> <span class="n">struct_unpack</span>
+<span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span> <span class="k">as</span> <span class="n">struct_pack</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c"># THIRD-PARTY</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c"># ASTROPY</span>
+<span class="kn">from</span> <span class="nn">...utils.xml.writer</span> <span class="kn">import</span> <span class="n">xml_escape_cdata</span>
+
+<span class="c"># LOCAL</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="p">(</span><span class="n">vo_raise</span><span class="p">,</span> <span class="n">vo_warn</span><span class="p">,</span> <span class="n">warn_or_raise</span><span class="p">,</span> <span class="n">W01</span><span class="p">,</span> <span class="n">W26</span><span class="p">,</span>
+    <span class="n">W30</span><span class="p">,</span> <span class="n">W31</span><span class="p">,</span> <span class="n">W32</span><span class="p">,</span> <span class="n">W39</span><span class="p">,</span> <span class="n">W46</span><span class="p">,</span> <span class="n">W47</span><span class="p">,</span> <span class="n">W49</span><span class="p">,</span> <span class="n">E01</span><span class="p">,</span> <span class="n">E02</span><span class="p">,</span> <span class="n">E03</span><span class="p">,</span> <span class="n">E04</span><span class="p">,</span> <span class="n">E05</span><span class="p">,</span> <span class="n">E06</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">IS_PY3K</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">bytes</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">encoding</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;get_converter&#39;</span><span class="p">]</span>
+
+
+<span class="n">pedantic_array_splitter</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot; +&quot;</span><span class="p">)</span>
+<span class="n">array_splitter</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;\s+|(?:\s*,\s*)&quot;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A regex to handle splitting values on either whitespace or commas.</span>
+
+<span class="sd">SPEC: Usage of commas is not actually allowed by the spec, but many</span>
+<span class="sd">files in the wild use them.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">_zero_int</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\0\0\0\0</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="n">_empty_bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="n">_zero_byte</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\0</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Converter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The base class for all converters.  Each subclass handles</span>
+<span class="sd">    converting a specific VOTABLE data type to/from the TABLEDATA_ and</span>
+<span class="sd">    BINARY_ on-disk representations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        field : `~astropy.io.vo.table.Field`</span>
+<span class="sd">            object describing the datatype</span>
+
+<span class="sd">        config : dict</span>
+<span class="sd">            The parser configuration dictionary</span>
+
+<span class="sd">        pos : tuple</span>
+<span class="sd">            The position in the XML file where the FIELD object was</span>
+<span class="sd">            found.  Used for error messages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_parse_length</span><span class="p">(</span><span class="n">read</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">struct_unpack</span><span class="p">(</span><span class="s">&quot;&gt;I&quot;</span><span class="p">,</span> <span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_write_length</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">struct_pack</span><span class="p">(</span><span class="s">&quot;&gt;I&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the string *value* from the TABLEDATA_ format into an</span>
+<span class="sd">        object with the correct native in-memory datatype and mask flag.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : str</span>
+<span class="sd">            value in TABLEDATA format</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        native : tuple (value, mask)</span>
+<span class="sd">            The value as a Numpy array or scalar, and *mask* is True</span>
+<span class="sd">            if the value is missing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s">&quot;This datatype must implement a &#39;parse&#39; method.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_scalar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parse a single scalar of the underlying type of the converter.</span>
+<span class="sd">        For non-array converters, this is equivalent to parse.  For</span>
+<span class="sd">        array converters, this is used to parse a single</span>
+<span class="sd">        element of the array.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : str</span>
+<span class="sd">            value in TABLEDATA format</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        native : tuple (value, mask)</span>
+<span class="sd">            The value as a Numpy array or scalar, and *mask* is True</span>
+<span class="sd">            if the value is missing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the object *value* (in the native in-memory datatype)</span>
+<span class="sd">        to a string suitable for serializing in the TABLEDATA_ format.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : native type corresponding to this converter</span>
+<span class="sd">            The value</span>
+
+<span class="sd">        mask : bool</span>
+<span class="sd">            If `True`, will return the string representation of a</span>
+<span class="sd">            masked value.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tabledata_repr : str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s">&quot;This datatype must implement a &#39;output&#39; method.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reads some number of bytes from the BINARY_ format</span>
+<span class="sd">        representation by calling the function *read*, and returns the</span>
+<span class="sd">        native in-memory object representation for the datatype</span>
+<span class="sd">        handled by *self*.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        read : function</span>
+<span class="sd">            A function that given a number of bytes, returns a byte</span>
+<span class="sd">            string.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        native : tuple (value, mask)</span>
+<span class="sd">            The value as a Numpy array or scalar, and *mask* is True</span>
+<span class="sd">            if the value is missing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s">&quot;This datatype must implement a &#39;binparse&#39; method.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the object *value* in the native in-memory datatype to</span>
+<span class="sd">        a string of bytes suitable for serialization in the BINARY_</span>
+<span class="sd">        format.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : native type corresponding to this converter</span>
+<span class="sd">            The value</span>
+
+<span class="sd">        mask : bool</span>
+<span class="sd">            If `True`, will return the string representation of a</span>
+<span class="sd">            masked value.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bytes : byte string</span>
+<span class="sd">            The binary representation of the value, suitable for</span>
+<span class="sd">            serialization in the BINARY_ format.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s">&quot;This datatype must implement a &#39;binoutput&#39; method.&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Char</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the char datatype. (7-bit unsigned characters)</span>
+
+<span class="sd">    Missing values are not handled for string or unicode types.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="n">_empty_bytes</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Converter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W47</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
+
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">==</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s">&#39;O&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binparse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binparse_var</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binoutput_var</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="s">&#39;*&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">):</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">arraysize</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">vo_raise</span><span class="p">(</span><span class="n">E01</span><span class="p">,</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">arraysize</span><span class="p">,</span> <span class="s">&#39;char&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">ID</span><span class="p">),</span> <span class="n">config</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s">&#39;S</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binparse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binparse_fixed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binoutput_fixed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_struct_format</span> <span class="o">=</span> <span class="s">&quot;&gt;</span><span class="si">%d</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;pedantic&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ascii_parse</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_str_parse</span>
+
+    <span class="k">def</span> <span class="nf">_ascii_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W46</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;char&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">),</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_str_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">:</span>
+                <span class="n">vo_warn</span><span class="p">(</span><span class="n">W46</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;char&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">),</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_str_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">:</span>
+                <span class="n">vo_warn</span><span class="p">(</span><span class="n">W46</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;char&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">xml_escape_cdata</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+            <span class="k">return</span> <span class="n">xml_escape_cdata</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_binparse_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_length</span><span class="p">(</span><span class="n">read</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">read</span><span class="p">(</span><span class="n">length</span><span class="p">),</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">_binparse_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">struct_unpack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_struct_format</span><span class="p">,</span> <span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">_zero_byte</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="n">end</span><span class="p">],</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">_binoutput_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">value</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_zero_int</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write_length</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_binoutput_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">_empty_bytes</span>
+        <span class="k">return</span> <span class="n">struct_pack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_struct_format</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">UnicodeChar</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the unicodeChar data type. UTF-16-BE.</span>
+
+<span class="sd">    Missing values are not handled for string or unicode types.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="s">u&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Converter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W47</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
+
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">==</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s">&#39;O&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binparse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binparse_var</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binoutput_var</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="s">&#39;*&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">arraysize</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">vo_raise</span><span class="p">(</span><span class="n">E01</span><span class="p">,</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">arraysize</span><span class="p">,</span> <span class="s">&#39;unicode&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">ID</span><span class="p">),</span> <span class="n">config</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s">&#39;U</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binparse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binparse_fixed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binoutput_fixed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_struct_format</span> <span class="o">=</span> <span class="s">&quot;&gt;</span><span class="si">%d</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">:</span>
+                <span class="n">vo_warn</span><span class="p">(</span><span class="n">W46</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;unicodeChar&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">:</span>
+                <span class="n">vo_warn</span><span class="p">(</span><span class="n">W46</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;unicodeChar&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span><span class="p">),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+            <span class="k">return</span> <span class="n">xml_escape_cdata</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;&#39;</span>
+            <span class="k">return</span> <span class="n">xml_escape_cdata</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_binparse_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_length</span><span class="p">(</span><span class="n">read</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">read</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf_16_be&#39;</span><span class="p">),</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">_binparse_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">struct_unpack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_struct_format</span><span class="p">,</span> <span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arraysize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf_16_be&#39;</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\0</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="n">end</span><span class="p">],</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">_binoutput_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">value</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_zero_int</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf_16_be&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write_length</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">encoded</span>
+
+    <span class="k">def</span> <span class="nf">_binoutput_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">u&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">struct_pack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_struct_format</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf_16_be&#39;</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">Array</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles both fixed and variable-lengths arrays.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Converter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;pedantic&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter_pedantic</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter_lax</span>
+
+    <span class="k">def</span> <span class="nf">parse_scalar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse_scalar</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_splitter_pedantic</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pedantic_array_splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_splitter_lax</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s">&#39;,&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W01</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">array_splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">VarArray</span><span class="p">(</span><span class="n">Array</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles variable lengths arrays (i.e. where *arraysize* is &#39;*&#39;).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;O&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Array</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">output</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_length</span><span class="p">(</span><span class="n">read</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">binparse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">binparse</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+            <span class="n">val</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">binparse</span><span class="p">(</span><span class="n">read</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_zero_int</span>
+
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_write_length</span><span class="p">(</span><span class="n">length</span><span class="p">)]</span>
+        <span class="n">binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">binoutput</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">binoutput</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">_empty_bytes</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ArrayVarArray</span><span class="p">(</span><span class="n">VarArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles an array of variable-length arrays, i.e. where *arraysize*</span>
+<span class="sd">    ends in &#39;*&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="bp">True</span>
+
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">_items</span>
+        <span class="n">parse_parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse_parts</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">%</span> <span class="n">items</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">vo_raise</span><span class="p">(</span><span class="n">E02</span><span class="p">,</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">),</span> <span class="n">items</span><span class="p">):</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">parse_parts</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">items</span><span class="p">],</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ScalarVarArray</span><span class="p">(</span><span class="n">VarArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles a variable-length array of numeric scalars.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="bp">True</span>
+
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="n">parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">format</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">NumericArray</span><span class="p">(</span><span class="n">Array</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles a fixed-length array of numeric scalars.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">ArrayVarArray</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Array</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span> <span class="o">=</span> <span class="n">arraysize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">arraysize</span><span class="p">),</span> <span class="n">base</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">arraysize</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">*=</span> <span class="n">dim</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_memsize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bigendian_format</span> <span class="o">=</span> <span class="s">&#39;&gt;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">arraysize</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">format</span><span class="p">)</span> <span class="o">*</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+            <span class="n">warn_or_raise</span><span class="p">(</span><span class="n">E02</span><span class="p">,</span> <span class="n">E02</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;pedantic&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_parts</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+                <span class="n">parts</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parts</span> <span class="o">=</span> <span class="p">(</span><span class="n">parts</span> <span class="o">+</span>
+                         <span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">default</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">))))</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_parts</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">base_parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">base_parse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">format</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">result_mask</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="n">base_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">output</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_output</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span>
+                        <span class="nb">zip</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">flat</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_memsize</span><span class="p">),</span>
+                               <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bigendian_format</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">is_null</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">result_mask</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="n">filtered</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">filter_array</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">filtered</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">!=</span> <span class="s">&#39;&gt;&#39;</span><span class="p">:</span>
+            <span class="n">filtered</span> <span class="o">=</span> <span class="n">filtered</span><span class="o">.</span><span class="n">byteswap</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">filtered</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Numeric</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The base class for all numeric data types.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array_type</span> <span class="o">=</span> <span class="n">NumericArray</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">ScalarVarArray</span>
+    <span class="n">null</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Converter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_memsize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bigendian_format</span> <span class="o">=</span> <span class="s">&#39;&gt;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span>
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">null</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_null</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_null</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_null</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_memsize</span><span class="p">),</span>
+                               <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bigendian_format</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_null</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_is_null</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+
+
+<span class="k">class</span> <span class="nc">FloatingPoint</span><span class="p">(</span><span class="n">Numeric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The base class for floating-point datatypes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Numeric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="n">precision</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">precision</span>
+        <span class="k">if</span> <span class="n">precision</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%g</span><span class="s">&#39;</span>
+        <span class="k">elif</span> <span class="n">precision</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;E&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%%</span><span class="s">.</span><span class="si">%d</span><span class="s">E&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">precision</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+        <span class="k">elif</span> <span class="n">precision</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;F&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%%</span><span class="s">.</span><span class="si">%d</span><span class="s">g&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">precision</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%%</span><span class="s">.</span><span class="si">%d</span><span class="s">g&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_null_output</span> <span class="o">=</span> <span class="s">&#39;NaN&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_null_binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filter_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_nan</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_null_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">),</span> <span class="bp">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_null_binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binoutput</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">),</span> <span class="bp">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filter_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_null</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;pedantic&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_pedantic</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_permissive</span>
+
+    <span class="k">def</span> <span class="nf">_parse_pedantic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">,</span> <span class="bp">True</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_null</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_permissive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_null</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="c"># IRSA VOTables use the word &#39;null&#39; to specify empty values,</span>
+            <span class="c"># but this is not defined in the VOTable spec.</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">vo_warn</span><span class="p">(</span><span class="n">W30</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">,</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_null_output</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">%</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;NaN&#39;</span>
+        <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isposinf</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;+InF&#39;</span>
+        <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isneginf</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;-InF&#39;</span>
+        <span class="c"># Should never raise</span>
+        <span class="n">vo_raise</span><span class="p">(</span><span class="s">&quot;Invalid floating point value &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_null_binoutput</span>
+
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">!=</span> <span class="s">&#39;&gt;&#39;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">byteswap</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_filter_nan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_filter_null</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Double</span><span class="p">(</span><span class="n">FloatingPoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the double datatype.  Double-precision IEEE</span>
+<span class="sd">    floating-point.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;f8&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">Float</span><span class="p">(</span><span class="n">FloatingPoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the float datatype.  Single-precision IEEE floating-point.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;f4&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">Integer</span><span class="p">(</span><span class="n">Numeric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The base class for all the integral datatypes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Numeric</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">warn_or_raise</span><span class="p">(</span><span class="n">W49</span><span class="p">,</span> <span class="n">W49</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">&#39;nan&#39;</span><span class="p">:</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">warn_or_raise</span><span class="p">(</span><span class="n">W31</span><span class="p">,</span> <span class="n">W31</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+            <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;0x&#39;</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="mi">16</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">:</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">warn_or_raise</span><span class="p">(</span><span class="n">W31</span><span class="p">,</span> <span class="n">W31</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+                <span class="k">return</span> <span class="s">&#39;NaN&#39;</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">vo_raise</span><span class="p">(</span><span class="n">W31</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">!=</span> <span class="s">&#39;&gt;&#39;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">byteswap</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">filter_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vo_raise</span><span class="p">(</span><span class="n">W31</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">class</span> <span class="nc">UnsignedByte</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the unsignedByte datatype.  Unsigned 8-bit integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;u1&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">Short</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the short datatype.  Signed 16-bit integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;i2&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">Int</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the int datatype.  Signed 32-bit integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;i4&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">Long</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the long datatype.  Signed 64-bit integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;i8&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">ComplexArrayVarArray</span><span class="p">(</span><span class="n">VarArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles an array of variable-length arrays of complex numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">VarArray</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="bp">True</span>
+
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">_items</span>
+        <span class="n">parse_parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse_parts</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">%</span> <span class="n">items</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">vo_raise</span><span class="p">(</span><span class="n">E02</span><span class="p">,</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">),</span> <span class="n">items</span><span class="p">):</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">parse_parts</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">items</span><span class="p">],</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ComplexVarArray</span><span class="p">(</span><span class="n">VarArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles a variable-length array of complex numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">VarArray</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="bp">True</span>
+
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">parse_parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse_parts</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]]</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">parse_parts</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">format</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">ComplexArray</span><span class="p">(</span><span class="n">NumericArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles a fixed-size array of complex numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">ComplexArrayVarArray</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">NumericArray</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">*=</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parts</span> <span class="o">==</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]:</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_parts</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+            <span class="n">vo_raise</span><span class="p">(</span><span class="n">E02</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">base_parse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">parse_parts</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]]</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">base_parse</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">format</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;bool&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">result_mask</span>
+
+
+<span class="k">class</span> <span class="nc">Complex</span><span class="p">(</span><span class="n">FloatingPoint</span><span class="p">,</span> <span class="n">Array</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The base class for complex numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array_type</span> <span class="o">=</span> <span class="n">ComplexArray</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">ComplexVarArray</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">FloatingPoint</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">Array</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="bp">True</span>
+        <span class="n">splitter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splitter</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">splitter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">vo_raise</span><span class="p">(</span><span class="n">E03</span><span class="p">,</span> <span class="p">(</span><span class="n">value</span><span class="p">,),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_parts</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+    <span class="n">_parse_permissive</span> <span class="o">=</span> <span class="n">parse</span>
+    <span class="n">_parse_pedantic</span> <span class="o">=</span> <span class="n">parse</span>
+
+    <span class="k">def</span> <span class="nf">parse_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="o">*</span><span class="n">parts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_null</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s">&#39;NaN&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_format</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">FloatComplex</span><span class="p">(</span><span class="n">Complex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle floatComplex datatype.  Pair of single-precision IEEE</span>
+<span class="sd">    floating-point numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;c8&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">DoubleComplex</span><span class="p">(</span><span class="n">Complex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle doubleComplex datatype.  Pair of double-precision IEEE</span>
+<span class="sd">    floating-point numbers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;c16&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">BitArray</span><span class="p">(</span><span class="n">NumericArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles an array of bits.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">ArrayVarArray</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">NumericArray</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bytes</span> <span class="o">=</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_splitter_pedantic</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;\s&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_splitter_lax</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s">&#39;,&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W01</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;\s|,&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="bp">False</span><span class="p">:</span> <span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">:</span> <span class="s">&#39;1&#39;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mapping</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">flat</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bytes</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+                <span class="n">byte</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">bit_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">bit</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bit_no</span><span class="p">)</span>
+                <span class="n">bit</span> <span class="o">=</span> <span class="p">(</span><span class="n">bit</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;b1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;b1&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">result_mask</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W39</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">flat</span>
+        <span class="n">bit_no</span> <span class="o">=</span> <span class="mi">7</span>
+        <span class="n">byte</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">bytes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">v</span><span class="p">:</span>
+                <span class="n">byte</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bit_no</span>
+            <span class="k">if</span> <span class="n">bit_no</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">bytes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+                <span class="n">bit_no</span> <span class="o">=</span> <span class="mi">7</span>
+                <span class="n">byte</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">bit_no</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">bit_no</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="nb">bytes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bytes</span>
+
+        <span class="k">return</span> <span class="n">struct_pack</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">B&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="nb">bytes</span><span class="p">),</span> <span class="o">*</span><span class="nb">bytes</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Bit</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the bit datatype.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;b1&#39;</span>
+    <span class="n">array_type</span> <span class="o">=</span> <span class="n">BitArray</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">ScalarVarArray</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">binary_one</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mh">0x8</span><span class="p">),</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="n">binary_zero</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Converter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;1&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">&#39;0&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">warn_or_raise</span><span class="p">(</span><span class="n">W49</span><span class="p">,</span> <span class="n">W49</span><span class="p">,</span> <span class="p">(),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">value</span><span class="p">],</span> <span class="bp">False</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">vo_raise</span><span class="p">(</span><span class="n">E04</span><span class="p">,</span> <span class="p">(</span><span class="n">value</span><span class="p">,),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W39</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;1&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;0&#39;</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x8</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="n">vo_warn</span><span class="p">(</span><span class="n">W39</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_one</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_zero</span>
+
+
+<span class="k">class</span> <span class="nc">BooleanArray</span><span class="p">(</span><span class="n">NumericArray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles an array of boolean values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">VarArray</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">NumericArray</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+        <span class="n">binparse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">binparse_value</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">IS_PY3K</span><span class="p">:</span>
+                <span class="n">char</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="n">value</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">binparse</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">result_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;b1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="n">result_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;b1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_arraysize</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">result_mask</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="n">binoutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">binoutput</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">binoutput</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">flat</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">_empty_bytes</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Boolean</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles the boolean datatype.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;b1&#39;</span>
+    <span class="n">array_type</span> <span class="o">=</span> <span class="n">BooleanArray</span>
+    <span class="n">vararray_type</span> <span class="o">=</span> <span class="n">VarArray</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">binary_question_mark</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="n">binary_true</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="n">binary_false</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">,</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">Converter</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;TRUE&#39;</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+                   <span class="s">&#39;FALSE&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+                   <span class="s">&#39;1&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+                   <span class="s">&#39;0&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+                   <span class="s">&#39;T&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+                   <span class="s">&#39;F&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+                   <span class="s">&#39;</span><span class="se">\0</span><span class="s">&#39;</span>    <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+                   <span class="s">&#39; &#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+                   <span class="s">&#39;?&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+                   <span class="s">&#39;&#39;</span>      <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">)}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">vo_raise</span><span class="p">(</span><span class="n">E05</span><span class="p">,</span> <span class="p">(</span><span class="n">value</span><span class="p">,),</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;?&#39;</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;T&#39;</span>
+        <span class="k">return</span> <span class="s">&#39;F&#39;</span>
+
+    <span class="k">def</span> <span class="nf">binparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binparse_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">_binparse_mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;T&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;1&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;F&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;0&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\0</span><span class="s">&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+        <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">)}</span>
+
+    <span class="k">def</span> <span class="nf">binparse_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binparse_mapping</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">vo_raise</span><span class="p">(</span><span class="n">E05</span><span class="p">,</span> <span class="p">(</span><span class="n">value</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">binoutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_question_mark</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_true</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_false</span>
+
+
+<span class="n">converter_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;double&#39;</span>        <span class="p">:</span> <span class="n">Double</span><span class="p">,</span>
+    <span class="s">&#39;float&#39;</span>         <span class="p">:</span> <span class="n">Float</span><span class="p">,</span>
+    <span class="s">&#39;bit&#39;</span>           <span class="p">:</span> <span class="n">Bit</span><span class="p">,</span>
+    <span class="s">&#39;boolean&#39;</span>       <span class="p">:</span> <span class="n">Boolean</span><span class="p">,</span>
+    <span class="s">&#39;unsignedByte&#39;</span>  <span class="p">:</span> <span class="n">UnsignedByte</span><span class="p">,</span>
+    <span class="s">&#39;short&#39;</span>         <span class="p">:</span> <span class="n">Short</span><span class="p">,</span>
+    <span class="s">&#39;int&#39;</span>           <span class="p">:</span> <span class="n">Int</span><span class="p">,</span>
+    <span class="s">&#39;long&#39;</span>          <span class="p">:</span> <span class="n">Long</span><span class="p">,</span>
+    <span class="s">&#39;floatComplex&#39;</span>  <span class="p">:</span> <span class="n">FloatComplex</span><span class="p">,</span>
+    <span class="s">&#39;doubleComplex&#39;</span> <span class="p">:</span> <span class="n">DoubleComplex</span><span class="p">,</span>
+    <span class="s">&#39;char&#39;</span>          <span class="p">:</span> <span class="n">Char</span><span class="p">,</span>
+    <span class="s">&#39;unicodeChar&#39;</span>   <span class="p">:</span> <span class="n">UnicodeChar</span> <span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_converter"><a class="viewcode-back" href="../../../../vo/api_converters.html#astropy.io.vo.converters.get_converter">[docs]</a><span class="k">def</span> <span class="nf">get_converter</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{},</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Factory function to get an appropriate converter instance for a</span>
+<span class="sd">    given field.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    field : astropy.io.vo.tree.Field</span>
+
+<span class="sd">    config : dict, optional</span>
+<span class="sd">        Parser configuration dictionary</span>
+
+<span class="sd">    pos : tuple</span>
+<span class="sd">        Position in the input XML file.  Used for error messages.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    converter : astropy.io.vo.converters.Converter</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">datatype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">converter_mapping</span><span class="p">:</span>
+        <span class="n">vo_raise</span><span class="p">(</span><span class="n">E06</span><span class="p">,</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">datatype</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">ID</span><span class="p">),</span> <span class="n">config</span><span class="p">)</span>
+
+    <span class="n">cls</span> <span class="o">=</span> <span class="n">converter_mapping</span><span class="p">[</span><span class="n">field</span><span class="o">.</span><span class="n">datatype</span><span class="p">]</span>
+    <span class="n">converter</span> <span class="o">=</span> <span class="n">cls</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="n">arraysize</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">arraysize</span>
+
+    <span class="c"># With numeric datatypes, special things need to happen for</span>
+    <span class="c"># arrays.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">datatype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;char&#39;</span><span class="p">,</span> <span class="s">&#39;unicodeChar&#39;</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="n">arraysize</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arraysize</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+            <span class="n">arraysize</span> <span class="o">=</span> <span class="n">arraysize</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_x</span> <span class="o">=</span> <span class="n">arraysize</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">last_x</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">arraysize</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">arraysize</span> <span class="o">=</span> <span class="n">arraysize</span><span class="p">[:</span><span class="n">last_x</span><span class="p">]</span>
+            <span class="n">fixed</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fixed</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="k">if</span> <span class="n">arraysize</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">arraysize</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arraysize</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)]</span>
+            <span class="n">arraysize</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arraysize</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">arraysize</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="n">converter</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">array_type</span><span class="p">(</span>
+                <span class="n">field</span><span class="p">,</span> <span class="n">converter</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">fixed</span><span class="p">:</span>
+            <span class="n">converter</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">vararray_type</span><span class="p">(</span>
+                <span class="n">field</span><span class="p">,</span> <span class="n">converter</span><span class="p">,</span> <span class="n">arraysize</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">converter</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../../index.html">
+              <img class="logo" src="../../../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

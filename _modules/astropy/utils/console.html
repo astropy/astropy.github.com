@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.utils.console &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for astropy.utils.console</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Utilities for prettifying output to the console.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="kn">from</span> <span class="nn">..config.configs</span> <span class="kn">import</span> <span class="n">ConfigurationItem</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;isatty&#39;</span><span class="p">,</span> <span class="s">&#39;color_print&#39;</span><span class="p">,</span> <span class="s">&#39;human_time&#39;</span><span class="p">,</span> <span class="s">&#39;ProgressBar&#39;</span><span class="p">,</span> <span class="s">&#39;Spinner&#39;</span><span class="p">,</span>
+    <span class="s">&#39;print_code_line&#39;</span><span class="p">,</span> <span class="s">&#39;ProgressBarOrSpinner&#39;</span><span class="p">]</span>
+
+
+<span class="n">USE_COLOR</span> <span class="o">=</span> <span class="n">ConfigurationItem</span><span class="p">(</span>
+    <span class="s">&#39;use_color&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">&#39;When True, use ANSI color escape sequences when writing to the console.&#39;</span><span class="p">)</span>
+<span class="n">USE_UNICODE</span> <span class="o">=</span> <span class="n">ConfigurationItem</span><span class="p">(</span>
+    <span class="s">&#39;use_unicode&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">&#39;Use Unicode characters when drawing progress bars etc. at the console.&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="isatty"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.isatty">[docs]</a><span class="k">def</span> <span class="nf">isatty</span><span class="p">(</span><span class="nb">file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns `True` if `file` is a tty.</span>
+
+<span class="sd">    Most built-in Python file-like objects have an `isatty` member,</span>
+<span class="sd">    but some user-defined types may not, so this assumes those are not</span>
+<span class="sd">    ttys.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="s">&#39;isatty&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">file</span><span class="o">.</span><span class="n">isatty</span><span class="p">()</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+</div>
+<div class="viewcode-block" id="color_print"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.color_print">[docs]</a><span class="k">def</span> <span class="nf">color_print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prints colors and styles to the terminal uses ANSI escape</span>
+<span class="sd">    sequences::</span>
+
+<span class="sd">       color_print(&#39;This is the color &#39;, &#39;default&#39;, &#39;GREEN&#39;, &#39;green&#39;)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    positional args : strings</span>
+<span class="sd">        The positional arguments come in pairs (*msg*, *color*), where</span>
+<span class="sd">        *msg* is the string to display and *color* is the color to</span>
+<span class="sd">        display it in.</span>
+
+<span class="sd">        *color* is an ANSI terminal color name.  Must be one of:</span>
+<span class="sd">        black, red, green, brown, blue, magenta, cyan, lightgrey,</span>
+<span class="sd">        default, darkgrey, lightred, lightgreen, yellow, lightblue,</span>
+<span class="sd">        lightmagenta, lightcyan, white, or &#39;&#39; (the empty string).</span>
+
+<span class="sd">    file : writeable file-like object, optional</span>
+<span class="sd">        Where to write to.  Defaults to `sys.stdout`.  If file is not</span>
+<span class="sd">        a tty (as determined by calling its `isatty` member, if one</span>
+<span class="sd">        exists), no coloring will be included.</span>
+
+<span class="sd">    end : str, optional</span>
+<span class="sd">        The ending of the message.  Defaults to ``\\n``.  The end will</span>
+<span class="sd">        be printed after resetting any color or font state.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">color_mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;black&#39;</span><span class="p">:</span> <span class="s">&#39;0;30&#39;</span><span class="p">,</span>
+        <span class="s">&#39;red&#39;</span><span class="p">:</span> <span class="s">&#39;0;31&#39;</span><span class="p">,</span>
+        <span class="s">&#39;green&#39;</span><span class="p">:</span> <span class="s">&#39;0;32&#39;</span><span class="p">,</span>
+        <span class="s">&#39;brown&#39;</span><span class="p">:</span> <span class="s">&#39;0;33&#39;</span><span class="p">,</span>
+        <span class="s">&#39;blue&#39;</span><span class="p">:</span> <span class="s">&#39;0;34&#39;</span><span class="p">,</span>
+        <span class="s">&#39;magenta&#39;</span><span class="p">:</span> <span class="s">&#39;0;35&#39;</span><span class="p">,</span>
+        <span class="s">&#39;cyan&#39;</span><span class="p">:</span> <span class="s">&#39;0;36&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lightgrey&#39;</span><span class="p">:</span> <span class="s">&#39;0;37&#39;</span><span class="p">,</span>
+        <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="s">&#39;0;39&#39;</span><span class="p">,</span>
+        <span class="s">&#39;darkgrey&#39;</span><span class="p">:</span> <span class="s">&#39;1;30&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lightred&#39;</span><span class="p">:</span> <span class="s">&#39;1;31&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="s">&#39;1;32&#39;</span><span class="p">,</span>
+        <span class="s">&#39;yellow&#39;</span><span class="p">:</span> <span class="s">&#39;1;33&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lightblue&#39;</span><span class="p">:</span> <span class="s">&#39;1;34&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lightmagenta&#39;</span><span class="p">:</span> <span class="s">&#39;1;35&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lightcyan&#39;</span><span class="p">:</span> <span class="s">&#39;1;36&#39;</span><span class="p">,</span>
+        <span class="s">&#39;white&#39;</span><span class="p">:</span> <span class="s">&#39;1;37&#39;</span><span class="p">}</span>
+
+    <span class="nb">file</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;file&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span> <span class="s">u&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+    <span class="n">write</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">write</span>
+    <span class="k">if</span> <span class="n">isatty</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="ow">and</span> <span class="n">USE_COLOR</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">color</span> <span class="o">==</span> <span class="s">u&#39;&#39;</span> <span class="ow">or</span> <span class="n">color</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">color_code</span> <span class="o">=</span> <span class="n">color_mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="s">&#39;0;39&#39;</span><span class="p">)</span>
+                <span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\033</span><span class="s">[{0}m{1}</span><span class="se">\033</span><span class="s">[0m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">color_code</span><span class="p">,</span> <span class="n">msg</span><span class="p">))</span>
+
+        <span class="n">write</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+
+</div>
+<span class="k">def</span> <span class="nf">strip_ansi_codes</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove ANSI color codes from the string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\033</span><span class="s">\[([0-9]+)(;[0-9]+)*m&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="human_time"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.human_time">[docs]</a><span class="k">def</span> <span class="nf">human_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a human-friendly time string that is always exactly 6</span>
+<span class="sd">    characters long.</span>
+
+<span class="sd">    Depending on the number of seconds given, can be one of::</span>
+
+<span class="sd">        1w 3d</span>
+<span class="sd">        2d 4h</span>
+<span class="sd">        1h 5m</span>
+<span class="sd">        1m 4s</span>
+<span class="sd">          15s</span>
+
+<span class="sd">    Will be in color if console coloring is turned on.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    seconds : int</span>
+<span class="sd">        The number of seconds to represent</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    time : str</span>
+<span class="sd">        A human-friendly representation of the given number of seconds</span>
+<span class="sd">        that is always exactly 6 characters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s">u&#39;y&#39;</span><span class="p">,</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">52</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">u&#39;w&#39;</span><span class="p">,</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">u&#39;d&#39;</span><span class="p">,</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">u&#39;h&#39;</span><span class="p">,</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">u&#39;m&#39;</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">u&#39;s&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">]</span>
+
+    <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">seconds</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">u&#39;   {0:02d}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">unit1</span><span class="p">,</span> <span class="n">limit1</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">unit2</span><span class="p">,</span> <span class="n">limit2</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">seconds</span> <span class="o">&gt;=</span> <span class="n">limit1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">u&#39;{0:02d}{1}{2:02d}{3}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">seconds</span> <span class="o">//</span> <span class="n">limit1</span><span class="p">,</span> <span class="n">unit1</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">seconds</span> <span class="o">%</span> <span class="n">limit1</span><span class="p">)</span> <span class="o">//</span> <span class="n">limit2</span><span class="p">,</span> <span class="n">unit2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s">u&#39;  ~inf&#39;</span>
+
+</div>
+<div class="viewcode-block" id="ProgressBar"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar">[docs]</a><span class="k">class</span> <span class="nc">ProgressBar</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to display a progress bar in the terminal.</span>
+
+<span class="sd">    It is designed to be used with the `with` statement::</span>
+
+<span class="sd">        with ProgressBar(len(items)) as bar:</span>
+<span class="sd">            for item in enumerate(items):</span>
+<span class="sd">                bar.update()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ProgressBar.__init__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        total : int</span>
+<span class="sd">            The number of increments in the process being tracked.</span>
+
+<span class="sd">        file : writable file-like object, optional</span>
+<span class="sd">            The file to write the progress bar to.  Defaults to</span>
+<span class="sd">            `sys.stdout`.  If `file` is not a tty (as determined by</span>
+<span class="sd">            calling its `isatty` member, if any), the scrollbar will</span>
+<span class="sd">            be completely silent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">isatty</span><span class="p">(</span><span class="nb">file</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silent_update</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_silent</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_silent</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total</span> <span class="o">=</span> <span class="n">total</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">terminal_width</span> <span class="o">=</span> <span class="mi">78</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;linux&#39;</span><span class="p">):</span>
+            <span class="kn">import</span> <span class="nn">subprocess</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+                <span class="s">&#39;stty size&#39;</span><span class="p">,</span>
+                <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+            <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">parts</span>
+                <span class="n">terminal_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bar_length</span> <span class="o">=</span> <span class="n">terminal_width</span> <span class="o">-</span> <span class="mi">36</span>
+        <span class="n">num_scale</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1000</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">num_scale</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span> <span class="o">=</span> <span class="s">&#39;?&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">suffixes</span> <span class="o">=</span> <span class="s">u&#39; kMGTPEH&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span> <span class="o">=</span> <span class="n">suffixes</span><span class="p">[</span><span class="n">num_scale</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_scale</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">num_scale</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ProgressBar.__enter__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar.__enter__">[docs]</a>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</div>
+<div class="viewcode-block" id="ProgressBar.__exit__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar.__exit__">[docs]</a>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silent</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="ProgressBar.update"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the progress bar to the given value (out of the total</span>
+<span class="sd">        given to the constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_value</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_current_value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">frac</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">frac</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="p">)</span>
+
+        <span class="nb">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span>
+        <span class="n">write</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">write</span>
+
+        <span class="n">bar_fill</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bar_length</span><span class="p">)</span> <span class="o">*</span> <span class="n">frac</span><span class="p">)</span>
+        <span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\r</span><span class="s">|&#39;</span><span class="p">)</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39;=&#39;</span> <span class="o">*</span> <span class="n">bar_fill</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bar_fill</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bar_length</span><span class="p">:</span>
+            <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39;&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">)</span>
+            <span class="n">write</span><span class="p">(</span><span class="s">u&#39;-&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bar_length</span> <span class="o">-</span> <span class="n">bar_fill</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">write</span><span class="p">(</span><span class="s">u&#39;|&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="s">u&#39;     &#39;</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="s">u&#39;&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">frac</span><span class="p">))</span> <span class="o">/</span> <span class="n">frac</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="s">u&#39; ETA &#39;</span>
+        <span class="n">write</span><span class="p">(</span><span class="s">u&#39; {0:&gt;3d}/{1:&gt;3d}{2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">value</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_scale</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_total</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_scale</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span><span class="p">))</span>
+        <span class="n">write</span><span class="p">(</span><span class="s">u&#39; ({0:&gt;6s}%)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">u&#39;{0:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">frac</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)))</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">human_time</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</div>
+    <span class="k">def</span> <span class="nf">_silent_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ProgressBar.map"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">multiprocess</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Does a `map` operation while displaying a progress bar with</span>
+<span class="sd">        percentage complete::</span>
+
+<span class="sd">            def work(i):</span>
+<span class="sd">                print(i)</span>
+
+<span class="sd">            ProgressBar.map(work, range(50))</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        function : function</span>
+<span class="sd">            Function to call for each step</span>
+
+<span class="sd">        items : sequence</span>
+<span class="sd">            Sequence where each element is a tuple of arguments to pass to</span>
+<span class="sd">            *function*.</span>
+
+<span class="sd">        multiprocess : bool, optional</span>
+<span class="sd">            If `True`, use the `multiprocessing` module to distribute each</span>
+<span class="sd">            task to a different processor core.</span>
+
+<span class="sd">        file : writeable file-like object, optional</span>
+<span class="sd">            The file to write the progress bar to.  Defaults to</span>
+<span class="sd">            `sys.stdout`.  If `file` is not a tty (as determined by</span>
+<span class="sd">            calling its `isatty` member, if any), the scrollbar will</span>
+<span class="sd">            be completely silent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">cls</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+            <span class="n">step_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">_bar_length</span><span class="p">)</span>
+            <span class="n">steps</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span> <span class="o">/</span> <span class="n">step_size</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">multiprocess</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+                    <span class="n">function</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">steps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">multiprocessing</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+                    <span class="n">p</span><span class="o">.</span><span class="n">imap_unordered</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">steps</span><span class="p">)):</span>
+                    <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</div>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ProgressBar.iterate"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBar.iterate">[docs]</a>    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterate over a sequence while indicating progress with a progress</span>
+<span class="sd">        bar in the terminal::</span>
+
+<span class="sd">            for item in ProgressBar.iterate(items):</span>
+<span class="sd">                pass</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        items : sequence</span>
+<span class="sd">            A sequence of items to iterate over</span>
+
+<span class="sd">        file : writeable file-like object, optional</span>
+<span class="sd">            The file to write the progress bar to.  Defaults to</span>
+<span class="sd">            `sys.stdout`.  If `file` is not a tty (as determined by</span>
+<span class="sd">            calling its `isatty` member, if any), the scrollbar will</span>
+<span class="sd">            be completely silent.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        generator :</span>
+<span class="sd">            A generator over `items`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">cls</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">item</span>
+                <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+</div></div>
+<div class="viewcode-block" id="Spinner"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.Spinner">[docs]</a><span class="k">class</span> <span class="nc">Spinner</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to display a spinner in the terminal.</span>
+
+<span class="sd">    It is designed to be used with the `with` statement::</span>
+
+<span class="sd">        with Spinner(&quot;Reticulating splines&quot;, &quot;green&quot;) as s:</span>
+<span class="sd">            for item in enumerate(items):</span>
+<span class="sd">                s.next()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_unicode_chars</span> <span class="o">=</span> <span class="s">u&quot;◓◑◒◐&quot;</span>
+    <span class="n">_default_ascii_chars</span> <span class="o">=</span> <span class="s">u&quot;-/|</span><span class="se">\\</span><span class="s">&quot;</span>
+
+<div class="viewcode-block" id="Spinner.__init__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.Spinner.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">chars</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        msg : str</span>
+<span class="sd">            The message to print</span>
+
+<span class="sd">        color : str, optional</span>
+<span class="sd">            An ANSI terminal color name.  Must be one of: black, red,</span>
+<span class="sd">            green, brown, blue, magenta, cyan, lightgrey, default,</span>
+<span class="sd">            darkgrey, lightred, lightgreen, yellow, lightblue,</span>
+<span class="sd">            lightmagenta, lightcyan, white.</span>
+
+<span class="sd">        file : writeable file-like object, optional</span>
+<span class="sd">            The file to write the spinner to.  Defaults to</span>
+<span class="sd">            `sys.stdout`.  If `file` is not a tty (as determined by</span>
+<span class="sd">            calling its `isatty` member, if any), the scrollbar will</span>
+<span class="sd">            be completely silent.</span>
+
+<span class="sd">        step : int, optional</span>
+<span class="sd">            Only update the spinner every *step* steps</span>
+
+<span class="sd">        chars : str, optional</span>
+<span class="sd">            The character sequence to use for the spinner</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span> <span class="o">=</span> <span class="n">msg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="n">step</span>
+        <span class="k">if</span> <span class="n">chars</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">USE_UNICODE</span><span class="p">:</span>
+                <span class="n">chars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_unicode_chars</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">chars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_ascii_chars</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chars</span> <span class="o">=</span> <span class="n">chars</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_silent</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">isatty</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">chars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chars</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span>
+        <span class="n">write</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">write</span>
+        <span class="n">flush</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">flush</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\r</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="n">color_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">)</span>
+            <span class="n">write</span><span class="p">(</span><span class="s">u&#39; &#39;</span><span class="p">)</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">chars</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+            <span class="n">flush</span><span class="p">()</span>
+            <span class="k">yield</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_step</span><span class="p">):</span>
+                <span class="k">yield</span>
+
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">chars</span><span class="p">):</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Spinner.__enter__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.Spinner.__enter__">[docs]</a>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silent</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silent_iterator</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iterator</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Spinner.__exit__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.Spinner.__exit__">[docs]</a>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="nb">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span>
+        <span class="n">write</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">write</span>
+        <span class="n">flush</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">flush</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_silent</span><span class="p">:</span>
+            <span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\r</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="n">color_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39; [Done]&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39; [Failed]&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+        <span class="n">flush</span><span class="p">()</span>
+</div>
+    <span class="k">def</span> <span class="nf">_silent_iterator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">yield</span>
+
+</div>
+<div class="viewcode-block" id="ProgressBarOrSpinner"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBarOrSpinner">[docs]</a><span class="k">class</span> <span class="nc">ProgressBarOrSpinner</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class that displays either a `ProgressBar` or `Spinner`</span>
+<span class="sd">    depending on whether the total size of the operation is</span>
+<span class="sd">    known or not.</span>
+
+<span class="sd">    It is designed to be used with the `with` statement::</span>
+
+<span class="sd">        if file.has_length():</span>
+<span class="sd">            length = file.get_length()</span>
+<span class="sd">        else:</span>
+<span class="sd">            length = None</span>
+<span class="sd">        bytes_read = 0</span>
+<span class="sd">        with ProgressBarOrSpinner(length) as bar:</span>
+<span class="sd">            while file.read(blocksize):</span>
+<span class="sd">                bytes_read += blocksize</span>
+<span class="sd">                bar.update(bytes_read)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProgressBarOrSpinner.__init__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBarOrSpinner.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        total : int or None</span>
+<span class="sd">            If an int, the number of increments in the process being</span>
+<span class="sd">            tracked and a `ProgressBar` is displayed.  If `None`, a</span>
+<span class="sd">            `Spinner` is displayed.</span>
+
+<span class="sd">        msg : str</span>
+<span class="sd">            The message to display above the `ProgressBar` or</span>
+<span class="sd">            alongside the `Spinner`.</span>
+
+<span class="sd">        color : str, optional</span>
+<span class="sd">            The color of `msg`, if any.  Must be an ANSI terminal</span>
+<span class="sd">            color name.  Must be one of: black, red, green, brown,</span>
+<span class="sd">            blue, magenta, cyan, lightgrey, default, darkgrey,</span>
+<span class="sd">            lightred, lightgreen, yellow, lightblue, lightmagenta,</span>
+<span class="sd">            lightcyan, white.</span>
+
+<span class="sd">        file : writable file-like object, optional</span>
+<span class="sd">            The file to write the to.  Defaults to `sys.stdout`.  If</span>
+<span class="sd">            `file` is not a tty (as determined by calling its `isatty`</span>
+<span class="sd">            member, if any), only `msg` will be displayed: the</span>
+<span class="sd">            `ProgressBar` or `Spinner` will be silent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isatty</span><span class="p">(</span><span class="nb">file</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_spinner</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span> <span class="o">=</span> <span class="n">Spinner</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_spinner</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">color_print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ProgressBarOrSpinner.__enter__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBarOrSpinner.__enter__">[docs]</a>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_iter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">__enter__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</div>
+<div class="viewcode-block" id="ProgressBarOrSpinner.__exit__"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBarOrSpinner.__exit__">[docs]</a>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">__exit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ProgressBarOrSpinner.update"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.ProgressBarOrSpinner.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the progress bar to the given value (out of the total</span>
+<span class="sd">        given to the constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_spinner</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_iter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="print_code_line"><a class="viewcode-back" href="../../../utils/api_console.html#astropy.utils.console.print_code_line">[docs]</a><span class="k">def</span> <span class="nf">print_code_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">tabwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">70</span><span class="p">):</span>
+    <span class="sd">u&quot;&quot;&quot;</span>
+<span class="sd">    Prints a line of source code, highlighting a particular character</span>
+<span class="sd">    position in the line.  Useful for displaying the context of error</span>
+<span class="sd">    messages.</span>
+
+<span class="sd">    If the line is more than `width` characters, the line is truncated</span>
+<span class="sd">    accordingly and &#39;…&#39; characters are inserted at the front and/or</span>
+<span class="sd">    end.</span>
+
+<span class="sd">    It looks like this::</span>
+
+<span class="sd">        there_is_a_syntax_error_here :</span>
+<span class="sd">                                     ^</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    line : unicode</span>
+<span class="sd">        The line of code to display</span>
+
+<span class="sd">    col : int, optional</span>
+<span class="sd">        The character in the line to highlight.  `col` must be less</span>
+<span class="sd">        than `len(line)`.</span>
+
+<span class="sd">    file : writeable file-like object, optional</span>
+<span class="sd">        Where to write to.  Defaults to `sys.stdout`.</span>
+
+<span class="sd">    tabwidth : int, optional</span>
+<span class="sd">        The number of spaces per tab (``&#39;\t&#39;``) character.  Default is</span>
+<span class="sd">        8.  All tabs will be converted to spaces to ensure that the</span>
+<span class="sd">        caret lines up with the correct column.</span>
+
+<span class="sd">    width : int, optional</span>
+<span class="sd">        The width of the display, beyond which the line will be</span>
+<span class="sd">        truncated.  Defaults to 70 (this matches the default in the</span>
+<span class="sd">        standard library&#39;s `textwrap` module).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">write</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">write</span>
+
+    <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">ntabs</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="n">col</span> <span class="o">+=</span> <span class="n">ntabs</span> <span class="o">*</span> <span class="p">(</span><span class="n">tabwidth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">u&#39; &#39;</span> <span class="o">*</span> <span class="n">tabwidth</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">&gt;</span> <span class="n">width</span><span class="p">:</span>
+        <span class="n">new_col</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">-</span> <span class="n">col</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">col</span> <span class="o">-</span> <span class="n">new_col</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="p">]</span>
+        <span class="n">new_col</span> <span class="o">=</span> <span class="n">col</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">3</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39;…&#39;</span><span class="p">,</span> <span class="s">&#39;darkgrey&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">u&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">width</span><span class="p">:</span>
+        <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39;…&#39;</span><span class="p">,</span> <span class="s">&#39;darkgrey&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">u&#39; &#39;</span> <span class="o">*</span> <span class="n">col</span><span class="p">)</span>
+        <span class="n">color_print</span><span class="p">(</span><span class="s">u&#39;^&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+</pre></div></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Relax constants &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="api.html" />
+    <link rel="next" title="astropy.wcs History" href="history.html" />
+    <link rel="prev" title="UnitConverter" href="api_units.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="history.html" title="astropy.wcs History"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_units.html" title="UnitConverter"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="relax-constants">
+<span id="relax"></span><h1>Relax constants<a class="headerlink" href="#relax-constants" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="header-reading-relaxation-constants">
+<span id="relaxread"></span><h2>Header-reading relaxation constants<a class="headerlink" href="#header-reading-relaxation-constants" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS" title="astropy.wcs.WCS"><tt class="xref py py-obj docutils literal"><span class="pre">WCS</span></tt></a>, <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a> and
+<a class="reference internal" href="api_wcs.html#astropy.wcs.find_all_wcs" title="astropy.wcs.find_all_wcs"><tt class="xref py py-obj docutils literal"><span class="pre">find_all_wcs</span></tt></a> have a <em>relax</em> argument, which may be
+either <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a> or an <a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>.</p>
+<ul>
+<li><p class="first">If <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, all non-standard WCS extensions recognized by the parser
+will be handled.</p>
+</li>
+<li><p class="first">If <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a> (default), none of the extensions (even those in the
+errata) will be handled.  Non-conformant keywords will be handled in
+the same way as non-WCS keywords in the header, i.e. by simply
+ignoring them.</p>
+</li>
+<li><p class="first">If an <a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>, is is a bit field to provide fine-grained control over
+what non-standard WCS keywords to accept.  The flag bits are subject
+to change in future and should be set by using the constants
+beginning with <tt class="docutils literal"><span class="pre">WCSHDR_</span></tt> in the <a class="reference internal" href="index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a> module.</p>
+<p>For example, to accept <tt class="docutils literal"><span class="pre">CD00i00j</span></tt> and <tt class="docutils literal"><span class="pre">PC00i00j</span></tt> use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">relax</span> <span class="o">=</span> <span class="n">astropy</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">WCSHDR_CD00i00j</span> <span class="o">|</span> <span class="n">astropy</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">WCSHDR_PC00i00j</span>
+</pre></div>
+</div>
+<p>The parser always treats <tt class="docutils literal"><span class="pre">EPOCH</span></tt> as subordinate to <tt class="docutils literal"><span class="pre">EQUINOXa</span></tt> if
+both are present, and <tt class="docutils literal"><span class="pre">VSOURCEa</span></tt> is always subordinate to
+<tt class="docutils literal"><span class="pre">ZSOURCEa</span></tt>.</p>
+<p>Likewise, <tt class="docutils literal"><span class="pre">VELREF</span></tt> is subordinate to the formalism of WCS Paper
+III.</p>
+</li>
+</ul>
+<p>The flag bits are:</p>
+<ul>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_none</span></tt>: Don&#8217;t accept any extensions (not even those in the
+errata).  Treat non-conformant keywords in the same way as non-WCS
+keywords in the header, i.e. simply ignore them.  (This is
+equivalent to the default behavior or passing <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a>)</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_all</span></tt>: Accept all extensions recognized by the parser.  (This
+is equivalent to passing <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>).</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_CROTAia</span></tt>: Accept <tt class="docutils literal"><span class="pre">CROTAia</span></tt>, <tt class="docutils literal"><span class="pre">iCROTna</span></tt>, <tt class="docutils literal"><span class="pre">TCROTna</span></tt></p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_EPOCHa</span></tt>:  Accept <tt class="docutils literal"><span class="pre">EPOCHa</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_VELREFa</span></tt>: Accept <tt class="docutils literal"><span class="pre">VELREFa</span></tt>.</p>
+<blockquote>
+<div><p>The constructor always recognizes the AIPS-convention
+keywords, <tt class="docutils literal"><span class="pre">CROTAn</span></tt>, <tt class="docutils literal"><span class="pre">EPOCH</span></tt>, and <tt class="docutils literal"><span class="pre">VELREF</span></tt> for the
+primary representation <tt class="docutils literal"><span class="pre">(a</span> <span class="pre">=</span> <span class="pre">'</span> <span class="pre">')</span></tt> but alternates are
+non-standard.</p>
+<p>The constructor accepts <tt class="docutils literal"><span class="pre">EPOCHa</span></tt> and <tt class="docutils literal"><span class="pre">VELREFa</span></tt> only if
+<tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_AUXIMG</span></tt> is also enabled.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_CD00i00j</span></tt>: Accept <tt class="docutils literal"><span class="pre">CD00i00j</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_PC00i00j</span></tt>: Accept <tt class="docutils literal"><span class="pre">PC00i00j</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_PROJPn</span></tt>: Accept <tt class="docutils literal"><span class="pre">PROJPn</span></tt></p>
+<blockquote>
+<div><p>These appeared in early drafts of WCS Paper I+II (before they
+were split) and are equivalent to <tt class="docutils literal"><span class="pre">CDi_ja</span></tt>, <tt class="docutils literal"><span class="pre">PCi_ja</span></tt>, and
+<tt class="docutils literal"><span class="pre">PVi_ma</span></tt> for the primary representation <tt class="docutils literal"><span class="pre">(a</span> <span class="pre">=</span> <span class="pre">'</span> <span class="pre">')</span></tt>.
+<tt class="docutils literal"><span class="pre">PROJPn</span></tt> is equivalent to <tt class="docutils literal"><span class="pre">PVi_ma</span></tt> with <tt class="docutils literal"><span class="pre">m</span></tt> = <tt class="docutils literal"><span class="pre">n</span></tt> &lt;=
+9, and is associated exclusively with the latitude axis.</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_RADECSYS</span></tt>: Accept <tt class="docutils literal"><span class="pre">RADECSYS</span></tt>.  This appeared in early</dt>
+<dd><p class="first last">drafts of WCS Paper I+II and was subsequently replaced by
+<tt class="docutils literal"><span class="pre">RADESYSa</span></tt>.  The construtor accepts <tt class="docutils literal"><span class="pre">RADECSYS</span></tt> only if
+<tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_AUXIMG</span></tt> is also enabled.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_VSOURCE</span></tt>: Accept <tt class="docutils literal"><span class="pre">VSOURCEa</span></tt> or <tt class="docutils literal"><span class="pre">VSOUna</span></tt>.  This appeared
+in early drafts of WCS Paper III and was subsequently dropped in
+favour of <tt class="docutils literal"><span class="pre">ZSOURCEa</span></tt> and <tt class="docutils literal"><span class="pre">ZSOUna</span></tt>.  The constructor accepts
+<tt class="docutils literal"><span class="pre">VSOURCEa</span></tt> only if <tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_AUXIMG</span></tt> is also enabled.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_DOBSn</span></tt>: Allow <tt class="docutils literal"><span class="pre">DOBSn</span></tt>, the column-specific analogue of
+<tt class="docutils literal"><span class="pre">DATE-OBS</span></tt>.  By an oversight this was never formally defined in
+the standard.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_LONGKEY</span></tt>: Accept long forms of the alternate binary table
+and pixel list WCS keywords, i.e. with &#8220;a&#8221; non- blank.
+Specifically:</p>
+<div class="highlight-python"><pre>jCRPXna  TCRPXna  :  jCRPXn  jCRPna  TCRPXn  TCRPna  CRPIXja
+   -     TPCn_ka  :    -     ijPCna    -     TPn_ka  PCi_ja
+   -     TCDn_ka  :    -     ijCDna    -     TCn_ka  CDi_ja
+iCDLTna  TCDLTna  :  iCDLTn  iCDEna  TCDLTn  TCDEna  CDELTia
+iCUNIna  TCUNIna  :  iCUNIn  iCUNna  TCUNIn  TCUNna  CUNITia
+iCTYPna  TCTYPna  :  iCTYPn  iCTYna  TCTYPn  TCTYna  CTYPEia
+iCRVLna  TCRVLna  :  iCRVLn  iCRVna  TCRVLn  TCRVna  CRVALia
+iPVn_ma  TPVn_ma  :    -     iVn_ma    -     TVn_ma  PVi_ma
+iPSn_ma  TPSn_ma  :    -     iSn_ma    -     TSn_ma  PSi_ma</pre>
+</div>
+<p>where the primary and standard alternate forms together with the
+image-header equivalent are shown rightwards of the colon.</p>
+<p>The long form of these keywords could be described as quasi-
+standard.  <tt class="docutils literal"><span class="pre">TPCn_ka</span></tt>, <tt class="docutils literal"><span class="pre">iPVn_ma</span></tt>, and <tt class="docutils literal"><span class="pre">TPVn_ma</span></tt> appeared by
+mistake in the examples in WCS Paper II and subsequently these and
+also <tt class="docutils literal"><span class="pre">TCDn_ka</span></tt>, <tt class="docutils literal"><span class="pre">iPSn_ma</span></tt> and <tt class="docutils literal"><span class="pre">TPSn_ma</span></tt> were legitimized by
+the errata to the WCS papers.</p>
+<p>Strictly speaking, the other long forms are non-standard and in fact
+have never appeared in any draft of the WCS papers nor in the
+errata.  However, as natural extensions of the primary form they are
+unlikely to be written with any other intention.  Thus it should be
+safe to accept them provided, of course, that the resulting keyword
+does not exceed the 8-character limit.</p>
+<p>If <tt class="docutils literal"><span class="pre">WCSHDR_CNAMn</span></tt> is enabled then also accept:</p>
+<div class="highlight-python"><pre>iCNAMna  TCNAMna  :   ---   iCNAna    ---   TCNAna  CNAMEia
+iCRDEna  TCRDEna  :   ---   iCRDna    ---   TCRDna  CRDERia
+iCSYEna  TCSYEna  :   ---   iCSYna    ---   TCSYna  CSYERia</pre>
+</div>
+<p>Note that <tt class="docutils literal"><span class="pre">CNAMEia</span></tt>, <tt class="docutils literal"><span class="pre">CRDERia</span></tt>, <tt class="docutils literal"><span class="pre">CSYERia</span></tt>, and their variants
+are not used by <a class="reference internal" href="index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a> but are stored as auxiliary information.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_CNAMn</span></tt>: Accept <tt class="docutils literal"><span class="pre">iCNAMn</span></tt>, <tt class="docutils literal"><span class="pre">iCRDEn</span></tt>, <tt class="docutils literal"><span class="pre">iCSYEn</span></tt>,
+<tt class="docutils literal"><span class="pre">TCNAMn</span></tt>, <tt class="docutils literal"><span class="pre">TCRDEn</span></tt>, and <tt class="docutils literal"><span class="pre">TCSYEn</span></tt>, i.e. with <tt class="docutils literal"><span class="pre">a</span></tt> blank.
+While non-standard, these are the obvious analogues of <tt class="docutils literal"><span class="pre">iCTYPn</span></tt>,
+<tt class="docutils literal"><span class="pre">TCTYPn</span></tt>, etc.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_AUXIMG</span></tt>: Allow the image-header form of an auxiliary WCS
+keyword with representation-wide scope to provide a default value
+for all images.  This default may be overridden by the
+column-specific form of the keyword.</p>
+<p>For example, a keyword like <tt class="docutils literal"><span class="pre">EQUINOXa</span></tt> would apply to all image
+arrays in a binary table, or all pixel list columns with alternate
+representation <tt class="docutils literal"><span class="pre">a</span></tt> unless overridden by <tt class="docutils literal"><span class="pre">EQUIna</span></tt>.</p>
+<p>Specifically the keywords are:</p>
+<div class="highlight-python"><pre>LATPOLEa  for LATPna
+LONPOLEa  for LONPna
+RESTFREQ  for RFRQna
+RESTFRQa  for RFRQna
+RESTWAVa  for RWAVna</pre>
+</div>
+<p>whose keyvalues are actually used by WCSLIB, and also keywords that
+provide auxiliary information that is simply stored in the wcsprm
+struct:</p>
+<div class="highlight-python"><pre>EPOCH         -       ... (No column-specific form.)
+EPOCHa        -       ... Only if WCSHDR_EPOCHa is set.
+EQUINOXa  for EQUIna
+RADESYSa  for RADEna
+RADECSYS  for RADEna  ... Only if WCSHDR_RADECSYS is set.
+SPECSYSa  for SPECna
+SSYSOBSa  for SOBSna
+SSYSSRCa  for SSRCna
+VELOSYSa  for VSYSna
+VELANGLa  for VANGna
+VELREF        -       ... (No column-specific form.)
+VELREFa       -       ... Only if WCSHDR_VELREFa is set.
+VSOURCEa  for VSOUna  ... Only if WCSHDR_VSOURCE is set.
+WCSNAMEa  for WCSNna  ... Or TWCSna (see below).
+ZSOURCEa  for ZSOUna
+
+DATE-AVG  for DAVGn
+DATE-OBS  for DOBSn
+MJD-AVG   for MJDAn
+MJD-OBS   for MJDOBn
+OBSGEO-X  for OBSGXn
+OBSGEO-Y  for OBSGYn
+OBSGEO-Z  for OBSGZn</pre>
+</div>
+<p>where the image-header keywords on the left provide default values
+for the column specific keywords on the right.</p>
+<p>Keywords in the last group, such as <tt class="docutils literal"><span class="pre">MJD-OBS</span></tt>, apply to all
+alternate representations, so <tt class="docutils literal"><span class="pre">MJD-OBS</span></tt> would provide a default
+value for all images in the header.</p>
+<p>This auxiliary inheritance mechanism applies to binary table image
+arrays and pixel lists alike.  Most of these keywords have no
+default value, the exceptions being <tt class="docutils literal"><span class="pre">LONPOLEa</span></tt> and <tt class="docutils literal"><span class="pre">LATPOLEa</span></tt>,
+and also <tt class="docutils literal"><span class="pre">RADESYSa</span></tt> and <tt class="docutils literal"><span class="pre">EQUINOXa</span></tt> which provide defaults for
+each other.  Thus the only potential difficulty in using
+<tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_AUXIMG</span></tt> is that of erroneously inheriting one of these four
+keywords.</p>
+<p>Unlike <tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_ALLIMG</span></tt>, the existence of one (or all) of these
+auxiliary WCS image header keywords will not by itself cause a
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a> object to be created for alternate
+representation <tt class="docutils literal"><span class="pre">a</span></tt>.  This is because they do not provide
+sufficient information to create a non-trivial coordinate
+representation when used in conjunction with the default values of
+those keywords, such as <tt class="docutils literal"><span class="pre">CTYPEia</span></tt>, that are parameterized by axis
+number.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_ALLIMG</span></tt>: Allow the image-header form of <em>all</em> image header
+WCS keywords to provide a default value for all image arrays in a
+binary table (n.b. not pixel list).  This default may be overridden
+by the column-specific form of the keyword.</p>
+<p>For example, a keyword like <tt class="docutils literal"><span class="pre">CRPIXja</span></tt> would apply to all image
+arrays in a binary table with alternate representation <tt class="docutils literal"><span class="pre">a</span></tt>
+unless overridden by <tt class="docutils literal"><span class="pre">jCRPna</span></tt>.</p>
+<p>Specifically the keywords are those listed above for <tt class="xref py py-obj docutils literal"><span class="pre">WCSHDR_AUXIMG</span></tt>
+plus:</p>
+<div class="highlight-python"><pre>WCSAXESa  for WCAXna</pre>
+</div>
+<p>which defines the coordinate dimensionality, and the following
+keywords which are parameterized by axis number:</p>
+<div class="highlight-python"><pre>CRPIXja   for jCRPna
+PCi_ja    for ijPCna
+CDi_ja    for ijCDna
+CDELTia   for iCDEna
+CROTAi    for iCROTn
+CROTAia        -      ... Only if WCSHDR_CROTAia is set.
+CUNITia   for iCUNna
+CTYPEia   for iCTYna
+CRVALia   for iCRVna
+PVi_ma    for iVn_ma
+PSi_ma    for iSn_ma
+
+CNAMEia   for iCNAna
+CRDERia   for iCRDna
+CSYERia   for iCSYna</pre>
+</div>
+<p>where the image-header keywords on the left provide default values
+for the column specific keywords on the right.</p>
+<p>This full inheritance mechanism only applies to binary table image
+arrays, not pixel lists, because in the latter case there is no
+well-defined association between coordinate axis number and column
+number.</p>
+<p>Note that <tt class="docutils literal"><span class="pre">CNAMEia</span></tt>, <tt class="docutils literal"><span class="pre">CRDERia</span></tt>, <tt class="docutils literal"><span class="pre">CSYERia</span></tt>, and their variants
+are not used by pywcs but are stored in the <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a>
+object as auxiliary information.</p>
+<p>Note especially that at least one <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a> object will
+be returned for each <tt class="docutils literal"><span class="pre">a</span></tt> found in one of the image header keywords
+listed above:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If the image header keywords for <tt class="docutils literal"><span class="pre">a</span></tt> <strong>are not</strong> inherited by
+a binary table, then the struct will not be associated with any
+particular table column number and it is up to the user to
+provide an association.</li>
+<li>If the image header keywords for <tt class="docutils literal"><span class="pre">a</span></tt> <strong>are</strong> inherited by a
+binary table image array, then those keywords are considered to
+be &#8220;exhausted&#8221; and do not result in a separate
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a> object.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="header-writing-relaxation-constants">
+<span id="relaxwrite"></span><h2>Header-writing relaxation constants<a class="headerlink" href="#header-writing-relaxation-constants" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.to_header" title="astropy.wcs.WCS.to_header"><tt class="xref py py-obj docutils literal"><span class="pre">to_header</span></tt></a> and <a class="reference internal" href="api_wcs.html#astropy.wcs.WCS.to_header_string" title="astropy.wcs.WCS.to_header_string"><tt class="xref py py-obj docutils literal"><span class="pre">to_header_string</span></tt></a>
+has a <em>relax</em> argument which may be either <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a> or an
+<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>.</p>
+<ul class="simple">
+<li>If <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, write all recognized extensions.</li>
+<li>If <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a> (default), none of the extensions (even those in the
+errata) will be written.</li>
+<li>If an <a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>, is is a bit field to provide fine-grained control over
+what non-standard WCS keywords to accept.  The flag bits are subject
+to change in future and should be set by using the constants
+beginning with <tt class="docutils literal"><span class="pre">WCSHDO_</span></tt> in the <a class="reference internal" href="index.html#module-astropy.wcs" title="astropy.wcs"><tt class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></tt></a> module.</li>
+</ul>
+<p>The flag bits are:</p>
+<ul>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_none</span></tt>: Don&#8217;t use any extensions.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_all</span></tt>: Write all recognized extensions, equivalent to setting
+each flag bit.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_safe</span></tt>: Write all extensions that are considered to be safe
+and recommended.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_DOBSn</span></tt>: Write <tt class="docutils literal"><span class="pre">DOBSn</span></tt>, the column-specific analogue of
+<tt class="docutils literal"><span class="pre">DATE-OBS</span></tt> for use in binary tables and pixel lists.  WCS Paper
+III introduced <tt class="docutils literal"><span class="pre">DATE-AVG</span></tt> and <tt class="docutils literal"><span class="pre">DAVGn</span></tt> but by an oversight
+<tt class="docutils literal"><span class="pre">DOBSn</span></tt> (the obvious analogy) was never formally defined by the
+standard.  The alternative to using <tt class="docutils literal"><span class="pre">DOBSn</span></tt> is to write
+<tt class="docutils literal"><span class="pre">DATE-OBS</span></tt> which applies to the whole table.  This usage is
+considered to be safe and is recommended.</p>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_TPCn_ka</span></tt>: WCS Paper I defined</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TPn_ka</span></tt> and <tt class="docutils literal"><span class="pre">TCn_ka</span></tt> for pixel lists</p>
+<p>but WCS Paper II uses <tt class="docutils literal"><span class="pre">TPCn_ka</span></tt> in one example and subsequently
+the errata for the WCS papers legitimized the use of</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TPCn_ka</span></tt> and <tt class="docutils literal"><span class="pre">TCDn_ka</span></tt> for pixel lists</p>
+<p>provided that the keyword does not exceed eight characters.  This
+usage is considered to be safe and is recommended because of the
+non-mnemonic terseness of the shorter forms.</p>
+</li>
+</ul>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_PVn_ma</span></tt>: WCS Paper I defined</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">iVn_ma</span></tt> and <tt class="docutils literal"><span class="pre">iSn_ma</span></tt> for bintables and</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TVn_ma</span></tt> and <tt class="docutils literal"><span class="pre">TSn_ma</span></tt> for pixel lists</p>
+<p>but WCS Paper II uses <tt class="docutils literal"><span class="pre">iPVn_ma</span></tt> and <tt class="docutils literal"><span class="pre">TPVn_ma</span></tt> in the examples
+and subsequently the errata for the WCS papers legitimized the use
+of</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">iPVn_ma</span></tt> and <tt class="docutils literal"><span class="pre">iPSn_ma</span></tt> for bintables and</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TPVn_ma</span></tt> and <tt class="docutils literal"><span class="pre">TPSn_ma</span></tt> for pixel lists</p>
+<p>provided that the keyword does not exceed eight characters.  This
+usage is considered to be safe and is recommended because of the
+non-mnemonic terseness of the shorter forms.</p>
+</li>
+</ul>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_CRPXna</span></tt>: For historical reasons WCS Paper I defined</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">jCRPXn</span></tt>, <tt class="docutils literal"><span class="pre">iCDLTn</span></tt>, <tt class="docutils literal"><span class="pre">iCUNIn</span></tt>, <tt class="docutils literal"><span class="pre">iCTYPn</span></tt>, and <tt class="docutils literal"><span class="pre">iCRVLn</span></tt> for
+bintables and</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TCRPXn</span></tt>, <tt class="docutils literal"><span class="pre">TCDLTn</span></tt>, <tt class="docutils literal"><span class="pre">TCUNIn</span></tt>, <tt class="docutils literal"><span class="pre">TCTYPn</span></tt>, and <tt class="docutils literal"><span class="pre">TCRVLn</span></tt> for
+pixel lists</p>
+<p>for use without an alternate version specifier.  However, because
+of the eight-character keyword constraint, in order to accommodate
+column numbers greater than 99 WCS Paper I also defined</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">jCRPna</span></tt>, <tt class="docutils literal"><span class="pre">iCDEna</span></tt>, <tt class="docutils literal"><span class="pre">iCUNna</span></tt>, <tt class="docutils literal"><span class="pre">iCTYna</span></tt> and <tt class="docutils literal"><span class="pre">iCRVna</span></tt> for
+bintables and</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TCRPna</span></tt>, <tt class="docutils literal"><span class="pre">TCDEna</span></tt>, <tt class="docutils literal"><span class="pre">TCUNna</span></tt>, <tt class="docutils literal"><span class="pre">TCTYna</span></tt> and <tt class="docutils literal"><span class="pre">TCRVna</span></tt> for
+pixel lists</p>
+<p>for use with an alternate version specifier (the <tt class="docutils literal"><span class="pre">a</span></tt>).  Like the
+<tt class="docutils literal"><span class="pre">PC</span></tt>, <tt class="docutils literal"><span class="pre">CD</span></tt>, <tt class="docutils literal"><span class="pre">PV</span></tt>, and <tt class="docutils literal"><span class="pre">PS</span></tt> keywords there is an obvious
+tendency to confuse these two forms for column numbers up to 99.
+It is very unlikely that any parser would reject keywords in the
+first set with a non-blank alternate version specifier so this
+usage is considered to be safe and is recommended.</p>
+</li>
+</ul>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_CNAMna</span></tt>: WCS Papers I and III defined</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">iCNAna</span></tt>,  <tt class="docutils literal"><span class="pre">iCRDna</span></tt>,  and <tt class="docutils literal"><span class="pre">iCSYna</span></tt>  for bintables and</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TCNAna</span></tt>,  <tt class="docutils literal"><span class="pre">TCRDna</span></tt>,  and <tt class="docutils literal"><span class="pre">TCSYna</span></tt>  for pixel lists</p>
+<p>By analogy with the above, the long forms would be</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">iCNAMna</span></tt>, <tt class="docutils literal"><span class="pre">iCRDEna</span></tt>, and <tt class="docutils literal"><span class="pre">iCSYEna</span></tt> for bintables and</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">TCNAMna</span></tt>, <tt class="docutils literal"><span class="pre">TCRDEna</span></tt>, and <tt class="docutils literal"><span class="pre">TCSYEna</span></tt> for pixel lists</p>
+<p>Note that these keywords provide auxiliary information only, none
+of them are needed to compute world coordinates.  This usage is
+potentially unsafe and is not recommended at this time.</p>
+</li>
+</ul>
+</li>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">WCSHDO_WCSNna</span></tt>: Write <tt class="docutils literal"><span class="pre">WCSNna</span></tt> instead of <tt class="docutils literal"><span class="pre">TWCSna</span></tt> for pixel
+lists.  While the constructor treats <tt class="docutils literal"><span class="pre">WCSNna</span></tt> and <tt class="docutils literal"><span class="pre">TWCSna</span></tt> as
+equivalent, other parsers may not.  Consequently, this usage is
+potentially unsafe and is not recommended at this time.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Relax constants</a><ul>
+<li><a class="reference internal" href="#header-reading-relaxation-constants">Header-reading relaxation constants</a></li>
+<li><a class="reference internal" href="#header-writing-relaxation-constants">Header-writing relaxation constants</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_units.html"
+                        title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">UnitConverter</span></tt></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="history.html"
+                        title="next chapter">astropy.wcs History</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wcs/relax.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="history.html" title="astropy.wcs History"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_units.html" title="UnitConverter"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li>
+          <li><a href="api.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

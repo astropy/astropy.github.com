@@ -3,17 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Emacs setup for following coding guidelines &mdash; Astropy v0.0.0 documentation</title>
+    <title>Emacs setup for following coding guidelines &mdash; Astropy 0.0.dev664 documentation</title>
+    
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.0.0',
+        VERSION:     '0.0.dev664',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,10 +26,10 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
-    <link rel="top" title="Astropy v0.0.0 documentation" href="../index.html" />
-    <link rel="up" title="Coding Guidelines (Draft 3)" href="codeguide.html" />
-    <link rel="next" title="Documentation Guidelines (Draft 2)" href="docguide.html" />
-    <link rel="prev" title="Coding Guidelines (Draft 3)" href="codeguide.html" /> 
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="Coding Guidelines (Draft)" href="codeguide.html" />
+    <link rel="next" title="Documentation Guidelines (Draft)" href="docguide.html" />
+    <link rel="prev" title="Coding Guidelines (Draft)" href="codeguide.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,14 +39,20 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="docguide.html" title="Documentation Guidelines (Draft 2)"
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="docguide.html" title="Documentation Guidelines (Draft)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="codeguide.html" title="Coding Guidelines (Draft 3)"
+          <a href="codeguide.html" title="Coding Guidelines (Draft)"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Astropy v0.0.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
           <li><a href="index.html" >Documentation for Developers</a> &raquo;</li>
-          <li><a href="codeguide.html" accesskey="U">Coding Guidelines (Draft 3)</a> &raquo;</li> 
+          <li><a href="codeguide.html" accesskey="U">Coding Guidelines (Draft)</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,16 +63,16 @@
             
   <div class="section" id="emacs-setup-for-following-coding-guidelines">
 <h1>Emacs setup for following coding guidelines<a class="headerlink" href="#emacs-setup-for-following-coding-guidelines" title="Permalink to this headline">¶</a></h1>
-<p>The AstroPy coding guidelines are listed in <a class="reference internal" href="codeguide.html"><em>Coding Guidelines (Draft 3)</em></a>. This
+<p>The Astropy coding guidelines are listed in <a class="reference internal" href="codeguide.html"><em>Coding Guidelines (Draft)</em></a>. This
 document will describe some configuration options for Emacs, that will
 help in ensuring that Python code satisfies the guidelines. Emacs can
 be configured in several different ways. So instead of providing a drop
 in configuration file, only the individual configurations are presented
 below.</p>
 <p>For this setup we will need <a class="reference external" href="http://www.emacswiki.org/emacs/FlyMake">flymake</a>, <a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a> and the <a class="reference external" href="http://pypi.python.org/pypi/pep8">pep8</a> Python
-script, in addition to <cite>python-mode</cite>.</p>
+script, in addition to <tt class="xref py py-obj docutils literal"><span class="pre">python-mode</span></tt>.</p>
 <p>Flymake comes with Emacs 23. The rest can be obtained from their
-websites, or can be installed using <cite>easy_install</cite> or <cite>pip</cite>.</p>
+websites, or can be installed using <tt class="xref py py-obj docutils literal"><span class="pre">easy_install</span></tt> or <tt class="xref py py-obj docutils literal"><span class="pre">pip</span></tt>.</p>
 <div class="section" id="global-settings">
 <h2>Global settings<a class="headerlink" href="#global-settings" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="no-tabs">
@@ -146,8 +155,8 @@ Emacs configuration directory.</p>
 red. When cursor is on such a line a message is displayed in the
 mini-buffer. When mouse pointer is on such a line a &#8220;tool tip&#8221; message
 is also shown.</p>
-<p>For flymake to work with <cite>pep8</cite> and <cite>pyflakes</cite>, create an
-executable file named <cite>pychecker</cite> with the following contents. This
+<p>For flymake to work with <tt class="xref py py-obj docutils literal"><span class="pre">pep8</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">pyflakes</span></tt>, create an
+executable file named <tt class="xref py py-obj docutils literal"><span class="pre">pychecker</span></tt> with the following contents. This
 file must be in the system path.</p>
 <div class="highlight-sh"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
 
@@ -189,15 +198,15 @@ get deleted.</p>
 </div>
 <div class="section" id="delete-trailing-white-spaces-and-blank-lines">
 <h3>Delete trailing white spaces and blank lines<a class="headerlink" href="#delete-trailing-white-spaces-and-blank-lines" title="Permalink to this headline">¶</a></h3>
-<p>To manually delete trailing whitespaces, press <cite>C-t C-w</cite>, which will
+<p>To manually delete trailing whitespaces, press <tt class="xref py py-obj docutils literal"><span class="pre">C-t</span> <span class="pre">C-w</span></tt>, which will
 run the command &#8220;delete-whitespaces`. This command is also run when a
 file is saved, and hence all trailing whitespaces will be deleted on
 saving a Python file.</p>
 <p>To make sure that all &#8220;words&#8221; are separated by only one space, type
-<cite>M-SPC</cite> (use the ALT key since <cite>M-SPC</cite> sometimes brings up a context
+<tt class="xref py py-obj docutils literal"><span class="pre">M-SPC</span></tt> (use the ALT key since <tt class="xref py py-obj docutils literal"><span class="pre">M-SPC</span></tt> sometimes brings up a context
 menu.).</p>
 <p>To collapse a set of blank lines to one blank line, place the cursor on
-one of these and press <cite>C-x C-o</cite>. This is useful for deleting multiple
+one of these and press <tt class="xref py py-obj docutils literal"><span class="pre">C-x</span> <span class="pre">C-o</span></tt>. This is useful for deleting multiple
 black lines at the end of a file.</p>
 <div class="highlight-scheme"><div class="highlight"><pre><span class="c1">;; Remove trailing whitespace manually by typing C-t C-w.</span>
 <span class="p">(</span><span class="nf">add-hook</span> <span class="ss">&#39;python-mode-hook</span>
@@ -255,10 +264,10 @@ black lines at the end of a file.</p>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="codeguide.html"
-                        title="previous chapter">Coding Guidelines (Draft 3)</a></p>
+                        title="previous chapter">Coding Guidelines (Draft)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="docguide.html"
-                        title="next chapter">Documentation Guidelines (Draft 2)</a></p>
+                        title="next chapter">Documentation Guidelines (Draft)</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/development/codeguide_emacs.txt"
@@ -267,7 +276,7 @@ black lines at the end of a file.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -288,19 +297,25 @@ black lines at the end of a file.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="docguide.html" title="Documentation Guidelines (Draft 2)"
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="docguide.html" title="Documentation Guidelines (Draft)"
              >next</a> |</li>
         <li class="right" >
-          <a href="codeguide.html" title="Coding Guidelines (Draft 3)"
+          <a href="codeguide.html" title="Coding Guidelines (Draft)"
              >previous</a> |</li>
-        <li><a href="../index.html">Astropy v0.0.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
           <li><a href="index.html" >Documentation for Developers</a> &raquo;</li>
-          <li><a href="codeguide.html" >Coding Guidelines (Draft 3)</a> &raquo;</li> 
+          <li><a href="codeguide.html" >Coding Guidelines (Draft)</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Erik Tollerud, Thomas Robitaille, Perry Greenfield, and the Astropy Collaboration.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

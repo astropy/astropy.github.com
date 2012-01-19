@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>astropy.io.vo.ucd &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for astropy.io.vo.ucd</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This file contains routines to verify the correctness of UCD strings.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">with_statement</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="c">#STDLIB</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c">#LOCAL</span>
+<span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">config</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;parse_ucd&#39;</span><span class="p">,</span> <span class="s">&#39;check_ucd&#39;</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">UCDWords</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to manage the list of acceptable UCD words.  Works by</span>
+<span class="sd">    reading in a data file exactly as provided by IVOA.  This file</span>
+<span class="sd">    resides in data/ucd1p-words.txt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_primary</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_secondary</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_descriptions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_capitalization</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">with</span> <span class="n">config</span><span class="o">.</span><span class="n">get_data_fileobj</span><span class="p">(</span><span class="s">&quot;data/ucd1p-words.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fd</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">descr</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;|&#39;</span><span class="p">)]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">descr</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)]</span>
+                <span class="n">name_lower</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="s">&#39;QPEV&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_primary</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name_lower</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="s">&#39;QSEV&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_secondary</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name_lower</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_descriptions</span><span class="p">[</span><span class="n">name_lower</span><span class="p">]</span> <span class="o">=</span> <span class="n">descr</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_capitalization</span><span class="p">[</span><span class="n">name_lower</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">is_primary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if *name* is a valid primary name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primary</span>
+
+    <span class="k">def</span> <span class="nf">is_secondary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if *name* is a valid secondary name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secondary</span>
+
+    <span class="k">def</span> <span class="nf">get_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the official English description of the given UCD</span>
+<span class="sd">        *name*.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_descriptions</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+    <span class="k">def</span> <span class="nf">normalize_capitalization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the standard capitalization form of the given name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_capitalization</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+<span class="n">_ucd_singleton</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<div class="viewcode-block" id="parse_ucd"><a class="viewcode-back" href="../../../../vo/api_ucd.html#astropy.io.vo.ucd.parse_ucd">[docs]</a><span class="k">def</span> <span class="nf">parse_ucd</span><span class="p">(</span><span class="n">ucd</span><span class="p">,</span> <span class="n">check_controlled_vocabulary</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">has_colon</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse the UCD into its component parts.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ucd : str</span>
+<span class="sd">        The UCD string</span>
+
+<span class="sd">    check_controlled_vocabulary : bool, optional</span>
+<span class="sd">        If `True`, then each word in the UCD will be verified against</span>
+<span class="sd">        the UCD1+ controlled vocabulary, (as required by the VOTable</span>
+<span class="sd">        specification version 1.2), otherwise not.</span>
+
+<span class="sd">    has_colon : bool, optional</span>
+<span class="sd">        If `True`, the UCD may contain a colon (as defined in earlier</span>
+<span class="sd">        versions of the standard).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    parts : list</span>
+<span class="sd">        The result is a list of tuples of the form:</span>
+
+<span class="sd">            (*namespace*, *word*)</span>
+
+<span class="sd">        If no namespace was explicitly specified, *namespace* will be</span>
+<span class="sd">        returned as ``&#39;ivoa&#39;`` (i.e., the default namespace).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError : *ucd* is invalid</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_ucd_singleton</span>
+    <span class="k">if</span> <span class="n">_ucd_singleton</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">_ucd_singleton</span> <span class="o">=</span> <span class="n">UCDWords</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">has_colon</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;[^A-Za-z0-9_.:;\-]&#39;</span><span class="p">,</span> <span class="n">ucd</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;[^A-Za-z0-9_.;\-]&#39;</span><span class="p">,</span> <span class="n">ucd</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;UCD has invalid character &#39;</span><span class="si">%s</span><span class="s">&#39; in &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ucd</span><span class="p">))</span>
+
+    <span class="n">word_component_re</span> <span class="o">=</span> <span class="s">&#39;[A-Za-z0-9][A-Za-z0-9\-_]*&#39;</span>
+    <span class="n">word_re</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">(\.</span><span class="si">%s</span><span class="s">)*&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">word_component_re</span><span class="p">,</span> <span class="n">word_component_re</span><span class="p">)</span>
+
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">ucd</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;;&#39;</span><span class="p">)</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parts</span><span class="p">):</span>
+        <span class="n">colon_count</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">colon_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ns</span><span class="p">,</span> <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">word_component_re</span><span class="p">,</span> <span class="n">ns</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid namespace &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">ns</span><span class="p">)</span>
+            <span class="n">ns</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">colon_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Too many colons in &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ns</span> <span class="o">=</span> <span class="s">&#39;ivoa&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">word_re</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Invalid word &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ns</span> <span class="o">==</span> <span class="s">&#39;ivoa&#39;</span> <span class="ow">and</span> <span class="n">check_controlled_vocabulary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">_ucd_singleton</span><span class="o">.</span><span class="n">is_primary</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">_ucd_singleton</span><span class="o">.</span><span class="n">is_secondary</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="s">&quot;Secondary word &#39;</span><span class="si">%s</span><span class="s">&#39; is not valid as a primary &quot;</span>
+                            <span class="s">&quot;word&quot;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Unknown word &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">_ucd_singleton</span><span class="o">.</span><span class="n">is_secondary</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">_ucd_singleton</span><span class="o">.</span><span class="n">is_primary</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="s">&quot;Primary word &#39;</span><span class="si">%s</span><span class="s">&#39; is not valid as a secondary &quot;</span>
+                            <span class="s">&quot;word&quot;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Unknown word &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">normalized_word</span> <span class="o">=</span> <span class="n">_ucd_singleton</span><span class="o">.</span><span class="n">normalize_capitalization</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">normalized_word</span> <span class="o">=</span> <span class="n">word</span>
+        <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ns</span><span class="p">,</span> <span class="n">normalized_word</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">words</span>
+
+</div>
+<div class="viewcode-block" id="check_ucd"><a class="viewcode-back" href="../../../../vo/api_ucd.html#astropy.io.vo.ucd.check_ucd">[docs]</a><span class="k">def</span> <span class="nf">check_ucd</span><span class="p">(</span><span class="n">ucd</span><span class="p">,</span> <span class="n">check_controlled_vocabulary</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">has_colon</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns False if *ucd* is not a valid `unified content</span>
+<span class="sd">    descriptor`_.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ucd : str</span>
+<span class="sd">        The UCD string</span>
+
+<span class="sd">    check_controlled_vocabulary : bool, optional</span>
+<span class="sd">        If `True`, then each word in the UCD will be verified against</span>
+<span class="sd">        the UCD1+ controlled vocabulary, (as required by the VOTable</span>
+<span class="sd">        specification version 1.2), otherwise not.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    valid : bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ucd</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">parse_ucd</span><span class="p">(</span><span class="n">ucd</span><span class="p">,</span>
+                  <span class="n">check_controlled_vocabulary</span><span class="o">=</span><span class="n">check_controlled_vocabulary</span><span class="p">,</span>
+                  <span class="n">has_colon</span><span class="o">=</span><span class="n">has_colon</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../../index.html">
+              <img class="logo" src="../../../../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WCS &mdash; Astropy 0.0.dev664 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.dev664',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/astropyicon.ico"/>
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="api.html" />
+    <link rel="next" title="Wcsprm" href="api_wcsprm.html" />
+    <link rel="prev" title="API Documentation" href="api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_wcsprm.html" title="Wcsprm"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="wcs">
+<h1><tt class="xref py py-obj docutils literal"><span class="pre">WCS</span></tt><a class="headerlink" href="#wcs" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="astropy.wcs.WCS">
+<em class="property">class </em><tt class="descclassname">astropy.wcs.</tt><tt class="descname">WCS</tt><big>(</big><em>header=None</em>, <em>fobj=None</em>, <em>key=' '</em>, <em>minerr=0.0</em>, <em>relax=False</em>, <em>naxis=None</em>, <em>keysel=None</em>, <em>colsel=None</em>, <em>fix=True</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS" title="Permalink to this definition">¶</a></dt>
+<dd><p>WCS objects perform standard WCS transformations, and correct for
+<a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> and <a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table-lookup distortions, based on the WCS
+keywords and supplementary data read from a FITS file.</p>
+<dl class="method">
+<dt id="astropy.wcs.WCS.all_pix2sky">
+<tt class="descname">all_pix2sky</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.all_pix2sky" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms pixel coordinates to sky coordinates.</p>
+<p>Performs all of the following in order:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Detector to image plane correction (optionally)</li>
+<li><a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> distortion correction (optionally)</li>
+<li><a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table-lookup distortion correction (optionally)</li>
+<li><a class="reference external" href="http://www.atnf.csiro.au/~mcalabre/WCS/">wcslib</a> WCS transformation</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>naxis</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+<p>For a transformation that is not two-dimensional, the
+two-argument form must be used.</p>
+</div></blockquote>
+<p><strong>ra_dec_order</strong> : bool, optional</p>
+<blockquote>
+<div><p>When <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> will ensure that sky coordinates are always given and
+returned in as (<em>ra</em>, <em>dec</em>) pairs, regardless of the order of the
+axes specified by the in the <tt class="docutils literal"><span class="pre">CTYPE</span></tt> keywords.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the sky coordinates, in degrees.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>SingularMatrixError</strong> :</p>
+<blockquote>
+<div><p>Linear transformation matrix is singular.</p>
+</div></blockquote>
+<p><strong>InconsistentAxisTypesError</strong> :</p>
+<blockquote>
+<div><p>Inconsistent or unrecognized coordinate axis types.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>Invalid parameter value.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>x- and y-coordinate arrays are not the same size.</p>
+</div></blockquote>
+<p><strong>InvalidTransformError</strong> :</p>
+<blockquote>
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+<p><strong>InvalidTransformError</strong> :</p>
+<blockquote class="last">
+<div><p>Ill-conditioned coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The order of the axes for the result is determined by the
+<tt class="xref py py-obj docutils literal"><span class="pre">CTYPEia</span></tt> keywords in the FITS header, therefore it may not
+always be of the form (<em>ra</em>, <em>dec</em>).  The
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lat" title="astropy.wcs.Wcsprm.lat"><tt class="xref py py-obj docutils literal"><span class="pre">lat</span></tt></a>, <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lng" title="astropy.wcs.Wcsprm.lng"><tt class="xref py py-obj docutils literal"><span class="pre">lng</span></tt></a>,
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lattyp" title="astropy.wcs.Wcsprm.lattyp"><tt class="xref py py-obj docutils literal"><span class="pre">lattyp</span></tt></a> and <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lngtyp" title="astropy.wcs.Wcsprm.lngtyp"><tt class="xref py py-obj docutils literal"><span class="pre">lngtyp</span></tt></a>
+members can be used to determine the order of the axes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.calcFootprint">
+<tt class="descname">calcFootprint</tt><big>(</big><em>header=None</em>, <em>undistort=True</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.calcFootprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the footprint of the image on the sky.</p>
+<p>A footprint is defined as the positions of the corners of the
+image on the sky after all available distortions have been
+applied.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>header</strong> : pyfits header object, optional</p>
+<p><strong>undistort</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, take SIP and distortion lookup table into account</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>coord</strong> : (4, 2) array of (<em>x</em>, <em>y</em>) coordinates.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the object.</p>
+<p>Convenience method so user doesn&#8217;t have to import the <a class="reference external" href="http://docs.python.org/library/copy.html#module-copy" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">copy</span></tt></a>
+stdlib module.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.WCS.cpdis1">
+<tt class="descname">cpdis1</tt><a class="headerlink" href="#astropy.wcs.WCS.cpdis1" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="api_distortion.html#astropy.wcs.DistortionLookupTable" title="astropy.wcs.DistortionLookupTable"><tt class="xref py py-obj docutils literal"><span class="pre">DistortionLookupTable</span></tt></a></p>
+<p>The pre-linear transformation distortion lookup table, <tt class="docutils literal"><span class="pre">CPDIS1</span></tt>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.WCS.cpdis2">
+<tt class="descname">cpdis2</tt><a class="headerlink" href="#astropy.wcs.WCS.cpdis2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="api_distortion.html#astropy.wcs.DistortionLookupTable" title="astropy.wcs.DistortionLookupTable"><tt class="xref py py-obj docutils literal"><span class="pre">DistortionLookupTable</span></tt></a></p>
+<p>The pre-linear transformation distortion lookup table, <tt class="docutils literal"><span class="pre">CPDIS2</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.deepcopy">
+<tt class="descname">deepcopy</tt><big>(</big><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.deepcopy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a deep copy of the object.</p>
+<p>Convenience method so user doesn&#8217;t have to import the <a class="reference external" href="http://docs.python.org/library/copy.html#module-copy" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">copy</span></tt></a>
+stdlib module.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.det2im">
+<tt class="descname">det2im</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.det2im" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert detector coordinates to image plane coordinates using
+<a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table-lookup distortion correction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>2</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the pixel coordinates.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.WCS.det2im1">
+<tt class="descname">det2im1</tt><a class="headerlink" href="#astropy.wcs.WCS.det2im1" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="api_distortion.html#astropy.wcs.DistortionLookupTable" title="astropy.wcs.DistortionLookupTable"><tt class="xref py py-obj docutils literal"><span class="pre">DistortionLookupTable</span></tt></a> object for detector to image plane
+correction in the <em>x</em>-axis.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.WCS.det2im2">
+<tt class="descname">det2im2</tt><a class="headerlink" href="#astropy.wcs.WCS.det2im2" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="api_distortion.html#astropy.wcs.DistortionLookupTable" title="astropy.wcs.DistortionLookupTable"><tt class="xref py py-obj docutils literal"><span class="pre">DistortionLookupTable</span></tt></a> object for detector to image plane
+correction in the <em>y</em>-axis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.footprint_to_file">
+<tt class="descname">footprint_to_file</tt><big>(</big><em>filename=None</em>, <em>color='green'</em>, <em>width=2</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.footprint_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes out a <a class="reference external" href="http://hea-www.harvard.edu/RD/ds9/">ds9</a> style regions file. It can be loaded
+directly by <a class="reference external" href="http://hea-www.harvard.edu/RD/ds9/">ds9</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>filename</strong> : string, optional</p>
+<blockquote>
+<div><p>Output file name - default is <tt class="docutils literal"><span class="pre">'footprint.reg'</span></tt></p>
+</div></blockquote>
+<p><strong>color</strong> : string, optional</p>
+<blockquote>
+<div><p>Color to use when plotting the line.</p>
+</div></blockquote>
+<p><strong>width</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Width of the region line.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.get_axis_types">
+<tt class="descname">get_axis_types</tt><big>(</big><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.get_axis_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to <tt class="xref py py-obj docutils literal"><span class="pre">self.wcsprm.axis_types</span></tt>
+but provides the information in a more Python-friendly format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : list of dicts</p>
+<blockquote class="last">
+<div><p>Returns a list of dictionaries, one for each axis, each
+containing attributes about the type of that axis.</p>
+<p>Each dictionary has the following keys:</p>
+<ul class="simple">
+<li>&#8216;coordinate_type&#8217;:<ul>
+<li>None: Non-specific coordinate type.</li>
+<li>&#8216;stokes&#8217;: Stokes coordinate.</li>
+<li>&#8216;celestial&#8217;: Celestial coordinate (including <tt class="docutils literal"><span class="pre">CUBEFACE</span></tt>).</li>
+<li>&#8216;spectral&#8217;: Spectral coordinate.</li>
+</ul>
+</li>
+<li>&#8216;scale&#8217;:<ul>
+<li>&#8216;linear&#8217;: Linear axis.</li>
+<li>&#8216;quantized&#8217;: Quantized axis (<tt class="docutils literal"><span class="pre">STOKES</span></tt>, <tt class="docutils literal"><span class="pre">CUBEFACE</span></tt>).</li>
+<li>&#8216;non-linear celestial&#8217;: Non-linear celestial axis.</li>
+<li>&#8216;non-linear spectral&#8217;: Non-linear spectral axis.</li>
+<li>&#8216;logarithmic&#8217;: Logarithmic axis.</li>
+<li>&#8216;tabular&#8217;: Tabular axis.</li>
+</ul>
+</li>
+<li>&#8216;group&#8217;<ul>
+<li>Group number, e.g. lookup table number</li>
+</ul>
+</li>
+<li>&#8216;number&#8217;<ul>
+<li>For celestial axes:<ul>
+<li>0: Longitude coordinate.</li>
+<li>1: Latitude coordinate.</li>
+<li>2: <tt class="docutils literal"><span class="pre">CUBEFACE</span></tt> number.</li>
+</ul>
+</li>
+<li>For lookup tables:<ul>
+<li>the axis number in a multidimensional table.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">CTYPEia</span></tt> in <tt class="docutils literal"><span class="pre">&quot;4-3&quot;</span></tt> form with unrecognized algorithm code will
+generate an error.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.get_naxis">
+<tt class="descname">get_naxis</tt><big>(</big><em>header=None</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.get_naxis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.p4_pix2foc">
+<tt class="descname">p4_pix2foc</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.p4_pix2foc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert pixel coordinates to focal plane coordinates using
+<a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table-lookup distortion correction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>2</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the focal coordinates.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.pix2foc">
+<tt class="descname">pix2foc</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.pix2foc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert pixel coordinates to focal plane coordinates using the
+<a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> polynomial distortion convention and <a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a>
+table-lookup distortion correction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>2</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the focal coordinates.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.printwcs">
+<tt class="descname">printwcs</tt><big>(</big><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.printwcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Temporary function for internal use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.rotateCD">
+<tt class="descname">rotateCD</tt><big>(</big><em>theta</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.rotateCD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.WCS.sip">
+<tt class="descname">sip</tt><a class="headerlink" href="#astropy.wcs.WCS.sip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get/set the <a class="reference internal" href="api_sip.html#astropy.wcs.Sip" title="astropy.wcs.Sip"><tt class="xref py py-obj docutils literal"><span class="pre">Sip</span></tt></a> object for performing <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> distortion
+correction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.sip_foc2pix">
+<tt class="descname">sip_foc2pix</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.sip_foc2pix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert focal plane coordinates to pixel coordinates using the
+<a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> polynomial distortion convention.</p>
+<p><a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table lookup distortion correction is not applied,
+even if that information existed in the FITS file that
+initialized this <a class="reference internal" href="#astropy.wcs.WCS" title="astropy.wcs.WCS"><tt class="xref py py-obj docutils literal"><span class="pre">WCS</span></tt></a> object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>2</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the pixel coordinates.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.sip_pix2foc">
+<tt class="descname">sip_pix2foc</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.sip_pix2foc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert pixel coordinates to focal plane coordinates using the
+<a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> polynomial distortion convention.</p>
+<p><a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table lookup distortion correction is not applied,
+even if that information existed in the FITS file that
+initialized this <a class="reference internal" href="#astropy.wcs.WCS" title="astropy.wcs.WCS"><tt class="xref py py-class docutils literal"><span class="pre">WCS</span></tt></a> object.  To correct
+for that, use <a class="reference internal" href="#astropy.wcs.WCS.pix2foc" title="astropy.wcs.WCS.pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">pix2foc</span></tt></a> or
+<a class="reference internal" href="#astropy.wcs.WCS.p4_pix2foc" title="astropy.wcs.WCS.p4_pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">p4_pix2foc</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>2</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the focal coordinates.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.sub">
+<tt class="descname">sub</tt><big>(</big><em>axes</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the coordinate description for a subimage from a
+<a class="reference internal" href="#astropy.wcs.WCS" title="astropy.wcs.WCS"><tt class="xref py py-obj docutils literal"><span class="pre">WCS</span></tt></a> object.</p>
+<p>The world coordinate system of the subimage must be separable in the
+sense that the world coordinates at any point in the subimage must
+depend only on the pixel coordinates of the axes extracted.  In
+practice, this means that the <tt class="docutils literal"><span class="pre">PCi_ja</span></tt> matrix of the original image
+must not contain non-zero off-diagonal terms that associate any of the
+subimage axes with any of the non-subimage axes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>axes</strong> : int or a sequence.</p>
+<blockquote>
+<div><ul class="simple">
+<li>If an int, include the first <em>N</em> axes in their original order.</li>
+<li>If a sequence, may contain a combination of image axis numbers
+(1-relative) or special axis identifiers (see below).  Order is
+significant; <tt class="docutils literal"><span class="pre">axes[0]</span></tt> is the axis number of the input image
+that corresponds to the first axis in the subimage, etc.</li>
+<li>If <tt class="docutils literal"><span class="pre">0</span></tt>, <tt class="docutils literal"><span class="pre">[]</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt>, do a deep copy.</li>
+</ul>
+<p>Coordinate axes types may be specified using either strings or
+special integer constants.  The available types are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'longitude'</span></tt> / <tt class="docutils literal"><span class="pre">WCSSUB_LONGITUDE</span></tt>: Celestial longitude</li>
+<li><tt class="docutils literal"><span class="pre">'latitude'</span></tt> / <tt class="docutils literal"><span class="pre">WCSSUB_LATITUDE</span></tt>: Celestial latitude</li>
+<li><tt class="docutils literal"><span class="pre">'cubeface'</span></tt> / <tt class="docutils literal"><span class="pre">WCSSUB_CUBEFACE</span></tt>: Quadcube <tt class="docutils literal"><span class="pre">CUBEFACE</span></tt> axis</li>
+<li><tt class="docutils literal"><span class="pre">'spectral'</span></tt> / <tt class="docutils literal"><span class="pre">WCSSUB_SPECTRAL</span></tt>: Spectral axis</li>
+<li><tt class="docutils literal"><span class="pre">'stokes'</span></tt> / <tt class="docutils literal"><span class="pre">WCSSUB_STOKES</span></tt>: Stokes axis</li>
+<li><tt class="docutils literal"><span class="pre">'celestial'</span></tt> / <tt class="docutils literal"><span class="pre">WCSSUB_CELESTIAL</span></tt>: An alias for the
+combination of <tt class="docutils literal"><span class="pre">'longitude'</span></tt>, <tt class="docutils literal"><span class="pre">'latitude'</span></tt> and <tt class="docutils literal"><span class="pre">'cubeface'</span></tt>.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>new_wcs</strong> : <a class="reference internal" href="#astropy.wcs.WCS" title="astropy.wcs.WCS"><tt class="xref py py-obj docutils literal"><span class="pre">WCS</span></tt></a> object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>InvalidSubimageSpecificationError</strong> :</p>
+<blockquote>
+<div><p>Invalid subimage specification (no spectral axis).</p>
+</div></blockquote>
+<p><strong>NonseparableSubimageCoordinateSystem</strong> :</p>
+<blockquote class="last">
+<div><p>Non-separable subimage coordinate system.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Combinations of subimage axes of particular types may be extracted in
+the same order as they occur in the input image by combining the
+integer constants with the &#8216;binary or&#8217; (<tt class="docutils literal"><span class="pre">|</span></tt>) operator.  For
+example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wcs</span><span class="o">.</span><span class="n">sub</span><span class="p">([</span><span class="n">WCSSUB_LONGITUDE</span> <span class="o">|</span> <span class="n">WCSSUB_LATITUDE</span> <span class="o">|</span> <span class="n">WCSSUB_SPECTRAL</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>would extract the longitude, latitude, and spectral axes in the same
+order as the input image.  If one of each were present, the resulting
+object would have three dimensions.</p>
+<p>For convenience, <tt class="docutils literal"><span class="pre">WCSSUB_CELESTIAL</span></tt> is defined as the combination
+<tt class="docutils literal"><span class="pre">WCSSUB_LONGITUDE</span> <span class="pre">|</span> <span class="pre">WCSSUB_LATITUDE</span> <span class="pre">|</span> <span class="pre">WCSSUB_CUBEFACE</span></tt>.</p>
+<p>The codes may also be negated to extract all but the types specified,
+for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wcs</span><span class="o">.</span><span class="n">sub</span><span class="p">([</span>
+  <span class="n">WCSSUB_LONGITUDE</span><span class="p">,</span>
+  <span class="n">WCSSUB_LATITUDE</span><span class="p">,</span>
+  <span class="n">WCSSUB_CUBEFACE</span><span class="p">,</span>
+  <span class="o">-</span><span class="p">(</span><span class="n">WCSSUB_SPECTRAL</span> <span class="o">|</span> <span class="n">WCSSUB_STOKES</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>The last of these specifies all axis types other than spectral or
+Stokes.  Extraction is done in the order specified by <tt class="xref py py-obj docutils literal"><span class="pre">axes</span></tt>, i.e. a
+longitude axis (if present) would be extracted first (via <tt class="docutils literal"><span class="pre">axes[0]</span></tt>)
+and not subsequently (via <tt class="docutils literal"><span class="pre">axes[3]</span></tt>).  Likewise for the latitude and
+cubeface axes in this example.</p>
+<p>The number of dimensions in the returned object may be less than or
+greater than the length of <tt class="xref py py-obj docutils literal"><span class="pre">axes</span></tt>.  However, it will never exceed the
+number of axes in the input image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.to_header">
+<tt class="descname">to_header</tt><big>(</big><em>relax=False</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.to_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <a class="reference external" href="http://www.stsci.edu/resources/software_hardware/pyfits">pyfits</a> header object with the WCS information
+stored in this object.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This function does not write out SIP or Paper IV distortion
+keywords, yet, only the core WCS support by <a class="reference external" href="http://www.atnf.csiro.au/~mcalabre/WCS/">wcslib</a>.</p>
+</div>
+<p>The output header will almost certainly differ from the input in a
+number of respects:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The output header only contains WCS-related keywords.  In
+particular, it does not contain syntactically-required
+keywords such as <tt class="docutils literal"><span class="pre">SIMPLE</span></tt>, <tt class="docutils literal"><span class="pre">NAXIS</span></tt>, <tt class="docutils literal"><span class="pre">BITPIX</span></tt>, or
+<tt class="docutils literal"><span class="pre">END</span></tt>.</li>
+<li>Deprecated (e.g. <tt class="docutils literal"><span class="pre">CROTAn</span></tt>) or non-standard usage will
+be translated to standard (this is partially dependent on
+whether <tt class="xref py py-obj docutils literal"><span class="pre">fix</span></tt> was applied).</li>
+<li>Quantities will be converted to the units used internally,
+basically SI with the addition of degrees.</li>
+<li>Floating-point quantities may be given to a different decimal
+precision.</li>
+<li>Elements of the <tt class="docutils literal"><span class="pre">PCi_j</span></tt> matrix will be written if and
+only if they differ from the unit matrix.  Thus, if the
+matrix is unity then no elements will be written.</li>
+<li>Additional keywords such as <tt class="docutils literal"><span class="pre">WCSAXES</span></tt>, <tt class="docutils literal"><span class="pre">CUNITia</span></tt>,
+<tt class="docutils literal"><span class="pre">LONPOLEa</span></tt> and <tt class="docutils literal"><span class="pre">LATPOLEa</span></tt> may appear.</li>
+<li>The original keycomments will be lost, although
+<tt class="xref py py-obj docutils literal"><span class="pre">to_header</span></tt> tries hard to write meaningful comments.</li>
+<li>Keyword order may be changed.</li>
+</ol>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>relax</strong> : bool or int</p>
+<blockquote>
+<div><p>Degree of permissiveness:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a>: Recognize only FITS keywords defined by the
+published WCS standard.</li>
+<li><a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>: Admit all recognized informal extensions of the
+WCS standard.</li>
+<li><a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>: a bit field selecting specific extensions to
+write.  See <a class="reference internal" href="relax.html#relaxwrite"><em>Header-writing relaxation constants</em></a> for details.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>header</strong> : <a class="reference external" href="http://www.stsci.edu/resources/software_hardware/pyfits">pyfits</a> Header object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.to_header_string">
+<tt class="descname">to_header_string</tt><big>(</big><em>relax=False</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.to_header_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identical to <tt class="xref py py-obj docutils literal"><span class="pre">to_header</span></tt>, but returns a string containing the
+header cards.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="astropy.wcs.WCS.wcs">
+<tt class="descname">wcs</tt><a class="headerlink" href="#astropy.wcs.WCS.wcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm" title="astropy.wcs.Wcsprm"><tt class="xref py py-obj docutils literal"><span class="pre">Wcsprm</span></tt></a> object to perform the basic <a class="reference external" href="http://www.atnf.csiro.au/~mcalabre/WCS/">wcslib</a> WCS
+transformation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.wcs_pix2sky">
+<tt class="descname">wcs_pix2sky</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.wcs_pix2sky" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms pixel coordinates to sky coordinates by doing only
+the basic <a class="reference external" href="http://www.atnf.csiro.au/~mcalabre/WCS/">wcslib</a> transformation.</p>
+<p>No <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> or <a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper IV</a> table lookup distortion correction is
+applied.  To perform distortion correction, see
+<a class="reference internal" href="#astropy.wcs.WCS.all_pix2sky" title="astropy.wcs.WCS.all_pix2sky"><tt class="xref py py-obj docutils literal"><span class="pre">all_pix2sky</span></tt></a>,
+<a class="reference internal" href="#astropy.wcs.WCS.sip_pix2foc" title="astropy.wcs.WCS.sip_pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">sip_pix2foc</span></tt></a>, <a class="reference internal" href="#astropy.wcs.WCS.p4_pix2foc" title="astropy.wcs.WCS.p4_pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">p4_pix2foc</span></tt></a>,
+or <a class="reference internal" href="#astropy.wcs.WCS.pix2foc" title="astropy.wcs.WCS.pix2foc"><tt class="xref py py-obj docutils literal"><span class="pre">pix2foc</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>naxis</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+<p>For a transformation that is not two-dimensional, the
+two-argument form must be used.</p>
+</div></blockquote>
+<p><strong>ra_dec_order</strong> : bool, optional</p>
+<blockquote>
+<div><p>When <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> will ensure that sky coordinates are always given and
+returned in as (<em>ra</em>, <em>dec</em>) pairs, regardless of the order of the
+axes specified by the in the <tt class="docutils literal"><span class="pre">CTYPE</span></tt> keywords.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the sky coordinates, in degrees.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>SingularMatrixError</strong> :</p>
+<blockquote>
+<div><p>Linear transformation matrix is singular.</p>
+</div></blockquote>
+<p><strong>InconsistentAxisTypesError</strong> :</p>
+<blockquote>
+<div><p>Inconsistent or unrecognized coordinate axis types.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>Invalid parameter value.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>x- and y-coordinate arrays are not the same size.</p>
+</div></blockquote>
+<p><strong>InvalidTransformError</strong> :</p>
+<blockquote>
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+<p><strong>InvalidTransformError</strong> :</p>
+<blockquote class="last">
+<div><p>Ill-conditioned coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The order of the axes for the result is determined by the
+<tt class="xref py py-obj docutils literal"><span class="pre">CTYPEia</span></tt> keywords in the FITS header, therefore it may not
+always be of the form (<em>ra</em>, <em>dec</em>).  The
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lat" title="astropy.wcs.Wcsprm.lat"><tt class="xref py py-obj docutils literal"><span class="pre">lat</span></tt></a>, <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lng" title="astropy.wcs.Wcsprm.lng"><tt class="xref py py-obj docutils literal"><span class="pre">lng</span></tt></a>,
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lattyp" title="astropy.wcs.Wcsprm.lattyp"><tt class="xref py py-obj docutils literal"><span class="pre">lattyp</span></tt></a> and <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lngtyp" title="astropy.wcs.Wcsprm.lngtyp"><tt class="xref py py-obj docutils literal"><span class="pre">lngtyp</span></tt></a>
+members can be used to determine the order of the axes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="astropy.wcs.WCS.wcs_sky2pix">
+<tt class="descname">wcs_sky2pix</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#astropy.wcs.WCS.wcs_sky2pix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms sky coordinates to pixel coordinates, using only
+the basic <a class="reference external" href="http://www.atnf.csiro.au/~mcalabre/WCS/">wcslib</a> WCS transformation.  No <a class="reference external" href="http://irsa.ipac.caltech.edu/data/SPITZER/docs/files/spitzer/shupeADASS.pdf">SIP</a> or <a class="reference external" href="http://www.atnf.csiro.au/people/mcalabre/WCS/index.html">Paper
+IV</a> table lookup distortion is applied.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>args</strong> : flexible</p>
+<blockquote>
+<div><p>Either two or three arguments may be provided.</p>
+<blockquote>
+<div><ul class="simple">
+<li>2 arguments: An <em>N</em> x <em>naxis</em> array of <em>x</em>- and
+<em>y</em>-coordinates, and an <em>origin</em>.</li>
+<li>3 arguments: 2 one-dimensional arrays of <em>x</em> and <em>y</em>
+coordinates, and an <em>origin</em>.</li>
+</ul>
+</div></blockquote>
+<p>Here, <em>origin</em> is the coordinate in the upper left corner of the
+image.  In FITS and Fortran standards, this is 1.  In Numpy and C
+standards this is 0.</p>
+<p>For a transformation that is not two-dimensional, the
+two-argument form must be used.</p>
+</div></blockquote>
+<p><strong>ra_dec_order</strong> : bool, optional</p>
+<blockquote>
+<div><p>When <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a> will ensure that sky coordinates are always given and
+returned in as (<em>ra</em>, <em>dec</em>) pairs, regardless of the order of the
+axes specified by the in the <tt class="docutils literal"><span class="pre">CTYPE</span></tt> keywords.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : array</p>
+<blockquote>
+<div><p>Returns the pixel coordinates.  If the input was a single array and
+origin, a single array is returned, otherwise a tuple of arrays is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>MemoryError</strong> :</p>
+<blockquote>
+<div><p>Memory allocation failed.</p>
+</div></blockquote>
+<p><strong>SingularMatrixError</strong> :</p>
+<blockquote>
+<div><p>Linear transformation matrix is singular.</p>
+</div></blockquote>
+<p><strong>InconsistentAxisTypesError</strong> :</p>
+<blockquote>
+<div><p>Inconsistent or unrecognized coordinate axis types.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>Invalid parameter value.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote>
+<div><p>x- and y-coordinate arrays are not the same size.</p>
+</div></blockquote>
+<p><strong>InvalidTransformError</strong> :</p>
+<blockquote>
+<div><p>Invalid coordinate transformation parameters.</p>
+</div></blockquote>
+<p><strong>InvalidTransformError</strong> :</p>
+<blockquote class="last">
+<div><p>Ill-conditioned coordinate transformation parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The order of the axes for the input sky array is determined by
+the <tt class="xref py py-obj docutils literal"><span class="pre">CTYPEia</span></tt> keywords in the FITS header, therefore it may
+not always be of the form (<em>ra</em>, <em>dec</em>).  The
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lat" title="astropy.wcs.Wcsprm.lat"><tt class="xref py py-obj docutils literal"><span class="pre">lat</span></tt></a>, <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lng" title="astropy.wcs.Wcsprm.lng"><tt class="xref py py-obj docutils literal"><span class="pre">lng</span></tt></a>,
+<a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lattyp" title="astropy.wcs.Wcsprm.lattyp"><tt class="xref py py-obj docutils literal"><span class="pre">lattyp</span></tt></a> and <a class="reference internal" href="api_wcsprm.html#astropy.wcs.Wcsprm.lngtyp" title="astropy.wcs.Wcsprm.lngtyp"><tt class="xref py py-obj docutils literal"><span class="pre">lngtyp</span></tt></a>
+members can be used to determine the order of the axes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<h1>functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="astropy.wcs.find_all_wcs">
+<tt class="descclassname">astropy.wcs.</tt><tt class="descname">find_all_wcs</tt><big>(</big><em>header</em>, <em>relax=False</em>, <em>keysel=None</em><big>)</big><a class="headerlink" href="#astropy.wcs.find_all_wcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all the WCS transformations in the given header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>header</strong> : string or PyFITS header object.</p>
+<p><strong>relax</strong> : bool or int, optional</p>
+<blockquote>
+<div><p>Degree of permissiveness:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a>: Recognize only FITS keywords defined by the
+published WCS standard.</li>
+<li><a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>: Admit all recognized informal extensions of the
+WCS standard.</li>
+<li><a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>: a bit field selecting specific extensions to accept.
+See <a class="reference internal" href="relax.html#relaxread"><em>Header-reading relaxation constants</em></a> for details.</li>
+</ul>
+</div></blockquote>
+<p><strong>keysel</strong> : sequence of flags, optional</p>
+<blockquote>
+<div><p>A list of flags used to select the keyword types considered by
+wcslib.  When <tt class="docutils literal"><span class="pre">None</span></tt>, only the standard image header
+keywords are considered (and the underlying wcspih() C
+function is called).  To use binary table image array or pixel
+list keywords, <em>keysel</em> must be set.</p>
+<p>Each element in the list should be one of the following strings:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;image&#8217;: Image header keywords</li>
+<li>&#8216;binary&#8217;: Binary table image array keywords</li>
+<li>&#8216;pixel&#8217;: Pixel list keywords</li>
+</ul>
+</div></blockquote>
+<p>Keywords such as <tt class="docutils literal"><span class="pre">EQUIna</span></tt> or <tt class="docutils literal"><span class="pre">RFRQna</span></tt> that are common to
+binary table image arrays and pixel lists (including
+<tt class="docutils literal"><span class="pre">WCSNna</span></tt> and <tt class="docutils literal"><span class="pre">TWCSna</span></tt>) are selected by both &#8216;binary&#8217; and
+&#8216;pixel&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>wcses</strong> : list of <tt class="xref py py-obj docutils literal"><span class="pre">WCS</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/astropylogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">WCS</span></tt></a></li>
+<li><a class="reference internal" href="#functions">functions</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="previous chapter">API Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_wcsprm.html"
+                        title="next chapter"><tt class="docutils literal docutils literal"><span class="pre">Wcsprm</span></tt></a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/wcs/api_wcs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api_wcsprm.html" title="Wcsprm"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Documentation"
+             >previous</a> |</li>
+        <li><a href="../index.html">Astropy 0.0.dev664 documentation</a> &raquo;</li>
+          <li><a href="index.html" >astropy.wcs Documentation</a> &raquo;</li>
+          <li><a href="api.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

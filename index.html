@@ -3,17 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to Astropy’s documentation! &mdash; Astropy v0.0.0 documentation</title>
+    <title>Welcome to Astropy’s Documentation! &mdash; Astropy 0.0.dev664 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.0',
+        VERSION:     '0.0.dev664',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,8 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/astropyicon.ico"/>
-    <link rel="top" title="Astropy v0.0.0 documentation" href="#" />
-    <link rel="next" title="Documentation for Developers" href="development/index.html" /> 
+    <link rel="top" title="Astropy 0.0.dev664 documentation" href="#" />
+    <link rel="next" title="Overview" href="overview.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,9 +37,15 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="development/index.html" title="Documentation for Developers"
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
              accesskey="N">next</a> |</li>
-        <li><a href="#">Astropy v0.0.0 documentation</a> &raquo;</li> 
+        <li><a href="#">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,25 +55,61 @@
           <div class="body">
             
   <div class="section" id="welcome-to-astropy-s-documentation">
-<h1>Welcome to Astropy&#8217;s documentation!<a class="headerlink" href="#welcome-to-astropy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>The current AstroPy documentation is limited, as no code has yet been developed.
-For more information, see the <a class="reference external" href="http://github.com/astropy/astropy/wiki">github wiki</a> page of the project.</p>
-<p>Contents:</p>
+<h1>Welcome to Astropy&#8217;s Documentation!<a class="headerlink" href="#welcome-to-astropy-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The current Astropy documentation is incomplete, as the code is under development. For more information, see the <a class="reference external" href="http://github.com/astropy/astropy">github page</a> for the project.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#astropy-package-layout"><tt class="docutils literal"><span class="pre">astropy</span></tt> Package Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#affiliated-packages">Affiliated Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installing-astropy">Installing Astropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configs.html">Configuration system Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configs.html#for-users">For Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configs.html#for-developers">For Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configs.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wcs/index.html">astropy.wcs Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wcs/examples.html">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcs/api.html">API Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcs/history.html">astropy.wcs History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vo/index.html">astropy.io.vo Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vo/intro_table.html">Introduction to <tt class="docutils literal"><span class="pre">astropy.io.vo.table</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vo/api.html">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html"><tt class="docutils literal"><span class="pre">astropy.tools</span></tt> documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html"><tt class="docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/index.html#api-documentation">API documentation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="development/index.html">Documentation for Developers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="development/vision.html">Vision for a common Astronomy Python package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/vision.html">Vision for a Common Astronomy Python Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development/workflow/index.html">Contributing To/Developing Astropy or Affiliated Packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/codeguide.html">Coding Guidelines (Draft 3)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/docguide.html">Documentation Guidelines (Draft 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/codeguide.html">Coding Guidelines (Draft)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/docguide.html">Documentation Guidelines (Draft)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development/testguide.html">Testing Guidelines (Draft)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/building_packaging.html">Building, Cython/C Extensions, and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/scripts.html">Writing Command-Line Scripts</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h1>Indices and Tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
 <li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
@@ -83,15 +128,15 @@ For more information, see the <a class="reference external" href="http://github.
             </a></p>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to Astropy&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#">Welcome to Astropy&#8217;s Documentation!</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and Tables</a></li>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="development/index.html"
-                        title="next chapter">Documentation for Developers</a></p>
+  <p class="topless"><a href="overview.html"
+                        title="next chapter">Overview</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -100,7 +145,7 @@ For more information, see the <a class="reference external" href="http://github.
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -121,14 +166,20 @@ For more information, see the <a class="reference external" href="http://github.
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="development/index.html" title="Documentation for Developers"
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
              >next</a> |</li>
-        <li><a href="#">Astropy v0.0.0 documentation</a> &raquo;</li> 
+        <li><a href="#">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Erik Tollerud, Thomas Robitaille, Perry Greenfield, and the Astropy Collaboration.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>
