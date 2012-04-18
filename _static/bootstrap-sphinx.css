@@ -1,0 +1,19 @@
+/*
+* bootstrap-sphinx.css
+* ~~~~~~~~~~~~~~~~~~~~
+*
+* Sphinx stylesheet -- Twitter Bootstrap theme.
+*/
+
+body {
+  padding-top: 42px;
+}
+
+div.documentwrapper {
+  float: left;
+  width: 100%;
+}
+.topbar h3 a, .topbar .brand {
+  background: transparent url("astropy_word_26.png") no-repeat 22px 4px;
+  padding-left: 62px;
+}

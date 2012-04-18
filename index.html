@@ -1,22 +1,24 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to Astropy’s Documentation! &mdash; Astropy 0.0.dev664 documentation</title>
+    <title>Welcome &mdash; Astropy</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.dev664',
+        VERSION:     '0.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,168 +27,190 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/astropyicon.ico"/>
-    <link rel="top" title="Astropy 0.0.dev664 documentation" href="#" />
-    <link rel="next" title="Overview" href="overview.html" /> 
+    <script type="text/javascript" src="_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-scrollspy.js"></script>
+    <link rel="shortcut icon" href="_static/astropy.ico"/>
+    <link rel="top" title="Astropy" href="#" />
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+<meta property="og:title" content="The Astropy Project" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.astropy.org" />
+<meta property="og:image" content="http://www.astropy.org/_static/square_logo.png" />
+<meta property="og:description" content="The Astropy project is a common effort to develop a single core package for Astronomy." />
+<meta property="og:site_name" content="Astropy" />
+
+<script type="text/javascript">var switchTo5x=false;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "0058c3cf-18b8-4998-981c-deb0ef7fb67a"}); </script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30968842-1']);
+  _gaq.push(['_setDomainName', 'astropy.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="overview.html" title="Overview"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
+  <div class="topbar" data-scrollspy="scrollspy" >
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="#"></a>
+        <ul class="nav">
+          
+            <li><a href="http://astropy.readthedocs.org" rel="nofollow">Documentation</a></li>
+<li><a href="contributing.html" rel="nofollow">Contributing</a></li>
+<li><a href="team.html" rel="nofollow">The Team</a></li>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+          
+        </ul>
+        <ul class="nav secondary-nav">
+          <li>
+          
             
-  <div class="section" id="welcome-to-astropy-s-documentation">
-<h1>Welcome to Astropy&#8217;s Documentation!<a class="headerlink" href="#welcome-to-astropy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>
-Astropy is a community-driven package intended to contain much of the core functionality and some common tools needed for performing astronomy and astrophysics with Python.
-</p>
-<p>
-While no releases have yet occured, development is occuring at the  <a class="reference external" href="http://github.com/astropy/astropy">project's github page.</a></p>
-<p>
-For discussions and ideas regarding development of the Astropy package, see the <a class="reference external" href="http://groups.google.com/group/astropy-dev">astropy-dev mailing list</a>. For broader discussion on python in astronomy and updates/general discussion on the Astropy project, there is also an <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/astropy"> astropy mailing list</a>.  
-</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#astropy-package-layout"><tt class="docutils literal"><span class="pre">astropy</span></tt> Package Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#affiliated-packages">Affiliated Packages</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#installing-astropy">Installing Astropy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="configs.html">Configuration system Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configs.html#for-users">For Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configs.html#for-developers">For Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configs.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="wcs/index.html">astropy.wcs Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wcs/examples.html">Example Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wcs/api.html">API Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wcs/history.html">astropy.wcs History</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="vo/index.html">astropy.io.vo Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vo/intro_table.html">Introduction to <tt class="docutils literal"><span class="pre">astropy.io.vo.table</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="vo/api.html">API documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tools.html"><tt class="docutils literal"><span class="pre">astropy.tools</span></tt> documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="utils/index.html"><tt class="docutils literal"><span class="pre">astropy.utils</span></tt> documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="utils/index.html#api-documentation">API documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="development/index.html">Documentation for Developers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="development/vision.html">Vision for a Common Astronomy Python Package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/workflow/index.html">Contributing To/Developing Astropy or Affiliated Packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/codeguide.html">Coding Guidelines (Draft)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/docguide.html">Documentation Guidelines (Draft)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/testguide.html">Testing Guidelines (Draft)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/building_packaging.html">Building, Cython/C Extensions, and Distribution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/scripts.html">Writing Command-Line Scripts</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and Tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
-</div>
-
-
-          </div>
-        </div>
+<form class="pull-left" action="http://readthedocs.org/search/project" method="get">
+  <input type="text" name="q" placeholder="Search Documentation" />
+  <input type="hidden" name="selected_facets" value="project:Astropy" />
+</form>
+          
+          </li>
+        </ul>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="#">
-              <img class="logo" src="_static/astropylogo.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to Astropy&#8217;s Documentation!</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and Tables</a></li>
-</ul>
+    </div>
+  </div>
 
-  <h4>Next topic</h4>
-  <p class="topless"><a href="overview.html"
-                        title="next chapter">Overview</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <a href="http://github.com/astropy/astropy"><img style="position: fixed; top: 0px; right: 0; border: 0; z-index: 100000;" src="_static/fork_me_on_github.png" alt="Fork me on GitHub"/></a>
+
+<div class="container">
+   
+  <div class='logo_banner'><img alt="_images/astropy_banner_96.png" src="_images/astropy_banner_96.png" />
+</div><div class="section" id="what-is-astropy">
+<h1>What is Astropy?<a class="headerlink" href="#what-is-astropy" title="Permalink to this headline">¶</a></h1>
+<p>The Astropy project is a common effort to develop a single core package for
+Astronomy that brings together almost 100 developers from around the world.</p>
+<p>Development is actively ongoing, with major packages such as <a class="reference external" href="http://www.stsci.edu/institute/software_hardware/pyfits">PyFITS</a>,
+<a class="reference external" href="https://trac.assembla.com/astrolib">PyWCS</a>, <a class="reference external" href="https://trac.assembla.com/astrolib">vo</a>, and <a class="reference external" href="http://cxc.harvard.edu/contrib/asciitable/">asciitable</a> already merged in, and many more components
+being worked on. In particular, we are developing imaging, photometric, and
+spectroscopic functionality, as well as frameworks for cosmology, unit
+handling, and coordinate transformations. A first stable release is
+tentatively scheduled for early May.</p>
+<p>Stay updated by following <a class="reference external" href="http://twitter.com/#!/astropy">&#64;astropy</a> on Twitter, or sign up to the <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/astropy">astropy</a> mailing list!</p>
+<p>If you are interested in finding out more about the Astropy project, you can read the <a class="reference internal" href="vision.html"><em>original vision</em></a> for the package.</p>
+</div>
+<div class="section" id="id2">
+<h1>Documentation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>The documentation for the latest development version of Astropy can be found
+at <a class="reference external" href="http://astropy.readthedocs.org">http://astropy.readthedocs.org</a>. This
+documentation is automatically updated any time a commit is made to the
+Astropy repository. Once a stable version of Astropy is released, we will
+provide links to the documentation for that version.</p>
+</div>
+<div class="section" id="installing">
+<h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
+<p>Detailed installation instructions are provided in the <a class="reference external" href="http://astropy.readthedocs.org/en/latest/install.html">documentation</a>, but
+we have included a simplified version here.</p>
+<p>Astropy requires <a class="reference external" href="http://www.python.org">Python</a> 2.6, 2.7, 3.1, or 3.2, and <a class="reference external" href="http://numpy.scipy.org">Numpy</a> 1.4 or later.
+You can install the latest developer version of Astropy using:</p>
+<div class="highlight-python"><pre>git clone http://github.com/astropy/astropy.git
+cd astropy
+python setup.py install</pre>
+</div>
+<p>Once a stable version of Astropy is released, we will provide links to the tar file, and updated installation instructions!</p>
+<p>You can check that astropy is correctly installed by starting up <tt class="docutils literal"><span class="pre">python</span></tt> or <tt class="docutils literal"><span class="pre">ipython</span></tt>, and importing <tt class="docutils literal"><span class="pre">astropy</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">astropy</span>
+</pre></div>
+</div>
+<p>If you do not get any errors, the installation was successful!</p>
+</div>
+<div class="section" id="getting-help">
+<h1>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h1>
+<p>If you want to discuss issues with other Astropy users and with the
+developers, you can sign up to the <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/astropy">astropy</a> mailing list!</p>
+</div>
+<div class="section" id="reporting-issues">
+<h1>Reporting issues<a class="headerlink" href="#reporting-issues" title="Permalink to this headline">¶</a></h1>
+<p>If you have come across something that you believe is a bug, please open a
+ticket in the Astropy <a class="reference external" href="http://github.com/astropy/astropy/issues">issue tracker</a>, and we will look into it promptly!</p>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="pull-left">
+        &copy; Copyright 2012, The Astropy Collaboration.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="np-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="overview.html" title="Overview"
-             >next</a> |</li>
-        <li><a href="#">Astropy 0.0.dev664 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2011, The Astropy Team, Erik Tollerud, Thomas Robitaille, and Perry Greenfield.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
-    </div>
+    
+    <p align='center'>
+      <span class='st_facebook_large' displayText='Facebook' st_title='The Astropy Project' st_url='http://www.astropy.org' st_summary='The Astropy project is a common effort to develop a single core package for Astronomy.'></span>
+      <span class='st_googleplus_large' displayText='Google +1' st_title='The Astropy Project' st_url='http://www.astropy.org' st_summary='The Astropy project is a common effort to develop a single core package for Astronomy.'></span>
+      <span class='st_twitter_large' displayText='Tweet' st_title='The Astropy Project: a common effort to develop a single core Python package for Astronomy!' st_url='http://www.astropy.org'></span>
+    </p>
+    
+  </div>
+</footer>
   </body>
 </html>

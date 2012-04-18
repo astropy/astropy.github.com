@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Vision for a Common Astronomy Python Package &mdash; Astropy</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-scrollspy.js"></script>
+    <link rel="shortcut icon" href="_static/astropy.ico"/>
+    <link rel="top" title="Astropy" href="index.html" />
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+<meta property="og:title" content="The Astropy Project" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.astropy.org" />
+<meta property="og:image" content="http://www.astropy.org/_static/square_logo.png" />
+<meta property="og:description" content="The Astropy project is a common effort to develop a single core package for Astronomy." />
+<meta property="og:site_name" content="Astropy" />
+
+<script type="text/javascript">var switchTo5x=false;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "0058c3cf-18b8-4998-981c-deb0ef7fb67a"}); </script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30968842-1']);
+  _gaq.push(['_setDomainName', 'astropy.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+  
+  <div class="topbar" data-scrollspy="scrollspy" >
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="index.html"></a>
+        <ul class="nav">
+          
+            <li><a href="http://astropy.readthedocs.org" rel="nofollow">Documentation</a></li>
+<li><a href="contributing.html" rel="nofollow">Contributing</a></li>
+<li><a href="team.html" rel="nofollow">The Team</a></li>
+
+          
+        </ul>
+        <ul class="nav secondary-nav">
+          <li>
+          
+            
+<form class="pull-left" action="http://readthedocs.org/search/project" method="get">
+  <input type="text" name="q" placeholder="Search Documentation" />
+  <input type="hidden" name="selected_facets" value="project:Astropy" />
+</form>
+          
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a href="http://github.com/astropy/astropy"><img style="position: fixed; top: 0px; right: 0; border: 0; z-index: 100000;" src="_static/fork_me_on_github.png" alt="Fork me on GitHub"/></a>
+
+<div class="container">
+   
+  <div class="section" id="vision-for-a-common-astronomy-python-package">
+<h1>Vision for a Common Astronomy Python Package<a class="headerlink" href="#vision-for-a-common-astronomy-python-package" title="Permalink to this headline">¶</a></h1>
+<p>The following document summarizes the original &#8216;manifesto&#8217; for the Astropy
+project which was adopted in July 2011.</p>
+<div class="section" id="long-term-vision">
+<h2>Long-term Vision<a class="headerlink" href="#long-term-vision" title="Permalink to this headline">¶</a></h2>
+<p>The ultimate goal that we seek is a package that would contain much of the
+core functionality and some common tools required across Astronomy, but not
+<em>everything</em> Astronomers will ever need. The aim is primarily to avoid
+duplication for common core tasks, and to provide a robust framework upon
+which to build more complex tools.</p>
+<p>Such a common package should not preclude any other Astronomy package from
+existing, because there will always be more complex and/or specialized tools
+required. These tools will be able to rely on a single core library for many
+tasks, and thus reduce the number of dependencies, reduce duplication of
+functionality, and increase consistency of their interfaces.</p>
+</div>
+<div class="section" id="procedure">
+<h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<p>With the help of the community, the coordination committee will start by
+identifying a few of key areas where initial development/consolidation will be
+needed (such as FITS, WCS, coordinates, tables, photometry, spectra, etc.) and
+will encourage teams to be formed to build standalone packages implementing
+this functionality. These packages will be referred to as affiliated packages
+(meaning that they are intended for future integration in the core package).</p>
+<p>A set of requirements will be set out concerning the interfaces and
+classes/methods that affiliated packages will need to make available in order
+to ensure consistency between the different components. As the core package
+grows, new potential areas/components for the core package will be identified.
+Competition cannot be avoided, and will not be actively discouraged, but
+whenever possible, developers should strive to work as a team to provide a
+single and robust affiliated package, for the benefit of the community.</p>
+<p>The affiliated packages will be developed outside the core package in
+independent repositories, which will allow the teams the choice of tool and
+organization. Once an affiliated package has implemented the desired
+functionality, and satisfies quality criteria for coding style, documentation,
+and testing, it will be considered for inclusion in the core package, and
+further development will be done directly in the core package either via
+direct access to the repository, or via patches/pull requests (exactly how
+this will be done will be decided later).</p>
+<p>To ensure uniformity across affiliated packages, and to facilitate integration
+with the core package, developers who wish to submit their affiliated packages
+for inclusion in the core will need to follow the layout of a <em>template</em>
+package that will be provided before development starts.</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Affiliated packages should be able to be imported with only the following
+dependencies:</p>
+<ul class="simple">
+<li>The Python Standard Library</li>
+<li>NumPy, SciPy, and Matplotlib</li>
+<li>Components already in the core Astronomy package</li>
+</ul>
+<p>Other packages may be used, but must be imported as needed rather than during
+the initial import of the package.</p>
+<p>If a dependency is needed, but is an affiliated package, the dependent package
+will need to wait until the dependency is integrated into the core package
+before being itself considered for inclusion. In the mean time, it can make
+use of the other affiliated package in its current form, or other packages, so
+as not to stall development. Thus, the first packages to be included in the
+core will be those only requiring the standard library, NumPy, SciPy, and
+Matplotlib.</p>
+<p>If the required dependency will never be part of a main package, then by
+default the dependency can be included but should be imported as needed
+(meaning that it only prevents the importing of that component, not the entire
+core package), unless a strong case is made and a general consensus is reached
+by the community that this dependency is important enough to be required at a
+higher level.</p>
+<p>This system means that packages will be integrated into the core package in an
+order depending on the dependency tree, and also ensures that the interfaces
+of packages being integrated into the core package are consistent with those
+already in the core package.</p>
+<p>Initially, no dependency on GUI toolkits will be allowed in the core package.
+If the community reaches agrees on a single toolkit that could be used, then
+this toolkit will be allowed (but will only be imported as needed).</p>
+</div>
+<div class="section" id="keeping-track-of-affiliated-packages">
+<h2>Keeping track of affiliated packages<a class="headerlink" href="#keeping-track-of-affiliated-packages" title="Permalink to this headline">¶</a></h2>
+<p>Affiliated packages will be listed in a central location (in addition to PyPI)
+that will allow an easy installation of all the affiliated packages, for
+example with a script that will seamlessly download and install all the
+affiliated packages. The core package will also include mechanisms to
+facilitate this installation process.</p>
+</div>
+<div class="section" id="existing-packages">
+<h2>Existing Packages<a class="headerlink" href="#existing-packages" title="Permalink to this headline">¶</a></h2>
+<p>Developers who already have existing packages will be encouraged to continue
+supporting them for the benefit of users until the core library is considered
+stable, contains this functionality, and is released to the community.
+Thereafter, developers should encourage users to transition to using the
+functionality in the core package, and eventually phase out their own
+packages, unless they provide added value over the core package.</p>
+</div>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="pull-left">
+        &copy; Copyright 2012, The Astropy Collaboration.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+    </p>
+    
+  </div>
+</footer>
+  </body>
+</html>

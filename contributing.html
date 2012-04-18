@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Search &mdash; Astropy</title>
+    <title>Contributing to Astropy &mdash; Astropy</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,15 +27,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/searchtools.js"></script>
     <script type="text/javascript" src="_static/bootstrap-dropdown.js"></script>
     <script type="text/javascript" src="_static/bootstrap-scrollspy.js"></script>
     <link rel="shortcut icon" href="_static/astropy.ico"/>
     <link rel="top" title="Astropy" href="index.html" />
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
 <script type="text/javascript">
 (function () {
   /**
@@ -115,7 +110,6 @@
 </script>
 
 
-
   </head>
   <body>
   
@@ -135,6 +129,10 @@
           <li>
           
             
+<form class="pull-left" action="http://readthedocs.org/search/project" method="get">
+  <input type="text" name="q" placeholder="Search Documentation" />
+  <input type="hidden" name="selected_facets" value="project:Astropy" />
+</form>
           
           </li>
         </ul>
@@ -146,29 +144,35 @@
 
 <div class="container">
    
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script type="text/javascript">$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    From here you can search these documents. Enter your search
-    words into the box below and click "search". Note that the search
-    function will automatically search for all of the words. Pages
-    containing fewer words won't appear in the result list.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <div class="section" id="contributing-to-astropy">
+<h1>Contributing to Astropy<a class="headerlink" href="#contributing-to-astropy" title="Permalink to this headline">¶</a></h1>
+<p>There are many different ways you can contribute to the Astropy project!</p>
+<div class="section" id="report-issues">
+<h2>Report issues<a class="headerlink" href="#report-issues" title="Permalink to this headline">¶</a></h2>
+<p>Even if you don&#8217;t have time to contribute code or documentation, please make
+sure you report any issues with the package, the documentation, or this
+website, to the Astropy <a class="reference external" href="http://github.com/astropy/astropy/issues">issue tracker</a>!</p>
+</div>
+<div class="section" id="contribute-code">
+<h2>Contribute code<a class="headerlink" href="#contribute-code" title="Permalink to this headline">¶</a></h2>
+<p>If you are interested in contributing fixes, code or documentation to Astropy
+(whether the core package or affiliated packages), you can join the
+<a class="reference external" href="http://groups.google.com/group/astropy-dev">astropy-dev</a> mailing list, and head over to the documentation pages on
+<a class="reference external" href="http://astropy.readthedocs.org/en/latest/development/workflow/index.html">contributing</a> to Astropy. You can either send us a patch, or (preferably)
+work on a fork of Astropy and submit the changes via a pull request.</p>
+</div>
+<div class="section" id="develop-an-affiliated-package">
+<h2>Develop an affiliated package<a class="headerlink" href="#develop-an-affiliated-package" title="Permalink to this headline">¶</a></h2>
+<p>Whether you have an idea for a new Astronomy package, or already have a
+package that you want to integrate with the Astropy project, you can develop
+an affiliated package! After joining the <a class="reference external" href="http://groups.google.com/group/astropy-dev">astropy-dev</a> list and notifying
+other developers of your intent to develop an affiliated package, you can head
+over <a class="reference external" href="https://github.com/astropy/package-template">here</a> for instructions on
+getting started! We can even create a repository for your affiliated package
+in the <cite>astropy</cite> organization on GitHub!</p>
+</div>
+</div>
+
 
 </div>
 <footer class="footer">
