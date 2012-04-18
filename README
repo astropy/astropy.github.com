@@ -1,1 +1,6 @@
-This repository contains the static web page for the Astropy project. Right now it is a fixed build of the docs.
+This repository contains the Sphinx build for the Astropy website. The latest
+source can be found at:
+
+  https://github.com/astropy/astropy-website
+
+Pull requests should be opened in that repository instead of this one.
