@@ -1,3 +1,5 @@
+:orphan:
+
 Vision for a Common Astronomy Python Package
 ============================================
 
