@@ -40,11 +40,16 @@ If you are interested in finding out more about the Astropy project, you can rea
 Documentation
 -------------
 
-The documentation for the latest development version of Astropy can be found
-at `http://astropy.readthedocs.org <http://astropy.readthedocs.org>`_. This
-documentation is automatically updated any time a commit is made to the
-Astropy repository. Once a stable version of Astropy is released, we will
-provide links to the documentation for that version.
+The documentation for the `astropy` core package is available at the
+websites listed below. The first is for the most recent released
+version.  The second is for a version of the documentation that is 
+automatically updated any time a change is made to the 
+`astropy source code repository <http://github.com/astropy/astropy>`_.
+
+* `Stable version (docs.astropy.org) <http://docs.astropy.org>`_
+* `Latest developer version <http://docs.astropy.org/en/latest/index.html>`_ 
+    
+
 
 Installing
 ----------
