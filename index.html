@@ -153,8 +153,8 @@ Astronomy that brings together almost 100 developers from around the world.</p>
 <a class="reference external" href="https://trac.assembla.com/astrolib">PyWCS</a>, <a class="reference external" href="https://trac.assembla.com/astrolib">vo</a>, and <a class="reference external" href="http://cxc.harvard.edu/contrib/asciitable/">asciitable</a> already merged in, and many more components
 being worked on. In particular, we are developing imaging, photometric, and
 spectroscopic functionality, as well as frameworks for cosmology, unit
-handling, and coordinate transformations. A first stable release is
-tentatively scheduled for early May.</p>
+handling, and coordinate transformations.</p>
+<p>The current stable version is Astropy 0.1.</p>
 <p>Stay updated by following <a class="reference external" href="http://twitter.com/#!/astropy">&#64;astropy</a> on Twitter, or sign up to the <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/astropy">astropy</a> mailing list!</p>
 <p>If you are interested in finding out more about the Astropy project, you can read the <a class="reference internal" href="vision.html"><em>original vision</em></a> for the package.</p>
 </div>
@@ -174,18 +174,27 @@ automatically updated any time a change is made to the
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
 <p>Detailed installation instructions are provided in the <a class="reference external" href="http://astropy.readthedocs.org/en/latest/install.html">documentation</a>, but
 we have included a simplified version here.</p>
-<p>Astropy requires <a class="reference external" href="http://www.python.org">Python</a> 2.6, 2.7, 3.1, or 3.2, and <a class="reference external" href="http://numpy.scipy.org">Numpy</a> 1.4 or later.
-You can install the latest developer version of Astropy using:</p>
-<div class="highlight-python"><pre>git clone http://github.com/astropy/astropy.git
-cd astropy
-python setup.py install</pre>
+<p>Astropy requires <a class="reference external" href="http://www.python.org">Python</a> 2.6, 2.7, 3.1, or 3.2, and <a class="reference external" href="http://numpy.scipy.org">Numpy</a> 1.4 or later. The
+best way to install astropy is to use <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a>:</p>
+<div class="highlight-python"><pre>pip install astropy</pre>
 </div>
-<p>Once a stable version of Astropy is released, we will provide links to the tar file, and updated installation instructions!</p>
+<p>Or alternatively, you can download the source from the current version: Astropy 0.1,
+and install the source code in that archive using:</p>
+<div class="highlight-python"><pre>python setup.py install</pre>
+</div>
 <p>You can check that astropy is correctly installed by starting up <tt class="docutils literal"><span class="pre">python</span></tt> or <tt class="docutils literal"><span class="pre">ipython</span></tt>, and importing <tt class="docutils literal"><span class="pre">astropy</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">astropy</span>
 </pre></div>
 </div>
 <p>If you do not get any errors, the installation was successful!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you want to install the latest <em>developer</em> version of Astropy, use:</p>
+<div class="last highlight-python"><pre>git clone http://github.com/astropy/astropy.git
+cd astropy
+python setup.py install</pre>
+</div>
+</div>
 </div>
 <div class="section" id="getting-help">
 <h1>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h1>

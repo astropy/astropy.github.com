@@ -9,6 +9,9 @@
 .. _`documentation`: http://astropy.readthedocs.org/en/latest/install.html
 .. _`Numpy`: http://numpy.scipy.org
 .. _`Python`: http://www.python.org
+.. _`pip`: http://pypi.python.org/pypi/pip
+.. |currentstable| replace:: Astropy 0.1 
+.. _currentstable: http://cloud.github.com/downloads/astropy/astropy/astropy-0.1.tar.gz
 
 .. raw:: html
 
@@ -30,8 +33,9 @@ Development is actively ongoing, with major packages such as `PyFITS`_,
 `PyWCS`_, `vo`_, and `asciitable`_ already merged in, and many more components
 being worked on. In particular, we are developing imaging, photometric, and
 spectroscopic functionality, as well as frameworks for cosmology, unit
-handling, and coordinate transformations. A first stable release is
-tentatively scheduled for early May.
+handling, and coordinate transformations. 
+
+The current stable version is |currentstable|.
 
 Stay updated by following `@astropy <http://twitter.com/#!/astropy>`_ on Twitter, or sign up to the `astropy`_ mailing list!
 
@@ -57,20 +61,29 @@ Installing
 Detailed installation instructions are provided in the `documentation`_, but
 we have included a simplified version here.
 
-Astropy requires `Python`_ 2.6, 2.7, 3.1, or 3.2, and `Numpy`_ 1.4 or later.
-You can install the latest developer version of Astropy using::
+Astropy requires `Python`_ 2.6, 2.7, 3.1, or 3.2, and `Numpy`_ 1.4 or later. The 
+best way to install astropy is to use `pip`_::
 
-    git clone http://github.com/astropy/astropy.git
-    cd astropy
+    pip install astropy
+    
+Or alternatively, you can download the source from the current version: |currentstable|,
+and install the source code in that archive using::
+
     python setup.py install
-
-Once a stable version of Astropy is released, we will provide links to the tar file, and updated installation instructions!
 
 You can check that astropy is correctly installed by starting up ``python`` or ``ipython``, and importing ``astropy``::
 
     >>> import astropy
 
 If you do not get any errors, the installation was successful!
+
+.. note::
+
+    If you want to install the latest *developer* version of Astropy, use::
+
+        git clone http://github.com/astropy/astropy.git
+        cd astropy
+        python setup.py install
 
 Getting help
 ------------
