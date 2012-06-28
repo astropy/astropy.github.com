@@ -5,36 +5,36 @@
             "maintainer": "Wolfgang Kerzendorf",
             "stable": false,
             "home_url": "https://github.com/astropy/specutils",
-            "repo_url": "http://github.com/astropy/specutils.git",
+            "repo_url": "http://github.com/astropy/specutils.git"
         },
         {
             "name": "pyidlastro",
             "maintainer": "Tom Aldcroft",
             "stable": false,
             "home_url": "https://github.com/astropy/pyidlastro",
-            "repo_url": "http://github.com/astropy/pyidlastro.git",
+            "repo_url": "http://github.com/astropy/pyidlastro.git"
         },
         {
             "name": "photutils",
             "maintainer": "Rene Breton",
             "stable": false,
             "home_url": "https://github.com/astropy/photutils",
-            "repo_url": "http://github.com/astropy/photutils.git",
-        }
+            "repo_url": "http://github.com/astropy/photutils.git"
+        },
         {
             "name": "kcorrect",
             "maintainer": "Taro Sato",
             "stable": false,
             "home_url": "https://github.com/astropy/kcorrect",
-            "repo_url": "http://github.com/astropy/kcorrect.git",
-        }
+            "repo_url": "http://github.com/astropy/kcorrect.git"
+        },
         {
             "name": "astropysics",
-            "maintainer": "Erik Tollerud",
+            "maintainer": "Erik Tollerud <erik.tollerud@gmail.com>",
             "stable": true,
             "home_url": "http://packages.python.org/Astropysics/",
             "repo_url": "http://github.com/eteq/astropysics.git",
-            "pypi_name": "astropysics"
+            "pypi_name": "Astropysics"
         }
     ]
 }

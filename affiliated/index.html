@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Astropy Affilated Package Registry &mdash; Astropy</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-scrollspy.js"></script>
+    <link rel="shortcut icon" href="../_static/astropy.ico"/>
+    <link rel="top" title="Astropy" href="../index.html" />
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+<meta property="og:title" content="The Astropy Project" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.astropy.org" />
+<meta property="og:image" content="http://www.astropy.org/_static/square_logo.png" />
+<meta property="og:description" content="The Astropy project is a common effort to develop a single core package for Astronomy that brings together almost 100 developers from around the world. Development is actively ongoing, with major packages such as PyFITS, PyWCS, vo, and asciitable already merged in. A first stable release is scheduled for early May." />
+<meta property="og:site_name" content="Astropy" />
+
+<script type="text/javascript">var switchTo5x=false;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "0058c3cf-18b8-4998-981c-deb0ef7fb67a"}); </script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30968842-1']);
+  _gaq.push(['_setDomainName', 'astropy.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+  </head>
+  <body>
+  
+  <div class="topbar" data-scrollspy="scrollspy" >
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html"></a>
+        <ul class="nav">
+          
+            <li><a href="http://astropy.readthedocs.org" rel="nofollow">Documentation</a></li>
+<li><a href="contributing.html" rel="nofollow">Contributing</a></li>
+<li><a href="team.html" rel="nofollow">The Team</a></li>
+
+          
+        </ul>
+        <ul class="nav secondary-nav">
+          <li>
+          
+            
+<form class="pull-left" action="http://readthedocs.org/search/project" method="get">
+  <input type="text" name="q" placeholder="Search Documentation" />
+  <input type="hidden" name="selected_facets" value="project:Astropy" />
+</form>
+          
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a href="http://github.com/astropy/astropy"><img style="position: fixed; top: 0px; right: 0; border: 0; z-index: 100000;" src="_static/fork_me_on_github.png" alt="Fork me on GitHub"/></a>
+
+<div class="container">
+   
+  <div class="section" id="astropy-affilated-package-registry">
+<h1>Astropy Affilated Package Registry<a class="headerlink" href="#astropy-affilated-package-registry" title="Permalink to this headline">¶</a></h1>
+<p>A major part of the Astropy project is the existence of &#8220;Affiliated
+Packages&#8221;. An affiliated package is an astronomy-related python package
+that is not part of the <cite>astropy</cite> core source code, but has requested to
+be included in the Astropy project. The projects are expressing an
+interest in Astropy&#8217;s goals of improving reuse, interoperability, and
+interface standards for python astronomy and astrophysics packages.</p>
+<p>This page houses the official registry for affiliated packages. The
+table below lists these packages, as determined from the
+<a class="reference external" href="http://affiliated.astropy.org/registry.json">http://affiliated.astropy.org/registry.json</a> file that contains the actual
+registry. The following information is included for each package:</p>
+<ul class="simple">
+<li>The name of the package.</li>
+<li>The name of the author/maintainer of the package.</li>
+<li>It&#8217;s &#8220;stability&#8221; status. The exact meaning of this is not fully defined,
+but it should be used as a guide for whether or not the package maintainer
+wants you to consider the package as &#8220;working,&#8221; and not under heavy
+development or similar.</li>
+<li>The web page of the package.</li>
+<li>The source code repository for the package.</li>
+<li>The package&#8217;s <a class="reference external" href="http://pypi.python.org/">PyPI</a> entry (if it has one).</li>
+</ul>
+<div class="section" id="registering-packages">
+<h2>Registering Packages<a class="headerlink" href="#registering-packages" title="Permalink to this headline">¶</a></h2>
+<p>To include your python astronomy package in this registry, contact the
+coordination committe by e-mailing <a class="reference external" href="mailto:astropy&#46;team&#37;&#52;&#48;gmail&#46;com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE">astropy<span>&#46;</span>team<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+</div>
+<div class="section" id="currently-registered-packages">
+<h2>Currently Registered Packages<a class="headerlink" href="#currently-registered-packages" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="12%" />
+<col width="15%" />
+<col width="14%" />
+<col width="23%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Package Name</th>
+<th class="head">Stable?</th>
+<th class="head">PyPI Name</th>
+<th class="head">Web Page</th>
+<th class="head">Code Repository</th>
+<th class="head">Maintainer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="2">Loading...</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&nbsp;</td>
+<td rowspan="2">&nbsp;</td>
+</tr>
+<tr class="row-odd"></tr>
+</tbody>
+</table>
+<script type="text/javascript">
+
+//Using jQuery is ok because it is needed by and bundled with sphinx
+
+//Quirk to note: the jQuery.getJSON function fails if you open this locally
+//with Chrome, because Chrome thinks local JSON files are unsafe for some
+//reason.  Use basically any other modern browser, or it works fine if its
+//actually on the web server even with chrome.
+
+function url_translator(urltext) {
+    if (urltext == undefined) {
+        return 'None';
+    } else {
+        return '<a href="' + urltext + '">' + urltext + '</a>';
+    }
+}
+
+function pypi_translator(pypiname) {
+    if (pypiname == undefined) {
+        return 'None';
+    } else {
+        var urltext = 'http://pypi.python.org/pypi/' + pypiname;
+        return '<a href="' + urltext + '">' + pypiname + '</a>';
+    }
+}
+
+function stable_translator(stable) {
+    if (stable) {
+        return 'Yes';
+    } else {
+        return 'No';
+    }
+}
+
+var _email_regex_str = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
+var _email_regex  = new RegExp(_email_regex_str, 'i');
+var _email_with_name_regex  = new RegExp('(.+)<(' + _email_regex_str + ')>', 'i');
+
+function maintainer_translator(maint, pkgnm) {
+    var url, match;
+    if (_email_with_name_regex.test(maint)) {
+        match = _email_with_name_regex.exec(maint);
+        url = 'mailto:' + match[2] + '?subject=Astropy%20affiliated%20package%20' + pkgnm;
+        return '<a href="' + url + '">' + match[1] + '</a>';
+    } else if (_email_regex.test(maint)) {
+        url = 'mailto:' + maint + '?subject=Astropy%20affiliated%20package%20' + pkgnm;
+        return '<a href="' + url + '">' + maint + '</a>';
+    } else {
+        return maint;
+    }
+}
+
+function populateTable(data, tstat, xhr) {
+    var tab = document.getElementsByTagName('table')[0];
+    tab.deleteRow(1);
+    var ncols = tab.rows[0].cells.length;
+
+    var pkgi, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
+    if (data == null) {
+        row = tab.insertRow(1);
+        row.insertCell(0).innerHTML = 'Could not load registry file!';
+        for (i=0;i<(ncols - 1);i++) {
+            row.insertCell(i + 1).innerHTML = ' ';
+        }
+    } else {
+        var pkgs = data.packages;
+        for (i=0; i<pkgs.length; i++) {
+            pkgi = pkgs[i];
+            row = tab.insertRow(i + 1);
+
+            nmcell = row.insertCell(0);
+            stablecell = row.insertCell(1);
+            pypicell = row.insertCell(2);
+            urlcell = row.insertCell(3);
+            repocell = row.insertCell(4);
+            maintcell = row.insertCell(5);
+
+            nmcell.innerHTML = pkgi.name;
+            stablecell.innerHTML = stable_translator(pkgi.stable);
+            pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
+            urlcell.innerHTML = url_translator(pkgi.home_url);
+            repocell.innerHTML = url_translator(pkgi.repo_url);
+            maintcell.innerHTML = maintainer_translator(pkgi.maintainer, pkgi.name);
+        }
+    }
+}
+
+// Make sure the doc is loaded before doing anything
+$(document).ready(function() {
+    $.getJSON("registry.json", populateTable);
+});
+
+</script></div>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="pull-left">
+        &copy; Copyright 2012, The Astropy Collaboration.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+    </p>
+    
+  </div>
+</footer>
+  </body>
+</html>
