@@ -54,7 +54,7 @@ automatically updated any time a change is made to the
 `astropy source code repository <http://github.com/astropy/astropy>`_.
 
 * `Stable version (docs.astropy.org) <http://docs.astropy.org>`_
-* `Latest developer version <http://docs.astropy.org/en/latest/index.html>`_ 
+* `Latest developer version (devdocs.astropy.org) <http://devdocs.astropy.org>`_ 
     
 
 
