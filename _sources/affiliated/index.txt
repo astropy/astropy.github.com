@@ -1,7 +1,7 @@
 :orphan:
 
 
-Astropy Affilated Package Registry
+Astropy Affiliated Package Registry
 ----------------------------------
 
 A major part of the Astropy project is the existence of "Affiliated

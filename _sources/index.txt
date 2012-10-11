@@ -11,6 +11,7 @@
 .. _`Numpy`: http://numpy.scipy.org
 .. _`Python`: http://www.python.org
 .. _`pip`: http://pypi.python.org/pypi/pip
+.. _`Cython`: http://cython.org/
 .. |currentstable| replace:: Astropy 0.1 
 .. _currentstable: http://cloud.github.com/downloads/astropy/astropy/astropy-0.1.tar.gz
 
@@ -87,6 +88,8 @@ If you do not get any errors, the installation was successful!
         git clone http://github.com/astropy/astropy.git
         cd astropy
         python setup.py install
+
+    Be aware that the developer build requires `Cython`_ (in addition to `Numpy`_).
 
 Getting help
 ------------
