@@ -2,7 +2,7 @@
 
 
 Astropy Affiliated Package Registry
-----------------------------------
+-----------------------------------
 
 A major part of the Astropy project is the existence of "Affiliated
 Packages". An affiliated package is an astronomy-related python package
