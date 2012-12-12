@@ -35,6 +35,12 @@
             "home_url": "http://packages.python.org/Astropysics/",
             "repo_url": "http://github.com/eteq/astropysics.git",
             "pypi_name": "Astropysics"
+        },
+        {
+            "name": "ginga",
+            "maintainer": "Eric Jeschke <eric@naoj.org>",
+            "stable": true,
+            "repo_url": "http://github.com/ejeschke/ginga"
         }
     ]
 }
