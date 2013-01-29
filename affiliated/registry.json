@@ -41,6 +41,13 @@
             "maintainer": "Eric Jeschke <eric@naoj.org>",
             "stable": true,
             "repo_url": "http://github.com/ejeschke/ginga"
+        },
+        {
+            "name": "astroML",
+            "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
+            "stable": true,
+            "home_url": "http://astroml.github.com/",
+            "repo_url": "http://github.com/astroML/astroML"
         }
     ]
 }
