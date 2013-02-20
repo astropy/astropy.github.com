@@ -100,3 +100,14 @@ Reporting issues
 If you have come across something that you believe is a bug, please open a
 ticket in the Astropy `issue tracker`_, and we will look into it promptly!
 
+Acknowledging the use of Astropy
+--------------------------------
+
+If you use Astropy for a publication, please consider adding the following
+acknowledgment:
+
+*This research made use of Astropy (http://www.astropy.org), a
+community-developed core Python package for Astronomy*
+
+In the near future, we will publish a refereed paper describing Astropy, so
+the above acknowledgment will be updated to reflect this.
