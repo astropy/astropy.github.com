@@ -61,7 +61,7 @@ Installing
 Detailed installation instructions are provided in the `documentation`_, but
 we have included a simplified version here.
 
-Astropy requires `Python`_ 2.6, 2.7, 3.1, or 3.2, and `Numpy`_ 1.4 or later. The 
+Astropy requires `Python`_ 2.6, 2.7, 3.1, 3.2, or 3.3, and `Numpy`_ 1.4 or later. The 
 best way to install astropy is to use `pip`_::
 
     pip install astropy
