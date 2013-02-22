@@ -107,7 +107,7 @@ If you use Astropy for a publication, please consider adding the following
 acknowledgment:
 
 *This research made use of Astropy (http://www.astropy.org), a
-community-developed core Python package for Astronomy*
+community-developed core Python package for Astronomy.*
 
 In the near future, we will publish a refereed paper describing Astropy, so
 the above acknowledgment will be updated to reflect this.
