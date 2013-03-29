@@ -47,7 +47,16 @@
             "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
             "stable": true,
             "home_url": "http://astroml.github.com/",
-            "repo_url": "http://github.com/astroML/astroML"
+            "repo_url": "http://github.com/astroML/astroML",
+            "pypi_name": "astroML"
+        },
+        {
+            "name": "montage-wrapper",
+            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "stable": true,
+            "home_url": "http://www.astropy.org/montage-wrapper/",
+            "repo_url": "https://github.com/astropy/montage-wrapper",
+            "pypi_name": "montage-wrapper"
         }
     ]
 }

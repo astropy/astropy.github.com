@@ -81,7 +81,7 @@ If you do not get any errors, the installation was successful!
 
     If you want to install the latest *developer* version of Astropy, use::
 
-        git clone http://github.com/astropy/astropy.git
+        git clone https://github.com/astropy/astropy.git
         cd astropy
         python setup.py install
 
