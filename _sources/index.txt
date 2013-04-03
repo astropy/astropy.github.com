@@ -10,8 +10,8 @@
 .. _`Python`: http://www.python.org
 .. _`pip`: http://pypi.python.org/pypi/pip
 .. _`Cython`: http://cython.org/
-.. |currentstable| replace:: Astropy 0.2 
-.. _currentstable: http://pypi.python.org/packages/source/a/astropy/astropy-0.2.tar.gz
+.. |currentstable| replace:: Astropy 0.2.1
+.. _currentstable: http://pypi.python.org/packages/source/a/astropy/astropy-0.2.1.tar.gz
 
 .. raw:: html
 

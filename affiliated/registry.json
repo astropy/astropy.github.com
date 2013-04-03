@@ -8,13 +8,6 @@
             "repo_url": "http://github.com/astropy/specutils.git"
         },
         {
-            "name": "pyidlastro",
-            "maintainer": "Tom Aldcroft",
-            "stable": false,
-            "home_url": "https://github.com/astropy/pyidlastro",
-            "repo_url": "http://github.com/astropy/pyidlastro.git"
-        },
-        {
             "name": "photutils",
             "maintainer": "Rene Breton",
             "stable": false,
@@ -57,6 +50,13 @@
             "home_url": "http://www.astropy.org/montage-wrapper/",
             "repo_url": "https://github.com/astropy/montage-wrapper",
             "pypi_name": "montage-wrapper"
+        },
+        {
+            "name": "pydl",
+            "maintainer": "Benjamin Alan Weaver <benjamin.weaver@nyu.edu>",
+            "stable": false,
+            "home_url": "https://github.com/weaverba137/pydl",
+            "repo_url": "http://github.com/weaverba137/pydl.git"
         }
     ]
 }
