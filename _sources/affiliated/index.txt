@@ -113,8 +113,20 @@ Currently Registered Packages
             }
         } else {
             var pkgs = data.packages;
+            
+            //First figure out the correct order if we sort on the name
+            var nmarr = new Array(pkgs.length)
+            var sortorder = new Array(pkgs.length)
             for (i=0; i<pkgs.length; i++) {
                 pkgi = pkgs[i];
+                nmarr[i] = pkgi.name;
+                sortorder[i] = i;
+            }
+            // This "sorts" the indecies using a compare function that actually sorts nmarr
+            sortorder.sort(function (a, b) { return nmarr[a] < nmarr[b] ? -1 : nmarr[a] > nmarr[b] ? 1 : 0; });
+            
+            for (i=0; i<sortorder.length; i++) {
+                pkgi = pkgs[sortorder[i]];
                 row = tab.insertRow(i + 1);
 
                 nmcell = row.insertCell(0);

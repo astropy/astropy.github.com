@@ -5,7 +5,16 @@
             "maintainer": "Wolfgang Kerzendorf",
             "stable": false,
             "home_url": "https://github.com/astropy/specutils",
-            "repo_url": "http://github.com/astropy/specutils.git"
+            "repo_url": "http://github.com/astropy/specutils.git",
+            "pypy_name": "specutils"
+        },
+        {
+            "name": "astroquery",
+            "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
+            "stable": false,
+            "home_url": "https://github.com/astropy/astroquery",
+            "repo_url": "http://github.com/astropy/astroquery.git",
+            "pypy_name": "astroquery"
         },
         {
             "name": "photutils",
@@ -33,6 +42,7 @@
             "name": "ginga",
             "maintainer": "Eric Jeschke <eric@naoj.org>",
             "stable": true,
+            "home_url": "http://ejeschke.github.com/ginga",
             "repo_url": "http://github.com/ejeschke/ginga"
         },
         {
