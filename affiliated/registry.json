@@ -6,7 +6,7 @@
             "stable": false,
             "home_url": "https://github.com/astropy/specutils",
             "repo_url": "http://github.com/astropy/specutils.git",
-            "pypy_name": "specutils"
+            "pypi_name": "specutils"
         },
         {
             "name": "astroquery",
@@ -14,7 +14,7 @@
             "stable": false,
             "home_url": "https://github.com/astropy/astroquery",
             "repo_url": "http://github.com/astropy/astroquery.git",
-            "pypy_name": "astroquery"
+            "pypi_name": "astroquery"
         },
         {
             "name": "photutils",
