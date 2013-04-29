@@ -72,9 +72,9 @@
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
             "stable": true,
-            "home_url": "https://aplpy.github.io",
+            "home_url": "http://aplpy.github.io",
             "repo_url": "http://github.com/aplpy/aplpy.git",
-            "pypi_name": "aplpy"
+            "pypi_name": "APLpy"
         }
     ]
 }
