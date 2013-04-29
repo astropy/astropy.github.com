@@ -67,6 +67,14 @@
             "stable": false,
             "home_url": "https://github.com/weaverba137/pydl",
             "repo_url": "http://github.com/weaverba137/pydl.git"
+        },
+        {
+            "name": "APLpy",
+            "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
+            "stable": true,
+            "home_url": "https://aplpy.github.io",
+            "repo_url": "http://github.com/aplpy/aplpy.git",
+            "pypi_name": "aplpy"
         }
     ]
 }
