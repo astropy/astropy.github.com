@@ -43,7 +43,8 @@
             "maintainer": "Eric Jeschke <eric@naoj.org>",
             "stable": true,
             "home_url": "http://ejeschke.github.com/ginga",
-            "repo_url": "http://github.com/ejeschke/ginga"
+            "repo_url": "http://github.com/ejeschke/ginga",
+            "pypi_name": "ginga"
         },
         {
             "name": "astroML",
