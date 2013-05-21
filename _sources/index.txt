@@ -56,8 +56,9 @@ automatically updated any time a change is made to the
 `astropy source code repository <http://github.com/astropy/astropy>`_.
 
 * `Stable version (docs.astropy.org) <http://docs.astropy.org>`_
-* `Latest developer version (devdocs.astropy.org) <http://devdocs.astropy.org>`_
-* :doc:`All versions <docs>`
+* `Latest developer version (devdocs.astropy.org) <http://devdocs.astropy.org>`_ 
+
+A full list of archived documentation can be found at :doc:`docs`.
     
 
 
