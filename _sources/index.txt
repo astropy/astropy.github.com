@@ -38,13 +38,6 @@ questions of all sorts!  If you want to get involved in Astropy development
 efforts, or other  more technical discussions of Astropy, join the 
 `astropy-dev`_ list.
 
-**Google Summer of Code 2013**: Astropy is officially a project for the Google
-Summer of Code 2013, as part of the `Python organization
-<http://wiki.python.org/moin/SummerOfCode/2013>`_ - if you are interested in
-finding out more, or applying to work on Astropy, see our `Project ideas
-<https://github.com/astropy/astropy/wiki/Google-Summer-of-Code-2013---Project-Ideas>`_
-page for more details!
-
 
 Documentation
 -------------
