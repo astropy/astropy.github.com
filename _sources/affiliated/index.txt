@@ -133,6 +133,14 @@ change significantly in the near future are marked as *No*.
 | Loading...   |         +           +          +                 |            |
 +--------------+---------+-----------+----------+-----------------+------------+
 
+
+To include your python astronomy package in this registry, contact the
+coordination committee by e-mailing `astropy.team@gmail.com
+<mailto:astropy.team@gmail.com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE>`_.
+
+
+
+
 .. raw:: html
 
     <script type="text/javascript">
@@ -188,7 +196,8 @@ change significantly in the near future are marked as *No*.
     }
 
     function populateTable(data, tstat, xhr) {
-        var tab = document.getElementsByTagName('table')[0];
+        var regdiv = document.getElementById('affiliated-package-registry');
+        var tab = regdiv.getElementsByTagName('table')[0];
         tab.deleteRow(1);
         var ncols = tab.rows[0].cells.length;
 
@@ -241,7 +250,4 @@ change significantly in the near future are marked as *No*.
 
     </script>
 
-To include your python astronomy package in this registry, contact the
-coordination committee by e-mailing `astropy.team@gmail.com
-<mailto:astropy.team@gmail.com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE>`_.
 

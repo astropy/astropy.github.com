@@ -284,6 +284,8 @@ change significantly in the near future are marked as <em>No</em>.</p>
 <tr class="row-odd"></tr>
 </tbody>
 </table>
+<p>To include your python astronomy package in this registry, contact the
+coordination committee by e-mailing <a class="reference external" href="mailto:astropy&#46;team&#37;&#52;&#48;gmail&#46;com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE">astropy<span>&#46;</span>team<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
 <script type="text/javascript">
 
 //Using jQuery is ok because it is needed by and bundled with sphinx
@@ -337,7 +339,8 @@ function maintainer_translator(maint, pkgnm) {
 }
 
 function populateTable(data, tstat, xhr) {
-    var tab = document.getElementsByTagName('table')[0];
+    var regdiv = document.getElementById('affiliated-package-registry');
+    var tab = regdiv.getElementsByTagName('table')[0];
     tab.deleteRow(1);
     var ncols = tab.rows[0].cells.length;
 
@@ -388,9 +391,7 @@ $(document).ready(function() {
     $.getJSON("registry.json", populateTable);
 });
 
-</script><p>To include your python astronomy package in this registry, contact the
-coordination committee by e-mailing <a class="reference external" href="mailto:astropy&#46;team&#37;&#52;&#48;gmail&#46;com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE">astropy<span>&#46;</span>team<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
-</div>
+</script></div>
 
 
 </div>
