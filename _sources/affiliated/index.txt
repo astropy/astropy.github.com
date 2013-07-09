@@ -1,46 +1,134 @@
 :orphan:
 
-
-Astropy Affiliated Package Registry
------------------------------------
+About affiliated packages
+=========================
 
 A major part of the Astropy project is the existence of "Affiliated
-Packages". An affiliated package is an astronomy-related python package
-that is not part of the `astropy` core source code, but has requested to
-be included in the Astropy project. The projects are expressing an
+Packages". An affiliated package is an astronomy-related Python package
+that is not part of the astropy core package, but has requested to
+be included in the Astropy project. These packages are expressing an
 interest in Astropy's goals of improving reuse, interoperability, and
 interface standards for python astronomy and astrophysics packages.
 
-This page houses the official registry for affiliated packages. The
-table below lists these packages, as determined from the
-http://affiliated.astropy.org/registry.json file that contains the actual
-registry. The following information is included for each package:
+If you are the developer of an astronomy package, and would like to become
+affiliated with the Astropy project, please drop us a line on the `astropy-dev <http://groups.google.com/group/astropy-dev>`_ mailing list!
 
-* The name of the package.
-* The name of the author/maintainer of the package.
-* It's "stability" status. The exact meaning of this is not fully defined,
-  but it should be used as a guide for whether or not the package maintainer
-  wants you to consider the package as "working," and not under heavy
-  development or similar.
-* The web page of the package.
-* The source code repository for the package.
-* The package's `PyPI <http://pypi.python.org/>`_ entry (if it has one).
+Featured packages
+=================
 
-Registering Packages
-^^^^^^^^^^^^^^^^^^^^
+Montage-wrapper
+---------------
 
-To include your python astronomy package in this registry, contact the
-coordination committe by e-mailing `astropy.team@gmail.com
-<mailto:astropy.team@gmail.com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE>`_.
+.. |mont| image:: montage.png
+
+.. |monthome| replace:: Home
+.. _monthome: http://www.astropy.org/montage-wrapper
+
+.. |montdocs| replace:: Documentation
+.. _montdocs: http://montage-wrapper.readthedocs.org/
+
+.. |montinst| replace:: Installation
+.. _montinst: http://montage-wrapper.readthedocs.org/en/latest/#installation
+
++--------+-------------------------------------------------------------------+
+| |mont| | **About:** Montage-wrapper is a pure Python module that provides a|
+|        | Python API to the Montage Astronomical Image Mosaic Engine,       |
+|        | including both functions to access individual Montage commands,   |
+|        | and high-level functions to facilitate mosaicking and             |
+|        | re-projecting. Python-montage uses the Astropy core package for   |
+|        | reading and writing FITS files.                                   |
+|        |                                                                   |
+|        | **Developer:** Thomas Robitaille                                  |
+|        |                                                                   |
+|        | |monthome|_ - |montdocs|_ - |montinst|_                           |
+|        |                                                                   |
++--------+-------------------------------------------------------------------+
+
+Ginga
+-----
+
+.. |ginga| image:: ginga.png
+
+.. |gingahome| replace:: Home and Installation
+.. _gingahome: http://ejeschke.github.io/ginga/
+
++--------+-------------------------------------------------------------------+
+||ginga| | **About:** Ginga is a viewer for astronomical data FITS (Flexible |
+|        | Image Transport System) files. The Ginga viewer centers around a  |
+|        | new FITS display widget which supports zooming and panning, color |
+|        | and intensity mapping, a choice of several automatic cut levels   |
+|        | algorithms and canvases for plotting scalable geometric forms.    |
+|        |                                                                   |
+|        | **Developer:** Eric Jeschkee                                      |
+|        |                                                                   |
+|        | |gingahome|_                                                      |
+|        |                                                                   |
++--------+-------------------------------------------------------------------+
 
 
-Currently Registered Packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+APLpy
+-----
+
+.. |aplpy| image:: aplpy.png
+
+.. |aplpyhome| replace:: Home
+.. _aplpyhome: http://aplpy.github.io
+
+.. |aplpydocs| replace:: Documentation
+.. _aplpydocs: http://aplpy.readthedocs.org
+
+.. |aplpyinst| replace:: Installation
+.. _aplpyinst: http://aplpy.github.io/install.html
+
++--------+-------------------------------------------------------------------+
+||aplpy| | **About:** APLpy (the Astronomical Plotting Library in Python) is |
+|        | a Python module aimed at producing publication-quality plots of   |
+|        | astronomical imaging data in FITS format. The module uses         |
+|        | Matplotlib, a powerful and interactive plotting package. It is    |
+|        | capable of creating output files in several graphical formats,    |
+|        | including EPS, PDF, PS, PNG, and SVG.                             |
+|        |                                                                   |
+|        | **Developers:** Thomas Robitaille, Eli Bressert, Adam Ginsburg    |
+|        |                                                                   |
+|        | |aplpyhome|_ - |aplpydocs|_ - |aplpyinst|_                        |
+|        |                                                                   |
++--------+-------------------------------------------------------------------+
+
+Other packages
+==============
+
+Stable packages
+---------------
+
+* `astroML <http://astroml.github.com/>`_: tools for machine learning and data mining in Astronomy
+* `Astropysics <http://packages.python.org/Astropysics/>`_: library of IDL astronomy routines converted to Python.
+
+In development
+--------------
+
+A few additional affiliated packages are currently in development, including:
+
+* `photutils <http://photutils.readthedocs.org/en/latest/>`_: photometry tools
+* `astroquery <http://astroquery.readthedocs.org/en/latest/>`_: online database querying
+* `specutils <https://github.com/astropy/specutils>`_: spectroscopic analysis utilities
+* `kcorrect <https://github.com/astropy/kcorrect>`_: Python bindings to kcorrect code of Blanton et al. 2007
+
+These packages are still very much in development, and the user interface (API) may not be stable. If you do try these packages, please do report any issues to the developers, so 
+
+Affiliated Package Registry
+===========================
+
+The following table below lists all currently registered affiliated packages.
+This table is determined from the http://affiliated.astropy.org/registry.json
+file that contains the actual registry. The *Stable* column indicates whether
+the package maintainer consider the package to be ready for use. Packages that
+are under heavy development and for which the user interface is likely to
+change significantly in the near future are marked as *No*.
 
 .. The javascript at the bottom does the actual table populating
 
 +--------------+---------+-----------+----------+-----------------+------------+
-| Package Name | Stable? | PyPI Name | Web Page | Code Repository | Maintainer |
+| Package Name | Stable  | PyPI Name | Web Page | Code Repository | Maintainer |
 +==============+=========+===========+==========+=================+============+
 | Loading...   |         +           +          +                 |            |
 +--------------+---------+-----------+----------+-----------------+------------+
@@ -152,3 +240,8 @@ Currently Registered Packages
     });
 
     </script>
+
+To include your python astronomy package in this registry, contact the
+coordination committee by e-mailing `astropy.team@gmail.com
+<mailto:astropy.team@gmail.com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE>`_.
+

@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Astropy Affiliated Package Registry &mdash; Astropy</title>
+    <title>About affiliated packages &mdash; Astropy</title>
 
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
@@ -121,17 +121,17 @@
         <a class="brand" href="../index.html"></a>
         <ul class="nav">
           
-            <li><a href="../docs.html" rel="nofollow">Documentation</a></li>
+            <li><a href="../docs.html" rel="nofollow">Docs</a></li>
+<li><a href="#" rel="nofollow">Affiliated Packages</a></li>
 <li><a href="../contributing.html" rel="nofollow">Contributing</a></li>
 <li><a href="../team.html" rel="nofollow">The Team</a></li>
-
           
         </ul>
         <ul class="nav secondary-nav">
           <li>
           
             
-<form class="pull-left" action="http://docs.astropy.org/en/stable/search.html" method="get">
+<form class="pull-right" action="http://docs.astropy.org/en/stable/search.html" method="get">
   <input type="text" name="q" placeholder="Search Documentation" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
@@ -147,36 +147,114 @@
 
 <div class="container">
    
-  <div class="section" id="astropy-affiliated-package-registry">
-<h1>Astropy Affiliated Package Registry<a class="headerlink" href="#astropy-affiliated-package-registry" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="about-affiliated-packages">
+<h1>About affiliated packages<a class="headerlink" href="#about-affiliated-packages" title="Permalink to this headline">¶</a></h1>
 <p>A major part of the Astropy project is the existence of &#8220;Affiliated
-Packages&#8221;. An affiliated package is an astronomy-related python package
-that is not part of the <cite>astropy</cite> core source code, but has requested to
-be included in the Astropy project. The projects are expressing an
+Packages&#8221;. An affiliated package is an astronomy-related Python package
+that is not part of the astropy core package, but has requested to
+be included in the Astropy project. These packages are expressing an
 interest in Astropy&#8217;s goals of improving reuse, interoperability, and
 interface standards for python astronomy and astrophysics packages.</p>
-<p>This page houses the official registry for affiliated packages. The
-table below lists these packages, as determined from the
-<a class="reference external" href="http://affiliated.astropy.org/registry.json">http://affiliated.astropy.org/registry.json</a> file that contains the actual
-registry. The following information is included for each package:</p>
-<ul class="simple">
-<li>The name of the package.</li>
-<li>The name of the author/maintainer of the package.</li>
-<li>It&#8217;s &#8220;stability&#8221; status. The exact meaning of this is not fully defined,
-but it should be used as a guide for whether or not the package maintainer
-wants you to consider the package as &#8220;working,&#8221; and not under heavy
-development or similar.</li>
-<li>The web page of the package.</li>
-<li>The source code repository for the package.</li>
-<li>The package&#8217;s <a class="reference external" href="http://pypi.python.org/">PyPI</a> entry (if it has one).</li>
-</ul>
-<div class="section" id="registering-packages">
-<h2>Registering Packages<a class="headerlink" href="#registering-packages" title="Permalink to this headline">¶</a></h2>
-<p>To include your python astronomy package in this registry, contact the
-coordination committe by e-mailing <a class="reference external" href="mailto:astropy&#46;team&#37;&#52;&#48;gmail&#46;com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE">astropy<span>&#46;</span>team<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+<p>If you are the developer of an astronomy package, and would like to become
+affiliated with the Astropy project, please drop us a line on the <a class="reference external" href="http://groups.google.com/group/astropy-dev">astropy-dev</a> mailing list!</p>
 </div>
-<div class="section" id="currently-registered-packages">
-<h2>Currently Registered Packages<a class="headerlink" href="#currently-registered-packages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="featured-packages">
+<h1>Featured packages<a class="headerlink" href="#featured-packages" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="montage-wrapper">
+<h2>Montage-wrapper<a class="headerlink" href="#montage-wrapper" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="mont" src="../_images/montage.png" /></td>
+<td><p class="first"><strong>About:</strong> Montage-wrapper is a pure Python module that provides a
+Python API to the Montage Astronomical Image Mosaic Engine,
+including both functions to access individual Montage commands,
+and high-level functions to facilitate mosaicking and
+re-projecting. Python-montage uses the Astropy core package for
+reading and writing FITS files.</p>
+<p><strong>Developer:</strong> Thomas Robitaille</p>
+<p class="last"><a class="reference external" href="http://www.astropy.org/montage-wrapper">Home</a> - <a class="reference external" href="http://montage-wrapper.readthedocs.org/">Documentation</a> - <a class="reference external" href="http://montage-wrapper.readthedocs.org/en/latest/#installation">Installation</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ginga">
+<h2>Ginga<a class="headerlink" href="#ginga" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="ginga" src="../_images/ginga.png" /></td>
+<td><p class="first"><strong>About:</strong> Ginga is a viewer for astronomical data FITS (Flexible
+Image Transport System) files. The Ginga viewer centers around a
+new FITS display widget which supports zooming and panning, color
+and intensity mapping, a choice of several automatic cut levels
+algorithms and canvases for plotting scalable geometric forms.</p>
+<p><strong>Developer:</strong> Eric Jeschkee</p>
+<p class="last"><a class="reference external" href="http://ejeschke.github.io/ginga/">Home and Installation</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aplpy">
+<h2>APLpy<a class="headerlink" href="#aplpy" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="aplpy" src="../_images/aplpy.png" /></td>
+<td><p class="first"><strong>About:</strong> APLpy (the Astronomical Plotting Library in Python) is
+a Python module aimed at producing publication-quality plots of
+astronomical imaging data in FITS format. The module uses
+Matplotlib, a powerful and interactive plotting package. It is
+capable of creating output files in several graphical formats,
+including EPS, PDF, PS, PNG, and SVG.</p>
+<p><strong>Developers:</strong> Thomas Robitaille, Eli Bressert, Adam Ginsburg</p>
+<p class="last"><a class="reference external" href="http://aplpy.github.io">Home</a> - <a class="reference external" href="http://aplpy.readthedocs.org">Documentation</a> - <a class="reference external" href="http://aplpy.github.io/install.html">Installation</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="other-packages">
+<h1>Other packages<a class="headerlink" href="#other-packages" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="stable-packages">
+<h2>Stable packages<a class="headerlink" href="#stable-packages" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://astroml.github.com/">astroML</a>: tools for machine learning and data mining in Astronomy</li>
+<li><a class="reference external" href="http://packages.python.org/Astropysics/">Astropysics</a>: library of IDL astronomy routines converted to Python.</li>
+</ul>
+</div>
+<div class="section" id="in-development">
+<h2>In development<a class="headerlink" href="#in-development" title="Permalink to this headline">¶</a></h2>
+<p>A few additional affiliated packages are currently in development, including:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://photutils.readthedocs.org/en/latest/">photutils</a>: photometry tools</li>
+<li><a class="reference external" href="http://astroquery.readthedocs.org/en/latest/">astroquery</a>: online database querying</li>
+<li><a class="reference external" href="https://github.com/astropy/specutils">specutils</a>: spectroscopic analysis utilities</li>
+<li><a class="reference external" href="https://github.com/astropy/kcorrect">kcorrect</a>: Python bindings to kcorrect code of Blanton et al. 2007</li>
+</ul>
+<p>These packages are still very much in development, and the user interface (API) may not be stable. If you do try these packages, please do report any issues to the developers, so</p>
+</div>
+</div>
+<div class="section" id="affiliated-package-registry">
+<h1>Affiliated Package Registry<a class="headerlink" href="#affiliated-package-registry" title="Permalink to this headline">¶</a></h1>
+<p>The following table below lists all currently registered affiliated packages.
+This table is determined from the <a class="reference external" href="http://affiliated.astropy.org/registry.json">http://affiliated.astropy.org/registry.json</a>
+file that contains the actual registry. The <em>Stable</em> column indicates whether
+the package maintainer consider the package to be ready for use. Packages that
+are under heavy development and for which the user interface is likely to
+change significantly in the near future are marked as <em>No</em>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -188,7 +266,7 @@ coordination committe by e-mailing <a class="reference external" href="mailto:as
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Package Name</th>
-<th class="head">Stable?</th>
+<th class="head">Stable</th>
 <th class="head">PyPI Name</th>
 <th class="head">Web Page</th>
 <th class="head">Code Repository</th>
@@ -310,7 +388,8 @@ $(document).ready(function() {
     $.getJSON("registry.json", populateTable);
 });
 
-</script></div>
+</script><p>To include your python astronomy package in this registry, contact the
+coordination committee by e-mailing <a class="reference external" href="mailto:astropy&#46;team&#37;&#52;&#48;gmail&#46;com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE">astropy<span>&#46;</span>team<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
 </div>
 
 
