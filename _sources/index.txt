@@ -113,3 +113,6 @@ for Astronomy (Astropy Collaboration, 2013).*
 
 where *(Astropy Collaboration, 2013)* is a citation to `this paper
 <http://arxiv.org/abs/1307.6212>`_ (`ADS <http://adsabs.harvard.edu/abs/2013arXiv1307.6212T>`_ - `BibTeX <http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013arXiv1307.6212T&data_type=BIBTEX&db_key=PRE&nocookieset=1>`_).
+
+If you wish, you can also include a link to `<http://www.astropy.org>`_ (if
+the journal allows this) in addition to the above text.
