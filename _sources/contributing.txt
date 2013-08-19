@@ -35,3 +35,8 @@ other developers of your intent to develop an affiliated package, you can head
 over `here <https://github.com/astropy/package-template>`_ for instructions on
 getting started! We can even create a repository for your affiliated package
 in the `astropy` organization on GitHub!
+
+Community
+---------
+Astropy welcomes anyone who wants to contribute to the project. We follow the 
+`Python Software Foundation Code of Conduct <http://www.python.org/psf/codeofconduct/>`_.
