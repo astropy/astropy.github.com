@@ -104,6 +104,9 @@ ticket in the Astropy `issue tracker`_, and we will look into it promptly!
 Acknowledging the use of Astropy
 --------------------------------
 
+Publications
+============
+
 If you use Astropy for work/research presented in a publication (whether
 directly, or as a dependency to another package), we would be grateful if you
 could include the following acknowledgment:
@@ -116,3 +119,17 @@ where *(Astropy Collaboration, 2013)* is a citation to `this paper
 
 If you wish, you can also include a link to `<http://www.astropy.org>`_ (if
 the journal allows this) in addition to the above text.
+
+Presentations
+=============
+
+If you are giving a presentation or talk featuring work/research that makes use of
+Astropy and would like to acknowledge Astropy, we suggest using :download:`this logo <logos/astropy_powered.png>` on your title slide:
+
+.. image :: logos/astropy_powered.png
+    :width: 180px
+    :height: 33px
+
+The logo is :download:`also available with white text <logos/astropy_powered_white.png>`, 
+or the SVG originals can be obtained at the `astropy-logo github repository <http://github.com/astropy/astropy-logo>`_.
+
