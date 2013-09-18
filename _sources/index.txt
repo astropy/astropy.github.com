@@ -87,6 +87,13 @@ If you do not get any errors, the installation was successful!
         python setup.py install
 
     Be aware that the developer build requires `Cython`_ (in addition to `Numpy`_).
+    
+How to start working with Astropy
+---------------------------------
+
+Take a look at the `Getting Started <http://docs.astropy.org/en/stable/getting_started.html>`_
+guide in the documentation for an initial look at how to work with Astropy.
+To drill deeper, explore the :doc:`docs`. 
 
 Getting help
 ------------
