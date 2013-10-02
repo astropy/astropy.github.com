@@ -123,7 +123,7 @@ could include the following acknowledgment:
 for Astronomy (Astropy Collaboration, 2013).*
 
 where *(Astropy Collaboration, 2013)* is a citation to `this paper
-<http://arxiv.org/abs/1307.6212>`_ (`ADS <http://adsabs.harvard.edu/abs/2013arXiv1307.6212T>`_ - `BibTeX <http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013arXiv1307.6212T&data_type=BIBTEX&db_key=PRE&nocookieset=1>`_).
+<http://dx.doi.org/10.1051/0004-6361/201322068>`_ (`ADS <http://adsabs.harvard.edu/abs/2013A%26A...558A..33A>`_ - `BibTeX <http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&data_type=BIBTEX&db_key=AST&nocookieset=1>`_).
 
 If you wish, you can also include a link to `<http://www.astropy.org>`_ (if
 the journal allows this) in addition to the above text.
