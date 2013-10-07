@@ -3,15 +3,17 @@
 About affiliated packages
 =========================
 
-A major part of the Astropy project is the existence of "Affiliated
+A major part of the Astropy project is the concept of "Affiliated
 Packages". An affiliated package is an astronomy-related Python package
 that is not part of the astropy core package, but has requested to
-be included in the Astropy project. These packages are expressing an
-interest in Astropy's goals of improving reuse, interoperability, and
-interface standards for python astronomy and astrophysics packages.
+be included as part of the Astropy project's community. These packages 
+are expressing an interest in Astropy's goals of improving reuse, 
+interoperability, and interface standards for python astronomy and
+astrophysics packages.
 
-If you are the developer of an astronomy package, and would like to become
-affiliated with the Astropy project, please drop us a line on the `astropy-dev <http://groups.google.com/group/astropy-dev>`_ mailing list!
+If you are developer interested in signing up as an affiliated package,
+details are at the end of this page.
+
 
 Featured packages
 =================
@@ -118,12 +120,12 @@ These packages are still very much in development, and the user interface (API) 
 Affiliated Package Registry
 ===========================
 
-The following table below lists all currently registered affiliated packages.
+The following table lists all currently registered affiliated packages.
 This table is determined from the http://affiliated.astropy.org/registry.json
-file that contains the actual registry. The *Stable* column indicates whether
-the package maintainer consider the package to be ready for use. Packages that
-are under heavy development and for which the user interface is likely to
-change significantly in the near future are marked as *No*.
+file, which is the authoritative ctual registry. The *Stable* column indicates 
+whether the package maintainer consider the package to be ready for use.
+Packages that are under heavy development and for which the user interface 
+is likely to change significantly in the near future are marked as *No*.
 
 .. The javascript at the bottom does the actual table populating
 
@@ -134,10 +136,44 @@ change significantly in the near future are marked as *No*.
 +--------------+---------+-----------+----------+-----------------+------------+
 
 
-To include your python astronomy package in this registry, contact the
-coordination committee by e-mailing `astropy.team@gmail.com
-<mailto:astropy.team@gmail.com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE>`_.
 
+Becoming an affiliated package
+==============================
+
+If you are the developer of an astronomy package and would like to become
+affiliated with the Astropy project, contact the Astropy coordination commitee
+by leaving a message on the `astropy-dev <http://groups.google.com/group/astropy-dev>`_ 
+group, or by contacting one of the coordination committee members directly.
+
+A candiate affilated package will be judged by the coordination committee on the following
+standards:
+
+* It should use `classes and functions from the astropy package <http://docs.astropy.org>`_
+  wherever possible and appropriate.  This facilitates re-use of code and  
+  sharing of resources.
+* The package should have documentation that adequately explains the use of the
+  package, at standards comparable to `astropy`.  Additionally, user-facing 
+  classes and functions should all have docstrings. We suggest using `sphinx`,
+  with the `numpydoc`-like `docstring standards used by astropy <http://docs.astropy.org/en/stable/development/docguide.html>`_,
+  but this is not a strict requirement as long as the documentation is of
+  comparable quality.
+* The package should make a best-effort to include an easy-to-run test suite
+  that covers its intended functionality.  We realize this is not possible 
+  always possible, but when possible, a test suite is a crucial element of 
+  stable software and reproducible science.
+* The package developer(s) should make an effort to connect with the Astropy
+  developer community, including both relevant parts of the core `astropy`
+  package and any related affiliated packages.
+
+
+If you are considering creating a new astronomy package and would like it to be
+an Astropy affiliated package, we provides a package template to make it much 
+easier to meet these standards.  It provides the necessary structure to 
+generate documentation like that used in the `astropy` package, a ready-to-use
+testing framework, and a variety of tools that streamline tasks like  user
+configuration, caching downloaded files, or linking C-compiled extensions. More
+details on this template are available in the `usage instructions for the 
+template <https://github.com/astropy/package-template/blob/master/README.rst>`_.
 
 
 

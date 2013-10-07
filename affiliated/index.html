@@ -149,14 +149,15 @@
    
   <div class="section" id="about-affiliated-packages">
 <h1>About affiliated packages<a class="headerlink" href="#about-affiliated-packages" title="Permalink to this headline">¶</a></h1>
-<p>A major part of the Astropy project is the existence of &#8220;Affiliated
+<p>A major part of the Astropy project is the concept of &#8220;Affiliated
 Packages&#8221;. An affiliated package is an astronomy-related Python package
 that is not part of the astropy core package, but has requested to
-be included in the Astropy project. These packages are expressing an
-interest in Astropy&#8217;s goals of improving reuse, interoperability, and
-interface standards for python astronomy and astrophysics packages.</p>
-<p>If you are the developer of an astronomy package, and would like to become
-affiliated with the Astropy project, please drop us a line on the <a class="reference external" href="http://groups.google.com/group/astropy-dev">astropy-dev</a> mailing list!</p>
+be included as part of the Astropy project&#8217;s community. These packages
+are expressing an interest in Astropy&#8217;s goals of improving reuse,
+interoperability, and interface standards for python astronomy and
+astrophysics packages.</p>
+<p>If you are developer interested in signing up as an affiliated package,
+details are at the end of this page.</p>
 </div>
 <div class="section" id="featured-packages">
 <h1>Featured packages<a class="headerlink" href="#featured-packages" title="Permalink to this headline">¶</a></h1>
@@ -249,12 +250,12 @@ including EPS, PDF, PS, PNG, and SVG.</p>
 </div>
 <div class="section" id="affiliated-package-registry">
 <h1>Affiliated Package Registry<a class="headerlink" href="#affiliated-package-registry" title="Permalink to this headline">¶</a></h1>
-<p>The following table below lists all currently registered affiliated packages.
+<p>The following table lists all currently registered affiliated packages.
 This table is determined from the <a class="reference external" href="http://affiliated.astropy.org/registry.json">http://affiliated.astropy.org/registry.json</a>
-file that contains the actual registry. The <em>Stable</em> column indicates whether
-the package maintainer consider the package to be ready for use. Packages that
-are under heavy development and for which the user interface is likely to
-change significantly in the near future are marked as <em>No</em>.</p>
+file, which is the authoritative ctual registry. The <em>Stable</em> column indicates
+whether the package maintainer consider the package to be ready for use.
+Packages that are under heavy development and for which the user interface
+is likely to change significantly in the near future are marked as <em>No</em>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -284,8 +285,41 @@ change significantly in the near future are marked as <em>No</em>.</p>
 <tr class="row-odd"></tr>
 </tbody>
 </table>
-<p>To include your python astronomy package in this registry, contact the
-coordination committee by e-mailing <a class="reference external" href="mailto:astropy&#46;team&#37;&#52;&#48;gmail&#46;com?subject=Affiliated%20package%20registration%20request%20for%20YOURPKGNAMEHERE">astropy<span>&#46;</span>team<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+</div>
+<div class="section" id="becoming-an-affiliated-package">
+<h1>Becoming an affiliated package<a class="headerlink" href="#becoming-an-affiliated-package" title="Permalink to this headline">¶</a></h1>
+<p>If you are the developer of an astronomy package and would like to become
+affiliated with the Astropy project, contact the Astropy coordination commitee
+by leaving a message on the <a class="reference external" href="http://groups.google.com/group/astropy-dev">astropy-dev</a>
+group, or by contacting one of the coordination committee members directly.</p>
+<p>A candiate affilated package will be judged by the coordination committee on the following
+standards:</p>
+<ul class="simple">
+<li>It should use <a class="reference external" href="http://docs.astropy.org">classes and functions from the astropy package</a>
+wherever possible and appropriate.  This facilitates re-use of code and
+sharing of resources.</li>
+<li>The package should have documentation that adequately explains the use of the
+package, at standards comparable to <cite>astropy</cite>.  Additionally, user-facing
+classes and functions should all have docstrings. We suggest using <cite>sphinx</cite>,
+with the <cite>numpydoc</cite>-like <a class="reference external" href="http://docs.astropy.org/en/stable/development/docguide.html">docstring standards used by astropy</a>,
+but this is not a strict requirement as long as the documentation is of
+comparable quality.</li>
+<li>The package should make a best-effort to include an easy-to-run test suite
+that covers its intended functionality.  We realize this is not possible
+always possible, but when possible, a test suite is a crucial element of
+stable software and reproducible science.</li>
+<li>The package developer(s) should make an effort to connect with the Astropy
+developer community, including both relevant parts of the core <cite>astropy</cite>
+package and any related affiliated packages.</li>
+</ul>
+<p>If you are considering creating a new astronomy package and would like it to be
+an Astropy affiliated package, we provides a package template to make it much
+easier to meet these standards.  It provides the necessary structure to
+generate documentation like that used in the <cite>astropy</cite> package, a ready-to-use
+testing framework, and a variety of tools that streamline tasks like  user
+configuration, caching downloaded files, or linking C-compiled extensions. More
+details on this template are available in the <a class="reference external" href="https://github.com/astropy/package-template/blob/master/README.rst">usage instructions for the
+template</a>.</p>
 <script type="text/javascript">
 
 //Using jQuery is ok because it is needed by and bundled with sphinx
