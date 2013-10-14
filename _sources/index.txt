@@ -31,7 +31,7 @@ are under development. For more details, on the plan for the Astropy
 project, you can read the :doc:`original vision <vision>`, or the 
 `documentation overview <http://docs.astropy.org/en/latest/overview.html>`_.
 
-The current stable version is |currentstable|_.
+The current stable version is |currentstable|_.  (`Changelog <http://docs.astropy.org/en/stable/changelog.html>`_)
 
 Stay updated by following `@astropy <http://twitter.com/#!/astropy>`_ on Twitter, and sign up for the `astropy`_ mailing list, where you can ask python astronomy
 questions of all sorts!  If you want to get involved in Astropy development
