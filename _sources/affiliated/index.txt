@@ -122,7 +122,7 @@ Affiliated Package Registry
 
 The following table lists all currently registered affiliated packages.
 This table is determined from the http://affiliated.astropy.org/registry.json
-file, which is the authoritative ctual registry. The *Stable* column indicates 
+file, which is the actual authoritative registry. The *Stable* column indicates 
 whether the package maintainer consider the package to be ready for use.
 Packages that are under heavy development and for which the user interface 
 is likely to change significantly in the near future are marked as *No*.
