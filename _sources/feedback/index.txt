@@ -1,3 +1,5 @@
+:orphan:
+
 Astropy Feedback (and getting help)
 ===================================
 
@@ -24,7 +26,7 @@ There are several ways in which you can give us feedback:
   as posts to the `astropy-dev`_ google group.
 
 .. _IRC: http://en.wikipedia.org/wiki/Irc
-.. _feedback@astropy.org: mailto:feedback@astropy.org
+.. _astropy-feedback@googlegroups.com: mailto:astropy-feedback@googlegroups.com
 .. _astropy: http://mail.scipy.org/mailman/listinfo/astropy
 .. _issues: http://github.com/astropy/astropy/issues
 .. _pull requests: https://github.com/astropy/astropy/pulls
