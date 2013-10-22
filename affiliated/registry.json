@@ -67,7 +67,8 @@
             "maintainer": "Benjamin Alan Weaver <benjamin.weaver@nyu.edu>",
             "stable": false,
             "home_url": "https://github.com/weaverba137/pydl",
-            "repo_url": "http://github.com/weaverba137/pydl.git"
+            "repo_url": "http://github.com/weaverba137/pydl.git",
+            "pypi_name": "pydl"
         },
         {
             "name": "APLpy",
