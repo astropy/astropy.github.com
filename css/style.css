@@ -93,8 +93,8 @@ h3{
 }
 
 p{
-	margin-bottom: 1em;
-	margin-top: 1em;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	line-height: 1.5em;
 }
 
@@ -436,6 +436,10 @@ section.install div h3{
 }
 
 /* About */
+
+p.citation{
+	margin: 10px 40px;
+}
 
 ul.team{
 	-moz-column-count:5; /* Firefox */

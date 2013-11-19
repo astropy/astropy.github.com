@@ -1,0 +1,82 @@
+{
+    "packages": [
+        {
+            "name": "specutils",
+            "maintainer": "Wolfgang Kerzendorf",
+            "stable": false,
+            "home_url": "https://github.com/astropy/specutils",
+            "repo_url": "http://github.com/astropy/specutils.git",
+            "pypi_name": "specutils"
+        },
+        {
+            "name": "astroquery",
+            "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
+            "stable": false,
+            "home_url": "https://github.com/astropy/astroquery",
+            "repo_url": "http://github.com/astropy/astroquery.git",
+            "pypi_name": "astroquery"
+        },
+        {
+            "name": "photutils",
+            "maintainer": "Rene Breton",
+            "stable": false,
+            "home_url": "https://github.com/astropy/photutils",
+            "repo_url": "http://github.com/astropy/photutils.git"
+        },
+        {
+            "name": "kcorrect",
+            "maintainer": "Taro Sato",
+            "stable": false,
+            "home_url": "https://github.com/astropy/kcorrect",
+            "repo_url": "http://github.com/astropy/kcorrect.git"
+        },
+        {
+            "name": "astropysics",
+            "maintainer": "Erik Tollerud <erik.tollerud@gmail.com>",
+            "stable": true,
+            "home_url": "http://packages.python.org/Astropysics/",
+            "repo_url": "http://github.com/eteq/astropysics.git",
+            "pypi_name": "Astropysics"
+        },
+        {
+            "name": "ginga",
+            "maintainer": "Eric Jeschke <eric@naoj.org>",
+            "stable": true,
+            "home_url": "http://ejeschke.github.com/ginga",
+            "repo_url": "http://github.com/ejeschke/ginga",
+            "pypi_name": "ginga"
+        },
+        {
+            "name": "astroML",
+            "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
+            "stable": true,
+            "home_url": "http://astroml.github.com/",
+            "repo_url": "http://github.com/astroML/astroML",
+            "pypi_name": "astroML"
+        },
+        {
+            "name": "montage-wrapper",
+            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "stable": true,
+            "home_url": "http://www.astropy.org/montage-wrapper/",
+            "repo_url": "https://github.com/astropy/montage-wrapper",
+            "pypi_name": "montage-wrapper"
+        },
+        {
+            "name": "pydl",
+            "maintainer": "Benjamin Alan Weaver <benjamin.weaver@nyu.edu>",
+            "stable": false,
+            "home_url": "https://github.com/weaverba137/pydl",
+            "repo_url": "http://github.com/weaverba137/pydl.git",
+            "pypi_name": "pydl"
+        },
+        {
+            "name": "APLpy",
+            "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
+            "stable": true,
+            "home_url": "http://aplpy.github.io",
+            "repo_url": "http://github.com/aplpy/aplpy.git",
+            "pypi_name": "APLpy"
+        }
+    ]
+}
