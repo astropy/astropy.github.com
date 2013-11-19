@@ -6,7 +6,7 @@ $( document ).ready(function(){
 
 		$(this).parent().hover(function() {
 		}, function(){	
-			$(this).parent().find("ul").slideUp('slow'); //When the mouse hovers out of the subnav, move it back up
+			$(this).parent().find("ul").slideUp('fast'); //When the mouse hovers out of the subnav, move it back up
 		});
 
 

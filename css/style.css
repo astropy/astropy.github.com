@@ -63,34 +63,98 @@ a{
 	color: #FF5000;
 	text-decoration: none;
 }
+a, .button{
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
 
 a:hover{
 	color:#333;
 }
 
-h3{
-	font-size: 18px;
+h1{
+	font-size: 24px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+h2{
+	font-size: 20px;
 	margin-bottom: 10px;
+}
+
+h3{
+	font-size: 16px;
+	margin: 20px 0px 10px 0px;
+	color:  #FF5000;
 }
 
 p{
 	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+p:last-child{
+	margin-bottom: 0px;
+}
+
+strong{
+	font-weight: bold;
+
 }
 
 section{
 	border-bottom: 1px #efefef solid;
-	padding: 10px;
-	margin: 10px 0px;
+	padding: 30px 10px;
+	clear: both;
 }
 
 section:last-of-type{
 	border-bottom: 0px;
 }
 
+ul li{
+	list-style-type: square;
+	list-style-position: outside;
+	list-style-color:  #FF5000;
+	line-height: 1.5em;
+	margin-left: 30px;
+}
+
+cite{
+	font-family: monospace;
+}
+
+pre{
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	padding: 10px;
+	color: black;
+	font-family: Monaco, Andale Mono, Courier New, monospace;
+	webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
 .button{
-	background-color:#FF5000;
+
 	padding: 8px;
 	display: inline-block;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FC9468),
+	color-stop(0.89, #FF5100)
+	);
+	background-image: -o-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
 }
 
 a.button, .button a{
@@ -98,17 +162,39 @@ a.button, .button a{
 }
 
 .button:hover{
-	background-color: #ffa077;
 	cursor: pointer;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FC9468),
+	color-stop(1, #FCBEA6)
+);
+background-image: -o-linear-gradient(bottom, #FC9468 0%, #FCBEA6 100%);
+background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FCBEA6 100%);
+background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FCBEA6 100%);
+background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FCBEA6 100%);
+background-image: linear-gradient(to bottom, #FC9468 0%, #FCBEA6 100%);
 }
 
 
 
 /* nav */
 nav{
-	background-color:#222;
 	line-height: 32px;
 	padding: 5px 0px;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #222222),
+	color-stop(0.89, #333333)
+);
+background-image: -o-linear-gradient(bottom, #222222 0%, #333333 89%);
+background-image: -moz-linear-gradient(bottom, #222222 0%, #333333 89%);
+background-image: -webkit-linear-gradient(bottom, #222222 0%, #333333 89%);
+background-image: -ms-linear-gradient(bottom, #222222 0%, #333333 89%);
+background-image: linear-gradient(to bottom, #222222 0%, #333333 89%);
 }
 
 nav img{
@@ -130,9 +216,27 @@ nav a:hover{
 	color:#FF5000;
 }
 
+nav a.active{
+	color:#FF5000;
+}
+
 nav .pull-right{
 	float: right;
-	margin: 0px 20px;
+	margin: 0px 10px;
+}
+
+.search input{
+	margin-top: 4px;
+	width: 210px;
+	height: 18px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #ffffff;
+	font-size: 13px;
+	line-height: 18px;
+	padding-left: 5px;
 }
 
 
@@ -175,10 +279,10 @@ section#hero div#documentation a{
 }
 
 section#hero div#documentation ul{
+	border-top: white 2px solid;
 	text-align: left;
-	list-style: none;
 	position: absolute;
-	left: 53px; top: 35px;
+	left: 53px; top: 33px;
 	display: none;
 	background-color: #FF5000;
 	width: 100px;
@@ -188,6 +292,8 @@ section#hero div#documentation ul{
 section#hero div#documentation ul li{
 	border-top: white 1px solid;
 	padding: 0px 5px;
+	list-style: none;
+	margin-left: 0px;
 }
 section#hero div#documentation ul li:hover{
 	background-color: #ffa077;
@@ -196,16 +302,26 @@ section#hero div#documentation ul li:hover{
 
 /*Installation Instructions*/
 
+section.install div{
+	margin-top: 30px;
+}
+
 section.install .button.download{
 	float: right;
 }
 
+section.install ul li{
+	list-style: none;
+	margin-left: 0px;
+}
+
 section.install ul li a{
-	border: 1px #FF5000 solid; 
+	border: 1px #FFE1D6 solid; 
 	padding: 10px;
 	float: left;
-	margin: 0px 5px;
+	margin: 0px 5px -1px 5px;
 	height:20px;
+	line-height: 20px;
 }
 
 section.install ul li:first-child a{
@@ -213,25 +329,89 @@ section.install ul li:first-child a{
 }
 
 section.install #os-selector ul li a:hover{
-	background-color: #ffa077;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FC9468),
+	color-stop(0.89, #FF5100)
+	);
+	background-image: -o-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
+	color: white;
 	cursor: pointer;
 }
 
 section.install #os-selector li a.active{
 	color: white;
-	background-color: #ffa077;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FC9468),
+	color-stop(0.89, #FF5100)
+	);
+	background-image: -o-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
 }
 
 section.install #os-selector li img{
 	height:20px;
+	vertical-align: top;
 }
 section.install #os-selector div{
 	clear: both;
-	border: 1px black solid;
-	padding: 20px;
+	border-top: 1px #FFE1D6 solid; 
+	border-bottom: 1px #FFE1D6 solid;
+	padding: 20px 0px;
 	margin-bottom:20px;
 
 }
+
+
+section.install div h3{
+	color: black;
+	margin-top: 0px;
+}
+
+
+/*Affiliated*/
+
+.featured div{
+	clear: both;
+	padding: 20px 0px;
+}
+
+.featured div:first-of-type{
+	padding-top: 5px;
+}
+
+.featured div h3{
+	color:black;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #FFE1D6;
+}
+
+.featured img{
+	float: left;
+	margin-right:10px;
+}
+
+/* About */
+
+ul.team{
+	-moz-column-count:5; /* Firefox */
+	-webkit-column-count:5; /* Safari and Chrome */
+	column-count:5;
+}
+
 
 
 
