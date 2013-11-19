@@ -435,6 +435,19 @@ section.install div h3{
 	margin-right:10px;
 }
 
+thead{
+	text-align: left;
+	font-weight: bold;
+	border-bottom: 1px black solid;
+}
+tr{
+	border-bottom: 1px #efefef solid;
+}
+
+td{
+	padding:3px;
+}
+
 /* About */
 
 p.citation{
