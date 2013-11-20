@@ -47,20 +47,25 @@ table {
 	border-spacing: 0;
 }
 
-#wrapper{
-	margin:0 auto;
-	width:960px;
+body{
 	line-height: 1.25em;
 	font-size: 14px;
 	color:#333;
 	font-family: 'Open Sans', sans-serif;
 }
 
+#wrapper{
+	margin:0 auto;
+	max-width:960px;
+	padding:0 10px;
+	min-width: 330px;
+}
+
 a{
 	color: #FF5000;
 	text-decoration: none;
 }
-a{
+a, svg{
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
@@ -106,7 +111,7 @@ strong{
 
 section{
 	border-bottom: 1px #efefef solid;
-	padding: 30px 10px;
+	padding: 30px 0;
 	clear: both;
 }
 
@@ -169,24 +174,23 @@ a.button, .button a{
 
 .button:hover{
 	cursor: pointer;
-background-image: -webkit-gradient(
-	linear,
-	left top,
-	left bottom,
-	color-stop(0, #FFA47D),
-	color-stop(1, #FF7D45)
-);
-background-image: -o-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
-background-image: -moz-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
-background-image: -webkit-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
-background-image: -ms-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
-background-image: linear-gradient(to bottom, #FFA47D 0%, #FF7D45 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #FFA47D),
+		color-stop(1, #FF7D45)
+	);
+	background-image: -o-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
+	background-image: -moz-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
+	background-image: -ms-linear-gradient(bottom, #FFA47D 0%, #FF7D45 100%);
+	background-image: linear-gradient(to bottom, #FFA47D 0%, #FF7D45 100%);
 }
 
 /* nav */
 nav{
-	line-height: 32px;
-	padding: 5px 0px;
+	line-height: 42px;
 	position:absolute;
 	left:0px;
 	top:0px;
@@ -199,14 +203,20 @@ nav{
 	background-image: linear-gradient(to bottom, #222222 0%, #333333 89%);
 }
 
+nav > *{
+	display:inline-block;
+	vertical-align:top;
+}
+
 nav img{
 	float: left;
 	margin-left: 20px;
+	margin-top: 5px;
 }
 
 nav ul{
-	width:960px;
-	margin:0 auto;
+	max-width:960px;
+	margin:0 auto;	
 }
 
 nav ul li{
@@ -216,25 +226,25 @@ nav ul li{
 }
 
 
-nav a, nav a:link{
+nav li a, nav li a:link{
 	color:white;
 }
-nav a:hover{
+nav li a:hover{
 	color:#FF5000;
 }
 
-nav a.active{
+nav li a.active{
 	color:#FF5000;
 }
 
 nav .pull-right{
 	float: right;
-	margin: 0px 10px;
+	margin-right:10px;
 }
 
 .search input{
 	margin-top: 4px;
-	width: 210px;
+	width: 180px;
 	height: 18px;
 	border: 1px solid #ccc;
 	-webkit-border-radius: 3px;
@@ -244,6 +254,58 @@ nav .pull-right{
 	font-size: 13px;
 	line-height: 18px;
 	padding-left: 5px;
+}
+
+#mobile-header {
+    display: none;
+}
+
+#mobile-header a{
+	width: 46px;
+	display:block;
+}
+
+
+#mobile-header div svg{
+	fill:white;
+	height: 15px;
+	width: 15px;
+	padding: 13px 15px;
+	display:block;
+}
+
+#mobile-header div:hover svg{
+	fill:#FF5000;
+}
+
+
+@media only screen and (max-width: 840px){
+    #mobile-header {
+        display: inline-block;
+        width: 46px;
+        height: 42px;
+        border-right:1px solid white;
+    }
+
+    nav ul{
+    	display:none;
+    }
+
+    .search input{
+    	width: 180px;
+    }
+
+    nav img{
+    	margin-left: 10px;
+    }
+
+}
+
+
+@media only screen and (max-width: 370px){
+	.search{
+		display: none;
+	}
 }
 
 
@@ -267,7 +329,7 @@ section#hero{
 }
 
 section#hero p{
-	width: 600px;
+	max-width: 600px;
 	margin: 10px auto 20px auto;
 
 }
@@ -281,6 +343,7 @@ section#hero .version{
 section#hero img{
 	display: inline;
 	margin:20px 0px;
+	max-width:90%;
 }
 
 section#hero div#documentation{
@@ -307,6 +370,7 @@ section#hero div#documentation ul{
 	background-color: #FF5000;
 	width: 100px;
 	font-size: 12px;
+	z-index:1;
 }
 
 section#hero div#documentation ul li{
@@ -348,8 +412,24 @@ section.install ul li a{
 	line-height: 20px;
 }
 
+@media all and (max-width: 550px) {
+	section.install ul li a{
+		padding:10px 2px;
+		font-size:12px;
+	}
+	section.install .button.download{
+		position: absolute;
+		right: 0px;
+		top: -54px;
+		float:none;
+	}
+}
 section.install ul li:first-child a{
 	margin-left: 0px;
+}
+
+section.install #os-selector{
+	position: relative;
 }
 
 section.install #os-selector ul li a:hover{
@@ -434,6 +514,7 @@ section.install div h3{
 
 table{
 	margin: 20px 0px;
+	word-break:break-all;
 }
 
 tr{
@@ -461,6 +542,14 @@ ul.team{
 	-moz-column-count:5; /* Firefox */
 	-webkit-column-count:5; /* Safari and Chrome */
 	column-count:5;
+}
+
+@media only screen and (max-width: 920px){
+	ul.team{
+		-moz-column-count:2; /* Firefox */
+		-webkit-column-count:2; /* Safari and Chrome */
+		column-count:2;
+	}
 }
 
 ul.team li{
