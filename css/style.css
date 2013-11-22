@@ -188,6 +188,11 @@ a.button, .button a{
 	background-image: linear-gradient(to bottom, #FFA47D 0%, #FF7D45 100%);
 }
 
+
+.right{
+	float: right;
+}
+
 /* nav */
 nav{
 	line-height: 42px;
@@ -411,8 +416,7 @@ section.install ul li a{
 	height:20px;
 	line-height: 20px;
 }
-
-section.install ul li a[href="#source"]{
+section.install ul li a.right{
 	float: right;
 }
 
