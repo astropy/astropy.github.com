@@ -395,7 +395,7 @@ section.install div{
 }
 
 section.install .button.download{
-	float: right;
+	padding: 5px 5px;
 }
 
 section.install ul li{
@@ -410,6 +410,10 @@ section.install ul li a{
 	margin: 0px 5px -1px 5px;
 	height:20px;
 	line-height: 20px;
+}
+
+section.install ul li a[href="#source"]{
+	float: right;
 }
 
 @media all and (max-width: 550px) {
