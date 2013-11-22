@@ -173,7 +173,11 @@ generate documentation like that used in the `astropy` package, a ready-to-use
 testing framework, and a variety of tools that streamline tasks like  user
 configuration, caching downloaded files, or linking C-compiled extensions. More
 details on this template are available in the `usage instructions for the 
-template <https://github.com/astropy/package-template/blob/master/README.rst>`_.
+template <https://github.com/astropy/package-template/blob/master/README.rst>`_ .
+We also provide 
+`coding guidelines <http://docs.astropy.org/en/stable/development/codeguide.html>`_ 
+that will make your code easier to read by members of the community.
+
 
 
 
