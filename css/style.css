@@ -365,10 +365,10 @@ section#hero div#documentation ul{
 	border-top: white 2px solid;
 	text-align: left;
 	position: absolute;
-	left: 52px; top: 33px;
+	left: 179px; top: 33px;
 	display: none;
 	background-color: #FF5000;
-	width: 100px;
+	width: 87px;
 	font-size: 12px;
 	z-index:1;
 }
