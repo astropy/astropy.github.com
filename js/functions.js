@@ -1,4 +1,3 @@
-
 $( document ).ready(function(){
 
     $('#responsive-menu-button').sidr({
@@ -77,7 +76,7 @@ $( document ).ready(function(){
                             $currlia.click();
                             // We let the default through here, because
                             // you probably want to jump to the revealed tab
-                            //e.preventDefault();
+                            e.preventDefault();
                         })
                     }                
                 }
