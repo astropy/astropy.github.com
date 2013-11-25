@@ -58,7 +58,7 @@ body{
 	margin:0 auto;
 	max-width:960px;
 	padding:0 10px;
-	min-width: 330px;
+	min-width: 390px;
 }
 
 a{
@@ -100,10 +100,6 @@ p{
 	line-height: 1.5em;
 }
 
-p:last-child{
-	margin-bottom: 0px;
-}
-
 strong{
 	font-weight: bold;
 
@@ -111,7 +107,7 @@ strong{
 
 section{
 	border-bottom: 1px #efefef solid;
-	padding: 30px 0;
+	padding: 30px 0 0;
 	clear: both;
 }
 
