@@ -389,6 +389,14 @@ section#hero div#documentation ul li:hover{
 	cursor: pointer;
 }
 
+
+/*Documentation Menu*/
+
+ul.dropdown li a {
+  display: block;
+  text-decoration: none;
+}
+
 /*Installation Instructions*/
 
 section.install{
