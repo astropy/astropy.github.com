@@ -85,6 +85,8 @@ $( document ).ready(function(){
 
     });
 
+    $("[href='#" + guess_os() + "']").trigger('click');
+
 }); // Document Ready
 
 
@@ -186,3 +188,10 @@ function populateTable(data, tstat, xhr) {
     }
 }
 
+function guess_os() {
+    var OSName="source";
+    if (navigator.appVersion.indexOf("Win")!=-1) OSName="windows";
+    if (navigator.appVersion.indexOf("Mac")!=-1) OSName="osx";
+    if (navigator.appVersion.indexOf("Linux")!=-1) OSName="linux";
+    return OSName;
+}
