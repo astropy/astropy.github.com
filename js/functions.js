@@ -60,6 +60,27 @@ $( document ).ready(function(){
       });
     });
 
+    $('a').each(function(){
+        //For every link check if it matches one of the tabs.
+        //If so, replace with "clicking" on the tab.
+        var $curra = $(this);
+        var currhref = $curra.attr('href');
+        $('#os-selector ul a').each(function() {
+            var $currlia = $(this);
+
+            if ((currhref == $currlia.attr('href'))) {
+                //Don't press the tab itself, that's above
+                if (! $curra.is($currlia)) {
+                    $curra.on('click', function(e){
+                        //act like we clicked on the tab itself instead of this link
+                        $currlia.click();
+
+                        e.preventDefault();
+                    })
+                }                
+            }
+        });
+    });
 
 }); // Document Ready
 
