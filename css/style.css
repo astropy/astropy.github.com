@@ -409,7 +409,7 @@ ul.dropdown li a {
 /*Installation Instructions*/
 
 section.install{
-	margin-top:360px;
+	margin-top:380px;
 }
 
 section.install div{
@@ -437,16 +437,10 @@ section.install ul li a.right{
 	float: right;
 }
 
-@media all and (max-width: 550px) {
+@media all and (max-width: 630px) {
 	section.install ul li a{
 		padding:10px 2px;
 		font-size:12px;
-	}
-	section.install .button.download{
-		position: absolute;
-		right: 0px;
-		top: -54px;
-		float:none;
 	}
 }
 section.install ul li:first-child a{
