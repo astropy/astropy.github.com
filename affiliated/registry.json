@@ -87,7 +87,7 @@
             "home_url": "http://aplpy.github.io",
             "repo_url": "http://github.com/aplpy/aplpy.git",
             "pypi_name": "APLpy"
-        }
+        },
         {
             "name": "PyVO",
             "maintainer": "Ray Plante",
