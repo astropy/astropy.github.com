@@ -58,28 +58,32 @@ $( document ).ready(function(){
         // Prevent the anchor's default click action
         e.preventDefault();
       });
-    });
 
-    $('a').each(function(){
-        //For every link check if it matches one of the tabs.
-        //If so, replace with "clicking" on the tab.
-        var $curra = $(this);
-        var currhref = $curra.attr('href');
-        $('#os-selector ul a').each(function() {
-            var $currlia = $(this);
+      // Now go through and find any links that are *not* in the above list
+      // but should point to a tab.
+        $('a').each(function(){
+            //For every link check if it matches one of the tabs.
+            //If so, replace with "clicking" on the tab.
+            var $curra = $(this);
+            var currhref = $curra.attr('href');
+            $links.each(function() {
+                var $currlia = $(this);
 
-            if ((currhref == $currlia.attr('href'))) {
-                //Don't press the tab itself, that's above
-                if (! $curra.is($currlia)) {
-                    $curra.on('click', function(e){
-                        //act like we clicked on the tab itself instead of this link
-                        $currlia.click();
-
-                        e.preventDefault();
-                    })
-                }                
-            }
+                if ((currhref == $currlia.attr('href'))) {
+                    //Don't press the tab itself, that's above
+                    if (! $curra.is($currlia)) {
+                        $curra.on('click', function(e){
+                            //act like we clicked on the tab itself instead of this link
+                            $currlia.click();
+                            // We let the default through here, because
+                            // you probably want to jump to the revealed tab
+                            //e.preventDefault();
+                        })
+                    }                
+                }
+            });
         });
+
     });
 
 }); // Document Ready
