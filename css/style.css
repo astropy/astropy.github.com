@@ -364,11 +364,12 @@ section#hero div#documentation{
 
 section#hero div#documentation span{
 	font-size: 10px;
-	padding:10px 10px 6px 10px;
+	padding:10px 20px 6px 20px;
 }
 
 section#hero div#documentation a{
 	color: white;
+	text-align:center;
 }
 
 section#hero div#documentation ul{
@@ -378,7 +379,7 @@ section#hero div#documentation ul{
 	left: 179px; top: 33px;
 	display: none;
 	background-color: #FF5000;
-	width: 87px;
+	width: 107px;
 	font-size: 12px;
 	z-index:1;
 }
@@ -394,10 +395,7 @@ section#hero div#documentation ul li:hover{
 	cursor: pointer;
 }
 
-
-/*Documentation Menu*/
-
-ul.dropdown li a {
+section#hero div#documentation ul li a {
   display: block;
   text-decoration: none;
 }
