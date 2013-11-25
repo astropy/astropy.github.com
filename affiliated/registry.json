@@ -88,5 +88,13 @@
             "repo_url": "http://github.com/aplpy/aplpy.git",
             "pypi_name": "APLpy"
         }
+        {
+            "name": "PyVO",
+            "maintainer": "Ray Plante",
+            "stable": false,
+            "home_url": "https://github.com/pyvirtobs/pyvo",
+            "repo_url": "https://github.com/pyvirtobs/pyvo.git",
+            "pypi_name": "pyvo"
+        }
     ]
 }
