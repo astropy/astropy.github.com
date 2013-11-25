@@ -173,6 +173,14 @@ a.button, .button a{
 	color: white;
 }
 
+
+p .button{
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-right:4px;
+	padding-left:4px;
+}
+
 .button:hover{
 	cursor: pointer;
 	background-image: -webkit-gradient(
