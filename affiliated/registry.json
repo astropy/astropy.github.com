@@ -96,6 +96,14 @@
             "home_url": "https://github.com/pyvirtobs/pyvo",
             "repo_url": "https://github.com/pyvirtobs/pyvo.git",
             "pypi_name": "pyvo"
+        },
+        {
+            "name": "gammapy",
+            "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
+            "stable": false,
+            "home_url": "https://github.com/gammapy/gammapy",
+            "repo_url": "http://github.com/gammapy/gammapy.git",
+            "pypi_name": "gammapy"
         }
     ]
 }
