@@ -58,7 +58,7 @@ body{
 	margin:0 auto;
 	max-width:960px;
 	padding:0 10px;
-	min-width: 390px;
+	min-width: 320px;
 }
 
 a{
@@ -107,7 +107,7 @@ strong{
 
 section{
 	border-bottom: 1px #efefef solid;
-	padding: 30px 0 0;
+	padding: 30px 0 30px;
 	clear: both;
 }
 
@@ -117,6 +117,10 @@ section:first-of-type{
 
 section:last-of-type{
 	border-bottom: 0px;
+}
+
+section *:last-child{
+	margin-bottom: 0px;
 }
 
 ul li{
@@ -437,6 +441,19 @@ section.install ul li a.right{
 		font-size:12px;
 	}
 }
+
+@media all and (max-width: 420px) {
+
+	section.install ul li a{
+		padding: 10px 15px;
+	}
+
+	section.install ul li a span{
+		display: none;
+	}
+}
+
+
 section.install ul li:first-child a{
 	margin-left: 0px;
 }
@@ -496,6 +513,8 @@ section.install div h3{
 	color: black;
 	margin-top: 0px;
 }
+
+
 
 
 /*Affiliated*/
@@ -565,7 +584,7 @@ ul.team{
 	}
 }
 
-ul.team li{
+ul.team li, ul.coordinators li{
 	margin-bottom:0px;
 }
 
