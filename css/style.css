@@ -56,7 +56,8 @@ body{
 
 #index {
         background-image: url("../images/background.jpg");
-        background-repeat: no-repeat;
+        background-repeat: repeat-x;
+        background-position: center top;
 }
 
 #wrapper{
