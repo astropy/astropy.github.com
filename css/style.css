@@ -56,9 +56,9 @@ body{
 
 #wrapper{
 	margin:0 auto;
-	max-width:960px;
+	max-width:960px; 
 	padding:0 10px;
-	min-width: 320px;
+	min-width: 320px; /* min-width of whole site */
 }
 
 a{
@@ -435,6 +435,8 @@ section.install ul li a.right{
 	float: right;
 }
 
+
+/* Make tweaks here to accomodate additional tabs */
 @media all and (max-width: 630px) {
 	section.install ul li a{
 		padding:10px 2px;
@@ -452,6 +454,7 @@ section.install ul li a.right{
 		display: none;
 	}
 }
+/* end changes */
 
 
 section.install ul li:first-child a{
