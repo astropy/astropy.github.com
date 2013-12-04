@@ -54,6 +54,17 @@ body{
 	font-family: 'Open Sans', sans-serif;
 }
 
+/* This file is in the public domain because it was created by NASA
+and ESA.  The material was created for NASA by Space Telescope Science
+Institute under Contract NAS5-26555, or for ESA by the Hubble European
+Space Agency Information Centre. Copyright statement at
+hubblesite.org. */
+#index {
+        background-image: url("../images/background.jpg");
+        background-repeat: repeat-x;
+        background-position: center top;
+}
+
 #wrapper{
 	margin:0 auto;
 	max-width:960px;
@@ -327,19 +338,11 @@ nav .pull-right{
 
 section#hero{
 	text-align: center;
-	background: #ededed; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ededed 0%, #ffffff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ededed 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ededed 0%,#ffffff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ededed 0%,#ffffff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ededed 0%,#ffffff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-	border-bottom:none;
 	position:absolute;
 	left:0px;
 	top:0;
 	width:100%;
+        border-bottom: 0px;
 }
 
 section#hero p{
@@ -424,7 +427,8 @@ section.install ul li{
 }
 
 section.install ul li a{
-	border: 1px #FFE1D6 solid; 
+        background: #fff;
+	border: 1px #FFE1D6 solid;
 	padding: 10px;
 	float: left;
 	margin: 0px 5px -1px 5px;
