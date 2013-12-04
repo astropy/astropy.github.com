@@ -1,0 +1,9 @@
+Editing the installation instructions tabs:
+
+1) To add additional tabs, copy the format used by existing tabs, including wrapping the text title in the table in a span tag.
+
+2) When the window width becomes less than a specified value, the css of span tag will switch to display:none and the padding on the tab will be adjusted slightly. If adding additional tabs, the values for this transition will be have to be tweaked in css/style.css. I've marked this area (l:439-456 in this commit) with the comment: "/* Make tweaks here to accommodate additional tabs */". Change the max-width parameter on both @media styles to allow the tabs to shrink gracefully when resizing the window.
+
+The first style shrinks the font size and padding to allow the full text to appear on tablets. The second style hides the text for optimal viewing on phones. Feel free to further adjust font-sizes and padding in these styles to produce the optimal experience.
+
+3) If the number of tabs increases, it may be necessary to adjust the min-width of the whole site. This can be done by tweaking the min-width style under #wrapper (l:61 in this commit). Try to avoid increasing this value too much and instead adjust padding, font size or image sizes as in step (2) or else you will get a horizontal scrollbar on phones which is less than ideal.
