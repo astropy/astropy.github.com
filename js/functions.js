@@ -6,17 +6,17 @@ $( document ).ready(function(){
     });
 
 	$("div#documentation span").click(function() { //When trigger is clicked...
-		
+
 		$("div#documentation ul").slideDown('fast').show(); //Drop down the subnav on click
 
 		$(this).parent().hover(function() {
-		}, function(){	
+		}, function(){
 			$(this).parent().find("ul").slideUp('fast'); //When the mouse hovers out of the subnav, move it back up
 		});
 
 
 		//Following events are applied to the trigger (Hover events for the trigger)
-		}).hover(function() { 
+		}).hover(function() {
 			$(this).addClass("subhover"); //On hover over, add class "subhover"
 		}, function(){	//On Hover Out
 			$(this).removeClass("subhover"); //On hover out, remove class "subhover"
@@ -27,11 +27,13 @@ $( document ).ready(function(){
     $('#os-selector ul').each(function(){
       // For each set of tabs, we want to keep track of
       // which tab is active and it's associated content
-      var $active, $content, $links = $(this).find('a');
+      var hash, $active, $content, $links = $(this).find('a');
 
       // If the location.hash matches one of the links, use that as the active tab.
+      // If no location.hash is given, use a tab determined by guess_os()
       // If no match is found, use the first link as the initial active tab.
-      $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+      hash = (location.hash == "") ? '#' + guess_os() : location.hash;
+      $active = $($links.filter('[href="'+hash+'"]')[0] || $links[0]);
       $active.addClass('active');
       $content = $($active.attr('href'));
 
@@ -77,16 +79,12 @@ $( document ).ready(function(){
                             // We let the default through here, because
                             // you probably want to jump to the revealed tab
                             e.preventDefault();
-                        })
-                    }                
+                        });
+                    }
                 }
             });
         });
-
     });
-
-    $("[href='#" + guess_os() + "']").trigger('click');
-
 }); // Document Ready
 
 
@@ -98,7 +96,7 @@ $( document ).ready(function(){
 //actually on the web server even with chrome.
 
 function url_translator(urltext) {
-    if (urltext == undefined) {
+    if (urltext === undefined) {
         return 'None';
     } else {
         return '<a href="' + urltext + '">' + urltext + '</a>';
@@ -106,7 +104,7 @@ function url_translator(urltext) {
 }
 
 function pypi_translator(pypiname) {
-    if (pypiname == undefined) {
+    if (pypiname === undefined) {
         return 'None';
     } else {
         var urltext = 'http://pypi.python.org/pypi/' + pypiname;
@@ -147,7 +145,7 @@ function populateTable(data, tstat, xhr) {
     var ncols = tab.rows[0].cells.length;
 
     var pkgi, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
-    if (data == null) {
+    if (data === null) {
         row = tab.insertRow(1);
         row.insertCell(0).innerHTML = 'Could not load registry file!';
         for (i=0;i<(ncols - 1);i++) {
@@ -155,10 +153,10 @@ function populateTable(data, tstat, xhr) {
         }
     } else {
         var pkgs = data.packages;
-        
+
         //First figure out the correct order if we sort on the name
-        var nmarr = new Array(pkgs.length)
-        var sortorder = new Array(pkgs.length)
+        var nmarr = new Array(pkgs.length);
+        var sortorder = new Array(pkgs.length);
         for (i=0; i<pkgs.length; i++) {
             pkgi = pkgs[i];
             nmarr[i] = pkgi.name;
@@ -166,7 +164,7 @@ function populateTable(data, tstat, xhr) {
         }
         // This "sorts" the indecies using a compare function that actually sorts nmarr
         sortorder.sort(function (a, b) { return nmarr[a] < nmarr[b] ? -1 : nmarr[a] > nmarr[b] ? 1 : 0; });
-        
+
         for (i=0; i<sortorder.length; i++) {
             pkgi = pkgs[sortorder[i]];
             row = tab.insertRow(i + 1);
