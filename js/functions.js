@@ -27,11 +27,13 @@ $( document ).ready(function(){
     $('#os-selector ul').each(function(){
       // For each set of tabs, we want to keep track of
       // which tab is active and it's associated content
-      var $active, $content, $links = $(this).find('a');
+      var hash, $active, $content, $links = $(this).find('a');
 
       // If the location.hash matches one of the links, use that as the active tab.
+      // If no location.hash is given, use a tab determined by guess_os()
       // If no match is found, use the first link as the initial active tab.
-      $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+      hash = (location.hash == "") ? '#' + guess_os() : location.hash;
+      $active = $($links.filter('[href="'+hash+'"]')[0] || $links[0]);
       $active.addClass('active');
       $content = $($active.attr('href'));
 
@@ -83,9 +85,6 @@ $( document ).ready(function(){
             });
         });
     });
-
-    $("[href='#" + guess_os() + "']").trigger('click');
-
 }); // Document Ready
 
 
