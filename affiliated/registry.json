@@ -11,7 +11,7 @@
         {
             "name": "astroquery",
             "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
-            "stable": false,
+            "stable": true,
             "home_url": "https://github.com/astropy/astroquery",
             "repo_url": "http://github.com/astropy/astroquery.git",
             "pypi_name": "astroquery"
@@ -69,6 +69,14 @@
             "home_url": "https://github.com/weaverba137/pydl",
             "repo_url": "http://github.com/weaverba137/pydl.git",
             "pypi_name": "pydl"
+        },
+        {
+            "name": "FITS_tools",
+            "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
+            "stable": false,
+            "home_url": "https://github.com/keflavich/FITS_tools",
+            "repo_url": "http://github.com/keflavich/FITS_tools.git",
+            "pypi_name": ""
         },
         {
             "name": "APLpy",
