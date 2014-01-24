@@ -11,7 +11,7 @@
         {
             "name": "astroquery",
             "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
-            "stable": false,
+            "stable": true,
             "home_url": "https://github.com/astropy/astroquery",
             "repo_url": "http://github.com/astropy/astroquery.git",
             "pypi_name": "astroquery"
