@@ -112,7 +112,7 @@ function pypi_translator(pypiname) {
     }
 }
 
-function stable_translator(stable) {
+function bool_translator(stable) {
     if (stable) {
         return 'Yes';
     } else {
@@ -171,13 +171,15 @@ function populateTable(data, tstat, xhr) {
 
             nmcell = row.insertCell(0);
             stablecell = row.insertCell(1);
-            pypicell = row.insertCell(2);
-            urlcell = row.insertCell(3);
-            repocell = row.insertCell(4);
-            maintcell = row.insertCell(5);
+            provisionalcell = row.insertCell(2);
+            pypicell = row.insertCell(3);
+            urlcell = row.insertCell(4);
+            repocell = row.insertCell(5);
+            maintcell = row.insertCell(6);
 
             nmcell.innerHTML = pkgi.name;
-            stablecell.innerHTML = stable_translator(pkgi.stable);
+            stablecell.innerHTML = bool_translator(pkgi.stable);
+            provisionalcell.innerHTML = bool_translator(pkgi.provisional);
             pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
             urlcell.innerHTML = url_translator(pkgi.home_url);
             repocell.innerHTML = url_translator(pkgi.repo_url);
