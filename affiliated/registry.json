@@ -91,6 +91,7 @@
         {
             "name": "PyVO",
             "maintainer": "Ray Plante",
+            "provisional":  "2015-2-27",
             "stable": false,
             "home_url": "https://github.com/pyvirtobs/pyvo",
             "repo_url": "https://github.com/pyvirtobs/pyvo.git",
