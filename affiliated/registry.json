@@ -29,7 +29,7 @@
         {
             "name": "kcorrect",
             "maintainer": "Taro Sato",
-            "provisional": true,
+            "provisional": "2015-2-27",
             "stable": false,
             "home_url": "https://github.com/astropy/kcorrect",
             "repo_url": "http://github.com/astropy/kcorrect.git"
@@ -37,7 +37,7 @@
         {
             "name": "astropysics",
             "maintainer": "Erik Tollerud <erik.tollerud@gmail.com>",
-            "provisional": true,
+            "provisional":  "2015-2-27",
             "stable": true,
             "home_url": "http://packages.python.org/Astropysics/",
             "repo_url": "http://github.com/eteq/astropysics.git",
@@ -46,7 +46,7 @@
         {
             "name": "ginga",
             "maintainer": "Eric Jeschke <eric@naoj.org>",
-            "provisional": true,
+            "provisional":  "2015-2-27",
             "stable": true,
             "home_url": "http://ejeschke.github.com/ginga",
             "repo_url": "http://github.com/ejeschke/ginga",
@@ -55,7 +55,7 @@
         {
             "name": "astroML",
             "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
-            "provisional": true,
+            "provisional":  "2015-2-27",
             "stable": true,
             "home_url": "http://astroml.github.com/",
             "repo_url": "http://github.com/astroML/astroML",
@@ -64,7 +64,7 @@
         {
             "name": "montage-wrapper",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": true,
+            "provisional":  "2015-2-27",
             "stable": true,
             "home_url": "http://www.astropy.org/montage-wrapper/",
             "repo_url": "https://github.com/astropy/montage-wrapper",
@@ -82,7 +82,7 @@
         {
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
-            "provisional": true,
+            "provisional":  "2015-2-27",
             "stable": true,
             "home_url": "http://aplpy.github.io",
             "repo_url": "http://github.com/aplpy/aplpy.git",
