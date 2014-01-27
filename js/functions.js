@@ -159,7 +159,7 @@ function populateTable(data, tstat, xhr) {
         var sortorder = new Array(pkgs.length);
         for (i=0; i<pkgs.length; i++) {
             pkgi = pkgs[i];
-            nmarr[i] = pkgi.name;
+            nmarr[i] = pkgi.name.toLowerCase();
             sortorder[i] = i;
         }
         // This "sorts" the indecies using a compare function that actually sorts nmarr
