@@ -354,6 +354,13 @@ section#hero p{
 section#hero .version{
 	color:grey;
 	font-size: 12px;
+	margin-bottom:0px;
+}
+
+section#hero .acknowledge{
+	color:grey;
+	font-size: 12px;
+	margin-top:0px;
 	margin-bottom:10px;
 }
 
