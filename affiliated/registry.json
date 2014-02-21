@@ -100,6 +100,7 @@
         {
             "name": "gammapy",
             "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
+            "provisional": "2015-2-27",
             "stable": false,
             "home_url": "https://github.com/gammapy/gammapy",
             "repo_url": "http://github.com/gammapy/gammapy.git",
