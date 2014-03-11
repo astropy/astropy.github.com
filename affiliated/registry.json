@@ -105,6 +105,15 @@
             "home_url": "https://github.com/gammapy/gammapy",
             "repo_url": "http://github.com/gammapy/gammapy.git",
             "pypi_name": "gammapy"
-        }
+        },
+        {
+            "name": "ccdproc",
+            "maintainer": "Steven Crawford",
+            "provisional": false,
+            "stable": false,
+            "home_url": "https://github.com/astropy/ccdproc",
+            "repo_url": "http://github.com/astropy/ccdproc.git",
+        },
+
     ]
 }
