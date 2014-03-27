@@ -112,8 +112,8 @@
             "provisional": false,
             "stable": false,
             "home_url": "https://github.com/astropy/ccdproc",
-            "repo_url": "http://github.com/astropy/ccdproc.git",
-        },
+            "repo_url": "http://github.com/astropy/ccdproc.git"
+        }
 
     ]
 }
