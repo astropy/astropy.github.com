@@ -113,7 +113,14 @@
             "stable": false,
             "home_url": "https://github.com/astropy/ccdproc",
             "repo_url": "http://github.com/astropy/ccdproc.git"
+        },
+        {
+            "name": "sncosmo",
+            "maintainer": "Kyle Barbary",
+            "provisional": "2015-03-27",
+            "stable": true,
+            "home_url": "https://sncosmo.github.io",
+            "repo_url": "http://github.com/sncosmo/sncosmo"
         }
-
     ]
 }
