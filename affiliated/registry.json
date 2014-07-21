@@ -27,14 +27,6 @@
             "repo_url": "http://github.com/astropy/photutils.git"
         },
         {
-            "name": "kcorrect",
-            "maintainer": "Taro Sato",
-            "provisional": "2015-2-27",
-            "stable": false,
-            "home_url": "https://github.com/astropy/kcorrect",
-            "repo_url": "http://github.com/astropy/kcorrect.git"
-        },
-        {
             "name": "astropysics",
             "maintainer": "Erik Tollerud <erik.tollerud@gmail.com>",
             "provisional": "2015-2-27",
