@@ -20,11 +20,12 @@
         },
         {
             "name": "photutils",
-            "maintainer": "Rene Breton",
+            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": false,
             "stable": false,
             "home_url": "https://github.com/astropy/photutils",
-            "repo_url": "http://github.com/astropy/photutils.git"
+            "repo_url": "http://github.com/astropy/photutils.git",
+            "pypi_name": "photutils"
         },
         {
             "name": "astropysics",
@@ -104,7 +105,8 @@
             "provisional": false,
             "stable": false,
             "home_url": "https://github.com/astropy/ccdproc",
-            "repo_url": "http://github.com/astropy/ccdproc.git"
+            "repo_url": "http://github.com/astropy/ccdproc.git",
+            "pypi_name": "ccdproc"
         },
         {
             "name": "sncosmo",
@@ -112,7 +114,8 @@
             "provisional": "2015-03-27",
             "stable": true,
             "home_url": "https://sncosmo.github.io",
-            "repo_url": "http://github.com/sncosmo/sncosmo"
+            "repo_url": "http://github.com/sncosmo/sncosmo",
+            "pypi_name": "sncosmo"
         }
     ]
 }
