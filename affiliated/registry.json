@@ -116,6 +116,15 @@
             "home_url": "https://sncosmo.github.io",
             "repo_url": "http://github.com/sncosmo/sncosmo",
             "pypi_name": "sncosmo"
+        },
+        {
+            "name": "WCSAxes",
+            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "provisional": true,
+            "stable": true,
+            "home_url": "https://github.com/astrofrog/wcsaxes",
+            "repo_url": "https://github.com/astrofrog/wcsaxes.git",
+            "pypi_name": "wcsaxes"
         }
     ]
 }
