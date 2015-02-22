@@ -125,6 +125,15 @@
             "home_url": "https://github.com/astrofrog/wcsaxes",
             "repo_url": "https://github.com/astrofrog/wcsaxes.git",
             "pypi_name": "wcsaxes"
+        },
+        {
+            "name": "pyregion",
+            "maintainer": "Jae-Joon Lee",
+            "provisional": true,
+            "stable": true,
+            "home_url": "https://github.com/astropy/pyregion",
+            "repo_url": "https://github.com/astropy/pyregion.git",
+            "pypi_name": "pyregion"
         }
     ]
 }
