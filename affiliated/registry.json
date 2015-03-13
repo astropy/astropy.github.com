@@ -142,7 +142,7 @@
             "stable": false,
             "home_url": "http://imexam.readthedocs.org/imexam/index.html",
             "repo_url": "http://github.com/spacetelescope/imexam",
-            "pypi_name": ""
+            "pypi_name": "imexam"
         }
     ]
 }
