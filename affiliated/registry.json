@@ -120,7 +120,7 @@
         {
             "name": "WCSAxes",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": true,
+            "provisional": "2016-02-22",
             "stable": true,
             "home_url": "https://github.com/astrofrog/wcsaxes",
             "repo_url": "https://github.com/astrofrog/wcsaxes.git",
@@ -129,7 +129,7 @@
         {
             "name": "pyregion",
             "maintainer": "Jae-Joon Lee",
-            "provisional": true,
+            "provisional": "2016-02-22",
             "stable": true,
             "home_url": "https://github.com/astropy/pyregion",
             "repo_url": "https://github.com/astropy/pyregion.git",
