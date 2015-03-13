@@ -134,6 +134,15 @@
             "home_url": "https://github.com/astropy/pyregion",
             "repo_url": "https://github.com/astropy/pyregion.git",
             "pypi_name": "pyregion"
+        },
+        {
+            "name": "imexam",
+            "maintainer": "Megan Soey",
+            "provisional": "2015-07-30",
+            "stable": false,
+            "home_url": "http://imexam.readthedocs.org/imexam/index.html",
+            "repo_url": "http://github.com/spacetelescope/imexam",
+            "pypi_name": "imexam"
         }
     ]
 }
