@@ -120,7 +120,7 @@
         {
             "name": "WCSAxes",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": "2016-02-22",
+            "provisional": false,
             "stable": true,
             "home_url": "https://github.com/astrofrog/wcsaxes",
             "repo_url": "https://github.com/astrofrog/wcsaxes.git",
