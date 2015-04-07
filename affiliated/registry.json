@@ -137,12 +137,21 @@
         },
         {
             "name": "imexam",
-            "maintainer": "Megan Soey",
+            "maintainer": "Megan Sosey",
             "provisional": "2015-07-30",
             "stable": false,
             "home_url": "http://imexam.readthedocs.org/imexam/index.html",
             "repo_url": "http://github.com/spacetelescope/imexam",
             "pypi_name": "imexam"
+        },
+        {
+            "name": "spherical_geometry",
+            "maintainer": "Bernie Simon and Michael Droettboom",
+            "provisional": "2015-12-26",
+            "stable": false,
+            "home_url": "https://spacetelescope.github.io/sphere/spherical_geometry/",
+            "repo_url": "https://github.com/spacetelescope/sphere.git",
+            "pypi_name": "spherical-geometry"
         }
     ]
 }
