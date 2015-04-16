@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -24,7 +24,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -67,7 +67,7 @@ hubblesite.org. */
 
 #wrapper{
 	margin:0 auto;
-	max-width:960px; 
+	max-width:960px;
 	padding:0 10px;
 	min-width: 320px; /* min-width of whole site */
 }
@@ -102,7 +102,7 @@ h2{
 h3{
 	font-size: 16px;
 	margin: 20px 0px 10px 0px;
-	
+
 }
 
 p{
@@ -178,6 +178,7 @@ pre{
 	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
 	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
 	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
+        border-radius: 3px;
 }
 
 a.button, .button a{
@@ -241,7 +242,7 @@ nav img{
 
 nav ul{
 	max-width:960px;
-	margin:0 auto;	
+	margin:0 auto;
 }
 
 nav ul li{
@@ -441,6 +442,7 @@ section.install ul li a{
 	margin: 0px 5px -1px 5px;
 	height:20px;
 	line-height: 20px;
+        border-radius: 3px 3px 0px 0px;
 }
 section.install ul li a.right{
 	float: right;
@@ -515,7 +517,7 @@ section.install #os-selector li img{
 }
 section.install #os-selector div{
 	clear: both;
-	border-top: 1px #FFE1D6 solid; 
+	border-top: 1px #FFE1D6 solid;
 	border-bottom: 1px #FFE1D6 solid;
 	padding: 10px 0px;
 	margin-bottom:15px;
@@ -601,7 +603,3 @@ ul.team{
 ul.team li, ul.coordinators li{
 	margin-bottom:0px;
 }
-
-
-
-
