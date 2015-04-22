@@ -152,6 +152,15 @@
             "home_url": "https://spacetelescope.github.io/sphere/spherical_geometry/",
             "repo_url": "https://github.com/spacetelescope/sphere.git",
             "pypi_name": "spherical-geometry"
+        },
+        {
+            "name": "gwcs",
+            "maintainer": "Nadia Dencheva",
+            "provisional": false,
+            "stable": false,
+            "home_url": "http://gwcs.readthedocs.org/en/latest/",
+            "repo_url": "https://github.com/spacetelescope/gwcs.git",
+            "pypi_name": "gwcs"
         }
     ]
 }
