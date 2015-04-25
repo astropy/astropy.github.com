@@ -82,6 +82,15 @@
             "pypi_name": "APLpy"
         },
         {
+            "name": "reproject",
+            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "provisional": "2016-5-5",
+            "stable": false,
+            "home_url": "https://github.com/astrofrog/reproject",
+            "repo_url": "https://github.com/astrofrog/reproject.git",
+            "pypi_name": "reproject"
+        },
+        {
             "name": "PyVO",
             "maintainer": "Ray Plante",
             "provisional": "2015-2-27",
