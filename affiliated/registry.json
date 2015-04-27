@@ -127,6 +127,15 @@
             "pypi_name": "wcsaxes"
         },
         {
+            "name": "Glue",
+            "maintainer": "Chris Beaumont and Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "provisional": "2016-04-27",
+            "stable": true,
+            "home_url": "https://www.glue-viz.org",
+            "repo_url": "https://github.com/glue-viz/glue.git",
+            "pypi_name": "glueviz"
+        },
+        {
             "name": "pyregion",
             "maintainer": "Jae-Joon Lee",
             "provisional": "2016-02-22",
