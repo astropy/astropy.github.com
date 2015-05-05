@@ -1,0 +1,8 @@
+language: python
+
+python:
+  - 3.4
+
+script:
+  # Validate JSON for affilaited package registry
+  - python -c 'import json; json.load(open("affiliated/registry.json"))'
