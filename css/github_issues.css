@@ -1,0 +1,22 @@
+.github-label-effort {
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px 4px;
+	border-radius: 2px;
+	line-height: 1;
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.12);
+	background-color: #fef2c0;
+	color: #333026;
+	font: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.github-label-package {
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px 4px;
+	border-radius: 2px;
+	line-height: 1;
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.12);
+	background-color: #bfe5bf;
+	color: #333026;
+	font: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
