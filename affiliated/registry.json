@@ -85,7 +85,7 @@
             "name": "reproject",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": "2016-5-5",
-            "stable": false,
+            "stable": true,
             "home_url": "https://github.com/astrofrog/reproject",
             "repo_url": "https://github.com/astrofrog/reproject.git",
             "pypi_name": "reproject"
