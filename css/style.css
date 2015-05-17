@@ -603,3 +603,7 @@ ul.team{
 ul.team li, ul.coordinators li{
 	margin-bottom:0px;
 }
+
+p.centered {
+	text-align: center
+}
