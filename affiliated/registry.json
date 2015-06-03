@@ -161,6 +161,15 @@
             "home_url": "http://gwcs.readthedocs.org/en/latest/",
             "repo_url": "https://github.com/spacetelescope/gwcs.git",
             "pypi_name": "gwcs"
+        },
+        {
+            "name": "galpy",
+            "maintainer": "Jo Bovy",
+            "provisional": false,
+            "stable": true,
+            "home_url": "http://galpy.readthedocs.org/en/latest/",
+            "repo_url": "https://github.com/jobovy/galpy",
+            "pypi_name": "galpy"
         }
     ]
 }
