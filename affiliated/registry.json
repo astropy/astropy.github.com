@@ -161,6 +161,15 @@
             "home_url": "http://gwcs.readthedocs.org/en/latest/",
             "repo_url": "https://github.com/spacetelescope/gwcs.git",
             "pypi_name": "gwcs"
+        },
+        {
+            "name": "spectral-cube",
+            "maintainer": "Adam Ginsburg",
+            "provisional": false,
+            "stable": true,
+            "home_url": "http://spectral-cube.rtfd.org",
+            "repo_url": "https://github.com/radio-astro-tools/spectral-cube",
+            "pypi_name": "spectral-cube"
         }
     ]
 }
