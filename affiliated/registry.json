@@ -48,7 +48,7 @@
         {
             "name": "astroML",
             "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
-            "provisional": "2015-2-27",
+            "provisional": "2015-10-1",
             "stable": true,
             "home_url": "http://astroml.github.com/",
             "repo_url": "http://github.com/astroML/astroML",
