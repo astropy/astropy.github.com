@@ -32,7 +32,7 @@ $( document ).ready(function(){
       // If the location.hash matches one of the links, use that as the active tab.
       // If no location.hash is given, use a tab determined by guess_os()
       // If no match is found, use the first link as the initial active tab.
-      hash = (location.hash == "") ? '#' + guess_os() : location.hash;
+      hash = (location.hash === "") ? '#' + guess_os() : location.hash;
       $active = $($links.filter('[href="'+hash+'"]')[0] || $links[0]);
       $active.addClass('active');
       $content = $($active.attr('href'));
@@ -141,15 +141,21 @@ function maintainer_translator(maint, pkgnm) {
 function populateTable(data, tstat, xhr) {
     var regdiv = document.getElementById('affiliated-package-registry');
     var tab = regdiv.getElementsByTagName('table')[0];
+    var provtab = regdiv.getElementsByTagName('table')[1];
     tab.deleteRow(1);
+    provtab.deleteRow(1);
     var ncols = tab.rows[0].cells.length;
+    var provncols = provtab.rows[0].cells.length;
 
-    var pkgi, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
+    var pkgi, provrow, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
     if (data === null) {
         row = tab.insertRow(1);
+        provrow = provtab.insertRow(1);
         row.insertCell(0).innerHTML = 'Could not load registry file!';
+        provrow.insertCell(0).innerHTML = 'Could not load registry file!';
         for (i=0;i<(ncols - 1);i++) {
             row.insertCell(i + 1).innerHTML = ' ';
+            provrow.insertCell(i + 1).innerHTML = ' ';
         }
     } else {
         var pkgs = data.packages;
@@ -164,26 +170,54 @@ function populateTable(data, tstat, xhr) {
         }
         // This "sorts" the indecies using a compare function that actually sorts nmarr
         sortorder.sort(function (a, b) { return nmarr[a] < nmarr[b] ? -1 : nmarr[a] > nmarr[b] ? 1 : 0; });
+        console.log(sortorder);
+        var falseProvisional = [];
+        // Creared to store all those values from registry.json which are not provisional packages.
 
         for (i=0; i<sortorder.length; i++) {
             pkgi = pkgs[sortorder[i]];
             row = tab.insertRow(i + 1);
+            if(pkgi.provisional === false) {
+                falseProvisional.push(pkgi);
+            }
+            else {
+                nmcell = row.insertCell(0);
+                stablecell = row.insertCell(1);
+                pypicell = row.insertCell(2);
+                urlcell = row.insertCell(3);
+                repocell = row.insertCell(4);
+                maintcell = row.insertCell(5);
 
+                nmcell.innerHTML = pkgi.name;
+                stablecell.innerHTML = bool_translator(pkgi.stable);
+                pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
+                urlcell.innerHTML = url_translator(pkgi.home_url);
+                repocell.innerHTML = url_translator(pkgi.repo_url);
+                maintcell.innerHTML = maintainer_translator(pkgi.maintainer, pkgi.name);
+            }
+        }
+        for(x=0; x<falseProvisional.length; x++) {
+            row = provtab.insertRow(x + 1);
             nmcell = row.insertCell(0);
             stablecell = row.insertCell(1);
-            provisionalcell = row.insertCell(2);
-            pypicell = row.insertCell(3);
-            urlcell = row.insertCell(4);
-            repocell = row.insertCell(5);
-            maintcell = row.insertCell(6);
+            pypicell = row.insertCell(2);
+            urlcell = row.insertCell(3);
+            repocell = row.insertCell(4);
+            maintcell = row.insertCell(5);
 
-            nmcell.innerHTML = pkgi.name;
-            stablecell.innerHTML = bool_translator(pkgi.stable);
-            provisionalcell.innerHTML = bool_translator(pkgi.provisional);
-            pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
-            urlcell.innerHTML = url_translator(pkgi.home_url);
-            repocell.innerHTML = url_translator(pkgi.repo_url);
-            maintcell.innerHTML = maintainer_translator(pkgi.maintainer, pkgi.name);
+            var provisionalObject = falseProvisional[x];
+            if(provisionalObject.stable === true) {
+                provisionalObject.stable = 'Yes';
+            }
+            else {
+                provisionalObject.stable = 'No';
+            }
+            nmcell.innerHTML = provisionalObject.name;
+            stablecell.innerHTML = provisionalObject.stable;
+            pypicell.innerHTML = pypi_translator(provisionalObject.pypi_name);
+            urlcell.innerHTML = url_translator(provisionalObject.home_url);
+            repocell.innerHTML = url_translator(provisionalObject.repo_url);
+            maintcell.innerHTML = maintainer_translator(provisionalObject.maintainer, pkgi.name);
         }
     }
 }
