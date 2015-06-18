@@ -20,7 +20,7 @@
         },
         {
             "name": "photutils",
-            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "maintainer": "Larry Bradley <lbradley@stsci.edu> and Brigitta Sipocz <bsipocz@gmail.com>",
             "provisional": false,
             "stable": false,
             "home_url": "https://github.com/astropy/photutils",
