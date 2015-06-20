@@ -138,25 +138,36 @@ function maintainer_translator(maint, pkgnm) {
     }
 }
 
-function populateTable(data, tstat, xhr) {
-    var regdiv = document.getElementById('affiliated-package-registry');
-    var tab = regdiv.getElementsByTagName('table')[0];
-    var provtab = regdiv.getElementsByTagName('table')[1];
-    tab.deleteRow(1);
-    provtab.deleteRow(1);
-    var ncols = tab.rows[0].cells.length;
-    var provncols = provtab.rows[0].cells.length;
+function populateTables(data, tstat, xhr) {
+    populateTable('accepted-package-table', data, false);
+    populateTable('provisional-package-table', data, 'only');
+}
 
-    var pkgi, provrow, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
+function populateTable(tableid, data, allowprovisional) {
+    // First we use allowprovisional io decide what the checkProvisional function (used below) does
+    var checkProvisional;
+    if (allowprovisional === false) {
+        checkProvisional = function(provisional_status) { return provisional_status === false; }
+    } else if (allowprovisional == 'only') {
+        checkProvisional = function(provisional_status) { return provisional_status; }
+    } else if (allowprovisional === true) {
+        checkProvisional = function(provisional_status) { return true; }
+    } else {
+        throw "Invalid allowprovisional value " + allowprovisional;
+    }
+
+    // Now we get the table and prepare it
+    var tab = document.getElementById(tableid);
+    var ncols = tab.rows[0].cells.length;
+
+    //we have to delete the "Loading..." row
+    tab.deleteRow(1);
+
+    var pkgi, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
     if (data === null) {
         row = tab.insertRow(1);
-        provrow = provtab.insertRow(1);
         row.insertCell(0).innerHTML = 'Could not load registry file!';
-        provrow.insertCell(0).innerHTML = 'Could not load registry file!';
-        for (i=0;i<(ncols - 1);i++) {
-            row.insertCell(i + 1).innerHTML = ' ';
-            provrow.insertCell(i + 1).innerHTML = ' ';
-        }
+        for (i=0;i<(ncols - 1);i++) { row.insertCell(i + 1).innerHTML = ' '; }
     } else {
         var pkgs = data.packages;
 
@@ -170,17 +181,12 @@ function populateTable(data, tstat, xhr) {
         }
         // This "sorts" the indecies using a compare function that actually sorts nmarr
         sortorder.sort(function (a, b) { return nmarr[a] < nmarr[b] ? -1 : nmarr[a] > nmarr[b] ? 1 : 0; });
-        console.log(sortorder);
-        var falseProvisional = [];
-        // Creared to store all those values from registry.json which are not provisional packages.
 
         for (i=0; i<sortorder.length; i++) {
             pkgi = pkgs[sortorder[i]];
             row = tab.insertRow(i + 1);
-            if(pkgi.provisional === false) {
-                falseProvisional.push(pkgi);
-            }
-            else {
+
+            if (checkProvisional(pkgi.provisional)) {
                 nmcell = row.insertCell(0);
                 stablecell = row.insertCell(1);
                 pypicell = row.insertCell(2);
@@ -195,29 +201,6 @@ function populateTable(data, tstat, xhr) {
                 repocell.innerHTML = url_translator(pkgi.repo_url);
                 maintcell.innerHTML = maintainer_translator(pkgi.maintainer, pkgi.name);
             }
-        }
-        for(x=0; x<falseProvisional.length; x++) {
-            row = provtab.insertRow(x + 1);
-            nmcell = row.insertCell(0);
-            stablecell = row.insertCell(1);
-            pypicell = row.insertCell(2);
-            urlcell = row.insertCell(3);
-            repocell = row.insertCell(4);
-            maintcell = row.insertCell(5);
-
-            var provisionalObject = falseProvisional[x];
-            if(provisionalObject.stable === true) {
-                provisionalObject.stable = 'Yes';
-            }
-            else {
-                provisionalObject.stable = 'No';
-            }
-            nmcell.innerHTML = provisionalObject.name;
-            stablecell.innerHTML = provisionalObject.stable;
-            pypicell.innerHTML = pypi_translator(provisionalObject.pypi_name);
-            urlcell.innerHTML = url_translator(provisionalObject.home_url);
-            repocell.innerHTML = url_translator(provisionalObject.repo_url);
-            maintcell.innerHTML = maintainer_translator(provisionalObject.maintainer, pkgi.name);
         }
     }
 }
