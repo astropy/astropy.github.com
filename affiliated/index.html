@@ -129,7 +129,7 @@
 	
 	<!-- Not provisional -->
 	<h3><u>Affiliated Packages</u></h3>
-	<table border="1" class="docutils">
+	<table border="1" class="docutils" id="accepted-package-table">
 	<colgroup>
 	<col width="17%" />
 	<col width="10%" />
@@ -163,7 +163,7 @@
 	<p>While the above table lists all the full affiliated package,the below table indicates packages that have been provisionally accepted as affiliated packages, but may be removed from the registry in the future if they don't make sufficient progress towards meeting Astropy standards (See below for more details).</p>
 
 	<h3><u>Provisionally accepted Affiliated packages</u></h3>
-	<table border="1" class="docutils">
+	<table border="1" class="docutils"  id="provisional-package-table">
 	<colgroup>
 	<col width="17%" />
 	<col width="10%" />
@@ -233,7 +233,7 @@
 
 	    <script type="text/javascript">
 		    $(document).ready(function() {
-		        $.getJSON("registry.json", populateTable);
+		        $.getJSON("registry.json", populateTables);
 		    });
 		</script>
 
