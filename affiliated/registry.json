@@ -7,7 +7,8 @@
             "stable": false,
             "home_url": "https://github.com/astropy/specutils",
             "repo_url": "http://github.com/astropy/specutils.git",
-            "pypi_name": "specutils"
+            "pypi_name": "specutils",
+            "description": "Spectroscopic analysis utilities."
         },
         {
             "name": "astroquery",
@@ -16,7 +17,8 @@
             "stable": true,
             "home_url": "https://github.com/astropy/astroquery",
             "repo_url": "http://github.com/astropy/astroquery.git",
-            "pypi_name": "astroquery"
+            "pypi_name": "astroquery",
+            "description": "Tools for querying online astronomical data sources."
         },
         {
             "name": "photutils",
@@ -25,7 +27,8 @@
             "stable": false,
             "home_url": "https://github.com/astropy/photutils",
             "repo_url": "http://github.com/astropy/photutils.git",
-            "pypi_name": "photutils"
+            "pypi_name": "photutils",
+            "description": "Photometry and related image-processing tools."
         },
         {
             "name": "astropysics",
@@ -34,7 +37,8 @@
             "stable": true,
             "home_url": "http://packages.python.org/Astropysics/",
             "repo_url": "http://github.com/eteq/astropysics.git",
-            "pypi_name": "Astropysics"
+            "pypi_name": "Astropysics",
+            "description": "A library of assorted optical astronomy and astrophysics tools (in the process of getting ported to Astropy)."
         },
         {
             "name": "ginga",
@@ -43,7 +47,8 @@
             "stable": true,
             "home_url": "http://ejeschke.github.com/ginga",
             "repo_url": "http://github.com/ejeschke/ginga",
-            "pypi_name": "ginga"
+            "pypi_name": "ginga",
+            "description": "A viewer for astronomical data FITS (Flexible Image Transport System) files. The Ginga viewer centers around a new FITS display widget which supports zooming and panning, color and intensity mapping, a choice of several automatic cut levels algorithms and canvases for plotting scalable geometric forms."
         },
         {
             "name": "astroML",
@@ -52,7 +57,8 @@
             "stable": true,
             "home_url": "http://astroml.github.com/",
             "repo_url": "http://github.com/astroML/astroML",
-            "pypi_name": "astroML"
+            "pypi_name": "astroML",
+            "description": "Tools for machine learning and data mining in Astronomy."
         },
         {
             "name": "montage-wrapper",
@@ -61,7 +67,8 @@
             "stable": true,
             "home_url": "http://www.astropy.org/montage-wrapper/",
             "repo_url": "https://github.com/astropy/montage-wrapper",
-            "pypi_name": "montage-wrapper"
+            "pypi_name": "montage-wrapper",
+            "description": "A pure Python module that provides a Python API to the Montage Astronomical Image Mosaic Engine, including both functions to access individual Montage commands, and high-level functions to facilitate mosaicking and re-projecting. Python-montage uses the Astropy core package for reading and writing FITS files."
         },
         {
             "name": "pydl",
@@ -79,7 +86,8 @@
             "stable": true,
             "home_url": "http://aplpy.github.io",
             "repo_url": "http://github.com/aplpy/aplpy.git",
-            "pypi_name": "APLpy"
+            "pypi_name": "APLpy",
+            "description": "A Python module aimed at producing publication-quality plots of astronomical imaging data in FITS format. The module uses Matplotlib, a powerful and interactive plotting package. It is capable of creating output files in several graphical formats, including EPS, PDF, PS, PNG, and SVG."
         },
         {
             "name": "reproject",
@@ -97,7 +105,8 @@
             "stable": false,
             "home_url": "https://github.com/pyvirtobs/pyvo",
             "repo_url": "https://github.com/pyvirtobs/pyvo.git",
-            "pypi_name": "pyvo"
+            "pypi_name": "pyvo",
+            "description": "Access to the Virtual Observatory through Python."
         },
         {
             "name": "gammapy",
@@ -106,7 +115,8 @@
             "stable": false,
             "home_url": "https://github.com/gammapy/gammapy",
             "repo_url": "http://github.com/gammapy/gammapy.git",
-            "pypi_name": "gammapy"
+            "pypi_name": "gammapy",
+            "description": "A high level gamma-ray astronomy data analysis package."
         },
         {
             "name": "ccdproc",
@@ -115,7 +125,8 @@
             "stable": false,
             "home_url": "https://github.com/astropy/ccdproc",
             "repo_url": "http://github.com/astropy/ccdproc.git",
-            "pypi_name": "ccdproc"
+            "pypi_name": "ccdproc",
+            "description": "Package to do basic CCD data reduction."
         },
         {
             "name": "sncosmo",
@@ -160,7 +171,8 @@
             "stable": false,
             "home_url": "http://imexam.readthedocs.org/imexam/index.html",
             "repo_url": "http://github.com/spacetelescope/imexam",
-            "pypi_name": "imexam"
+            "pypi_name": "imexam",
+            "description": "A package for functionality like IRAF's imexamine."
         },
         {
             "name": "spherical_geometry",
