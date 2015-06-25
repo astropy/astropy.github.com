@@ -200,6 +200,16 @@
             "home_url": "http://spectral-cube.rtfd.org",
             "repo_url": "https://github.com/radio-astro-tools/spectral-cube",
             "pypi_name": "spectral-cube"
+        },
+        {
+            "name": "python-cpl",
+            "maintainer": "Adam Ginsburg",
+            "provisional": false,
+            "stable": false,
+            "home_url": "http://python-cpl.readthedocs.org/en/latest/",
+            "repo_url": "https://github.com/olebole/python-cpl",
+            "pypi_name": "python-cpl",
+            "description": "Framework to process ESO pipelines for the VLT instruments."
         }
     ]
 }
