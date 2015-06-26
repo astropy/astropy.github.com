@@ -203,7 +203,7 @@
         },
         {
             "name": "python-cpl",
-            "maintainer": "Ole streicher",
+            "maintainer": "Ole Streicher",
             "provisional": false,
             "stable": false,
             "home_url": "http://python-cpl.readthedocs.org/en/latest/",
