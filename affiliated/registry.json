@@ -63,7 +63,7 @@
         {
             "name": "montage-wrapper",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": "2015-2-27",
+            "provisional": false,
             "stable": true,
             "home_url": "http://www.astropy.org/montage-wrapper/",
             "repo_url": "https://github.com/astropy/montage-wrapper",
@@ -82,7 +82,7 @@
         {
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
-            "provisional": "2015-2-27",
+            "provisional": "2016-6-30",
             "stable": true,
             "home_url": "http://aplpy.github.io",
             "repo_url": "http://github.com/aplpy/aplpy.git",
@@ -111,7 +111,7 @@
         {
             "name": "gammapy",
             "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
-            "provisional": "2015-2-27",
+            "provisional": "2016-6-30",
             "stable": false,
             "home_url": "https://github.com/gammapy/gammapy",
             "repo_url": "http://github.com/gammapy/gammapy.git",
@@ -131,7 +131,7 @@
         {
             "name": "sncosmo",
             "maintainer": "Kyle Barbary",
-            "provisional": "2015-03-27",
+            "provisional": false,
             "stable": true,
             "home_url": "https://sncosmo.github.io",
             "repo_url": "http://github.com/sncosmo/sncosmo",
