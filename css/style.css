@@ -54,6 +54,10 @@ body{
 	font-family: 'Open Sans', sans-serif;
 }
 
+code {
+	font-family: monospace;
+}
+
 /* This file is in the public domain because it was created by NASA
 and ESA.  The material was created for NASA by Space Telescope Science
 Institute under Contract NAS5-26555, or for ESA by the Hubble European
