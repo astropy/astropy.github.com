@@ -31,16 +31,6 @@
             "description": "Photometry and related image-processing tools."
         },
         {
-            "name": "astropysics",
-            "maintainer": "Erik Tollerud <erik.tollerud@gmail.com>",
-            "provisional": "2015-2-27",
-            "stable": true,
-            "home_url": "http://packages.python.org/Astropysics/",
-            "repo_url": "http://github.com/eteq/astropysics.git",
-            "pypi_name": "Astropysics",
-            "description": "A library of assorted optical astronomy and astrophysics tools (in the process of getting ported to Astropy)."
-        },
-        {
             "name": "ginga",
             "maintainer": "Eric Jeschke <eric@naoj.org>",
             "provisional": "2015-2-27",
