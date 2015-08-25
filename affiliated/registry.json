@@ -200,6 +200,15 @@
             "home_url": "http://spectral-cube.rtfd.org",
             "repo_url": "https://github.com/radio-astro-tools/spectral-cube",
             "pypi_name": "spectral-cube"
+        },
+        {
+            "name": "astroplan",
+            "maintainer": "Brett Morris",
+            "provisional": false,
+            "stable": false,
+            "home_url": "https://astroplan.readthedocs.org/",
+            "repo_url": "https://github.com/astropy/astroplan",
+            "pypi_name": "astroplan"
         }
     ]
 }
