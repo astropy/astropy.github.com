@@ -178,7 +178,7 @@
             "maintainer": "Nadia Dencheva",
             "provisional": false,
             "stable": false,
-            "home_url": "http://gwcs.readthedocs.org/en/latest/",
+            "home_url": "http://gwcs.readthedocs.org",
             "repo_url": "https://github.com/spacetelescope/gwcs.git",
             "pypi_name": "gwcs"
         },
@@ -196,7 +196,7 @@
             "maintainer": "Ole Streicher",
             "provisional": "2016-09-10",
             "stable": false,
-            "home_url": "http://python-cpl.readthedocs.org/en/latest/",
+            "home_url": "http://python-cpl.readthedocs.org",
             "repo_url": "https://github.com/olebole/python-cpl",
             "pypi_name": "python-cpl",
             "description": "Framework to process ESO pipelines for the VLT instruments."
