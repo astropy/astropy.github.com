@@ -200,6 +200,15 @@
             "repo_url": "https://github.com/olebole/python-cpl",
             "pypi_name": "python-cpl",
             "description": "Framework to process ESO pipelines for the VLT instruments."
+        },
+        {
+            "name": "astroplan",
+            "maintainer": "Brett Morris",
+            "provisional": false,
+            "stable": false,
+            "home_url": "https://astroplan.readthedocs.org/",
+            "repo_url": "https://github.com/astropy/astroplan",
+            "pypi_name": "astroplan"
         }
     ]
 }
