@@ -204,7 +204,7 @@
         {
             "name": "python-cpl",
             "maintainer": "Ole Streicher",
-            "provisional": false,
+            "provisional": "2016-09-10",
             "stable": false,
             "home_url": "http://python-cpl.readthedocs.org/en/latest/",
             "repo_url": "https://github.com/olebole/python-cpl",
