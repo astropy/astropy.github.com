@@ -211,5 +211,14 @@
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations."
         }
+        {
+            "name": "MaLTPyNT",
+            "maintainer": "Matteo Bachetti <matteo@matteobachetti.it>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://bitbucket.org/mbachett/maltpynt",
+            "repo_url": "https://github.com/matteobachetti/MaLTPyNT",
+            "pypi_name": "maltpynt"
+         }
     ]
 }
