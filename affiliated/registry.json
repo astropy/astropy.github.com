@@ -210,7 +210,7 @@
             "repo_url": "https://github.com/astropy/astroplan",
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations."
-        }
+        },
         {
             "name": "MaLTPyNT",
             "maintainer": "Matteo Bachetti <matteo@matteobachetti.it>",
