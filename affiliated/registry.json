@@ -230,7 +230,15 @@
             "repo_url": "https://github.com/zblz/naima",
             "pypi_name": "naima",
             "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting."
+        },
+        {
+            "name": "omnifit",
+            "maintainer": "Aleksi Suutarinen <aleksi.suutarinen@iki.fi>",
+            "provisional": "2017-10-7",
+            "stable": true,
+            "home_url": "https://ricemunk.github.io/omnifit/",
+            "repo_url": "https://github.com/RiceMunk/omnifit",
+            "pypi_name": "omnifit"
         }
-
     ]
 }
