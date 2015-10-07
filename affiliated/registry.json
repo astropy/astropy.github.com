@@ -212,6 +212,16 @@
             "description": "An open source Python package to help astronomers plan observations."
         },
         {
+            "name": "Astro-SCRAPPY",
+            "maintainer": "Curtis McCully <cmccully@lcogt.net>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "http://github.com/astropy/astroscrappy",
+            "repo_url": "https://github.com/astropy/astroscrappy",
+            "pypi_name": "astroscrappy",
+            "description": "A high-performance package to detect and remove cosmic rays from astronomical images."
+        },
+        {
             "name": "naima",
             "maintainer": "Victor Zabalza <vzabalza@gmail.com>",
             "provisional": false,
