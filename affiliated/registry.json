@@ -70,6 +70,14 @@
             "pypi_name": "pydl"
         },
         {
+            "name": "FITS_tools",
+            "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
+            "stable": false,
+            "home_url": "https://github.com/keflavich/FITS_tools",
+            "repo_url": "http://github.com/keflavich/FITS_tools.git",
+            "pypi_name": ""
+        },
+        {
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
             "provisional": "2016-6-30",
