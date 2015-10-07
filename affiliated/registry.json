@@ -210,6 +210,17 @@
             "repo_url": "https://github.com/astropy/astroplan",
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations."
+        },
+        {
+            "name": "naima",
+            "maintainer": "Victor Zabalza <vzabalza@gmail.com>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://naima.readthedocs.org/",
+            "repo_url": "https://github.com/zblz/naima",
+            "pypi_name": "naima",
+            "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting."
         }
+
     ]
 }
