@@ -239,6 +239,15 @@
             "home_url": "https://ricemunk.github.io/omnifit/",
             "repo_url": "https://github.com/RiceMunk/omnifit",
             "pypi_name": "omnifit"
+        },
+        { 
+            "name": "galpy",
+            "maintainer": "Jo Bovy",
+            "provisional": "2016-11-1",
+            "stable": true,
+            "home_url": "http://galpy.readthedocs.org/en/latest/",
+            "repo_url": "https://github.com/jobovy/galpy",
+            "pypi_name": "galpy"
         }
     ]
 }
