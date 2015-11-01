@@ -243,7 +243,7 @@
         { 
             "name": "galpy",
             "maintainer": "Jo Bovy",
-            "provisional": false,
+            "provisional": "2016-11-1",
             "stable": true,
             "home_url": "http://galpy.readthedocs.org/en/latest/",
             "repo_url": "https://github.com/jobovy/galpy",
