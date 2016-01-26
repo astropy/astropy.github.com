@@ -96,6 +96,17 @@
 		</div>
 
 	</section>
+
+	<section id="installing">
+
+	<h1>Installing Affiliated Packages</h1>
+
+	<p>  The simplest way to install and keep up-to-date most affiliated packages is to use the <a href="https://www.continuum.io/why-anaconda">Anaconda python distribution</a>.  This distribution provides Astropy built-in, and affiliated packages are available from a "channel" <a href="https://github.com/astropy/conda-builder-affiliated">maintained by the Astropy community</a>.  This means that, if you have anaconda installed, you can find most affiliated packages by doing <code>conda search -c astropy some_affiliated_package</code>, and you can install them with <code>conda install -c astropy some_affiliated_package</code>. </p>
+
+	<p> If you do not have Anaconda or wish to install from source, for most affiliated packages, downloading the source code and doing <code>python setup.py install</code> will work.  Many also support the Astropy core package's additional build and install options, as they use the affiliated package template (detailed more <a href="affiliated-instructions">below</a>). That said, affiliated packages are developed independently of the Astropy core library.  This means they are free to develop their packages as they see fit, and can have a variety of different requirements or  unusual install procedures.  Hence you should refer to the package's documentation first if you encounter problems.</p>
+
+	</section>
+
 	<section id="affiliated-package-registry">
 
 	<h1>Affiliated Packages Registry</h1>
