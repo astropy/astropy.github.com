@@ -248,6 +248,16 @@
             "home_url": "http://galpy.readthedocs.org/en/latest/",
             "repo_url": "https://github.com/jobovy/galpy",
             "pypi_name": "galpy"
-        }
+        },
+        {
+            "name": "MaLTPyNT",
+            "maintainer": "Matteo Bachetti <matteo@matteobachetti.it>",
+            "provisional": "2017-2-17",
+            "stable": true,
+            "home_url": "https://bitbucket.org/mbachett/maltpynt",
+            "repo_url": "https://github.com/matteobachetti/MaLTPyNT",
+            "pypi_name": "maltpynt",
+            "description": "Quick-look timing analysis of NuSTAR data."
+         }
     ]
 }
