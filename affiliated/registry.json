@@ -212,6 +212,44 @@
             "description": "An open source Python package to help astronomers plan observations."
         },
         {
+            "name": "Astro-SCRAPPY",
+            "maintainer": "Curtis McCully <cmccully@lcogt.net>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "http://github.com/astropy/astroscrappy",
+            "repo_url": "https://github.com/astropy/astroscrappy",
+            "pypi_name": "astroscrappy",
+            "description": "A high-performance package to detect and remove cosmic rays from astronomical images."
+        },
+        {
+            "name": "naima",
+            "maintainer": "Victor Zabalza <vzabalza@gmail.com>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://naima.readthedocs.org/",
+            "repo_url": "https://github.com/zblz/naima",
+            "pypi_name": "naima",
+            "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting."
+        },
+        {
+            "name": "omnifit",
+            "maintainer": "Aleksi Suutarinen <aleksi.suutarinen@iki.fi>",
+            "provisional": "2017-10-7",
+            "stable": true,
+            "home_url": "https://ricemunk.github.io/omnifit/",
+            "repo_url": "https://github.com/RiceMunk/omnifit",
+            "pypi_name": "omnifit"
+        },
+        { 
+            "name": "galpy",
+            "maintainer": "Jo Bovy",
+            "provisional": "2016-11-1",
+            "stable": true,
+            "home_url": "http://galpy.readthedocs.org/en/latest/",
+            "repo_url": "https://github.com/jobovy/galpy",
+            "pypi_name": "galpy"
+        },
+        {
             "name": "MaLTPyNT",
             "maintainer": "Matteo Bachetti <matteo@matteobachetti.it>",
             "provisional": false,
