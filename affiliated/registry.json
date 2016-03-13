@@ -110,9 +110,9 @@
         },
         {
             "name": "ccdproc",
-            "maintainer": "Steven Crawford",
+            "maintainer": "Steven Crawford and Matt Craig <ccdproc@gmail.com>",
             "provisional": false,
-            "stable": false,
+            "stable": true,
             "home_url": "http://ccdproc.readthedocs.org",
             "repo_url": "http://github.com/astropy/ccdproc.git",
             "pypi_name": "ccdproc",
