@@ -258,6 +258,17 @@
             "home_url": "https://http://maltpynt.readthedocs.org",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
+        }
+	{
+            "name": "cluster-lensing",
+            "maintainer": "Jes Ford",
+            "provisional": false,
+            "stable": false,
+            "repo_url": "https://github.com/jesford/cluster-lensing",
+            "home_url": "http://jesford.github.io/cluster-lensing",
+            "pypi_name": "cluster-lensing",
+            "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
          }
+
     ]
 }
