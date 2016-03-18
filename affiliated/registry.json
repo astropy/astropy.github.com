@@ -276,8 +276,8 @@
             "repo_url": "https://github.com/astropy/halotools",
             "pypi_name": "halotools",
             "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations."
-        }
-	{
+        },
+        {
             "name": "cluster-lensing",
             "maintainer": "Jes Ford",
             "provisional": false,
@@ -287,6 +287,5 @@
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
          }
-
     ]
 }
