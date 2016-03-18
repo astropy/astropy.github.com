@@ -258,7 +258,7 @@
             "home_url": "https://http://maltpynt.readthedocs.org",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
-        }
+        },
 	{
             "name": "cluster-lensing",
             "maintainer": "Jes Ford",
