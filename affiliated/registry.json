@@ -258,6 +258,15 @@
             "home_url": "https://http://maltpynt.readthedocs.org",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
-         }
+         },
+        {
+            "name": "pyspeckit",
+            "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://pyspeckit.readthedocs.org",
+            "repo_url": "https://github.com/pyspeckit/pyspeckit",
+            "pypi_name": "pyspeckit"
+        }
     ]
 }
