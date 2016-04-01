@@ -262,7 +262,7 @@
         {
             "name": "Halotools",
             "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
-            "provisional": true,
+            "provisional": false,
             "stable": true,
             "home_url": "https://github.com/astropy/halotools",
             "repo_url": "https://github.com/astropy/halotools",
