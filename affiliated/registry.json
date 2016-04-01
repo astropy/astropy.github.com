@@ -258,6 +258,16 @@
             "home_url": "https://http://maltpynt.readthedocs.org",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
+         },
+        {
+            "name": "Halotools",
+            "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
+            "provisional": true,
+            "stable": true,
+            "home_url": "https://github.com/astropy/halotools",
+            "repo_url": "https://github.com/astropy/halotools",
+            "pypi_name": "halotools",
+            "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations."
          }
     ]
 }
