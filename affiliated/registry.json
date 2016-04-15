@@ -258,16 +258,16 @@
             "home_url": "https://http://maltpynt.readthedocs.org",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
-        },
-	{
-            "name": "cluster-lensing",
-            "maintainer": "Jes Ford",
+         },
+        {
+            "name": "Halotools",
+            "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
             "provisional": false,
-            "stable": false,
-            "repo_url": "https://github.com/jesford/cluster-lensing",
-            "home_url": "http://jesford.github.io/cluster-lensing",
-            "pypi_name": "cluster-lensing",
-            "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
+            "stable": true,
+            "home_url": "https://github.com/astropy/halotools",
+            "repo_url": "https://github.com/astropy/halotools",
+            "pypi_name": "halotools",
+            "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations."
          }
 
     ]
