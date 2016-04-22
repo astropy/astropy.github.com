@@ -10,6 +10,9 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/jquery.sidr.light.css" />
 
+<style>
+   table.roles td {word-break:normal}
+</style>
 
 <title>Astropy | About</title>
 
@@ -98,18 +101,53 @@
 	<section>
 		<a name="team"></a>
 
-		<h2>The Team</h2>
+		<h2>Roles</h2>
 
-		<p>Astropy is under continuous development by a group of professional astronomers and software developers from around the world. The Project is community-driven, with decisions generally made by consensus, but with oversight and organization provided be a three-person coordinating committee.</p>
+		<p>The Astropy project is made possible through the efforts of community members that perform numerous important roles.  This encompasses a broad scope of responsibilities ranging from direct package development to communication, distribution, and managerial activities.  In this section we list the identified project roles and responsible parties, both to formally acknowledge those performing these duties and to solicit volunteers for these roles.</p>
 
-		<h3>Astropy Project Coordinators</h3>
+                <table id="astropy-roles">
+                </table>
 
-		<ul class="coordinators">
-			<li>Tom Aldcroft</li>
-			<li>Kelle Cruz</li>
-			<li>Thomas Robitaille</li>
-			<li>Erik Tollerud</li>
-		</ul>
+                <h3> Role responsibilities </h3>
+
+                <table class="roles" id="astropy-role-descriptions">
+                  <tr>
+                    <td id="Astropy-project-coordinator">Astropy project coordinator</td>
+                    <td> Overall management and coordination of the astropy project, including:
+                      <ul>
+                        <li>Responsibility 1</li>
+                        <li>Responsibility 2</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Affiliated-package-coordinator">Affiliated package coordinator</td>
+                    <td> Manage Astropy affiliated packages:
+                      <ul>
+                        <li>Evaluating new submissions</li>
+                        <li>Evaluating existing affiliated packages</li>
+                        <li>Support with packaging</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Distribution-coordinator">Distribution coordinator</td>
+                    <td> Create and maintain binary distribution packages for Astropy core and related packages
+                      for specified OS package manager.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="Sub-package-maintainer">Sub-package maintainer</td>
+                    <td style="word-wrap: break-word"> Maintain a sub-package of the astropy core library.  This includes evaluating
+                      new pull requests for quality, standards compliance, API consistency, and appropriateness
+                      within the overall astropy ecosystem.
+                    </td>
+                  </tr>
+                </table>
+
+		<h2>Contributors</h2>
+
+		<p>Astropy project packages are under continuous development by professional astronomers and software developers from around the world. The Project is community-driven, with decisions generally made by consensus, but with oversight and organization provided by the coordinating committee.</p>
 
 		<h3>Core Package Contributors</h3>
 
