@@ -1,0 +1,41 @@
+#
+# Astropy Roles
+#
+Role   | Sub-role  |  Primary  | Secondary
+
+Astropy project coordinator | | Tom Aldcroft    |
+                            | | Kelle Cruz      |
+                            | | Tom Robitaille  |
+                            | | Erik Tollerud   |
+
+Affiliated package coordinator | | ? |
+
+Distribution coordinator    | Conda    | Matt Craig |
+                            | Debian   | Ole Streicher |
+                            | Fedora   | ? |
+                            | ArchLinux| ? |
+                            | MacPorts | Tom Robitaille |
+
+Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | 
+                       | astropy.constants | ? |
+                       | astropy.convolution | Axel Donath | Tom Robitaille
+                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft
+                       | astropy.cosmology | Alex Conley | Neil Crighton
+                       | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
+                       | astropy.io.fits | ?  | 
+                       | astropy.io.misc.hdf5 | Tom Robitaille |  
+                       | astropy.io.misc | Tom Robitaille |  
+                       | astropy.io.votable | ? |
+                       | astropy.modeling | Nadia Denchova |
+                       | astropy.nddata | Matt Craig | Wolfgang Kerzendorf
+                       | astropy.stats | Steve Crawford | Alex Hagen
+                       | astropy.table | Tom Aldcroft | Marten van Kerkwijk
+                       | astropy.time | Tom Aldcroft | Marten van Kerkwijk
+                       | astropy.units | Marten van Kerkwijk |
+                       | astropy.utils | ? | 
+                       | astropy.visualization | Tom Robitaille |  
+                       | astropy.vo.conesearch | Pey Lian Lim |
+                       | astropy.vo.validator | Pey Lian Lim | 
+                       | astropy.vo.samp | Tom Robitaille |  
+                       | astropy.wcs | Nadia Denchova |
+
