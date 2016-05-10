@@ -157,7 +157,7 @@
         {
             "name": "imexam",
             "maintainer": "Megan Sosey",
-            "provisional": "2015-07-30",
+            "provisional": false,
             "stable": false,
             "home_url": "http://imexam.readthedocs.org/imexam/index.html",
             "repo_url": "http://github.com/spacetelescope/imexam",
