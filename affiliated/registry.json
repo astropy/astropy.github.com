@@ -5,7 +5,7 @@
             "maintainer": "Wolfgang Kerzendorf",
             "provisional": false,
             "stable": false,
-            "home_url": "http://specutils.readthedocs.org",
+            "home_url": "http://specutils.readthedocs.io",
             "repo_url": "http://github.com/astropy/specutils.git",
             "pypi_name": "specutils",
             "description": "Spectroscopic analysis utilities."
@@ -15,7 +15,7 @@
             "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://astroquery.readthedocs.org",
+            "home_url": "http://astroquery.readthedocs.io",
             "repo_url": "http://github.com/astropy/astroquery.git",
             "pypi_name": "astroquery",
             "description": "Tools for querying online astronomical data sources."
@@ -25,7 +25,7 @@
             "maintainer": "Larry Bradley and Brigitta Sipocz <lbradley@stsci.edu>",
             "provisional": false,
             "stable": false,
-            "home_url": "http://photutils.readthedocs.org/",
+            "home_url": "http://photutils.readthedocs.io/",
             "repo_url": "http://github.com/astropy/photutils.git",
             "pypi_name": "photutils",
             "description": "Photometry and related image-processing tools."
@@ -84,7 +84,7 @@
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": "2016-5-5",
             "stable": true,
-            "home_url": "http://reproject.readthedocs.org",
+            "home_url": "http://reproject.readthedocs.io",
             "repo_url": "https://github.com/astrofrog/reproject.git",
             "pypi_name": "reproject"
         },
@@ -103,7 +103,7 @@
             "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
             "provisional": "2016-6-30",
             "stable": false,
-            "home_url": "https://gammapy.readthedocs.org/",
+            "home_url": "https://gammapy.readthedocs.io/",
             "repo_url": "http://github.com/gammapy/gammapy.git",
             "pypi_name": "gammapy",
             "description": "A high level gamma-ray astronomy data analysis package."
@@ -113,7 +113,7 @@
             "maintainer": "Steven Crawford and Matt Craig <ccdproc@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://ccdproc.readthedocs.org",
+            "home_url": "http://ccdproc.readthedocs.io",
             "repo_url": "http://github.com/astropy/ccdproc.git",
             "pypi_name": "ccdproc",
             "description": "Package to do basic CCD data reduction."
@@ -132,7 +132,7 @@
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://wcsaxes.readthedocs.org",
+            "home_url": "http://wcsaxes.readthedocs.io",
             "repo_url": "https://github.com/astrofrog/wcsaxes.git",
             "pypi_name": "wcsaxes"
         },
@@ -150,7 +150,7 @@
             "maintainer": "Jae-Joon Lee",
             "provisional": "2016-02-22",
             "stable": true,
-            "home_url": "http://pyregion.readthedocs.org",
+            "home_url": "http://pyregion.readthedocs.io",
             "repo_url": "https://github.com/astropy/pyregion.git",
             "pypi_name": "pyregion"
         },
@@ -159,7 +159,7 @@
             "maintainer": "Megan Sosey",
             "provisional": false,
             "stable": false,
-            "home_url": "http://imexam.readthedocs.org/imexam/index.html",
+            "home_url": "http://imexam.readthedocs.io/imexam/index.html",
             "repo_url": "http://github.com/spacetelescope/imexam",
             "pypi_name": "imexam",
             "description": "A package for functionality like IRAF's imexamine."
@@ -178,7 +178,7 @@
             "maintainer": "Nadia Dencheva",
             "provisional": false,
             "stable": false,
-            "home_url": "http://gwcs.readthedocs.org",
+            "home_url": "http://gwcs.readthedocs.io",
             "repo_url": "https://github.com/spacetelescope/gwcs.git",
             "pypi_name": "gwcs"
         },
@@ -196,7 +196,7 @@
             "maintainer": "Ole Streicher",
             "provisional": "2016-09-10",
             "stable": false,
-            "home_url": "http://python-cpl.readthedocs.org",
+            "home_url": "http://python-cpl.readthedocs.io",
             "repo_url": "https://github.com/olebole/python-cpl",
             "pypi_name": "python-cpl",
             "description": "Framework to process ESO pipelines for the VLT instruments."
@@ -206,7 +206,7 @@
             "maintainer": "Brett Morris",
             "provisional": false,
             "stable": false,
-            "home_url": "https://astroplan.readthedocs.org/",
+            "home_url": "https://astroplan.readthedocs.io/",
             "repo_url": "https://github.com/astropy/astroplan",
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations."
@@ -226,7 +226,7 @@
             "maintainer": "Victor Zabalza <vzabalza@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "https://naima.readthedocs.org/",
+            "home_url": "https://naima.readthedocs.io/",
             "repo_url": "https://github.com/zblz/naima",
             "pypi_name": "naima",
             "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting."
@@ -245,7 +245,7 @@
             "maintainer": "Jo Bovy",
             "provisional": "2016-11-1",
             "stable": true,
-            "home_url": "http://galpy.readthedocs.org/en/latest/",
+            "home_url": "http://galpy.readthedocs.io/en/latest/",
             "repo_url": "https://github.com/jobovy/galpy",
             "pypi_name": "galpy"
         },
@@ -255,7 +255,7 @@
             "provisional": "2017-2-17",
             "stable": true,
             "repo_url": "https://bitbucket.org/mbachett/maltpynt",
-            "home_url": "https://http://maltpynt.readthedocs.org",
+            "home_url": "https://http://maltpynt.readthedocs.io",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
          },
