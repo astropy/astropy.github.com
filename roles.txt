@@ -1,41 +1,52 @@
 #
 # Astropy Roles
 #
-Role   | Sub-role  |  Primary  | Secondary
+Role   | Sub-role  |  Lead  | Deputy
 
-Astropy project coordinator | | Tom Aldcroft    |
-                            | | Kelle Cruz      |
-                            | | Tom Robitaille  |
-                            | | Erik Tollerud   |
+Coordination committee member | | Tom Aldcroft    |
+                              | | Kelle Cruz      |
+                              | | Tom Robitaille  |
+                              | | Erik Tollerud   |
 
-Affiliated package coordinator | | ? |
+Astropy.org web page maintainer | | Erik Tollerud | Tom Robitaille
+
+Astropy-helpers maintainer | | | Erik Tollerud, Matt Craig
+
+CI-helpers maintainer | | Brigitta Sipocz |
+
+Community engagement coordinator | Overall  | Kelle Cruz |
+                                 | Twitter  | Tom Robitaille |
+                                 | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
+                                 | Conferences | UNFILLED | Erik Tollerud, Tom Robitaille, Kelle Cruz
+
+Core package release coordinator | | Erik Tollerud | Tom Robitaille
 
 Distribution coordinator    | Conda    | Matt Craig |
                             | Debian   | Ole Streicher |
-                            | Fedora   | ? |
-                            | ArchLinux| ? |
+                            | Fedora   | Sergio Pascual |
+                            | ArchLinux| UNFILLED |
                             | MacPorts | Tom Robitaille |
 
-Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | 
-                       | astropy.constants | ? |
-                       | astropy.convolution | Axel Donath | Tom Robitaille
-                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft
+Package-template maintainer | | Tom Robitaille |
+
+Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim |
+                       | astropy.constants | UNFILLED |
+                       | astropy.convolution | Adam Ginsburg | Axel Donath
+                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft, Adrian Price-Whelan
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
-                       | astropy.io.fits | ?  | 
-                       | astropy.io.misc.hdf5 | Tom Robitaille |  
-                       | astropy.io.misc | Tom Robitaille |  
-                       | astropy.io.votable | ? |
+                       | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim
+                       | astropy.io.misc | Tom Robitaille |
+                       | astropy.io.votable | UNFILLED | Pey-Lian Lim
                        | astropy.modeling | Nadia Denchova |
-                       | astropy.nddata | Matt Craig | Wolfgang Kerzendorf
+                       | astropy.nddata | Matt Craig | Steve Crawford?
                        | astropy.stats | Steve Crawford | Alex Hagen
                        | astropy.table | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.time | Tom Aldcroft | Marten van Kerkwijk
-                       | astropy.units | Marten van Kerkwijk |
-                       | astropy.utils | ? | 
-                       | astropy.visualization | Tom Robitaille |  
+                       | astropy.units | Marten van Kerkwijk | Adrian Price-Whelan
+                       | astropy.utils | Erik Tollerud | Brigitta Sipocz
+                       | astropy.visualization | Tom Robitaille |
                        | astropy.vo.conesearch | Pey Lian Lim |
-                       | astropy.vo.validator | Pey Lian Lim | 
-                       | astropy.vo.samp | Tom Robitaille |  
-                       | astropy.wcs | Nadia Denchova |
-
+                       | astropy.vo.validator | Pey Lian Lim |
+                       | astropy.vo.samp | Tom Robitaille |
+                       | astropy.wcs | UNFILLED | Nadia Denchova

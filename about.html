@@ -99,23 +99,41 @@
 
 
 	<section>
-		<a name="team"></a>
+		<a name="roles"></a>
 
 		<h2>Roles</h2>
 
-		<p>The Astropy project is made possible through the efforts of community members that perform numerous important roles.  This encompasses a broad scope of responsibilities ranging from direct package development to communication, distribution, and managerial activities.  In this section we list the identified project roles and responsible parties, both to formally acknowledge those performing these duties and to solicit volunteers for these roles.</p>
+		<p>The Astropy project is made possible through the efforts of
+		community members that perform numerous important roles.  This
+		encompasses a broad scope of responsibilities ranging from
+		direct package development to communication, distribution, and
+		managerial activities.  In this section we list the identified
+		project roles and responsible parties, both to formally
+		acknowledge those performing these duties and to solicit
+		volunteers for these roles.  See
+		the <a href="role_responsibilities.html">Astropy project role
+		responsibilities</a> document for a full description of each
+		role.
+
+                <p>Ideally each role has a lead and one or more deputies.  The
+                lead has primary responsibility for a role and will also
+                identify and mentor deputies (as needed) in order to maintain
+                continuous support.  Some roles currently have no identified
+                lead and we invite community members with an interest to
+                inquire about volunteering.
+                </p>
 
                 <table id="astropy-roles">
                  <thead>
                   <tr>
                    <th>Role</th>
                    <th>Sub-role</th>
-                   <th>Primary</th>
-                   <th>Secondary</th>
+                   <th>Lead</th>
+                   <th>Deputy</th>
                   </tr>
                  </thead>
                  <tr>
-                  <td><a href="#Astropy-project-coordinator">Astropy project coordinator</a></td>
+                  <td><a href="role_responsibilities.html#Coordination_committee_member">Coordination committee member</a></td>
                   <td></td>
                   <td>Tom Aldcroft</td>
                   <td></td>
@@ -139,13 +157,55 @@
                   <td></td>
                  </tr>
                  <tr>
-                  <td><a href="#Affiliated-package-coordinator">Affiliated package coordinator</a></td>
+                  <td><a href="role_responsibilities.html#Astropyorg_web_page_maintainer">Astropy.org web page maintainer</a></td>
                   <td></td>
-                  <td>?</td>
+                  <td>Erik Tollerud</td>
+                  <td>Tom Robitaille</td>
+                 </tr>
+                 <tr>
+                  <td><a href="role_responsibilities.html#Astropyhelpers_maintainer">Astropy-helpers maintainer</a></td>
+                  <td></td>
+                  <td></td>
+                  <td>Erik Tollerud, Matt Craig</td>
+                 </tr>
+                 <tr>
+                  <td><a href="role_responsibilities.html#CIhelpers_maintainer">CI-helpers maintainer</a></td>
+                  <td></td>
+                  <td>Brigitta Sipocz</td>
                   <td></td>
                  </tr>
                  <tr>
-                  <td><a href="#Distribution-coordinator">Distribution coordinator</a></td>
+                  <td><a href="role_responsibilities.html#Community_engagement_coordinator">Community engagement coordinator</a></td>
+                  <td>Overall</td>
+                  <td>Kelle Cruz</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Twitter</td>
+                  <td>Tom Robitaille</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Facebook</td>
+                  <td>Kelle Cruz</td>
+                  <td>Tom Robitaille, Erik Tollerud</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Conferences</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Erik Tollerud, Tom Robitaille, Kelle Cruz</td>
+                 </tr>
+                 <tr>
+                  <td><a href="role_responsibilities.html#Core_package_release_coordinator">Core package release coordinator</a></td>
+                  <td></td>
+                  <td>Erik Tollerud</td>
+                  <td>Tom Robitaille</td>
+                 </tr>
+                 <tr>
+                  <td><a href="role_responsibilities.html#Distribution_coordinator">Distribution coordinator</a></td>
                   <td>Conda</td>
                   <td>Matt Craig</td>
                   <td></td>
@@ -159,13 +219,13 @@
                  <tr>
                   <td></td>
                   <td>Fedora</td>
-                  <td>?</td>
+                  <td>Sergio Pascual</td>
                   <td></td>
                  </tr>
                  <tr>
                   <td></td>
                   <td>ArchLinux</td>
-                  <td>?</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
                   <td></td>
                  </tr>
                  <tr>
@@ -175,7 +235,13 @@
                   <td></td>
                  </tr>
                  <tr>
-                  <td><a href="#Sub-package-maintainer">Sub-package maintainer</a></td>
+                  <td><a href="role_responsibilities.html#Packagetemplate_maintainer">Package-template maintainer</a></td>
+                  <td></td>
+                  <td>Tom Robitaille</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td><a href="role_responsibilities.html#Subpackage_maintainer">Sub-package maintainer</a></td>
                   <td>astropy.analytic_functions</td>
                   <td>Pey Lian Lim</td>
                   <td></td>
@@ -183,20 +249,20 @@
                  <tr>
                   <td></td>
                   <td>astropy.constants</td>
-                  <td>?</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
                   <td></td>
                  </tr>
                  <tr>
                   <td></td>
                   <td>astropy.convolution</td>
+                  <td>Adam Ginsburg</td>
                   <td>Axel Donath</td>
-                  <td>Tom Robitaille</td>
                  </tr>
                  <tr>
                   <td></td>
                   <td>astropy.coordinates</td>
                   <td>Erik Tollerud</td>
-                  <td>Tom Aldcroft</td>
+                  <td>Tom Aldcroft, Adrian Price-Whelan</td>
                  </tr>
                  <tr>
                   <td></td>
@@ -213,14 +279,8 @@
                  <tr>
                   <td></td>
                   <td>astropy.io.fits</td>
-                  <td>?</td>
-                  <td></td>
-                 </tr>
-                 <tr>
-                  <td></td>
-                  <td>astropy.io.misc.hdf5</td>
-                  <td>Tom Robitaille</td>
-                  <td></td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Michael Seifert, Pey-Lian Lim</td>
                  </tr>
                  <tr>
                   <td></td>
@@ -231,8 +291,8 @@
                  <tr>
                   <td></td>
                   <td>astropy.io.votable</td>
-                  <td>?</td>
-                  <td></td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Pey-Lian Lim</td>
                  </tr>
                  <tr>
                   <td></td>
@@ -244,7 +304,7 @@
                   <td></td>
                   <td>astropy.nddata</td>
                   <td>Matt Craig</td>
-                  <td>Wolfgang Kerzendorf</td>
+                  <td>Steve Crawford?</td>
                  </tr>
                  <tr>
                   <td></td>
@@ -268,13 +328,13 @@
                   <td></td>
                   <td>astropy.units</td>
                   <td>Marten van Kerkwijk</td>
-                  <td></td>
+                  <td>Adrian Price-Whelan</td>
                  </tr>
                  <tr>
                   <td></td>
                   <td>astropy.utils</td>
-                  <td>?</td>
-                  <td></td>
+                  <td>Erik Tollerud</td>
+                  <td>Brigitta Sipocz</td>
                  </tr>
                  <tr>
                   <td></td>
@@ -303,46 +363,9 @@
                  <tr>
                   <td></td>
                   <td>astropy.wcs</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
                   <td>Nadia Denchova</td>
-                  <td></td>
                  </tr>
-                </table>
-
-                <h3> Role responsibilities </h3>
-
-                <table class="roles" id="astropy-role-descriptions">
-                  <tr>
-                    <td id="Astropy-project-coordinator">Astropy project coordinator</td>
-                    <td> Overall management and coordination of the astropy project, including:
-                      <ul>
-                        <li>Responsibility 1</li>
-                        <li>Responsibility 2</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td id="Affiliated-package-coordinator">Affiliated package coordinator</td>
-                    <td> Manage Astropy affiliated packages:
-                      <ul>
-                        <li>Evaluating new submissions</li>
-                        <li>Evaluating existing affiliated packages</li>
-                        <li>Support with packaging</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td id="Distribution-coordinator">Distribution coordinator</td>
-                    <td> Create and maintain binary distribution packages for Astropy core and related packages
-                      for specified OS package manager.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td id="Sub-package-maintainer">Sub-package maintainer</td>
-                    <td style="word-wrap: break-word"> Maintain a sub-package of the astropy core library.  This includes evaluating
-                      new pull requests for quality, standards compliance, API consistency, and appropriateness
-                      within the overall astropy ecosystem.
-                    </td>
-                  </tr>
                 </table>
 
 		<h2>Contributors</h2>
