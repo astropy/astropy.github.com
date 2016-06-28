@@ -1,20 +1,671 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Astropy. A Community Python Library for Astronomy." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="favicon.ico" />
 
-<title>Astropy | Team Redirect</title>
-
-<meta http-equiv="refresh" content="1;URL=about.html#roles">
-
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.sidr.light.css" />
+
+<style>
+   table.roles td {word-break:normal}
+</style>
+
+<title>Astropy Team</title>
+
+<!-- Google analytics -->
+<script src="js/analytics.js"></script>
 </head>
 
 <body>
 
 <div id="wrapper">
+	<nav>
+		<div id="mobile-header">
+			<!-- Menu Icon -->
+		    <a id="responsive-menu-button" href="#sidr-main"><div><svg senable-background="new 0 0 24 24" height="24px" id="Layer_1" version="1.1" viewBox="0 0 24 24" width="24px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><g><path d="M23.244,17.009H0.75c-0.413,0-0.75,0.36-0.75,0.801v3.421C0,21.654,0.337,22,0.75,22h22.494c0.414,0,0.75-0.346,0.75-0.77    V17.81C23.994,17.369,23.658,17.009,23.244,17.009z M23.244,9.009H0.75C0.337,9.009,0,9.369,0,9.81v3.421    c0,0.424,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.345,0.75-0.769V9.81C23.994,9.369,23.658,9.009,23.244,9.009z     M23.244,1.009H0.75C0.337,1.009,0,1.369,0,1.81V5.23c0,0.423,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.346,0.75-0.769V1.81    C23.994,1.369,23.658,1.009,23.244,1.009z"/></g></g></svg></div></a>
+		    <!-- -->
+		</div>
+		<a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
+		<div id="navigation">
+			<ul>
+				<li><a class="active" href="about.html">About</a></li>
+				<li><a href="team.html">Team</a></li>
+				<li><a href="help.html">Get Help</a></li>
+				<li><a href="contribute.html">Contribute</a></li>
+				<!-- <li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> -->
+				<li><a href="affiliated/index.html">Affiliated Packages</a></li>
+			</ul>
+		</div>
+		<div class="search pull-right">
+			<form action="http://docs.astropy.org/en/stable/search.html" method="get">
+			  <input type="text" name="q" placeholder="Search Documentation" />
+			  <input type="hidden" name="check_keywords" value="yes" />
+			  <input type="hidden" name="area" value="default" />
+			</form>
+		</div>
+	</nav>
 
-<br>
-The page describing astropy's team members has moved.  You will be redirected to the new location automatically in 1 second. If this doesn't work, feel free to click on <a href="about.html#roles"> this link</a>.
+	<section>
+        <h1> Astropy Team </h1>
+
+		<a name="roles"></a>
+
+		<h2>Roles</h2>
+
+		<p>The Astropy project is made possible through the efforts of
+		community members that perform numerous important roles.  This
+		encompasses a broad scope of responsibilities ranging from
+		direct package development to communication, distribution, and
+		managerial activities.  In this section we list the identified
+		project roles and responsible parties, both to formally
+		acknowledge those performing these duties and to solicit
+		volunteers for these roles.  See
+		the <a href="role_responsibilities.html">Astropy project role
+		responsibilities</a> section below for a full description of each
+		role.
+
+                <p>Ideally each role has a lead and one or more deputies.  The
+                lead has primary responsibility for a role and will also
+                identify and mentor deputies (as needed) in order to maintain
+                continuous support.  Some roles are currently unfilled and we
+                invite community members with an interest to inquire about
+                volunteering by emailing to
+                <a href="mailto:astropy.team@gmail.com">astropy.team@gmail.com</a>.
+                </p>
+
+                <table id="astropy-roles">
+                 <thead>
+                  <tr>
+                   <th>Role</th>
+                   <th>Sub-role</th>
+                   <th>Lead</th>
+                   <th>Deputy</th>
+                  </tr>
+                 </thead>
+                 <tr>
+                  <td><a href="#Coordination_committee_member">Coordination committee member</a></td>
+                  <td></td>
+                  <td>Tom Aldcroft</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Kelle Cruz</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Tom Robitaille</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Erik Tollerud</td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Astropyorg_web_page_maintainer">Astropy.org web page maintainer</a></td>
+                  <td></td>
+                  <td>Erik Tollerud</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Astropyhelpers_maintainer">Astropy-helpers maintainer</a></td>
+                  <td></td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Erik Tollerud,  Matt Craig</td>
+                 </tr>
+                 <tr>
+                  <td><a href="#CIhelpers_maintainer">CI-helpers maintainer</a></td>
+                  <td></td>
+                  <td>Brigitta Sipocz</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Community_engagement_coordinator">Community engagement coordinator</a></td>
+                  <td>Overall</td>
+                  <td>Kelle Cruz</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Twitter</td>
+                  <td>Tom Robitaille</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Facebook</td>
+                  <td>Kelle Cruz</td>
+                  <td><span style="color: blue;">Tom Robitaille<sup>1</sup></span>,  Erik Tollerud</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Conferences</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Erik Tollerud,  Tom Robitaille,  Kelle Cruz</td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Core_package_release_coordinator">Core package release coordinator</a></td>
+                  <td></td>
+                  <td><span style="color: blue;">Erik Tollerud<sup>1</sup></span></td>
+                  <td>Tom Robitaille</td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Distribution_coordinator">Distribution coordinator</a></td>
+                  <td>Conda</td>
+                  <td>Matt Craig</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Debian</td>
+                  <td>Ole Streicher</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>Fedora</td>
+                  <td>Sergio Pascual</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>ArchLinux</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>MacPorts</td>
+                  <td>Tom Robitaille</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Packagetemplate_maintainer">Package-template maintainer</a></td>
+                  <td></td>
+                  <td><span style="color: blue;">Tom Robitaille<sup>1</sup></span></td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td><a href="#Subpackage_maintainer">Sub-package maintainer</a></td>
+                  <td>astropy.analytic_functions</td>
+                  <td>Pey Lian Lim</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.constants</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.convolution</td>
+                  <td>Adam Ginsburg</td>
+                  <td>Axel Donath</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.coordinates</td>
+                  <td>Erik Tollerud</td>
+                  <td><span style="color: blue;">Tom Aldcroft<sup>2</sup></span>,  Adrian Price-Whelan</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.cosmology</td>
+                  <td>Alex Conley</td>
+                  <td>Neil Crighton</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.io.ascii</td>
+                  <td>Tom Aldcroft</td>
+                  <td>Moritz Guenther</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.io.fits</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Michael Seifert,  Pey-Lian Lim</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.io.misc</td>
+                  <td>Tom Robitaille</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.io.votable</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Pey-Lian Lim</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.modeling</td>
+                  <td>Nadia Denchova</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.nddata</td>
+                  <td>Matt Craig</td>
+                  <td>Steve Crawford</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.stats</td>
+                  <td>Steve Crawford</td>
+                  <td>Alex Hagen</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.table</td>
+                  <td>Tom Aldcroft</td>
+                  <td>Marten van Kerkwijk</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.time</td>
+                  <td>Tom Aldcroft</td>
+                  <td>Marten van Kerkwijk</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.units</td>
+                  <td>Marten van Kerkwijk</td>
+                  <td>Adrian Price-Whelan</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.utils</td>
+                  <td>Erik Tollerud</td>
+                  <td>Brigitta Sipocz</td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.visualization</td>
+                  <td>Tom Robitaille</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.vo.conesearch</td>
+                  <td>Pey Lian Lim</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.vo.validator</td>
+                  <td>Pey Lian Lim</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.vo.samp</td>
+                  <td>Tom Robitaille</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                 </tr>
+                 <tr>
+                  <td></td>
+                  <td>astropy.wcs</td>
+                  <td><span style="color: red; font-style: italic;">Unfilled</span></td>
+                  <td>Nadia Denchova</td>
+                 </tr>
+                 <tr>
+                  <td><span style="color: blue;"><sup>1</sup>Seeking replacement</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                 </tr>
+                 <tr>
+                  <td><span style="color: blue;"><sup>2</sup>Out climbing in 2017</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                 </tr>
+                </table>
+
+	</section>
+
+	<section>
+	<h2>Astropy Project Role Responsibilities</h2>
+
+	<p>The Astropy project is made possible through the efforts of
+	community members that perform numerous important roles.  This
+	encompasses a broad scope of responsibilities ranging from direct
+	package development to communication, distribution, and managerial
+	activities.  In this section we list the responsibilities for each of
+	the identified project roles.  The list of people fulfilling these
+	roles is found in the <a href="about.html#roles">Roles</a> section.
+        </p>
+
+        <br/>
+        <h3><a id="Coordination_committee_member"></a>Coordination committee
+          member (4 people)</h3>
+        <p>Overall coordination and management of the Astropy project, including:</p>
+        <ul>
+          <li>Keeping a large-scale view of the Astropy ecosystem</li>
+          <li>Evaluating new affiliated package submissions and review of existing
+            affiliated packages</li>
+          <li>Approving or rejecting Astropy APEs</li>
+          <li>Evaluating and merging core package pull requests as needed
+            (e.g., for sub-packages without a maintainer)</li>
+          <li>Arbitrating disagreements in the core package, including final decisions
+            when otherwise deadlocked</li>
+          <li>Maintaining the list of roles and related github permissions</li>
+          <li>Managing finances for the project</li>
+          <li>Coordinating with NumFOCUS and other funding organizations</li>
+          <li>Securing funding for the project via discussions and proposals to funding
+            agencies</li>
+        </ul>
+
+        <br/>
+        <h3><a id="Astropyorg_web_page_maintainer"></a>Astropy.org web page maintainer</h3>
+        <p>Manage the <a href="http://astropy.org">astropy.org</a> web site,
+          including:</p>
+        <ul>
+          <li>Maintaining contributor/roles list</li>
+          <li>Managing pull requests to the website repository</li>
+          <li>Managing <a href="http://data.astropy.org">data.astropy.org</a>, which is
+            done by managing the astropy-data repository (which is automatically synced
+            with <a href="http://data.astropy.org">data.astropy.org</a>)</li>
+        </ul>
+
+        <br/>
+        <h3><a id="Astropyhelpers_maintainer"></a>Astropy-helpers maintainer</h3>
+        <p>Lead the development and maintenance of the astropy-helpers repository,
+          including:</p>
+        <ul>
+          <li>Managing issues/pull requests for the astropy-helpers repository</li>
+          <li>Assisting the core package release coordinator, including performing (or
+            helping perform) the release process for astropy-helpers during core package
+            releases</li>
+          <li>Performing any necessary incremental/bugfix releases between Astropy
+            releases</li>
+          <li>Communicating to affiliated package maintainers the availability of new
+            versions of astropy-helpers, and assist in updating in cases where changes are
+            not trivial.</li>
+        </ul>
+
+        <br/>
+        <h3><a id="CIhelpers_maintainer"></a>CI-helpers maintainer</h3>
+        <p>Lead the maintenance of the ci-helpers, including:</p>
+        <ul>
+          <li>Managing issues/pull requests in the ci-helpers repository</li>
+          <li>Responding in a timely fashion to breakages in CI caused e.g. by updates in
+            conda, Travis, or AppVeyor, by including workarounds.</li>
+          <li>Advertise the ci-helpers beyond the astropy project and try to expand
+            adoption</li>
+        </ul>
+
+        <br/>
+        <h3><a id="Community_engagement_coordinator"></a>Community engagement
+          coordinator</h3>
+        <p>Facilitate engagement with the astropy community, including:</p>
+        <ul>
+          <li>Maintain the @astropy twitter account</li>
+          <li>Monitor/moderate the Python Users in Astronomy Facebook group</li>
+          <li>Keep track of/help organize conferences and workshops</li>
+        </ul>
+
+        <br/>
+        <h3><a id="Core_package_release_coordinator"></a>Core package release
+          coordinator</h3>
+        <p>Oversee the release process for the astropy core package, including:</p>
+        <ul>
+          <li>Performing new releases</li>
+          <li>Coordinate releases of astropy-helpers with the astropy-helpers
+            maintainer(s)</li>
+          <li>Maintaining the change log and “what’s new” documentation page</li>
+          <li>Maintaining the bugfix branches</li>
+          <li>Updating Astropy’s PyPI entry as needed</li>
+          <li>Working with the Community Engagement Coordinator to make release
+            announcements via channels such as mailing lists and social media</li>
+          <li>Notifying the Distribution Coordinators of any release</li>
+          <li>Make sure that the package gets updated in conda and coordinate with
+            distribution coordinators.</li>
+          <li>Keep documentation for release process up to date</li>
+        </ul>
+
+        <br/>
+        <h3><a id="Distribution_coordinator"></a>Distribution
+          coordinator (1 per distribution channel)</h3>
+        <p>Create and maintain binary distribution packages for Astropy core and
+          affiliated packages for a specific OS or package management system.</p>
+        <h3><a id="Packagetemplate_maintainer"></a>Package-template
+          maintainer</h3>
+        <p>Lead the development of maintenance of the affiliated package
+          package-template, which is used by affiliated packages. This includes:</p>
+        <ul>
+          <li>Managing issues/pull requests in the package-template repository</li>
+          <li>Keeping the affiliated package-template up-to-date with the
+            astropy-helpers</li>
+          <li>Tag new releases from time to time, and keep the TEMPLATE_CHANGES
+            up-to-date</li>
+          <li>Communicate any ‘releases’ with affiliated package maintainers via the
+            astropy-affiliated-maintainers mailing list</li>
+        </ul>
+
+        <br/>
+        <h3><a id="Subpackage_maintainer"></a>Sub-package
+          maintainer (1 per sub-package)</h3>
+        <p>Maintain a sub-package of the astropy core package, including:</p>
+        <ul>
+          <li>Evaluating new pull requests for quality, API consistency, Astropy coding
+            standards, and appropriateness within the overall astropy ecosystem.</li>
+          <li>Merging Pull Requests in the sub-package</li>
+          <li>Keeping track of the “big picture” progress of the sub-package - includes
+            new feature development and significant bugs.</li>
+          <li>Keeping track of frequent contributors to the sub-package and their
+            relevant areas of expertise.</li>
+        </ul>
+
+
+	</section>
+
+	<section>
+		<h2>Contributors</h2>
+
+		<p>Astropy project packages are under continuous development by professional astronomers and software developers from around the world. The Project is community-driven, with decisions generally made by consensus, but with oversight and organization provided by the coordinating committee.</p>
+
+		<h3>Core Package Contributors</h3>
+
+		<ul class="team">
+			<li>Ryan Abernathey</li>
+			<li>Shailesh Ahuja</li>
+			<li>Tom Aldcroft</li>
+			<li>Anthony Horton</li>
+			<li>Anne Archibald</li>
+			<li>Cristian Ardelean</li>
+			<li>Matteo Bachetti</li>
+			<li>Kyle Barbary</li>
+			<li>Geert Barentsen</li>
+			<li>Pauline Barmby</li>
+			<li>Paul Barrett</li>
+			<li>Andreas Baumbach</li>
+			<li>Chris Beaumont</li>
+			<li>Daniel Bell</li>
+			<li>Elijah Bernstein-Cooper</li>
+			<li>Kristin Berry</li>
+			<li>Francesco Biscani</li>
+			<li>Thompson Le Blanc</li>
+			<li>Christopher Bonnett</li>
+			<li>Joseph Jon Booker</li>
+			<li>Médéric Boquien</li>
+			<li>Azalee Bostroem</li>
+			<li>Matthew Bourque</li>
+			<li>Larry Bradley</li>
+			<li>Gustavo Bragança</li>
+			<li>Erik M. Bray</li>
+			<li>Eli Bressert</li>
+			<li>Hannes Breytenbach</li>
+			<li>Hugo Buddelmeijer</li>
+			<li>Doug Burke</li>
+			<li>Mihai Cara</li>
+			<li>Patti Carroll</li>
+			<li>Mabry Cervin</li>
+			<li>Pritish Chakraborty</li>
+			<li>Alex Conley</li>
+			<li>Jean Connelly</li>
+			<li>Simon Conseil</li>
+			<li>Ryan Cooke</li>
+			<li>Yannick Copin</li>
+			<li>Matthew Craig</li>
+			<li>Steven Crawford</li>
+			<li>Neil Crighton</li>
+			<li>Robert Cross</li>
+			<li>Kelle Cruz</li>
+			<li>Dan P. Cunningham</li>
+			<li>Daniel Datsev</li>
+			<li>Matt Davis</li>
+			<li>Christoph Deil</li>
+			<li>Nadia Dencheva</li>
+			<li>Jörg Dietrich</li>
+			<li>Axel Donath</li>
+			<li>Michael Droettboom</li>
+			<li>Zach Edwards</li>
+			<li>Jonathan Eisenhamer</li>
+			<li>Thomas Erben</li>
+			<li>Henry Ferguson</li>
+			<li>Jonathan Foster</li>
+			<li>Ryan Fox</li>
+			<li>Lehman Garrison</li>
+			<li>Simon Gibbons</li>
+			<li>Adam Ginsburg</li>
+			<li>Christoph Gohlke</li>
+			<li>Danny Goldstein</li>
+			<li>Perry Greenfield</li>
+			<li>Dylan Gregersen</li>
+			<li>Austen Groener</li>
+			<li>Frédéric Grollier</li>
+			<li>Karan Grover</li>
+			<li>Kevin Gullikson</li>
+			<li>Hans Moritz Günther</li>
+			<li>Chris Hanley</li>
+			<li>Alex Hagen</li>
+			<li>Paul Hirst</li>
+			<li>Moataz Hisham</li>
+			<li>Michael Hoenig</li>
+			<li>Emma Hogan</li>
+			<li>Derek Homeier</li>
+			<li>Anthony Horton</li>
+			<li>JC Hsu</li>
+			<li>Lingyi Hu</li>
+			<li>Eric Jeschke</li>
+			<li>Eric Depagne</li>
+			<li>Joseph Jon Booker</li>
+			<li>Sarah Kendrew</li>
+			<li>Marten van Kerkwijk</li>
+			<li>Wolfgang Kerzendorf</li>
+			<li>Lennard Kiehl</li>
+			<li>Rashid Khan</li>
+			<li>Aleh Khvalko</li>
+			<li>David Kirkby</li>
+			<li>Dominik Klaes</li>
+			<li>Kacper Kowalik</li>
+			<li>Roban Hultman Kramer</li>
+			<li>Arne de Laat</li>
+			<li>Antony Lee</li>
+			<li>Daniel Lenz</li>
+			<li>Simon Liedtke</li>
+			<li>Pey Lian Lim</li>
+			<li>Stuart Littlefair</li>
+			<li>Joseph Long</li>
+			<li>Joe Lyman</li>
+			<li>Curtis McCully</li>
+			<li>Vinayak Mehta</li>
+			<li>Aaron Meisner</li>
+			<li>Serge Montagnac</li>
+			<li>José Sabater Montes</li>
+			<li>Francesco Montesano</li>
+			<li>Brett Morris</li>
+			<li>Michael Mueller</li>
+			<li>Stuart Mumford</li>
+			<li>Demitri Muna</li>
+			<li>Prasanth Nair</li>
+			<li>Bogdan Nicula</li>
+			<li>Joe Philip Ninan</li>
+			<li>Asra Nizami</li>
+			<li>Bryce Nordgren</li>
+			<li>Miruna Oprescu</li>
+			<li>Carl Osterwisch</li>
+			<li>Luigi Paioro</li>
+			<li>Asish Panda</li>
+			<li>Madhura Parikh</li>
+			<li>Neil Parley</li>
+			<li>Sergio Pascual</li>
+			<li>Rohit Patil</li>
+			<li>David Perez-Suarez</li>
+			<li>Ray Plante</li>
+			<li>Orion Poplawski</li>
+			<li>Adrian Price-Whelan</li>
+			<li>J. Xavier Prochaska</li>
+			<li>David Pérez-Suárez</li>
+			<li>QuanTakeuchi</li>
+			<li>Tanuj Rastogi</li>
+			<li>Juan Luis Cano Rodríguez</li>
+			<li>Evert Rol</li>
+			<li>Alex Rudy</li>
+			<li>Joseph Ryan</li>
+			<li>Eloy Salinas</li>
+			<li>Gerrit Schellenberger</li>
+			<li>David Shiga</li>
+			<li>Albert Y. Shih</li>
+			<li>David Shupe</li>
+			<li>Jonathan Sick</li>
+			<li>Leo Singer</li>
+			<li>Brigitta Sipocz</li>
+			<li>Shivan Sornarajah</li>
+			<li>Shantanu Srivastava</li>
+			<li>Ole Streicher</li>
+			<li>Matej Stuchlik</li>
+			<li>Bernardo Sulzbach</li>
+			<li>James Taylor</li>
+			<li>Jeff Taylor</li>
+			<li>Kirill Tchernyshyov</li>
+			<li>Víctor Terrón</li>
+			<li>Scott Thomas</li>
+			<li>James Turner</li>
+			<li>Jake VanderPlas</li>
+			<li>Miguel de Val-Borro</li>
+			<li>Jonathan Whitmore</li>
+			<li>Julien Woillez</li>
+			<li>Jake VanderPlas</li>
+			<li>Lisa Walter</li>
+			<li>Benjamin Alan Weaver</li>
+			<li>Jonathan Whitmore</li>
+			<li>Julien Woillez</li>
+			<li>Víctor Zabalza</li>
+		</ul>
+
+		<h3>Other Credits</h3>
+
+		<ul>
+		   <li>Kaylea Nelson for designing this web site.</li>
+		   <li>Kyle Barbary for designing the Astropy logos and documentation themes.</li>
+			<li>Andrew Pontzen and the <a href="https://github.com/pynbody/pynbody" target="_blank">pynbody</a> team (For code that grew into astropy.units)</li>
+			<li>Everyone on <a href="http://groups.google.com/group/astropy-dev" target="_blank">astropy-dev</a> and the <a href="http://mail.scipy.org/mailman/listinfo/astropy" target="_blank">astropy mailing list</a> for contributing to many discussions and decisions!</li>
+		</ul>
+		<p>If you have contributed to the Astropy project and your name is missing,
+		please send an email to the coordinators, or <a href="https://github.com/astropy/astropy/edit/master/docs/credits.rst" target="_blank">open a pull request for the credits document</a> in the astropy repository.</p>
+
+	</section>
+
+	<footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.sidr.min.js"></script>
+		<script src="js/functions.js"></script>
+	</footer>
+
 </div>
 
 </body>

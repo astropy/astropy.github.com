@@ -1,6 +1,9 @@
 #
 # Astropy Roles
 #
+# This is an ASCII table delimited by the | character.
+# One can add footnotes for
+#
 Role   | Sub-role  |  Lead  | Deputy
 
 Coordination committee member | | Tom Aldcroft    |
@@ -8,45 +11,45 @@ Coordination committee member | | Tom Aldcroft    |
                               | | Tom Robitaille  |
                               | | Erik Tollerud   |
 
-Astropy.org web page maintainer | | Erik Tollerud | Tom Robitaille
+Astropy.org web page maintainer | | Erik Tollerud | UNFILLED
 
-Astropy-helpers maintainer | | | Erik Tollerud, Matt Craig
+Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Matt Craig
 
-CI-helpers maintainer | | Brigitta Sipocz |
+CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
 
-Community engagement coordinator | Overall  | Kelle Cruz |
-                                 | Twitter  | Tom Robitaille |
-                                 | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
+Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
+                                 | Twitter  | Tom Robitaille | UNFILLED
+                                 | Facebook | Kelle Cruz | Tom Robitaille::Seeking replacement, Erik Tollerud
                                  | Conferences | UNFILLED | Erik Tollerud, Tom Robitaille, Kelle Cruz
 
-Core package release coordinator | | Erik Tollerud | Tom Robitaille
+Core package release coordinator | | Erik Tollerud::Seeking replacement | Tom Robitaille
 
-Distribution coordinator    | Conda    | Matt Craig |
-                            | Debian   | Ole Streicher |
-                            | Fedora   | Sergio Pascual |
-                            | ArchLinux| UNFILLED |
-                            | MacPorts | Tom Robitaille |
+Distribution coordinator    | Conda    | Matt Craig | UNFILLED
+                            | Debian   | Ole Streicher | UNFILLED
+                            | Fedora   | Sergio Pascual | UNFILLED
+                            | ArchLinux| UNFILLED | UNFILLED
+                            | MacPorts | Tom Robitaille | UNFILLED
 
-Package-template maintainer | | Tom Robitaille |
+Package-template maintainer | | Tom Robitaille::Seeking replacement | UNFILLED
 
-Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim |
-                       | astropy.constants | UNFILLED |
+Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | UNFILLED
+                       | astropy.constants | UNFILLED | UNFILLED
                        | astropy.convolution | Adam Ginsburg | Axel Donath
-                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft, Adrian Price-Whelan
+                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft::Out climbing in 2017, Adrian Price-Whelan
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
                        | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim
-                       | astropy.io.misc | Tom Robitaille |
+                       | astropy.io.misc | Tom Robitaille | UNFILLED
                        | astropy.io.votable | UNFILLED | Pey-Lian Lim
-                       | astropy.modeling | Nadia Denchova |
-                       | astropy.nddata | Matt Craig | Steve Crawford?
+                       | astropy.modeling | Nadia Denchova | UNFILLED
+                       | astropy.nddata | Matt Craig | Steve Crawford
                        | astropy.stats | Steve Crawford | Alex Hagen
                        | astropy.table | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.time | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.units | Marten van Kerkwijk | Adrian Price-Whelan
                        | astropy.utils | Erik Tollerud | Brigitta Sipocz
-                       | astropy.visualization | Tom Robitaille |
-                       | astropy.vo.conesearch | Pey Lian Lim |
-                       | astropy.vo.validator | Pey Lian Lim |
-                       | astropy.vo.samp | Tom Robitaille |
+                       | astropy.visualization | Tom Robitaille | UNFILLED
+                       | astropy.vo.conesearch | Pey Lian Lim | UNFILLED
+                       | astropy.vo.validator | Pey Lian Lim | UNFILLED
+                       | astropy.vo.samp | Tom Robitaille | UNFILLED
                        | astropy.wcs | UNFILLED | Nadia Denchova

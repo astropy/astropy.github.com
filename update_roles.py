@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-A command line script that updates the "Roles" section in the ``about.html`` file to
+A command line script that updates the "Roles" section in the ``team.html`` file to
 reflect the roles.txt file.
 
 Usage::
@@ -14,6 +14,7 @@ from __future__ import print_function
 import os
 import StringIO
 import re
+from collections import OrderedDict
 
 from astropy.io import ascii
 
@@ -45,13 +46,13 @@ def update_html(filename, roles):
 
     # Plug in the roles table
     roles_out = StringIO.StringIO()
-    clean_kwargs = {'tags': ['a', 'span'],
+    clean_kwargs = {'tags': ['a', 'span', 'sup'],
                     'attributes': {'a': ['href'],
                                    '*': ['style']},
                     'styles': ['color', 'font-style']}
     ascii.write(roles, roles_out, format='html',
                 htmldict={'table_id': 'astropy-roles',
-                          'raw_html_cols': ['Role', 'Lead'],
+                          'raw_html_cols': ['Role', 'Lead', 'Deputy'],
                           'raw_html_clean_kwargs': clean_kwargs})
 
     roles_lines = roles_out.getvalue().splitlines()
@@ -66,6 +67,27 @@ def update_html(filename, roles):
 
     return outlines
 
+
+def process_role(val, footnotes):
+    if val == 'UNFILLED':
+        val = '<span style="color:red; font-style:italic">Unfilled</span>'
+
+    # Handle footnotes in the form <name>:<footnote> in the Lead or Deputy field
+    names = []
+    for name in val.split(','):
+        m = re.match(r'(.+)::(.+)', name)
+        if m:
+            footnote = m.group(2)
+            if footnote not in footnotes:
+                footnotes[footnote] = '<sup>{}</sup>'.format(len(footnotes) + 1)
+            names.append('<span style="color:blue">{}</span>'
+                         .format(m.group(1) + footnotes[footnote]))
+        else:
+            names.append(name)
+
+    return ', '.join(names)
+
+
 if __name__ == '__main__':
     roles_table = ascii.read('roles.txt', fill_values=None)
     new_roles = []
@@ -75,19 +97,26 @@ if __name__ == '__main__':
         if role:
             role_ref = re.sub(r' ', '_', role)
             role_ref = re.sub(r'[-.]', '', role_ref)
-            role = '<a href="role_responsibilities.html#{}">{}</a>'.format(role_ref, role)
+            role = '<a href="#{}">{}</a>'.format(role_ref, role)
         new_roles.append(role)
     roles_table.replace_column('Role', new_roles)
 
-    # Make unfilled roles stand out
-    leads = ['<span style="color:red; font-style:italic">Unfilled</span>'
-             if lead == 'UNFILLED' else lead
-             for lead in roles_table['Lead']]
-    roles_table.replace_column('Lead', leads)
+    # Special processsing for Lead and Deputy fields:
+    # - Replace UNFILLED with a red italicized "Unfilled" text
+    # - Handle footnotes (e.g. "Looking for replacement")
+    footnotes = OrderedDict()
+    for colname in ('Lead', 'Deputy'):
+        vals = [process_role(val, footnotes) for val in roles_table[colname]]
+        roles_table.replace_column(colname, vals)
 
-    outlines = update_html('about.html', roles_table)
+    if footnotes:
+        for footnote, number in footnotes.items():
+            text = '<span style="color:blue">{}</span>'.format(number + footnote)
+            roles_table.add_row((text, '', '', ''))
 
-    print('Replacing "about.html" with updated version.  Be sure to "git diff '
-          'about.html" before committing to ensure no funny business happened.')
-    with open('about.html', 'w') as fh:
+    outlines = update_html('team.html', roles_table)
+
+    print('Replacing "team.html" with updated version.  Be sure to "git diff '
+          'team.html" before committing to ensure no funny business happened.')
+    with open('team.html', 'w') as fh:
         fh.writelines(outlines)
