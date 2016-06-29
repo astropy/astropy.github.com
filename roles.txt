@@ -19,10 +19,10 @@ CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
 
 Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
                                  | Twitter  | Tom Robitaille | UNFILLED
-                                 | Facebook | Kelle Cruz | Tom Robitaille::Seeking replacement, Erik Tollerud
+                                 | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
                                  | Conferences | UNFILLED | Erik Tollerud, Tom Robitaille, Kelle Cruz
 
-Core package release coordinator | | Erik Tollerud::Seeking replacement | Tom Robitaille
+Core package release coordinator | | Erik Tollerud | Tom Robitaille
 
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
@@ -30,12 +30,12 @@ Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | ArchLinux| UNFILLED | UNFILLED
                             | MacPorts | Tom Robitaille | UNFILLED
 
-Package-template maintainer | | Tom Robitaille::Seeking replacement | UNFILLED
+Package-template maintainer | | Tom Robitaille | UNFILLED
 
 Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | UNFILLED
                        | astropy.constants | UNFILLED | UNFILLED
                        | astropy.convolution | Adam Ginsburg | Axel Donath
-                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft::Out climbing in 2017, Adrian Price-Whelan
+                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft, Adrian Price-Whelan
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
                        | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim

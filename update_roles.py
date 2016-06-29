@@ -70,7 +70,8 @@ def update_html(filename, roles):
 
 def process_role(val, footnotes):
     if val == 'UNFILLED':
-        val = '<span style="color:red; font-style:italic">Unfilled</span>'
+        val = ('<a href="mailto:astropy.team@gmail.com">'
+               '<span style="font-style:italic">Unfilled</span></a>')
 
     # Handle footnotes in the form <name>:<footnote> in the Lead or Deputy field
     names = []
