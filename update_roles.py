@@ -17,6 +17,7 @@ import re
 from collections import OrderedDict
 
 from astropy.io import ascii
+from astropy.table import Column
 
 
 def get_table_location(lines, table_id):
@@ -46,7 +47,7 @@ def update_html(filename, roles):
 
     # Plug in the roles table
     roles_out = StringIO.StringIO()
-    clean_kwargs = {'tags': ['a', 'span', 'sup'],
+    clean_kwargs = {'tags': ['a', 'span', 'sup', 'br'],
                     'attributes': {'a': ['href'],
                                    '*': ['style']},
                     'styles': ['color', 'font-style']}
@@ -73,7 +74,7 @@ def process_role(val, footnotes):
         val = ('<a href="mailto:astropy.team@gmail.com">'
                '<span style="font-style:italic">Unfilled</span></a>')
 
-    # Handle footnotes in the form <name>:<footnote> in the Lead or Deputy field
+    # Handle footnotes in the form <name>::<footnote> in the Lead or Deputy field
     names = []
     for name in val.split(','):
         m = re.match(r'(.+)::(.+)', name)
@@ -100,7 +101,7 @@ if __name__ == '__main__':
             role_ref = re.sub(r'[-.]', '', role_ref)
             role = '<a href="#{}">{}</a>'.format(role_ref, role)
         new_roles.append(role)
-    roles_table.replace_column('Role', new_roles)
+    roles_table.replace_column('Role', Column(new_roles, dtype='S100'))
 
     # Special processsing for Lead and Deputy fields:
     # - Replace UNFILLED with a red italicized "Unfilled" text
