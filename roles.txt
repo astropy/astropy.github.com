@@ -13,7 +13,7 @@ Coordination committee member | | Tom Aldcroft    |
 
 Astropy.org web page maintainer | | Erik Tollerud | UNFILLED
 
-Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Matt Craig
+Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz
 
 CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
 
@@ -30,26 +30,26 @@ Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | ArchLinux| UNFILLED | UNFILLED
                             | MacPorts | Tom Robitaille | UNFILLED
 
-Package-template maintainer | | Tom Robitaille | UNFILLED
+Package-template maintainer | | Tom Robitaille | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
 
-Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | UNFILLED
+Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradley
                        | astropy.constants | UNFILLED | UNFILLED
-                       | astropy.convolution | Adam Ginsburg | Axel Donath
-                       | astropy.coordinates | Erik Tollerud  | Tom Aldcroft, Adrian Price-Whelan
+                       | astropy.convolution | Adam Ginsburg | Axel Donath, Larry Bradley
+                       | astropy.coordinates | Erik Tollerud  | Stuart Littlefair, Adrian Price-Whelan
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
                        | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim
                        | astropy.io.misc | Tom Robitaille | UNFILLED
                        | astropy.io.votable | UNFILLED | Pey-Lian Lim
-                       | astropy.modeling | Nadia Denchova | UNFILLED
-                       | astropy.nddata | Matt Craig | Steve Crawford
-                       | astropy.stats | Steve Crawford | Alex Hagen
+                       | astropy.modeling | Nadia Dencheva | Pey-Lian Lim
+                       | astropy.nddata | Matt Craig | Steve Crawford, Michael Seifert
+                       | astropy.stats | Steve Crawford | Alex Hagen, Larry Bradley
                        | astropy.table | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.time | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.units | Marten van Kerkwijk | Adrian Price-Whelan
                        | astropy.utils | Erik Tollerud | Brigitta Sipocz
-                       | astropy.visualization | Tom Robitaille | UNFILLED
+                       | astropy.visualization | Tom Robitaille | Larry Bradley
                        | astropy.vo.conesearch | Pey Lian Lim | UNFILLED
                        | astropy.vo.validator | Pey Lian Lim | UNFILLED
                        | astropy.vo.samp | Tom Robitaille | UNFILLED
-                       | astropy.wcs | UNFILLED | Nadia Denchova
+                       | astropy.wcs | UNFILLED | Nadia Dencheva
