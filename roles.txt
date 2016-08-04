@@ -20,9 +20,9 @@ Astropy GSoC coordinator | 2016 | Tom Aldcroft | Erik Tollerud
 CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
 
 Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
-                                 | Twitter  | Tom Robitaille::Would prefer deputy role | UNFILLED
+                                 | Twitter  | Tom Robitaille::Would prefer deputy role | Adrian Price-Whelan
                                  | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
-                                 | Conferences | UNFILLED | Erik Tollerud, Tom Robitaille, Kelle Cruz
+                                 | Conferences | Adrian Price-Whelan | Erik Tollerud, Tom Robitaille, Kelle Cruz
 
 Core package release coordinator | | Erik Tollerud::Would prefer deputy role | Tom Robitaille::Can take lead while training new <br> deputy / future lead
 
