@@ -1,0 +1,57 @@
+#
+# Astropy Roles
+#
+# This is an ASCII table delimited by the | character.
+# One can add footnotes for
+#
+Role   | Sub-role  |  Lead  | Deputy
+
+Coordination committee member | | Tom Aldcroft    |
+                              | | Kelle Cruz      |
+                              | | Tom Robitaille  |
+                              | | Erik Tollerud   |
+
+Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | UNFILLED
+
+Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz
+
+Astropy GSoC coordinator | 2016 | Tom Aldcroft | Erik Tollerud
+
+CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
+
+Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
+                                 | Twitter  | Adrian Price-Whelan | Tom Robitaille
+                                 | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
+                                 | Conferences | Adrian Price-Whelan | Erik Tollerud, Tom Robitaille, Kelle Cruz
+
+Core package release coordinator | | Erik Tollerud::Would prefer deputy role | Tom Robitaille::Can take lead while training new <br> deputy / future lead
+
+Distribution coordinator    | Conda    | Matt Craig | UNFILLED
+                            | Debian   | Ole Streicher | UNFILLED
+                            | Fedora   | Sergio Pascual | UNFILLED
+                            | ArchLinux| UNFILLED | UNFILLED
+                            | MacPorts | Tom Robitaille::Would prefer deputy role | UNFILLED
+
+Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
+
+Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradley
+                       | astropy.constants | UNFILLED | UNFILLED
+                       | astropy.convolution | Adam Ginsburg | Axel Donath, Larry Bradley
+                       | astropy.coordinates | Erik Tollerud | Stuart Littlefair, Adrian Price-Whelan
+                       | astropy.cosmology | Alex Conley | Neil Crighton
+                       | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
+                       | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim
+                       | astropy.io.misc | Tom Robitaille::Would prefer deputy role | UNFILLED
+                       | astropy.io.votable | UNFILLED | Pey-Lian Lim
+                       | astropy.modeling | Nadia Dencheva | Pey-Lian Lim
+                       | astropy.nddata | Matt Craig | Steve Crawford, Michael Seifert
+                       | astropy.stats | Steve Crawford | Alex Hagen, Larry Bradley
+                       | astropy.table | Tom Aldcroft | Marten van Kerkwijk
+                       | astropy.time | Tom Aldcroft | Marten van Kerkwijk
+                       | astropy.units | Marten van Kerkwijk | Adrian Price-Whelan
+                       | astropy.utils | Erik Tollerud::Would prefer deputy role | Brigitta Sipocz
+                       | astropy.visualization | Tom Robitaille::Would prefer deputy role | Larry Bradley
+                       | astropy.vo.conesearch | Pey Lian Lim | UNFILLED
+                       | astropy.vo.validator | Pey Lian Lim | UNFILLED
+                       | astropy.vo.samp | Tom Robitaille::Would prefer deputy role | UNFILLED
+                       | astropy.wcs | UNFILLED | Nadia Dencheva
