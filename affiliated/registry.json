@@ -61,8 +61,8 @@
             "description": "A pure Python module that provides a Python API to the Montage Astronomical Image Mosaic Engine, including both functions to access individual Montage commands, and high-level functions to facilitate mosaicking and re-projecting. Python-montage uses the Astropy core package for reading and writing FITS files."
         },
         {
-            "name": "pydl",
-            "maintainer": "Benjamin Alan Weaver <benjamin.weaver@nyu.edu>",
+            "name": "PyDL",
+            "maintainer": "Benjamin Alan Weaver <baweaver@lbl.gov>",
             "provisional": false,
             "stable": false,
             "home_url": "https://github.com/weaverba137/pydl",
