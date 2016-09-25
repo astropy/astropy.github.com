@@ -255,7 +255,7 @@
             "provisional": "2017-2-17",
             "stable": true,
             "repo_url": "https://bitbucket.org/mbachett/maltpynt",
-            "home_url": "https://http://maltpynt.readthedocs.io",
+            "home_url": "https://maltpynt.readthedocs.io",
             "pypi_name": "maltpynt",
             "description": "Quick-look timing analysis of NuSTAR data."
          },
