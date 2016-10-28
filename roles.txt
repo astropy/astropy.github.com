@@ -29,7 +29,7 @@ Core package release coordinator | | Erik Tollerud::Would prefer deputy role | T
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
                             | Fedora   | Sergio Pascual | UNFILLED
-                            | ArchLinux| Miguel de Val-Borro | UNFILLED
+                            | ArchLinux| Médéric Boquien | Miguel de Val-Borro, Stuart Mumford
                             | MacPorts | Tom Robitaille::Would prefer deputy role | UNFILLED
 
 Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
