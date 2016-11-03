@@ -280,7 +280,7 @@
         {
             "name": "cluster-lensing",
             "maintainer": "Jes Ford",
-            "provisional": false,
+            "provisional": true,
             "stable": false,
             "repo_url": "https://github.com/jesford/cluster-lensing",
             "home_url": "http://jesford.github.io/cluster-lensing",
