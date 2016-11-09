@@ -11,7 +11,7 @@ Coordination committee member | | Tom Aldcroft    |
                               | | Tom Robitaille  |
                               | | Erik Tollerud   |
 
-Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | UNFILLED
+Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Grant Tremblay
 
 Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz, Erik Bray
 
