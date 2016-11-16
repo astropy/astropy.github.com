@@ -29,6 +29,7 @@ Core package release coordinator | | Erik Tollerud::Would prefer deputy role | T
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
                             | Fedora   | Sergio Pascual | UNFILLED
+                            | Gentoo   | Sébastien Fabbro | UNFILLED
                             | ArchLinux| UNFILLED | UNFILLED
                             | MacPorts | Tom Robitaille::Would prefer deputy role | Moritz Guenther
 
