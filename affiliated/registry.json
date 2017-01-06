@@ -241,9 +241,17 @@
             "pypi_name": "omnifit"
         },
         {
+            "name": "gala",
+            "maintainer": "Adrian Price-Whelan.",
+            "provisional": true,
+            "stable": true,
+            "home_url": "http://gala.adrian.pw/en/latest/",
+            "repo_url": "https://github.com/adrn/gala",
+            "pypi_name": "astro-gala"
+        },        {
             "name": "galpy",
             "maintainer": "Jo Bovy",
-            "provisional": "2016-11-1",
+            "provisional": false,
             "stable": true,
             "home_url": "http://galpy.readthedocs.io/en/latest/",
             "repo_url": "https://github.com/jobovy/galpy",
@@ -268,6 +276,16 @@
             "repo_url": "https://github.com/astropy/halotools",
             "pypi_name": "halotools",
             "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations."
+        },
+        {
+            "name": "cluster-lensing",
+            "maintainer": "Jes Ford",
+            "provisional": "2017-3-18",
+            "stable": false,
+            "repo_url": "https://github.com/jesford/cluster-lensing",
+            "home_url": "http://jesford.github.io/cluster-lensing",
+            "pypi_name": "cluster-lensing",
+            "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
          }
     ]
 }

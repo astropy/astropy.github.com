@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Astropy. A Community Python Library for Astronomy." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="favicon.ico" />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/jquery.sidr.light.css" />
+
+
+<title>Astropy | v1.3 Released!</title>
+
+<!-- Google analytics -->
+<script src="js/analytics.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+	<nav>
+		<div id="mobile-header">
+			<!-- Menu Icon -->
+		    <a id="responsive-menu-button" href="#sidr-main"><div><svg senable-background="new 0 0 24 24" height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><g><path d="M23.244,17.009H0.75c-0.413,0-0.75,0.36-0.75,0.801v3.421C0,21.654,0.337,22,0.75,22h22.494c0.414,0,0.75-0.346,0.75-0.77    V17.81C23.994,17.369,23.658,17.009,23.244,17.009z M23.244,9.009H0.75C0.337,9.009,0,9.369,0,9.81v3.421    c0,0.424,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.345,0.75-0.769V9.81C23.994,9.369,23.658,9.009,23.244,9.009z     M23.244,1.009H0.75C0.337,1.009,0,1.369,0,1.81V5.23c0,0.423,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.346,0.75-0.769V1.81    C23.994,1.369,23.658,1.009,23.244,1.009z"/></g></g></svg></div></a>
+		    <!-- -->
+		</div>
+		<a href="../index.html"><img src="../images/astropy_word.svg" height="32" onerror="this.src='../images/astropy_word_32.png; this.onerror=null;"/></a>
+		<div id="navigation">
+			<ul>
+				<li><a class="active" href="../about.html">About</a></li>
+				<li><a href="../help.html">Get Help</a></li>
+				<li><a href="../contribute.html">Contribute</a></li>
+				<!-- <li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> -->
+				<li><a href="../affiliated/index.html">Affiliated Packages</a></li>
+			</ul>
+		</div>
+		<div class="search pull-right">
+			<form action="http://docs.astropy.org/en/stable/search.html" method="get">
+			  <input type="text" name="q" placeholder="Search Documentation" />
+			  <input type="hidden" name="check_keywords" value="yes" />
+			  <input type="hidden" name="area" value="default" />
+			</form>
+		</div>
+	</nav>
+
+<section>
+
+<h1>Astropy v1.3 Released!</h1>
+
+<p>
+Dear colleagues,
+</p>
+<p>
+We are very happy to announce the v1.3 release of the Astropy package,
+a core Python package for Astronomy:
+</p>
+<p align='center'>
+    <img src="astropy_logo_notext.png" style="width:80px;height:80px;"><br>
+    <a href="http://www.astropy.org">http://www.astropy.org</a>
+</p>
+<p>
+Astropy is a community-driven Python package intended to contain much of the
+core functionality and common tools needed for astronomy and astrophysics.
+</p>
+<p>
+New and improved major functionality in this release includes:
+<ul>
+<li>The WCSAxes framework for plotting points or images on celestial coordinates in matplotlib.</li>
+<li>A new function in astropy.visualization to generate 3-color images from astronomy images in different bands.</li>
+<li>Astropy coordinate representations now combine like vectors, with useful mathematical operations that can be performed on them.</li>
+<li>Astropy coordinates and time objects now behave much more consistently like arrays when they are reshaped.</li>
+<li>Earth locations can now be created from a postal address.</li>
+<li>JPL Ephemerides can now be used in the coordinates sub-package to improve the accuracy of coordinate transformations and barycentric time corrections.</li>
+<li>FORTRAN-style extended floating precision files like 1.495D+238 can now be read using astropy.io.ascii or Table.read.</li>
+<li>Astropy objects can now be serialized to (or re-loaded from) a standard YAML representation.</li>
+<li>FITS HDUs can now be lazy loaded, improving performance in files with many HDUs.</li>
+<li>The default cosmology is now Planck 2015.</li>
+</ul>
+</p>
+<p>
+In addition, hundreds of smaller improvements and fixes have been made. An
+overview of the changes is provided at:
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://docs.astropy.org/en/stable/whatsnew/1.3.html">http://docs.astropy.org/en/stable/whatsnew/1.3.html</a>
+</p>
+<p>
+Instructions for installing Astropy are provided on our <a
+href="http://www.astropy.org">website</a>, and extensive documentation can be
+found at:
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://docs.astropy.org">http://docs.astropy.org</a>
+</p>
+<p>
+If you make use of the <a href="https://www.continuum.io/downloads">Anaconda
+Python Distribution</a>, you can update to Astropy v1.3 with:
+</p>
+<pre>
+    conda update astropy
+</pre>
+<p>
+  Whereas if you usually use pip, you can do:
+</p>
+<pre>
+    pip install astropy --upgrade
+</pre>
+<p>
+Please report any issues, or request new features via our GitHub repository:
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/astropy/astropy/issues">https://github.com/astropy/astropy/issues</a>
+</p>
+<p>
+Over 210 developers have contributed code to Astropy so far, and you can find out more about the team behind Astropy here:
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.astropy.org/team.html">http://www.astropy.org/team.html</a>
+</p>
+<p>
+Astropy v1.0 (our long term support release) will continue to be supported with bug fixes until the v2.0 release in June 2017, so if you need to use Astropy in a very stable environment, you may want to consider staying on the v1.0.x set of releases (for which we are simultaneously releasing v1.0.11).
+</p>
+<p>
+While we typically do not support non-LTS releases, we are also simultaneously releasing an Astropy v1.2.2, the last in that series.  This update is primarily to include a leap second at the end of 2016 (but also contains other bug fixes).
+</p>
+<p>
+If you use Astropy directly for your work, or as a dependency to another
+package, please remember to include the following acknowledgment at the end of
+papers:
+</p>
+<p class="citation"><cite>This research made use of Astropy, a
+community-developed core Python package for Astronomy (Astropy Collaboration,
+2013).</cite></p>
+
+<p>where <cite>(Astropy Collaboration, 2013)</cite> is a citation to the <a href="http://dx.doi.org/10.1051/0004-6361/201322068" target="_blank">Astropy Paper</a> (<a href="http://adsabs.harvard.edu/abs/2013A%26A...558A..33A" target="_blank">ADS</a> -
+<a href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&amp;data_type=BIBTEX&amp;db_key=AST&amp;nocookieset=1" target="_blank">BibTeX</a>).</p>
+<p>
+Please feel free to forward this announcement to anyone you think might be interested in this release.
+</p>
+<p>
+We hope that you enjoy using Astropy as much as we enjoyed developing it!
+</p>
+<p>
+Erik Tollerud, Tom Robitaille, Kelle Cruz, and Tom Aldcroft<br>
+on behalf of The Astropy Collaboration
+</p>
+
+
+
+
+	</section>
+
+
+
+	<footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.sidr.min.js"></script>
+		<script src="js/functions.js"></script>
+	</footer>
+
+</div>
+
+</body>
+</html>

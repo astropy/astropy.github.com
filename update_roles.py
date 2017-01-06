@@ -12,7 +12,7 @@ Usage::
 from __future__ import print_function
 
 import os
-import StringIO
+from io import StringIO
 import re
 from collections import OrderedDict
 
@@ -46,7 +46,7 @@ def update_html(filename, roles):
     outlines = lines[:idx0]
 
     # Plug in the roles table
-    roles_out = StringIO.StringIO()
+    roles_out = StringIO()
     clean_kwargs = {'tags': ['a', 'span', 'sup', 'br'],
                     'attributes': {'a': ['href'],
                                    '*': ['style']},
