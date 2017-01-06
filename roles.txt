@@ -42,7 +42,7 @@ Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradl
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
                        | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim, Erik Bray
-                       | astropy.io.misc | Tom Robitaille::Would prefer deputy role | UNFILLED
+                       | astropy.io.misc | Tom Robitaille::Would prefer deputy role | Matteo Bachetti
                        | astropy.io.votable | UNFILLED | Pey-Lian Lim
                        | astropy.modeling | Nadia Dencheva | Pey-Lian Lim, Erik Bray
                        | astropy.nddata | Matt Craig | Steve Crawford, Michael Seifert
