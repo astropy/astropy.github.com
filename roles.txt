@@ -11,7 +11,7 @@ Coordination committee member | | Tom Aldcroft    |
                               | | Tom Robitaille  |
                               | | Erik Tollerud   |
 
-Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | UNFILLED
+Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Grant Tremblay
 
 Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz, Erik Bray
 
@@ -29,8 +29,9 @@ Core package release coordinator | | Erik Tollerud::Would prefer deputy role | T
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
                             | Fedora   | Sergio Pascual | UNFILLED
+                            | Gentoo   | Sébastien Fabbro | UNFILLED
                             | ArchLinux| Médéric Boquien | Miguel de Val-Borro, Stuart Mumford
-                            | MacPorts | Tom Robitaille::Would prefer deputy role | UNFILLED
+                            | MacPorts | Tom Robitaille::Would prefer deputy role | Moritz Guenther
 
 Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
 
@@ -41,7 +42,7 @@ Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradl
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
                        | astropy.io.fits | UNFILLED  | Michael Seifert, Pey-Lian Lim, Erik Bray
-                       | astropy.io.misc | Tom Robitaille::Would prefer deputy role | UNFILLED
+                       | astropy.io.misc | Tom Robitaille::Would prefer deputy role | Matteo Bachetti
                        | astropy.io.votable | UNFILLED | Pey-Lian Lim
                        | astropy.modeling | Nadia Dencheva | Pey-Lian Lim, Erik Bray
                        | astropy.nddata | Matt Craig | Steve Crawford, Michael Seifert
