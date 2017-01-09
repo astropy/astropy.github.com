@@ -31,7 +31,7 @@ Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Fedora   | Sergio Pascual | UNFILLED
                             | Gentoo   | Sébastien Fabbro | UNFILLED
                             | ArchLinux| Médéric Boquien | Miguel de Val-Borro, Stuart Mumford
-                            | MacPorts | Tom Robitaille::Would prefer deputy role | Moritz Guenther
+                            | MacPorts | Christoph Deil | Moritz Guenther
 
 Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
 
