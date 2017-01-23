@@ -24,7 +24,7 @@ Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
                                  | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
                                  | Conferences | Adrian Price-Whelan | Erik Tollerud, Tom Robitaille, Kelle Cruz
 
-Core package release coordinator | | Erik Tollerud::Would prefer deputy role | Tom Robitaille::Can take lead while training new <br> deputy / future lead, Brigitta Sipocz
+Core package release coordinator | | Erik Tollerud::Would prefer deputy role | Tom Robitaille, Brigitta Sipocz
 
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
