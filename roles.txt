@@ -36,7 +36,7 @@ Distribution coordinator    | Conda    | Matt Craig | UNFILLED
 Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
 
 Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradley
-                       | astropy.constants | UNFILLED | UNFILLED
+                       | astropy.constants | Tom Aldcroft::Responsible primarily for process | David Shupe, Ken Young
                        | astropy.convolution | Adam Ginsburg | Axel Donath, Larry Bradley
                        | astropy.coordinates | Erik Tollerud | Stuart Littlefair, Adrian Price-Whelan
                        | astropy.cosmology | Alex Conley | Neil Crighton
