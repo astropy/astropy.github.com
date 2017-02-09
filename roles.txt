@@ -15,7 +15,7 @@ Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Gr
 
 Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz, Erik Bray
 
-Astropy GSoC coordinator | 2016 | Tom Aldcroft | Erik Tollerud
+Astropy GSoC coordinator | 2017 | Tom Aldcroft | Erik Tollerud
 
 CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
 
