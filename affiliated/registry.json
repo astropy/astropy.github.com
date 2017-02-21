@@ -141,7 +141,7 @@
             "maintainer": "Chris Beaumont and Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": "2016-04-27",
             "stable": true,
-            "home_url": "http://www.glue-viz.org",
+            "home_url": "http://www.glueviz.org",
             "repo_url": "https://github.com/glue-viz/glue.git",
             "pypi_name": "glueviz"
         },
