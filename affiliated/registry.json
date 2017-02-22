@@ -82,7 +82,7 @@
         {
             "name": "reproject",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": "2016-5-5",
+            "provisional": false,
             "stable": true,
             "home_url": "http://reproject.readthedocs.io",
             "repo_url": "https://github.com/astrofrog/reproject.git",
@@ -139,7 +139,7 @@
         {
             "name": "Glue",
             "maintainer": "Chris Beaumont and Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": "2016-04-27",
+            "provisional": false,
             "stable": true,
             "home_url": "http://www.glueviz.org",
             "repo_url": "https://github.com/glue-viz/glue.git",
