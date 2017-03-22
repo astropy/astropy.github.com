@@ -286,6 +286,16 @@
             "home_url": "http://jesford.github.io/cluster-lensing",
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
-         }
+        },
+        {
+            "name": "poliastro",
+            "maintainer": "Juan Luis Cano Rodríguez",
+            "provisional": "2017-3-22",
+            "stable": false,
+            "repo_url": "https://github.com/poliastro/poliastro",
+            "home_url": "http://poliastro.github.io/",
+            "pypi_name": "poliastro",
+            "description": "Astrodynamics and Orbital Mechanics computations"
+        }
     ]
 }
