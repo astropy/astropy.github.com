@@ -287,5 +287,15 @@
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
          }
+         {
+            "name": "marxs",
+            "maintainer": "Hans Moritz Günther (hamogu)",
+            "provisional": "2017-4-XX",
+            "stable": true,
+            "repo_url": "https://github.com/Chandra-MARX/marxs",
+            "home_url": "https://marxs.readthedocs.io/",
+            "pypi_name": "marxs",
+            "description": "Multi-Architecture-Raytrace-Xraymission-Simulator"
+         }
     ]
 }
