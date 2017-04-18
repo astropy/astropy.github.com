@@ -287,5 +287,6 @@
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
          }
+
     ]
 }
