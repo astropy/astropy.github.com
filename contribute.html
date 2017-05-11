@@ -30,11 +30,22 @@
 		<a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
 		<div id="navigation">
 			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a href="team.html">Team</a></li>
+		    <li>
+                <div class="dropdown">
+                  <a>About</a>
+                  <div class="dropdown-content">
+                    <ul>
+                    <li><a href="about.html">About Astropy</a></li>
+                    <li><a href="team.html">Team and Roles</a></li>
+                    <li><a href="code_of_conduct.html">Code of Conduct</a></li>
+                    <li><a href="acknowledging.html">Acknowledging</a></li>                    
+                    </ul>
+                  </div>
+                </div>
+			    </li>
 				<li><a href="help.html">Get Help</a></li>
-				<li><a class="active" href="contribute.html">Contribute</a></li>
-				<!-- <li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> -->
+				<li><a href="contribute.html">Contribute</a></li>
+				<li><a href="http://docs.astropy.org" target="_blank">Docs</a></li> 
 				<li><a href="affiliated/index.html">Affiliated Packages</a></li>
 			</ul>
 		</div>
@@ -55,17 +66,46 @@
 	</section>
 
 	<section id="feedback">
-		<h2>Contribute feedback</h2>
+		<h1>Contribute feedback</h1>
 
-	<p>There are several ways in which you can give us feedback. </p>
+	<p>There are several ways in which you can give feedback. </p>
 
 	<ul>
-	<li>If you would like to give us feedback and participate in discussions, we encourage you to join the <a href="http://mail.scipy.org/mailman/listinfo/astropy"> astropy mailing list </a> and post there. This is the easiest way to have a discussion with both developers and other users.  </li>
+	<li>If you would like to give feedback and participate in discussions, we encourage you to join the <a href="http://mail.python.org/mailman/listinfo/astropy"> astropy mailing list </a> and post there. This is the easiest way to have a discussion with both developers and other users.  </li>
 	<li>If you have feedback you would prefer to keep private, you can e-mail <a href="mailto:feedback@astropy.org">feedback@astropy.org</a>. This address points to a private mailing list that includes the astropy core developers. If you would like a reply (e.g., an acknowledgement of your comment), please request it.</li>
 	<li>For the extremely impatient, astropy developers often can be found in <a href="https://gitter.im/astropy/astropy">Astropy's gitter channel</a>. Gitter is basically a live web chat, but with features that make it better for discussing code. If you prefer using IRC clients for chat, there is <a href="https://irc.gitter.im/">a gitter to IRC bridge</a>.</li>
 	</ul>
 
 	</section>
+
+
+    <section>
+    <h1>Reporting Issues</h1>
+
+    <p>If you have found a bug in Astropy please report it. The preferred way is to
+    create a new issue on the Astropy
+    <a href="http://github.com/astropy/astropy/issues">GitHub issue page</a>; 
+    that requires <a href="https://github.com">creating a free
+    account</a> on GitHub if you do not have one.</p>
+
+    <p>If you prefer not to create a GitHub account, please report the issue to either
+    the <a href="https://mail.python.org/mailman/listinfo/astropy">astropy mailing list</a>, 
+    the <a href="http://groups.google.com/group/astropy-dev">astropy-dev mailing list</a> 
+    or sending a
+    private email to the astropy core developers at
+    <a href="mailto:feedback@astropy.org">feedback@astropy.org</a></p>
+
+    <p>Please include an example that demonstrates the issue that will allow the
+    developers to reproduce and fix the problem. You may be asked to also provide
+    information about your operating system and a full Python stack trace; the
+    Astropy developers will walk you through obtaining a stack trace if it is
+    necessary.<p>
+
+
+
+
+
+
 
 	<section id="code">
 		<h2>Contribute code or documentation</h2>
