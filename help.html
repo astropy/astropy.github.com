@@ -28,12 +28,23 @@
 		</div>
 		<a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
 		<div id="navigation">
-			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a href="team.html">Team</a></li>
-				<li><a class="active" href="help.html">Get Help</a></li>
+        <ul>
+		    <li>
+                <div class="dropdown">
+                  <a>About</a>
+                  <div class="dropdown-content">
+                    <ul>
+                    <li><a href="about.html">About Astropy</a></li>
+                    <li><a href="team.html">Team and Roles</a></li>
+                    <li><a href="code_of_conduct.html">Code of Conduct</a></li>
+                    <li><a href="acknowledging.html">Acknowledging</a></li>                    
+                    </ul>
+                  </div>
+                </div>
+			    </li>
+				<li><a href="help.html">Get Help</a></li>
 				<li><a href="contribute.html">Contribute</a></li>
-				<!-- <li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> -->
+				<li><a href="http://docs.astropy.org" target="_blank">Docs</a></li> 
 				<li><a href="affiliated/index.html">Affiliated Packages</a></li>
 			</ul>
 		</div>
@@ -59,7 +70,7 @@
 		<li> <a href="https://gitter.im/astropy/astropy">Gitter channel</a> - Post quick questions and get immediate feedback on this live web chat optimized for discussing code.
 		You can sign in with either your Github or Twitter account. If you prefer using IRC clients for chat, there is <a href="https://irc.gitter.im/">a gitter to IRC bridge</a>.</li>
 
-		<li><a href="http://mail.scipy.org/mailman/listinfo/astropy">Users Email List</a> - Post questions or start discussions about anything related to Python programming applied to astronomy. This is an active email list and most posts get a response within a few days.</li>
+		<li><a href="http://mail.python.org/mailman/listinfo/astropy">Users Email List</a> - Post questions or start discussions about anything related to Python programming applied to astronomy. This is an active email list and most posts get a response within a few days.</li>
 
 		<li> <a href="http://groups.google.com/group/astropy-dev">Developer Email List</a> - Start discussion and ask questions about changing Astropy's behavior or adding new features.</li>
 	</ul>

@@ -32,14 +32,24 @@
 		<a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
 		<div id="navigation">
 			<ul>
-				<li><a class="active" href="about.html">About</a></li>
-				<li><a href="team.html">Team</a></li>
+		    <li>
+                <div class="dropdown">
+                  <a>About</a>
+                  <div class="dropdown-content">
+                    <ul>
+                    <li><a href="about.html">About Astropy</a></li>
+                    <li><a href="team.html">Team and Roles</a></li>
+                    <li><a href="code_of_conduct.html">Code of Conduct</a></li>
+                    <li><a href="acknowledging.html">Acknowledging</a></li>                    
+                    </ul>
+                  </div>
+                </div>
+			    </li>
 				<li><a href="help.html">Get Help</a></li>
 				<li><a href="contribute.html">Contribute</a></li>
-				<!-- <li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> -->
+				<li><a href="http://docs.astropy.org" target="_blank">Docs</a></li> 
 				<li><a href="affiliated/index.html">Affiliated Packages</a></li>
-			</ul>
-		</div>
+			</ul>		</div>
 		<div class="search pull-right">
 			<form action="http://docs.astropy.org/en/stable/search.html" method="get">
 			  <input type="text" name="q" placeholder="Search Documentation" />
@@ -52,7 +62,7 @@
 	<section>
 		<a name="acknowledge"></a>
 
-		<h2>Acknowledging or Citing Astropy</h2>
+		<h1>Acknowledging or Citing Astropy</h1>
 
 		<h3>In Publications</h3>
 
