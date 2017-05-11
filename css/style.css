@@ -419,15 +419,21 @@ section#hero div#documentation ul li a {
   text-decoration: none;
 }
 
+/*Front Page*/
+
+section.whatsastropy{
+	margin-top:200px;
+}
+
 /*Installation Instructions*/
 
-section.install{
+/*section.install{
 	margin-top:380px;
-}
+}*/
 
-section.install div{
+/*section.install div{
 	margin-top: 30px;
-}
+}*/
 
 section.install .button.download{
 	padding: 5px 5px;
