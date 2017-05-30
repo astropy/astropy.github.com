@@ -421,8 +421,13 @@ section#hero div#documentation ul li a {
 
 /*Front Page*/
 
-section.whatsastropy{
-	margin-top:200px;
+section.whatsnew{
+	margin-top:350px;
+	border:1px #E8E8E8 solid;
+	border-right-style:none;
+	border-left-style:none;
+	border-padding=1px;
+
 }
 
 /*Installation Instructions*/
