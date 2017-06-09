@@ -15,6 +15,19 @@
 	-o-transition: none;
 	-ms-transition: none
 	transition: none;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #FC9468),
+	color-stop(0.89, #FF5100)
+	);
+	background-image: -o-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
+	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
+				border-radius: 3px;
 }
 
 .sidr ul li:hover>a, .sidr ul li:hover>span, .sidr ul li.active>a, .sidr ul li.active>span, .sidr ul li.sidr-class-active>a, .sidr ul li.sidr-class-active>span{
@@ -28,4 +41,6 @@
 	-o-transition: none;
 	-ms-transition: none
 	transition: none;
+
+	background-image: none;
 }
