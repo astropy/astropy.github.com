@@ -427,7 +427,20 @@ section.whatsnew{
 	border-right-style:none;
 	border-left-style:none;
 	border-padding=1px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
 
+section.whatsnew .version{
+	color:grey;
+	font-size: 12px;
+	margin-top:6px;
+	margin-bottom:0px;
+}
+
+.whatsnew{
+	font-size: 24px;
+	text-align: center;
 }
 
 /*Installation Instructions*/
@@ -676,8 +689,8 @@ color: white;
     position: absolute;
     right: -13px;
     top: 9px;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 5px solid white;
