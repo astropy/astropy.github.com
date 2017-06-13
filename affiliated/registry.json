@@ -93,7 +93,7 @@
             "maintainer": "Ray Plante",
             "provisional": "2016-6-30",
             "stable": false,
-            "home_url": "http://dev.usvao.org/vao/wiki/Products/PyVO",
+            "home_url": "http://pyvo.readthedocs.io/",
             "repo_url": "https://github.com/pyvirtobs/pyvo.git",
             "pypi_name": "pyvo",
             "description": "Access to the Virtual Observatory through Python."
