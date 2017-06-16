@@ -31,13 +31,24 @@
 		</div>
 		<a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
 		<div id="navigation">
-			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a class="active" href="team.html">Team</a></li>
+<ul>
+		    <li>
+                <div class="dropdown">
+                  <a>About</a>
+                  <div class="dropdown-content">
+                    <ul>
+                    <li><a href="about.html">About Astropy</a></li>
+                    <li><a href="code_of_conduct.html">Code of Conduct</a></li>
+                    <li><a href="acknowledging.html">Acknowledging</a></li>                    
+                    </ul>
+                  </div>
+                </div>
+			    </li>
 				<li><a href="help.html">Get Help</a></li>
 				<li><a href="contribute.html">Contribute</a></li>
-				<!-- <li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> -->
+				<li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> 
 				<li><a href="affiliated/index.html">Affiliated Packages</a></li>
+                <li><a href="team.html">Team</a></li>
 			</ul>
 		</div>
 		<div class="search pull-right">
@@ -701,7 +712,7 @@
 		   <li>Kaylea Nelson for designing this web site.</li>
 		   <li>Kyle Barbary for designing the Astropy logos and documentation themes.</li>
 			<li>Andrew Pontzen and the <a href="https://github.com/pynbody/pynbody" target="_blank">pynbody</a> team (For code that grew into astropy.units)</li>
-			<li>Everyone on <a href="http://groups.google.com/group/astropy-dev" target="_blank">astropy-dev</a> and the <a href="http://mail.scipy.org/mailman/listinfo/astropy" target="_blank">astropy mailing list</a> for contributing to many discussions and decisions!</li>
+			<li>Everyone on <a href="http://groups.google.com/group/astropy-dev" target="_blank">astropy-dev</a> and the <a href="http://mail.python.org/mailman/listinfo/astropy" target="_blank">astropy mailing list</a> for contributing to many discussions and decisions!</li>
 		</ul>
 		<p>If you have contributed to the Astropy project and your name is missing,
 		please send an email to the coordinators, or <a href="https://github.com/astropy/astropy/edit/master/docs/credits.rst" target="_blank">open a pull request for the credits document</a> in the astropy repository.</p>

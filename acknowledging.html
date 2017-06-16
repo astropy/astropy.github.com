@@ -10,8 +10,11 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/jquery.sidr.light.css" />
 
+<style>
+   table.roles td {word-break:normal}
+</style>
 
-<title>Astropy | Get Help</title>
+<title>Astropy | Acknowledging</title>
 
 <!-- Google analytics -->
 <script src="js/analytics.js"></script>
@@ -28,7 +31,7 @@
 		</div>
 		<a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
 		<div id="navigation">
-        <ul>
+			<ul>
 		    <li>
                 <div class="dropdown">
                   <a>About</a>
@@ -46,8 +49,8 @@
 				<li><a href="http://docs.astropy.org" target="_blank">Documentation</a></li> 
 				<li><a href="affiliated/index.html">Affiliated Packages</a></li>
                 <li><a href="team.html">Team</a></li>
-			</ul>
-		</div>
+
+			</ul>		</div>
 		<div class="search pull-right">
 			<form action="http://docs.astropy.org/en/stable/search.html" method="get">
 			  <input type="text" name="q" placeholder="Search Documentation" />
@@ -58,24 +61,43 @@
 	</nav>
 
 	<section>
-	<h1>Getting Help with Astropy</h1>
+		<a name="acknowledge"></a>
 
-	<p>The best way to get help is usually by asking questions to the Astropy user and development community. There are several very active forums and you are welcome to use whichever one you are the most comfortable with.</p>
+		<h1>Acknowledging or Citing Astropy</h1>
 
-	<ul>
-		<li><a href="https://twitter.com/astropy">@astropy on Twitter</a> - Mention @astropy in a tweet with your question. Your tweet may be re-tweeted in order to reach the relevant community. Many tweets get responses within a few hours.</li>
+		<h3>In Publications</h3>
 
-		<li><a href="https://www.facebook.com/groups/astropython/">Python Users in Astronomy Facebook group</a> - Post questions or start discussions on anything related to Python programming applied to astronomy. This is a closed group. If your request to join is not approved after a couple days, please message one of the <a href="https://www.facebook.com/groups/astropython/admins/">admins</a> with a brief description of your involvement in astronomy. This is an active group and most posts get responses within a few hours.</li>
+		<p>If you use Astropy for work/research presented in a publication (whether directly, or as a dependency to another package), we ask that you cite the <a href="http://dx.doi.org/10.1051/0004-6361/201322068" target="_blank">Astropy Paper</a> (<a href="http://adsabs.harvard.edu/abs/2013A%26A...558A..33A" target="_blank">ADS</a> -
+		<a href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&amp;data_type=BIBTEX&amp;db_key=AST&amp;nocookieset=1" target="_blank">BibTeX</a>).
+        We provide the following as a standard  acknowledgment you can use if there is not a specific place to cite the paper:</p>
 
-		<li> <a href="https://gitter.im/astropy/astropy">Gitter channel</a> - Post quick questions and get immediate feedback on this live web chat optimized for discussing code.
-		You can sign in with either your Github or Twitter account. If you prefer using IRC clients for chat, there is <a href="https://irc.gitter.im/">a gitter to IRC bridge</a>.</li>
+		<p class="citation"><cite>This research made use of Astropy, a community-developed core Python package for Astronomy (Astropy Collaboration, 2013).</cite></p>
 
-		<li><a href="http://mail.python.org/mailman/listinfo/astropy">Users Email List</a> - Post questions or start discussions about anything related to Python programming applied to astronomy. This is an active email list and most posts get a response within a few days.</li>
+		<p>If you wish, you can also include a link to <cite>http://www.astropy.org</cite> (if the journal allows this) in addition to the above text.</p>
 
-		<li> <a href="http://groups.google.com/group/astropy-dev">Developer Email List</a> - Start discussion and ask questions about changing Astropy's behavior or adding new features.</li>
-	</ul>
+		<h3>In Presentations</h3>
 
-    </section>
+		<p>If you are giving a presentation or talk featuring work/research that makes use of Astropy and would like to acknowledge Astropy, we suggest using this logo on your title slide:</p>
+
+		<img src="http://www.astropy.org/images/astropy_powered.png" alt="Powered by Astropy" />
+
+		<p>The logo is also available <a href="http://www.astropy.org/images/astropy_powered_white.png">with white text</a>, or the SVG originals can be obtained at the <a href="http://github.com/astropy/astropy-logo" target="_blank">astropy-logo github repository.</a></p>
+
+		<h3>In Projects</h3>
+
+		<p>If you are using Astropy as part of a code project (e.g., affiliated packages), a useful way to acknowledge your use of Astropy is with a badge in your README. We suggest this badge: </p>
+
+
+
+		<img src="http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat" alt="Powered by Astropy Badge"/>
+
+		<p> Which is available at the URL <cite>http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat</cite>. If your code is hosted on github, You can place the following in your README.md file to get the badge:</p>
+
+
+		<cite>[![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)</cite>
+
+
+	</section>
 
 	<footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
