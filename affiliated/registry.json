@@ -110,7 +110,7 @@
         },
         {
             "name": "ccdproc",
-            "maintainer": "Steven Crawford and Matt Craig <ccdproc@gmail.com>",
+            "maintainer": "Steven Crawford, Matt Craig and Michael Seifert <ccdproc@gmail.com>",
             "provisional": false,
             "stable": true,
             "home_url": "http://ccdproc.readthedocs.io",
