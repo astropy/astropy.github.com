@@ -286,7 +286,7 @@
             "home_url": "http://jesford.github.io/cluster-lensing",
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option)."
-         }
+         },
          {
             "name": "marxs",
             "maintainer": "Hans Moritz Günther (hamogu)",
