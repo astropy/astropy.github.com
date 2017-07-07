@@ -102,10 +102,12 @@
 		<li>A new CCDData class that is directly useful for typical astronomical images and implements the NDData interface.</li>
 		<li>Coordinate frame objects can now carry proper motions and radial velocities, and will carry them through and transform them between frames. (This functionality is experimental and feedback is greatly desired.)</li>
 		<li>Many of the typical mixin columns for astropy tables can now be saved into ECSV files and fully round-tripped.</li>
-		<li>astropy.convolution is now more consistent between the fft and direct versions of the algorithm and work better and more consistently with typical use cases.</li>
-		<li>A variety of dditions to the astropy.stats subpackage</li>
-		<li>The Astropy 2.x series will be the last versions of Astropy that will support Python 2.x.  Future versions of Astropy will only support Python 3.x.</li>
+		<li>The fft and direct versions of the convolution algorithm in astropy.convolution are now more consistent and work better with typical use cases.</li>
+		<li>A variety of additions to the astropy.stats subpackage</li>
 		</ul>
+		</p>
+		<p>
+		Note that the Astropy 2.x series will be the last versions of Astropy that will support Python 2.x.  Future versions of Astropy will only support Python 3.x.
 		</p>
 		<p>
 		In addition, hundreds of smaller improvements and fixes have been made. An
@@ -148,7 +150,7 @@ pip install astropy --upgrade
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.astropy.org/team.html">http://www.astropy.org/team.html</a>
 		</p>
 		<p>
-		Astropy v2.0 now repaces v1.0 as the long term support release, and will be supported for the next 2 years.  The next major release of Astropy (scheduled for January 2018), will also be an LTS, but it will only support Python 3.x. So if you need to use Astropy in a very stable  environment in python 2.7, this is the one for you.
+		Astropy v2.0 now repaces v1.0 as the long term support release, and will be supported until the end of 2019.  The next major release of Astropy (scheduled for January 2018) will only support Python 3.x. So if you need to use Astropy in a very stable environment in Python 2.7, you should continue to use the 2.0.x series after 3.0.x is released.
 		</p>
 		<p>
 		If you use Astropy directly for your work, or as a dependency to another
