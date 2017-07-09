@@ -368,5 +368,14 @@
             "pypi_name": "poliastro",
             "description": "Astrodynamics and Orbital Mechanics computations"
         },
+        {
+            "name": "hips",
+            "maintainer": "Christoph Deil and Thomas Boch",
+            "stable": false,
+            "repo_url": "https://github.com/hipspy/hips",
+            "home_url": "https://hips.readthedocs.io",
+            "pypi_name": "hips",
+            "description": "A Python astronomy package for HiPS : Hierarchical Progressive Surveys."
+         }
     ]
 }
