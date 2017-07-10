@@ -169,8 +169,8 @@
             "maintainer": "Bernie Simon and Michael Droettboom",
             "provisional": "2015-12-26",
             "stable": false,
-            "home_url": "https://spacetelescope.github.io/sphere/spherical_geometry/",
-            "repo_url": "https://github.com/spacetelescope/sphere.git",
+            "home_url": "https://spacetelescope.github.io/spherical_geometry/spherical_geometry/",
+            "repo_url": "https://github.com/spacetelescope/spherical_geometry.git",
             "pypi_name": "spherical-geometry"
         },
         {
