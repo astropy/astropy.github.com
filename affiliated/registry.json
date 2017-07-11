@@ -128,15 +128,6 @@
             "pypi_name": "sncosmo"
         },
         {
-            "name": "WCSAxes",
-            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": false,
-            "stable": true,
-            "home_url": "http://wcsaxes.readthedocs.io",
-            "repo_url": "https://github.com/astrofrog/wcsaxes.git",
-            "pypi_name": "wcsaxes"
-        },
-        {
             "name": "Glue",
             "maintainer": "Chris Beaumont and Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": false,
