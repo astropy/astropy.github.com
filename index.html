@@ -93,21 +93,29 @@
 		<div id="os-selector">
 			<ul>
 
-				<li><a href="#osx"><i class="fa fa-apple"></i><span> OS X</span></a></li>
+				<li><a href="#MacOS"><i class="fa fa-apple"></i><span> OS X</span></a></li>
 				<li><a href="#linux"><i class="fa fa-linux"></i><span> Linux</span></a></li>
 				<li><a href="#windows"><i class="fa fa-windows"></i><span> Windows</span></a></li>
 				<li><a href="#source"><i class="fa fa-code"></i><span> Source</span></a></li>
 				<li><a href="#dev" class="right"><i class="fa fa-github"></i><span> Developer</span></a></li>
 			</ul>
-
-			<div id="osx">
-				<p>There are a number of options for installing the astropy package on MacOS X.</p>
+			<div id="MacOS">
+				<p>There are a number of options for installing the astropy package on MacOS.</p>
 				<p>
 				The <a href="https://store.continuum.io/cshop/anaconda/">Anaconda Python Distribution</a> is one of the most common ways to install both Python and astropy. Once you have Anaconda installed, <a href="http://astropy.readthedocs.io/en/stable/install.html#anaconda-python-distribution">update to the latest version of astropy</a>:
 				<pre>conda update astropy</pre></p>
 				<p>Astropy can also be installed using the <a href="http://www.macports.org/">MacPorts</a> or <a href="http://www.finkproject.org/">Fink</a> package managers. It is also included with
 					<a href="https://www.enthought.com/products/canopy/">Enthought Canopy</a> and
 					<a href="http://astroconda.readthedocs.io/en/latest/index.html#">AstroConda</a>. You can also install the latest version of Astropy using <a href="http://www.pip-installer.org/">pip</a>.</p>
+			<p>
+				If you use the <a href="">Homebrew</a> package manager, you
+				should first install the python or python3 package using brew
+			</p>
+			<pre>brew install python3</pre>
+			<p>
+				And then install astropy using pip or pip3:
+			</p>
+			<pre>pip3 install astropy</pre>
 			</div>
 			<div id="linux">
 				<p>There are a number of options for installing the astropy package on Linux. Astropy can be installed on some Linux distributions using the built-in package manager (apt-get, yum, etc.),
