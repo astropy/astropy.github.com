@@ -140,7 +140,7 @@ function maintainer_translator(maint, pkgnm) {
 
 function populateTables(data, tstat, xhr) {
     populateTable('accepted-package-table', data, false);
-    populateTable('provisional-package-table', data, 'only');
+    populateTable('provisional-package-table', data, 'only')
 }
 
 function populateTable(tableid, data, allowprovisional) {
