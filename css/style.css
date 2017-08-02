@@ -213,6 +213,17 @@ p .button{
 	background-image: linear-gradient(to bottom, #FFA47D 0%, #FF7D45 100%);
 }
 
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333; /* old IE */
+    background-color: grey; /* Modern Browsers */
+}
+
+footer p {
+	padding-bottom: 100cm;
+}
 
 .right{
 	float: right;
