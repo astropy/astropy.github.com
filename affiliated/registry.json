@@ -268,16 +268,6 @@
             "description": "Spectral-timing analysis of X-ray data from the command line (formerly known as MaLTPyNT)."
          },
         {
-            "name": "stingray",
-            "maintainer": "Daniela Huppenkothen, Matteo Bachetti, Abigail Stevens, Simone Migliari, and Paul Balm",
-            "provisional": false,
-            "stable": false,
-            "repo_url": "https://github.com/StingraySoftware/stingray",
-            "home_url": "https://stingraysoftware.github.io",
-            "pypi_name": "stingray",
-            "description": "Python library for spectral-timing analysis of X-ray data."
-         },
-        {
             "name": "Halotools",
             "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
             "provisional": false,
