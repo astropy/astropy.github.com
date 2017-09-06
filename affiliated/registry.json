@@ -273,7 +273,7 @@
             "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/StingraySoftware/stingray",
-            "home_url": "https://stingray.readthedocs.io",
+            "home_url": "https://stingraysoftware.github.io",
             "pypi_name": "stingray",
             "description": "Python library for spectral-timing analysis of X-ray data."
          },
