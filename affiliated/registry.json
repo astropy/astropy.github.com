@@ -110,7 +110,7 @@
         },
         {
             "name": "ccdproc",
-            "maintainer": "Steven Crawford and Matt Craig <ccdproc@gmail.com>",
+            "maintainer": "Steven Crawford, Matt Craig and Michael Seifert <ccdproc@gmail.com>",
             "provisional": false,
             "stable": true,
             "home_url": "http://ccdproc.readthedocs.io",
@@ -126,15 +126,6 @@
             "home_url": "https://sncosmo.github.io",
             "repo_url": "http://github.com/sncosmo/sncosmo",
             "pypi_name": "sncosmo"
-        },
-        {
-            "name": "WCSAxes",
-            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": false,
-            "stable": true,
-            "home_url": "http://wcsaxes.readthedocs.io",
-            "repo_url": "https://github.com/astrofrog/wcsaxes.git",
-            "pypi_name": "wcsaxes"
         },
         {
             "name": "Glue",
