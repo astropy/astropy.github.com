@@ -68,16 +68,6 @@
 
 	</section>
 
-	<section id="installing">
-
-	<h1>Installing Affiliated Packages</h1>
-
-	<p>  The simplest way to install and keep up-to-date most affiliated packages is to use the <a href="https://www.continuum.io/why-anaconda">Anaconda python distribution</a>.  This distribution provides Astropy built-in, and affiliated packages are available from a  "channel" <a href="https://github.com/astropy/conda-channel-astropy">maintained by the Astropy community</a>.  You can see  the affiliated packages in the channel <a href="https://anaconda.org/astropy/packages">here</a>, and if you have anaconda installed, you can do <code>conda search -c astropy some_affiliated_package</code>.  Most importantly, you can then install them with <code>conda install -c astropy some_affiliated_package</code>. </p>
-
-	<p> If you do not have Anaconda or wish to install from source, for most affiliated packages, downloading the source code and doing <code>python setup.py install</code> will work.  Many also support the Astropy core package's additional build and install options, as they use the affiliated package template (detailed more <a href="#affiliated-instructions">below</a>). That said, affiliated packages are developed independently of the Astropy core library.  This means they are free to develop their packages as they see fit, and can have a variety of different requirements or  unusual install procedures.  Hence you should refer to the package's documentation first if you encounter problems.</p>
-
-	</section>
-
 	<section id="affiliated-package-registry">
 
 	<h1>Affiliated Packages Registry</h1>
@@ -159,6 +149,15 @@
 	<li> <a href="http://packages.python.org/Astropysics/">astropysics</a>: A library of assorted optical astronomy and astrophysics tools.  A "precursor" of sorts, in the process of getting ported to Astropy.</li>
 	<li> <a href="http://www.astro.rug.nl/software/kapteyn/">kapteyn</a>: A library primarily concerned with celestial coordinates and other transformations. Provided some of the inspiration for astropy's coordinates package. </li>
 	</ul>
+
+	</section>
+	<section id="installing">
+
+	<h1>Installing Affiliated Packages</h1>
+
+	<p>  The simplest way to install and keep up-to-date most affiliated packages is to use the <a href="https://www.continuum.io/why-anaconda">Anaconda python distribution</a>.  This distribution provides Astropy built-in, and affiliated packages are available from a  "channel" <a href="https://github.com/astropy/conda-channel-astropy">maintained by the Astropy community</a>.  You can see  the affiliated packages in the channel <a href="https://anaconda.org/astropy/packages">here</a>, and if you have anaconda installed, you can do <code>conda search -c astropy some_affiliated_package</code>.  Most importantly, you can then install them with <code>conda install -c astropy some_affiliated_package</code>. </p>
+
+	<p> If you do not have Anaconda or wish to install from source, for most affiliated packages, downloading the source code and doing <code>python setup.py install</code> will work.  Many also support the Astropy core package's additional build and install options, as they use the affiliated package template (detailed more <a href="#affiliated-instructions">below</a>). That said, affiliated packages are developed independently of the Astropy core library.  This means they are free to develop their packages as they see fit, and can have a variety of different requirements or  unusual install procedures.  Hence you should refer to the package's documentation first if you encounter problems.</p>
 
 	</section>
 	<section id="affiliated-instructions">
