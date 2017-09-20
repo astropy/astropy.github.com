@@ -41,7 +41,7 @@ Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradl
                        | astropy.coordinates | Erik Tollerud | Stuart Littlefair, Adrian Price-Whelan
                        | astropy.cosmology | Alex Conley | Neil Crighton
                        | astropy.io.ascii | Tom Aldcroft | Moritz Guenther
-                       | astropy.io.fits | UNFILLED  | Simon Conseil, Michael Seifert, Erik Bray
+                       | astropy.io.fits | UNFILLED  | Simon Conseil, Michael Seifert, Dan D'Avella
                        | astropy.io.misc | Tom Robitaille::Would prefer deputy role | Matteo Bachetti
                        | astropy.io.votable | UNFILLED | Pey-Lian Lim
                        | astropy.modeling | Nadia Dencheva | Pey-Lian Lim, Erik Bray
@@ -50,7 +50,7 @@ Sub-package maintainer | astropy.analytic_functions | Pey Lian Lim | Larry Bradl
                        | astropy.table | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.time | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.units | Marten van Kerkwijk | Adrian Price-Whelan
-                       | astropy.utils | Erik Tollerud::Would prefer deputy role | Brigitta Sipocz
+                       | astropy.utils | Pey Lian Lim | Brigitta Sipocz, Erik Tollerud
                        | astropy.visualization | Larry Bradley | Tom Robitaille
                        | astropy.vo.conesearch | Pey Lian Lim | UNFILLED
                        | astropy.vo.validator | Pey Lian Lim | UNFILLED
