@@ -509,57 +509,6 @@ section.install ul li:first-child a{
 	margin-left: 0px;
 }
 
-section.install #os-selector{
-	position: relative;
-}
-
-section.install #os-selector ul li a:hover{
-	background-image: -webkit-gradient(
-	linear,
-	left top,
-	left bottom,
-	color-stop(0, #FC9468),
-	color-stop(0.89, #FF5100)
-	);
-	background-image: -o-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
-	color: white;
-	cursor: pointer;
-}
-
-section.install #os-selector li a.active{
-	color: white;
-	background-image: -webkit-gradient(
-	linear,
-	left top,
-	left bottom,
-	color-stop(0, #FC9468),
-	color-stop(0.89, #FF5100)
-	);
-	background-image: -o-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: -moz-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: -webkit-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: -ms-linear-gradient(bottom, #FC9468 0%, #FF5100 89%);
-	background-image: linear-gradient(to bottom, #FC9468 0%, #FF5100 89%);
-}
-
-section.install #os-selector li img{
-	height:20px;
-	vertical-align: top;
-}
-section.install #os-selector div{
-	clear: both;
-	border-top: 1px #FFE1D6 solid;
-	border-bottom: 1px #FFE1D6 solid;
-	padding: 10px 0px;
-	margin-bottom:15px;
-
-}
-
-
 section.install div h3{
 	color: black;
 	margin-top: 0px;
