@@ -11,20 +11,20 @@ Coordination committee member | | Tom Aldcroft    |
                               | | Tom Robitaille  |
                               | | Erik Tollerud   |
 
-Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Grant Tremblay
-
-Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz, Erik Bray
-
-Astropy GSoC coordinator | 2017 | Tom Aldcroft | Erik Tollerud
-
-CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
-
 Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
                                  | Twitter  | Adrian Price-Whelan | Tom Robitaille
                                  | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
                                  | Conferences | Adrian Price-Whelan | Erik Tollerud, Tom Robitaille, Kelle Cruz
 
-Core package release coordinator | | Brigitta Sipocz | Tom Robitaille, Erik Tollerud
+Astropy GSoC coordinator | 2017 | Tom Aldcroft | Erik Tollerud
+
+Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Grant Tremblay
+
+Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz, Erik Bray
+
+Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
+
+CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
 
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
@@ -33,7 +33,8 @@ Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | ArchLinux| Médéric Boquien | Miguel de Val-Borro, Stuart Mumford
                             | MacPorts | Christoph Deil | Hans Moritz Günther
 
-Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
+
+Core package release coordinator | | Brigitta Sipocz | Tom Robitaille, Erik Tollerud
 
 Sub-package maintainer | astropy.constants | David Shupe | Marten van Kerkwijk
                        | astropy.convolution | Adam Ginsburg | Axel Donath, Larry Bradley
