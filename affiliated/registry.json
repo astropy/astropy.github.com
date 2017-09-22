@@ -233,7 +233,7 @@
         },
         {
             "name": "gala",
-            "maintainer": "Adrian Price-Whelan.",
+            "maintainer": "Adrian Price-Whelan <http://adrian.pw>",
             "provisional": true,
             "stable": true,
             "home_url": "http://gala.adrian.pw/en/latest/",
