@@ -22,7 +22,7 @@ Astropy GSoC coordinator | 2017 | Tom Aldcroft | Erik Tollerud
 
 Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Grant Tremblay
 
-Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz, Erik Bray
+Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz 
 
 Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
 
@@ -46,10 +46,10 @@ Sub-package maintainer | astropy.constants | David Shupe | Marten van Kerkwijk
                        | astropy.io.fits | UNFILLED  | Simon Conseil, Michael Seifert, Dan D'Avella
                        | astropy.io.misc | Tom Robitaille::Would prefer deputy role | Matteo Bachetti
                        | astropy.io.votable | UNFILLED | Pey Lian Lim
-                       | astropy.modeling | Nadia Dencheva | Pey Lian Lim, Erik Bray
+                       | astropy.modeling | Nadia Dencheva | Pey Lian Lim
                        | astropy.nddata | Matt Craig | Steve Crawford, Michael Seifert
                        | astropy.samp | Tom Robitaille::Would prefer deputy role | UNFILLED
-                       | astropy.stats | Steve Crawford | Alex Hagen, Larry Bradley
+                       | astropy.stats | Steve Crawford | Larry Bradley
                        | astropy.table | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.time | Tom Aldcroft | Marten van Kerkwijk
                        | astropy.units | Marten van Kerkwijk | Adrian Price-Whelan
