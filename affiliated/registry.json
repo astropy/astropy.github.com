@@ -290,7 +290,7 @@
          {
             "name": "marxs",
             "maintainer": "Hans Moritz Günther (hamogu)",
-            "provisional": "2017-4-XX",
+            "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/Chandra-MARX/marxs",
             "home_url": "https://marxs.readthedocs.io/",
