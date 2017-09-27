@@ -36,7 +36,7 @@
         {
             "name": "ginga",
             "maintainer": "Eric Jeschke <eric@naoj.org> and Pey-Lian Lim",
-            "provisional": "2015-2-27",
+            "provisional": false,
             "stable": true,
             "home_url": "https://ejeschke.github.io/ginga",
             "repo_url": "http://github.com/ejeschke/ginga",
@@ -113,7 +113,7 @@
         {
             "name": "gammapy",
             "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
-            "provisional": "2016-6-30",
+            "provisional": false,
             "stable": false,
             "home_url": "https://gammapy.readthedocs.io/",
             "repo_url": "http://github.com/gammapy/gammapy.git",
@@ -212,7 +212,7 @@
         {
             "name": "python-cpl",
             "maintainer": "Ole Streicher",
-            "provisional": "2016-09-10",
+            "provisional": false,
             "stable": false,
             "home_url": "http://python-cpl.readthedocs.io",
             "repo_url": "https://github.com/olebole/python-cpl",
@@ -267,7 +267,7 @@
         {
             "name": "gala",
             "maintainer": "Adrian Price-Whelan <http://adrian.pw>",
-            "provisional": true,
+            "provisional": false,
             "stable": true,
             "home_url": "http://gala.adrian.pw/en/latest/",
             "repo_url": "https://github.com/adrn/gala",
@@ -310,7 +310,7 @@
         {
             "name": "cluster-lensing",
             "maintainer": "Jes Ford",
-            "provisional": "2017-3-18",
+            "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/jesford/cluster-lensing",
             "home_url": "http://jesford.github.io/cluster-lensing",
