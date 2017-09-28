@@ -9,7 +9,7 @@
             "repo_url": "http://github.com/astropy/specutils.git",
             "pypi_name": "specutils",
             "description": "Affiliated package for 1D spectral operations.",
-            "image": null,
+            "image": null
         },
         {
             "name": "astroquery",
@@ -20,7 +20,7 @@
             "repo_url": "http://github.com/astropy/astroquery.git",
             "pypi_name": "astroquery",
             "description": "Tools for querying online astronomical data sources.",
-            "image": null,
+            "image": null
         },
         {
             "name": "photutils",
@@ -31,7 +31,7 @@
             "repo_url": "http://github.com/astropy/photutils.git",
             "pypi_name": "photutils",
             "description": "Photometry and related image-processing tools.",
-            "image": null,
+            "image": null
         },
         {
             "name": "ginga",
@@ -42,7 +42,7 @@
             "repo_url": "http://github.com/ejeschke/ginga",
             "pypi_name": "ginga",
             "description": "Ginga is a Python toolkit for building viewers for astronomical and scientific images stored in numpy data arrays and displaying them on a variety of different display platforms. The toolkit provides many features for building a viewer, including a flexible plugin framework that is provided as a customizable reference viewer for FITS images.",
-            "image": "https://ejeschke.github.io/ginga/images/Ginga_screenshot_MacOSX-1024x613.jpg",
+            "image": "https://ejeschke.github.io/ginga/images/Ginga_screenshot_MacOSX-1024x613.jpg"
         },
         {
             "name": "astroML",
@@ -53,7 +53,7 @@
             "repo_url": "http://github.com/astroML/astroML",
             "pypi_name": "astroML",
             "description": "Tools for machine learning and data mining in Astronomy.",
-            "image": null,
+            "image": null
         },
         {
             "name": "montage-wrapper",
@@ -64,7 +64,7 @@
             "repo_url": "https://github.com/astropy/montage-wrapper",
             "pypi_name": "montage-wrapper",
             "description": "A pure Python module that provides a Python API to the Montage Astronomical Image Mosaic Engine, including both functions to access individual Montage commands, and high-level functions to facilitate mosaicking and re-projecting. Python-montage uses the Astropy core package for reading and writing FITS files.",
-            "image": null,
+            "image": null
         },
         {
             "name": "PyDL",
@@ -86,7 +86,7 @@
             "repo_url": "http://github.com/aplpy/aplpy.git",
             "pypi_name": "APLpy",
             "description": "A Python module aimed at producing publication-quality plots of astronomical imaging data in FITS format. The module uses Matplotlib, a powerful and interactive plotting package. It is capable of creating output files in several graphical formats, including EPS, PDF, PS, PNG, and SVG.",
-            "image": null,
+            "image": null
         },
         {
             "name": "reproject",
@@ -108,7 +108,7 @@
             "repo_url": "https://github.com/pyvirtobs/pyvo.git",
             "pypi_name": "pyvo",
             "description": "Access to the Virtual Observatory through Python using IVOA Standards.",
-            "image": null,
+            "image": null
         },
         {
             "name": "gammapy",
@@ -119,7 +119,7 @@
             "repo_url": "http://github.com/gammapy/gammapy.git",
             "pypi_name": "gammapy",
             "description": "A high level gamma-ray astronomy data analysis package.",
-            "image": null,
+            "image": null
         },
         {
             "name": "ccdproc",
@@ -130,7 +130,7 @@
             "repo_url": "http://github.com/astropy/ccdproc.git",
             "pypi_name": "ccdproc",
             "description": "Package to do basic CCD data reduction.",
-            "image": null,
+            "image": null
         },
         {
             "name": "sncosmo",
@@ -174,7 +174,7 @@
             "repo_url": "http://github.com/spacetelescope/imexam",
             "pypi_name": "imexam",
             "description": "A package for functionality like IRAF's imexamine.",
-            "image": null,
+            "image": null
         },
         {
             "name": "spherical_geometry",
@@ -218,7 +218,7 @@
             "repo_url": "https://github.com/olebole/python-cpl",
             "pypi_name": "python-cpl",
             "description": "Framework to process ESO pipelines for the VLT instruments.",
-            "image": null,
+            "image": null
         },
         {
             "name": "astroplan",
@@ -229,7 +229,7 @@
             "repo_url": "https://github.com/astropy/astroplan",
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations.",
-            "image": null,
+            "image": null
         },
         {
             "name": "Astro-SCRAPPY",
@@ -240,7 +240,7 @@
             "repo_url": "https://github.com/astropy/astroscrappy",
             "pypi_name": "astroscrappy",
             "description": "A high-performance package to detect and remove cosmic rays from astronomical images.",
-            "image": null,
+            "image": null
         },
         {
             "name": "naima",
@@ -251,7 +251,7 @@
             "repo_url": "https://github.com/zblz/naima",
             "pypi_name": "naima",
             "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting.",
-            "image": null,
+            "image": null
         },
         {
             "name": "omnifit",
@@ -305,7 +305,7 @@
             "repo_url": "https://github.com/astropy/halotools",
             "pypi_name": "halotools",
             "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations.",
-            "image": null,
+            "image": null
         },
         {
             "name": "cluster-lensing",
@@ -316,7 +316,7 @@
             "home_url": "http://jesford.github.io/cluster-lensing",
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option).",
-            "image": null,
+            "image": null
          },
          {
             "name": "marxs",
@@ -327,7 +327,7 @@
             "home_url": "https://marxs.readthedocs.io/",
             "pypi_name": "marxs",
             "description": "Multi-Architecture-Raytrace-Xraymission-Simulator",
-            "image": null,
+            "image": null
         }
     ]
 }
