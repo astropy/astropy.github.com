@@ -78,9 +78,9 @@
 
 	<section id="hero">
 		<img src="images/astropy_banner.svg" width="524" onerror="this.src='images/astropy_banner_96.png'; this.onerror=null;" alt="Astropy: a community Python library for Astronomy" />
-		<p>The Astropy Project is a community effort to develop a single core
-		package for Astronomy in Python and foster interoperability between Python
-		astronomy packages.</p>
+		<p>The Astropy Project is a community effort to develop a <a href="http://docs.astropy.org">single core
+		package</a> for Astronomy in Python and foster interoperability between <a href="affiliated/index.html">Python
+		astronomy packages</a>.</p>
 		<p class="acknowledge">Please remember to <a href="acknowledging.html">acknowledge</a> the use of Astropy!</p>
   </section>
 
@@ -89,84 +89,19 @@
 	<p class="version">Current Version: 2.0.2</p>
 
 </section>
+
 	<section class="install">
-		<h1>Install Astropy</h1>
-		<div id="os-selector">
-			<ul>
+	  <h1>Install Astropy</h1>
+	  The <a href="https://store.continuum.io/cshop/anaconda/">Anaconda
+	    Python Distribution</a> includes astropy and is the recommended way to install both
+	  Python and the astropy package. Once you have Anaconda
+	  installed use the following to update to the latest version of astropy:
+          <p/><pre>conda update astropy</pre>
+          To install astropy from source into a existing Python installation, use the following:
+          <p/><pre>pip install astropy</pre>
 
-				<li><a href="#MacOS"><i class="fa fa-apple"></i><span> OS X</span></a></li>
-				<li><a href="#linux"><i class="fa fa-linux"></i><span> Linux</span></a></li>
-				<li><a href="#windows"><i class="fa fa-windows"></i><span> Windows</span></a></li>
-				<li><a href="#source"><i class="fa fa-code"></i><span> Source</span></a></li>
-				<li><a href="#dev" class="right"><i class="fa fa-github"></i><span> Developer</span></a></li>
-			</ul>
-			<div id="MacOS">
-				<p>There are a number of options for installing the astropy package on MacOS.</p>
-				<p>
-				The <a href="https://store.continuum.io/cshop/anaconda/">Anaconda Python Distribution</a> is one of the most common ways to install both Python and astropy. Once you have Anaconda installed, <a href="http://astropy.readthedocs.io/en/stable/install.html#anaconda-python-distribution">update to the latest version of astropy</a>:
-				<pre>conda update astropy</pre></p>
-				<p>Astropy can also be installed using the <a href="http://www.macports.org/">MacPorts</a> or <a href="http://www.finkproject.org/">Fink</a> package managers. It is also included with
-					<a href="https://www.enthought.com/products/canopy/">Enthought Canopy</a> and
-					<a href="http://astroconda.readthedocs.io/en/latest/index.html#">AstroConda</a>. You can also install the latest version of Astropy using <a href="http://www.pip-installer.org/">pip</a>.</p>
-			<p>
-				If you use the <a href="">Homebrew</a> package manager, you
-				should first install the python or python3 package using brew
-			</p>
-			<pre>brew install python3</pre>
-			<p>
-				And then install astropy using pip or pip3:
-			</p>
-			<pre>pip3 install astropy</pre>
-			</div>
-			<div id="linux">
-				<p>There are a number of options for installing the astropy package on Linux. Astropy can be installed on some Linux distributions using the built-in package manager (apt-get, yum, etc.),
-					and is also included by default in the
-					<a href="https://store.continuum.io/cshop/anaconda/">Anaconda Python Distribution</a> (see <a href="http://astropy.readthedocs.io/en/stable/install.html#anaconda-python-distribution">here</a> for instructions on updating to the latest Astropy version),
-					<a href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>, and
-					<a href="http://astroconda.readthedocs.io/en/latest/index.html#">AstroConda</a>, which
-					provide an easy way to get set up with a scientific
-					Python distribution.</p>
-					<p>The package managers, Anaconda, and Canopy may
-					not always include the latest version - in that case you can always
-					install the latest version of Astropy using <a href="http://www.pip-installer.org/">pip</a> or by downloading the
-					source code and installing it manually - see the <a href="#source">Source</a> tab above for
-					more details.
-				</p>
-			</div>
-			<div id="windows">
-				<p>There are a number of options for installing the astropy package on Windows.
-				Astropy is included by default in the <a
-				href="https://store.continuum.io/cshop/anaconda/">Anaconda Python
-				Distribution</a> and <a
-				href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>,
-				both of which provide an easy way to get set up with a scientific Python
-				distribution.</p>
-				<p>However, Anaconda and Canopy may not always include the
-				latest version of Astropy, so if you need to install the latest
-				version, you can either use the binary installers available on
-				<a href="https://pypi.python.org/pypi/astropy/">PyPI</a> (usually made
-				available a few days after each release) or you can install Astropy from
-				source - see the <a href="#source">Source</a> tab above for more details.
-			</div>
-			<div id="source">
-				<p>To install Astropy from source, you can either use</p>
-				<pre>pip install astropy</pre>
-				<p>Alternatively, you can download a tarball for the latest release of astropy from <a href="https://pypi.python.org/pypi/astropy">PyPI</a>, then expand the tarfile and run:</p>
-				<pre>python setup.py install</pre>
-				<p>to build and install the package. For more on installing from source code, see the <a href="http://astropy.readthedocs.io/en/stable/install.html#building-from-source"> relevant part of the documentation</a>.</p>
-			</div>
-			<div id="dev">
-				<p>The latest developer code is available on <a href="https://github.com/astropy/astropy">GitHub</a>. If you have <a href="http://git-scm.com/">git</a> installed you can get the latest version with:</p>
-					<pre>git clone https://github.com/astropy/astropy.git</pre>
-					<p>If you don't have git installed, you can instead download a zip file of the <a href="https://github.com/astropy/astropy/archive/master.zip">latest development version</a>.</p>
-				<p>Once you have the latest source code, you can build and install it with:</p>
-				<pre>python setup.py install</pre>
-				<p>For more on installing from source code, see the <a href="http://astropy.readthedocs.io/en/latest/install.html#building-from-source"> relevant part of the documentation</a>.</p>
-			</div>
 
-		</div>
-
-		<p>More detailed <a href="http://astropy.readthedocs.io/en/stable/install.html">installation instructions</a> are in the documentation.</p>
+	<p>More detailed <a href="http://astropy.readthedocs.io/en/stable/install.html">installation instructions</a> (e.g., for building from source code locally) are in the documentation.</p>
 	</section>
 
 	<section class="whatsnext">
@@ -208,7 +143,7 @@
 		<img style="vertical-align:middle" src="images/astropy_brandmark.png" height=20><span style="vertical-align:middle">
         <a href="code_of_conduct.html"> The Astropy project is committed to fostering an inclusive community</a></span>.
         </p>
-		
+
 	</footer>
 
 </div>
