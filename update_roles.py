@@ -118,7 +118,13 @@ if __name__ == '__main__':
 
     outlines = update_html('team.html', roles_table)
 
-    print('Replacing "team.html" with updated version.  Be sure to "git diff '
-          'team.html" before committing to ensure no funny business happened.')
+    print("""
+Replacing "team.html" with updated version.  Be sure to "git diff team.html"
+before committing to ensure no funny business happened.
+
+In addition, the astropy-core-maintainers google group MUST be updated
+to reflect changes in roles.  Send email to coordinators@astropy.org
+to generate a record of the required change.
+""")
     with open('team.html', 'w') as fh:
         fh.writelines(outlines)
