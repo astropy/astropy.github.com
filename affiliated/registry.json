@@ -710,6 +710,26 @@
                 "python3": "Good",
                 "last-updated": "2017-11-08"
             }
-        }
+        },
+        {
+           "name": "astropy-healpix",
+           "maintainer": "Christoph Deil <Deil.Christoph@gmail.com> and Thomas Robitaille <thomas.robitaille@gmail.com>",
+           "provisional": true,
+           "stable": false,
+           "repo_url": "https://github.com/astropy/astropy-healpix",
+           "home_url": "https://astropy-healpix.readthedocs.io/",
+           "pypi_name": "astropy-healpix",
+           "description": "A BSD-licensed HEALPix implementation for Astropy",
+           "image": null,
+           "review": {
+             "functionality": "General package",
+               "ecointegration": "Good",
+               "documentation": "Good",
+               "testing": "Good",
+               "devstatus": "Heavy development",
+               "python3": "Good",
+               "last-updated": "2017-11-27"
+           }
+       }
     ]
 }
