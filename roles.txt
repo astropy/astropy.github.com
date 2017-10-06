@@ -41,7 +41,7 @@ Core package release coordinator | | Brigitta Sipocz | Tom Robitaille, Erik Toll
 Sub-package maintainer | astropy.constants | David Shupe | Marten van Kerkwijk
                        | astropy.convolution | Adam Ginsburg | Axel Donath, Larry Bradley
                        | astropy.coordinates | Erik Tollerud | Stuart Littlefair, Adrian Price-Whelan
-                       | astropy.cosmology | Alex Conley | Neil Crighton
+                       | astropy.cosmology | Alex Conley | UNFILLED
                        | astropy.io.ascii | Tom Aldcroft | Hans Moritz Günther
                        | astropy.io.fits | UNFILLED  | Simon Conseil, Michael Seifert, Dan D'Avella
                        | astropy.io.misc | Tom Robitaille::Would prefer deputy role | Matteo Bachetti
