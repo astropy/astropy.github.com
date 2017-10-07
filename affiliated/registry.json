@@ -2,13 +2,13 @@
     "packages": [
         {
             "name": "specutils",
-            "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford",
+            "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, Erik Tollerud",
             "provisional": false,
             "stable": false,
             "home_url": "http://specutils.readthedocs.io",
             "repo_url": "http://github.com/astropy/specutils.git",
             "pypi_name": "specutils",
-            "description": "Affiliated package for 1D spectral operations.",
+            "description": "Affiliated package for analysis tools and basic data types of astronomical spectra.",
             "image": null
         },
         {
