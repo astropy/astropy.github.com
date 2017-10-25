@@ -294,7 +294,8 @@
             "repo_url": "https://github.com/StingraySoftware/HENDRICS",
             "home_url": "https://hendrics.readthedocs.io",
             "pypi_name": "hendrics",
-            "description": "Spectral-timing analysis of X-ray data from the command line (formerly known as MaLTPyNT)."
+            "description": "Spectral-timing analysis of X-ray data from the command line (formerly known as MaLTPyNT).",
+            "image": null
         },
         {
             "name": "Halotools",
