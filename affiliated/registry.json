@@ -152,7 +152,7 @@
             "repo_url": "https://github.com/glue-viz/glue.git",
             "pypi_name": "glueviz",
             "image": null,
-            "description": null
+            "description": "Linked data visualizations across multiple files."
         },
         {
             "name": "pyregion",
@@ -273,7 +273,7 @@
             "repo_url": "https://github.com/adrn/gala",
             "pypi_name": "astro-gala",
             "image": null,
-            "description": null
+            "description": "A Python package for gravitational and galactic dynamics."
         },
         {
             "name": "galpy",
@@ -284,7 +284,7 @@
             "repo_url": "https://github.com/jobovy/galpy",
             "pypi_name": "galpy",
             "image": null,
-            "description": null
+            "description": "A Python 2 and 3 package for galactic dynamics."
         },
         {
             "name": "HENDRICS",
