@@ -47,7 +47,7 @@
         {
             "name": "astroML",
             "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
-            "provisional": "2015-10-1",
+            "provisional": false,
             "stable": true,
             "home_url": "http://astroml.github.com/",
             "repo_url": "http://github.com/astroML/astroML",
@@ -80,7 +80,7 @@
         {
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
-            "provisional": "2016-6-30",
+            "provisional": false,
             "stable": true,
             "home_url": "http://aplpy.github.io",
             "repo_url": "http://github.com/aplpy/aplpy.git",
@@ -256,7 +256,7 @@
         {
             "name": "omnifit",
             "maintainer": "Aleksi Suutarinen <aleksi.suutarinen@iki.fi>",
-            "provisional": "2017-10-7",
+            "provisional": false,
             "stable": true,
             "home_url": "https://ricemunk.github.io/omnifit/",
             "repo_url": "https://github.com/RiceMunk/omnifit",
@@ -329,6 +329,24 @@
             "pypi_name": "marxs",
             "description": "Multi-Architecture-Raytrace-Xraymission-Simulator",
             "image": null
+        },
+        {
+            "name": "pyspeckit",
+            "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://pyspeckit.readthedocs.org",
+            "repo_url": "https://github.com/pyspeckit/pyspeckit",
+            "pypi_name": "pyspeckit"
+        },
+        {
+            "name": "linetools",
+            "maintainer": "J. Xavier Prochaska, Nicolas Tejos, and Neil Crighton",
+            "provisional": false,
+            "stable": true,
+            "home_url": "http://linetools.readthedocs.io",
+            "repo_url": "https://github.com/linetools/linetools",
+            "pypi_name": "linetools"
         }
     ]
 }
