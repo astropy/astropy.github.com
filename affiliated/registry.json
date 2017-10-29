@@ -56,17 +56,6 @@
             "image": null
         },
         {
-            "name": "montage-wrapper",
-            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": false,
-            "stable": true,
-            "home_url": "http://www.astropy.org/montage-wrapper/",
-            "repo_url": "https://github.com/astropy/montage-wrapper",
-            "pypi_name": "montage-wrapper",
-            "description": "A pure Python module that provides a Python API to the Montage Astronomical Image Mosaic Engine, including both functions to access individual Montage commands, and high-level functions to facilitate mosaicking and re-projecting. Python-montage uses the Astropy core package for reading and writing FITS files.",
-            "image": null
-        },
-        {
             "name": "PyDL",
             "maintainer": "Benjamin Alan Weaver <baweaver@lbl.gov>",
             "provisional": false,
