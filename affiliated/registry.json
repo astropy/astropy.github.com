@@ -364,7 +364,7 @@
             "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/poliastro/poliastro",
-            "home_url": "http://blog.poliastro.space/",
+            "home_url": "http://docs.poliastro.space",
             "pypi_name": "poliastro",
             "description": "Astrodynamics and Orbital Mechanics computations"
         },
