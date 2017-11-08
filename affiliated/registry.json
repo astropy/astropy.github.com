@@ -377,6 +377,16 @@
             "home_url": "https://hips.readthedocs.io",
             "pypi_name": "hips",
             "description": "A Python astronomy package for HiPS : Hierarchical Progressive Surveys."
+         },
+         {
+            "name": "regions",
+            "maintainer": "Christoph Deil and Johannes King",
+            "provisional": false,
+            "stable": false,
+            "repo_url": "https://github.com/astropy/regions",
+            "home_url": "https://astropy-regions.readthedocs.io",
+            "pypi_name": "regions",
+            "description": "A Python astronomy package region handling."
          }
     ]
 }
