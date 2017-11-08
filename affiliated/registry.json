@@ -156,8 +156,8 @@
         },
         {
             "name": "pyregion",
-            "maintainer": "Jae-Joon Lee",
-            "provisional": "2016-02-22",
+            "maintainer": "Jae-Joon Lee and Christoph Deil",
+            "provisional": false,
             "stable": true,
             "home_url": "http://pyregion.readthedocs.io",
             "repo_url": "https://github.com/astropy/pyregion.git",
