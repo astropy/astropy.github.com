@@ -371,6 +371,7 @@
         {
             "name": "hips",
             "maintainer": "Christoph Deil and Thomas Boch",
+            "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/hipspy/hips",
             "home_url": "https://hips.readthedocs.io",
