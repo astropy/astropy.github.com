@@ -357,6 +357,26 @@
             "home_url": "http://linetools.readthedocs.io",
             "repo_url": "https://github.com/linetools/linetools",
             "pypi_name": "linetools"
-        }
+        },
+        {
+            "name": "poliastro",
+            "maintainer": "Juan Luis Cano Rodríguez",
+            "provisional": false,
+            "stable": false,
+            "repo_url": "https://github.com/poliastro/poliastro",
+            "home_url": "http://blog.poliastro.space/",
+            "pypi_name": "poliastro",
+            "description": "Astrodynamics and Orbital Mechanics computations"
+        },
+        {
+            "name": "hips",
+            "maintainer": "Christoph Deil and Thomas Boch",
+            "provisional": false,
+            "stable": false,
+            "repo_url": "https://github.com/hipspy/hips",
+            "home_url": "https://hips.readthedocs.io",
+            "pypi_name": "hips",
+            "description": "A Python astronomy package for HiPS : Hierarchical Progressive Surveys."
+         }
     ]
 }
