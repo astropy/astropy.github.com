@@ -289,7 +289,7 @@
         {
             "name": "HENDRICS",
             "maintainer": "Matteo Bachetti <matteo@matteobachetti.it>",
-            "provisional": "2017-2-17",
+            "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/StingraySoftware/HENDRICS",
             "home_url": "https://hendrics.readthedocs.io",
