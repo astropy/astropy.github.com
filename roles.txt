@@ -11,6 +11,10 @@ Coordination committee member | | Tom Aldcroft    |
                               | | Tom Robitaille  |
                               | | Erik Tollerud   |
 
+#################################
+# Learning and community
+#################################
+
 Ombudsperson | | Steve Crawford    |
 
 Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
@@ -20,13 +24,31 @@ Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
 
 Astropy GSoC coordinator | | Brigitta Sipocz | Tom Aldcroft, Erik Tollerud
 
+Learn | Coordinator | Kelle Cruz | UNFILLED
+      | Slack | Tom Robitaille | UNFILLED
+
+Documentation & examples | Infrastructure | Tom Robitaille | Erik Tollerud
+
+Tutorial & guides | Infrastructure | Adrian Price-Whelan | Erik Tollerud
+                  | Content | Lia Corrales | UNFILLED
+
+#################################
+# Nuts and bolts infrastructure
+#################################
+
 Astropy.org web page maintainer | | Erik Tollerud::Would prefer deputy role | Grant Tremblay
 
 Astropy-helpers maintainer | | UNFILLED | Erik Tollerud, Brigitta Sipocz 
 
+Astropy testing maintainer | | Dan Davella | Erik Tollerud, Tom Robitaille
+
 Package-template maintainer | | Tom Robitaille::Would prefer deputy role | Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan
 
 CI-helpers maintainer | | Brigitta Sipocz |  UNFILLED
+
+#################################
+# Astropy core package
+#################################
 
 Distribution coordinator    | Conda    | Matt Craig | UNFILLED
                             | Debian   | Ole Streicher | UNFILLED
