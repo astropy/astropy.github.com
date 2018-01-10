@@ -77,50 +77,15 @@
 	<p> If you do not have Anaconda or wish to install from source, for most affiliated packages, downloading the source code and doing <code>python setup.py install</code> will work.  Many also support the Astropy core package's additional build and install options, as they use the affiliated package template (detailed more <a href="#affiliated-instructions">below</a>). That said, affiliated packages are developed independently of the Astropy core library.  This means they are free to develop their packages as they see fit, and can have a variety of different requirements or  unusual install procedures.  Hence you should refer to the package's documentation first if you encounter problems.</p>
 
 	</section>
-	
+
 	<section id="affiliated-package-registry">
 
 	<h1>Affiliated Packages Registry</h1>
 
 	<p>The following tables list all currently registered affiliated packages. They are determined from the <a href="http://www.astropy.org/affiliated/registry.json">json file</a>, which is the actual authoritative registry. The Stable column indicates whether the package maintainer consider the package to be ready for use. Packages that are under heavy development and for which the user interface is likely to change significantly in the near future are marked as No.</p>
 
-	<!-- Not provisional -->
 	<h3><u>Affiliated Packages</u></h3>
 	<table border="1" class="docutils" id="accepted-package-table">
-	<colgroup>
-	<col width="17%" />
-	<col width="10%" />
-	<col width="14%" />
-	<col width="13%" />
-	<col width="21%" />
-	<col width="14%" />
-	</colgroup>
-	<thead valign="bottom">
-	<tr class="row-odd"><th class="head">Package Name</th>
-	<th class="head">Stable</th>
-	<th class="head">PyPI Name</th>
-	<th class="head">Web Page</th>
-	<th class="head">Code Repository</th>
-	<th class="head">Maintainer</th>
-	</tr>
-	</thead>
-	<tbody valign="top">
-	<tr class="row-even"><td rowspan="2">Loading...</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	</tr>
-	<tr class="row-odd"></tr>
-	</tbody>
-	</table>
-
-	<p>While the above table lists all the full affiliated package,the below table indicates packages that have been provisionally accepted as affiliated packages, but may be removed from the registry in the future if they don't make sufficient progress towards meeting Astropy standards (See below for more details).</p>
-
-	<h3><u>Provisionally accepted Affiliated packages</u></h3>
-	<table border="1" class="docutils"  id="provisional-package-table">
 	<colgroup>
 	<col width="17%" />
 	<col width="10%" />
@@ -184,7 +149,10 @@
 	</p>
 
 
-	<p>If your package is judged by the coordination committe to meet these standards, it will be added to the affiliated package registry.  If the package is not quite at these standards, but working towards them, the package will be given "provisional" status.  Provisional packages will be re-evaluated yearly by the coordinating committee, or earlier if the package author requests a review. (You can e-mail a member of the coordination committee or <a href="mailto:coordinators@astropy.org">coordinators@astropy.org</a> to request such a review).  In this re-evaluation, the committee will look at progress the package has made over the previous year.  If it has been advanced sufficiently to meet the standards above, it will be considered a full affiliated package (no longer provisional).  If it has made some progress but is not yet up to the standards, provisional status will be renewed for a year.  If no progress seems to be being made, the committee will contact the authors and determine what their plans are to improve the situation.  Based on that, the committee may decide to renew the provisional status, or remove the package from the registry. </p>
+	<p>If your package is judged by the coordination committee to meet these
+	standards, it will be added to the affiliated package registry. Note however
+	that if packages become unmaintained or do not meet the standards anymore,
+	they may be removed from the list of affiliated packages.</p>
 
 	<h2>Affiliated Package Template</h2>
 	<p>If you are considering creating a new astronomy package and would like it to be an Astropy affiliated package, we provide a <a href="https://github.com/astropy/package-template">package template</a> to make it much easier to meet these standards. It provides the necessary structure to generate documentation like that used in the astropy package, a ready-to-use testing framework, and a variety of tools that streamline tasks like user configuration, caching downloaded files, or linking C-compiled extensions. More details on this template are available in the <a href="https://github.com/astropy/package-template/blob/master/README.rst">usage instructions for the template</a>.
