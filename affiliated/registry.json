@@ -377,5 +377,15 @@
             "pypi_name": "regions",
             "description": "A Python astronomy package region handling."
          }
+         {
+            "name": "dust_extinction",
+            "maintainer": "Karl Gordon",
+            "provisional": false,
+            "stable": false,
+            "repo_url": "https://github.com/karllark/dust_extinction",
+            "home_url": "http://dust-extinction.readthedocs.io",
+            "pypi_name": "dust_extinction",
+            "description": "Interstellar dust extinction curves"
+         }
     ]
 }
