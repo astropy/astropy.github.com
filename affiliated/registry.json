@@ -376,7 +376,7 @@
             "home_url": "https://astropy-regions.readthedocs.io",
             "pypi_name": "regions",
             "description": "A Python astronomy package region handling."
-         }
+         },
          {
             "name": "dust_extinction",
             "maintainer": "Karl Gordon",
