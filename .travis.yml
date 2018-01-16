@@ -3,6 +3,8 @@ language: python
 python:
   - 3.6
 
+install:
+  - pip install requests
+
 script:
-  # Validate JSON for affilaited package registry
-  - python -c 'import json; json.load(open("affiliated/registry.json"))'
+  - python affiliated/validate_registry.py
