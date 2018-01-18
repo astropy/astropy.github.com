@@ -6,11 +6,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1
+      - image: continuumio/miniconda3
     steps:
       - checkout
       - run:
-          name: Validate affiliated package repository
+          name: Conda setup
           command: |
-            pip3 install requests
-            python3 affiliated/validate_registry.py
+            conda config --set always_yes yes --set changeps1 no
+      - run:
+          name: Validate affiliated package JSON repository
+          command: |
+            conda install requests
+            python affiliated/validate_registry.py
