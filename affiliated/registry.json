@@ -276,7 +276,7 @@
             "maintainer": "Megan Sosey",
             "provisional": false,
             "stable": false,
-            "home_url": "http://imexam.readthedocs.io/imexam/index.html",
+            "home_url": "http://imexam.readthedocs.io",
             "repo_url": "http://github.com/spacetelescope/imexam",
             "pypi_name": "imexam",
             "description": "A package for functionality like IRAF's imexamine.",
