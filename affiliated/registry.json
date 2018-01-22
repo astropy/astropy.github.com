@@ -176,7 +176,7 @@
             "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
             "provisional": false,
             "stable": false,
-            "home_url": "https://gammapy.readthedocs.io/",
+            "home_url": "http://gammapy.org",
             "repo_url": "http://github.com/gammapy/gammapy.git",
             "pypi_name": "gammapy",
             "description": "A high level gamma-ray astronomy data analysis package.",
