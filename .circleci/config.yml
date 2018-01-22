@@ -16,5 +16,5 @@ jobs:
       - run:
           name: Validate affiliated package JSON repository
           command: |
-            conda install requests
+            conda install requests termcolor
             python affiliated/validate_registry.py

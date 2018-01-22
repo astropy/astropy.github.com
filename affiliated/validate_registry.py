@@ -1,5 +1,7 @@
 import os
+import sys
 import json
+from termcolor import cprint
 from datetime import datetime
 
 import requests
@@ -7,6 +9,8 @@ import requests
 REQUIRED_KEYS = {'name', 'maintainer', 'stable', 'home_url', 'repo_url'}
 
 OPTIONAL_KEYS = {'provisional', 'stable', 'pypi_name', 'image', 'review', 'description'}
+
+ALL_KEYS = REQUIRED_KEYS | OPTIONAL_KEYS
 
 REVIEW_KEYS = {'functionality', 'ecointegration', 'documentation', 'testing',
                'devstatus', 'python3', 'last-updated'}
@@ -18,24 +22,31 @@ REVIEW_GENERIC = {'Needs work', 'Partial', 'Good'}
 
 registry = json.load(open(os.path.join(os.path.dirname(__file__), "registry.json")))
 
+error = 0
+
 for package in registry['packages']:
 
     if 'name' in package:
         name = package['name']
     else:
-        raise ValueError("Missing package name: {0}".format(package))
+        cprint("ERROR: Missing package name: {0}".format(package), file=sys.stderr, color='red')
+        error += 1
+        continue
 
-    print("Checking {0}".format(name))
+    cprint("Checking {0}".format(name), color='blue')
 
     print(" - verifying keys")
 
     difference = set(package.keys()) - (REQUIRED_KEYS | OPTIONAL_KEYS)
     if difference:
-        raise ValueError("Unrecognized key(s) for {0}: {1}".format(name, difference))
+        cprint(f"   ERROR: Unrecognized key(s) for {name}: {difference}. "
+              f"Valid options are {', '.join(ALL_KEYS)}", file=sys.stderr, color='red')
+        error += 1
 
     difference = REQUIRED_KEYS - set(package.keys())
     if difference:
-        raise ValueError("Missing key(s) for {0}: {1}".format(name, difference))
+        cprint(f"   ERROR: Missing key(s) for {name}: {difference}", file=sys.stderr, color='red')
+        error += 1
 
     # Check that URLs work
 
@@ -45,20 +56,24 @@ for package in registry['packages']:
         r = requests.get(package['home_url'])
         assert r.ok
     except Exception:
-        raise ValueError(f"Home URL for {name} - {package['home_url']} - did not work")
+        cprint(f"   ERROR: Home URL for {name} - {package['home_url']} - did not work", file=sys.stderr, color='red')
+        error += 1
 
     try:
         r = requests.get(package['repo_url'])
         assert r.ok
     except Exception:
-        raise ValueError(f"Repository URL for {name} - {package['repo_url']} - did not work")
+        cprint(f"   ERROR: Repository URL for {name} - {package['repo_url']} - did not work", file=sys.stderr, color='red')
+        error += 1
 
     if package.get('pypi_name'):
 
         print(" - verifying PyPI name")
 
         r = requests.get(f"https://pypi.python.org/pypi/{package['pypi_name']}/json")
-        assert r.ok
+        if not r.ok:
+            cprint(f"   ERROR: PyPI package {package['pypi_name']} doesn't appear to exist", file=sys.stderr, color='red')
+            error += 1
 
     if package.get('review'):
 
@@ -68,22 +83,39 @@ for package in registry['packages']:
 
         difference = set(review.keys()) - REVIEW_KEYS
         if difference:
-            raise ValueError(f"Unrecognized review key(s) for {name}: {difference}")
+            cprint(f"   ERROR: Unrecognized review key(s) for {name}: {difference}. "
+                   f"Valid options are {', '.join(REVIEW_KEYS)}", file=sys.stderr, color='red')
+            error += 1
 
         difference = REVIEW_KEYS - set(review.keys())
         if difference:
-            raise ValueError(f"Missing review key(s) for {name}: {difference}")
+            cprint(f"   ERROR: Missing review key(s) for {name}: {difference}", file=sys.stderr, color='red')
+            error += 1
 
         for key, value in review.items():
 
             if key == 'functionality':
                 if value not in REVIEW_FUNCTIONALITY:
-                    raise ValueError(f"Invalid functionality in review for {name}: {value}")
+                    cprint(f"   ERROR: Invalid functionality in review for {name}: '{value}'. "
+                           f"Valid options are {', '.join(REVIEW_FUNCTIONALITY)}", file=sys.stderr, color='red')
+                    error += 1
             elif key == 'last-updated':
-                dt = datetime.strptime(value, "%Y-%m-%d")
+                try:
+                    dt = datetime.strptime(value, "%Y-%m-%d")
+                except Exception:
+                    cprint(f"   ERROR: Could not parse date: '{value}'", file=sys.stderr, color='red')
+                    error += 1
             elif key == 'devstatus':
                 if value not in REVIEW_DEVSTATUS:
-                    raise ValueError(f"Invalid devstatus in review for {name}: {value}")
+                    cprint(f"   ERROR: Invalid devstatus in review for {name}: '{value}'. "
+                           f"Valid options are {', '.join(REVIEW_DEVSTATUS)}", file=sys.stderr, color='red')
+                    error += 1
             else:
                 if value not in REVIEW_GENERIC:
-                    raise ValueError(f"Invalid {key} in review for {name}: {value}")
+                    cprint(f"   ERROR: Invalid {key} in review for {name}: '{value}'. "
+                           f"Valid options are {', '.join(REVIEW_GENERIC)}", file=sys.stderr, color='red')
+                    error += 1
+
+if error > 0:
+    cprint(f"** {error} error(s) occurred - see above for details **", file=sys.stderr, color='red')
+    sys.exit(1)
