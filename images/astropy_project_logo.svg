@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg2" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 452.3 156.7"
+	 style="enable-background:new 0 0 452.3 156.7;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#path3837_1_);}
+	.st1{fill:none;stroke:#FFFFFF;stroke-width:13;}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:2.3603;stroke-linecap:round;stroke-linejoin:round;}
+	.st4{fill:none;stroke:#FFFFFF;stroke-width:3.7264;}
+	.st5{fill:none;stroke:#FFFFFF;stroke-width:4.0254;}
+	.st6{fill:none;stroke:#FFFFFF;stroke-width:4.063;}
+	.st7{fill:#4D4D4D;}
+	.st8{font-family:'SourceSansPro-Regular';}
+	.st9{font-size:91px;}
+	.st10{fill:#FF5000;}
+	.st11{font-family:'SourceSansPro-Light';}
+	.st12{font-size:26px;}
+	.st13{font-size:35px;}
+</style>
+<g>
+	
+		<linearGradient id="path3837_1_" gradientUnits="userSpaceOnUse" x1="-43.4882" y1="51.4545" x2="-122.8715" y2="-44.4139" gradientTransform="matrix(1.0651 -0.9041 -0.8901 -1.0732 171.9029 4.4848)">
+		<stop  offset="0" style="stop-color:#FFA900"/>
+		<stop  offset="1" style="stop-color:#FD0000"/>
+	</linearGradient>
+	<path id="path3837" class="st0" d="M140.9,25.4c23.8,28.7,16,75.1-17.5,103.6s-80,28.2-103.9-0.5h0C-4.4,99.7,3.5,53.3,37,24.9
+		S117-3.3,140.9,25.4L140.9,25.4z"/>
+	<path id="path5413" class="st1" d="M82.1,75.6C60.7,56.3,48.5,84,59.9,101.1c12.5,18.8,39.4,18.4,55.2,4.3c20-17.8,19.5-49.7,2-69"
+		/>
+	<path id="path3819" class="st2" d="M95,91.3c-4.8,4.7-16.1,2.6-25.3-4.5l0,0c-9.2-7.2-12.7-16.8-7.9-21.4l0,0
+		c4.8-4.7,16.1-2.6,25.3,4.5l0,0C96.3,77,99.9,86.6,95,91.3L95,91.3z"/>
+	<path id="path3853" class="st3" d="M101.1,28.5l9.3,15.7L124.7,30l-18.1-7.6L101.1,28.5z"/>
+	<g id="g3804" transform="matrix(0.95039189,0,0,0.93299787,-2.487134,-0.56516029)">
+		<path id="path3855-7" class="st4" d="M105.7,23l-1.6-9.7l0.1,0.3l0,0"/>
+		<path id="path3855-7-0" class="st5" d="M95.6,22.1l10.7,0.5l-0.3,0l0,0"/>
+		<path id="path3855-7-05" class="st6" d="M111.9,27.7l-6.8-5.4l0.3,0.2l0,0"/>
+	</g>
+	<path id="path3942" class="st1" d="M51.8,131.2c2.4,2.1,10.5,5.5,13.3,9c2.9,3.6,2.4,7.8,2.4,10.2"/>
+	<path id="path2987-5" class="st1" d="M76.7,83.7c26.2,14.4,31.4-16,15.8-30.4c-17.2-15.9-44-9.3-56.3,8.4
+		c-15.8,22.6-7.1,54.6,15.6,69.6c0.8,0.6,1.7,1.1,2.6,1.6"/>
+</g>
+<text transform="matrix(1 0 0 1 154.6667 107.259)"><tspan x="0" y="0" class="st7 st8 st9">Astro</tspan><tspan x="199.3" y="0" class="st10 st11 st9">py</tspan></text>
+<text transform="matrix(1 0 0 1 154.6667 37.9555)" class="st7 st11 st12">The</text>
+<g>
+	<text transform="matrix(0.9774 0 0 1 238.334 140.8157)" class="st10 st11 st13">Project</text>
+</g>
+</svg>
