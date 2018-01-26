@@ -1,0 +1,20 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: continuumio/miniconda3
+    steps:
+      - checkout
+      - run:
+          name: Conda setup
+          command: |
+            conda config --set always_yes yes --set changeps1 no
+      - run:
+          name: Validate affiliated package JSON repository
+          command: |
+            conda install requests termcolor
+            python affiliated/validate_registry.py
