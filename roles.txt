@@ -20,12 +20,12 @@ Ombudsperson | | Steve Crawford    |
 Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
                                  | Twitter  | Adrian Price-Whelan | Tom Robitaille
                                  | Facebook | Kelle Cruz | Tom Robitaille, Erik Tollerud
+                                 | Slack | Tom Robitaille | UNFILLED
                                  | Conferences | Adrian Price-Whelan | Erik Tollerud, Tom Robitaille, Kelle Cruz
 
 Astropy GSoC coordinator | | Brigitta Sipocz | Tom Aldcroft, Erik Tollerud
 
 Learn | Coordinator | Kelle Cruz | UNFILLED
-      | Slack | Tom Robitaille | UNFILLED
 
 Documentation & examples | Infrastructure | Tom Robitaille | Erik Tollerud
 
