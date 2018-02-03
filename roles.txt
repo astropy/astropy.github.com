@@ -25,9 +25,9 @@ Community engagement coordinator | Overall  | Kelle Cruz | UNFILLED
 
 Astropy GSoC coordinator | | Brigitta Sipocz | Tom Aldcroft, Erik Tollerud
 
-Learn | Coordinator | Kelle Cruz | UNFILLED
+Learn Coordinator |  | Kelle Cruz | UNFILLED
 
-Documentation & examples | Infrastructure | Tom Robitaille | Erik Tollerud
+Documentation & examples maintainer | | Tom Robitaille | Erik Tollerud
 
 Tutorial & guides | Infrastructure | Adrian Price-Whelan | Erik Tollerud
                   | Content | Lia Corrales | UNFILLED
