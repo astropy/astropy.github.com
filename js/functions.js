@@ -85,6 +85,48 @@ $( document ).ready(function(){
             });
         });
     });
+
+    /* getting core package contributors list directly by
+       requesting astropy/docs/credits.rst file via AJAX
+    */
+    var request = new XMLHttpRequest();
+    var dataURL = "https://raw.githubusercontent.com/astropy/astropy/master/docs/credits.rst";
+    request.open('GET', dataURL);
+    request.send();
+
+    //log error when request gets failed
+    request.onerror = function () {
+        console.log("XHR error");
+    };
+
+    request.onload = function () {
+        //received raw credits.rst file as a string
+        var dataString = request.response;
+        //creating required list
+        createList(dataString);
+    };
+
+    function createList(dataString) {
+        /* creating an array/list of strings from received string
+           after being formatted or split at all instances of newline character
+        */
+        var formattedStringList = dataString.split("\n");
+        /* getting indexes of first & last contributor in array
+           (+3) & (-3) take into account the spaces after "Core Package Contributors"
+           and before "Other Credits" in raw file
+        */
+        var firstIndex = (formattedStringList.indexOf("Core Package Contributors")) + 3;
+        var lastIndex = (formattedStringList.indexOf("Other Credits")) - 3;
+
+        //putting string data into HTML
+        var list = '';
+        for (var i=firstIndex; i<=lastIndex; i++) {
+            //using regular expression to replace asterisk from string
+            var listItem = formattedStringList[i].replace(/^\* /i, '');
+            list += '<li>' + listItem + '</li>';
+        }
+        $("#list").append(list);
+    }
 }); // Document Ready
 
 
