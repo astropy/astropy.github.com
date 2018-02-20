@@ -1,0 +1,78 @@
+[
+    {
+      "role" : "Coordination committee member",
+      "sub-role" : [],
+      "lead" : ["Tom Aldcroft", "Kelle Cruz", "Tom Robitaille", "Erik Tollerud"],
+      "deputy" : []
+}, {
+      "role" : "Ombudsperson",
+      "sub-role" : [],
+      "lead" : ["Steve Crawford"],
+      "deputy" : []
+}, {
+      "role" : "Community engagement coordinator",
+      "sub-role" : ["Overall", "Twitter", "Facebook", "Slack", "Conferences"],
+      "lead" : ["Kelle Cruz", "Adrian Price-Whelan", "Kelle Cruz", "Tom Robitaille", "Adrian Price-Whelan"],
+      "deputy" : ["Unfilled", "Tom Robitaille", "Tom Robitaille, Erik Tollerud", "Unfilled", "Erik Tollerud, Tom Robitaille, Kelle Cruz"]
+}, {
+      "role" : "Astropy GSoC coordinator",
+      "sub-role" : [],
+      "lead" : ["Brigitta Sipocz"],
+      "deputy" : ["Tom Aldcroft, Erik Tollerud"]
+}, {
+      "role" : "Learn Coordinator",
+      "sub-role" : [],
+      "lead" : ["Kelle Cruz"],
+      "deputy" : ["Unfilled"]
+}, {
+      "role" : "Documentation & examples maintainer",
+      "sub-role" : [],
+      "lead" : ["Tom Robitaille"],
+      "deputy" : ["Erik Tollerud"]
+}, {
+      "role" : "Tutorial & guides",
+      "sub-role" : ["Infrastructure", "Content"],
+      "lead" : ["Adrian Price-Whelan", "Lia Corrales"],
+      "deputy" : ["Erik Tollerud", "Unfilled"]
+}, {
+      "role" : "Astropy.org web page maintainer",
+      "sub-role" : [],
+      "lead" : ["1Erik Tollerud"],
+      "deputy" : ["Grant Tremblay"]
+}, {
+      "role" : "Astropy-helpers maintainer",
+      "sub-role" : [],
+      "lead" : ["Unfilled"],
+      "deputy" : ["Erik Tollerud, Brigitta Sipocz"]
+}, {
+      "role" : "Astropy testing maintainer",
+      "sub-role" : [],
+      "lead" : ["Dan Davella"],
+      "deputy" : ["Erik Tollerud, Tom Robitaille"]
+}, {
+      "role" : "Package-template maintainer",
+      "sub-role" : [],
+      "lead" : ["1Tom Robitaille"],
+      "deputy" : ["Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan"]
+}, {
+      "role" : "CI-helpers maintainer",
+      "sub-role" : [],
+      "lead" : ["Brigitta Sipocz"],
+      "deputy" : ["Unfilled"]
+}, {
+      "role" : "Distribution coordinator",
+      "sub-role" : ["Conda", "Debian", "Fedora", "Gentoo", "ArchLinux", "MacPorts"],
+      "lead" : ["Matt Craig", "Ole Streicher", "Sergio Pascual", "Sébastien Fabbro", "Médéric Boquien", "Christoph Deil"],
+      "deputy" : ["Unfilled", "Unfilled", "Unfilled", "Unfilled", "Miguel de Val-Borro, Stuart Mumford", "Hans Moritz Günther"]
+}, {
+      "role" : "Core package release coordinator",
+      "sub-role" : [],
+      "lead" : ["Brigitta Sipocz"],
+      "deputy" : ["Tom Robitaille, Erik Tollerud"]
+}, {
+      "role" : "Sub-package maintainer",
+      "sub-role" : ["astropy.constants", "astropy.convolution", "astropy.coordinates", "astropy.cosmology", "astropy.io.ascii", "astropy.io.fits", "astropy.io.misc", "astropy.io.votable", "astropy.modeling", "astropy.nddata", "astropy.samp", "astropy.stats", "astropy.table", "astropy.time", "astropy.units", "astropy.utils", "astropy.visualization", "astropy.wcs"],
+      "lead" : ["David Shupe", "Adam Ginsburg", "Erik Tollerud", "Alex Conley", "Tom Aldcroft", "Unfilled", "1Tom Robitaille", "Unfilled", "Nadia Dencheva", "Matt Craig", "1Tom Robitaille", "Steve Crawford", "Tom Aldcroft", "Tom Aldcroft", "Marten van Kerkwijk", "Pey Lian Lim", "Larry Bradley", "Unfilled"],
+      "deputy" : ["Marten van Kerkwijk", "Axel Donath, Larry Bradley", "Stuart Littlefair, Adrian Price-Whelan", "Unfilled", "Hans Moritz Günther", "Simon Conseil, Michael Seifert, Dan D'Avella", "Matteo Bachetti", "Pey Lian Lim", "Pey Lian Lim", "Steve Crawford, Michael Seifert", "Unfilled", "Larry Bradley", "Marten van Kerkwijk", "Marten van Kerkwijk", "Adrian Price-Whelan", "Brigitta Sipocz, Erik Tollerud", "Tom Robitaille", "Nadia Dencheva"]
+    }
+]

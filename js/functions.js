@@ -20,9 +20,90 @@ $( document ).ready(function(){
 			$(this).addClass("subhover"); //On hover over, add class "subhover"
 		}, function(){	//On Hover Out
 			$(this).removeClass("subhover"); //On hover out, remove class "subhover"
-
 	});
 
+    //creating Astropy roles table using roles.json
+    var request = new XMLHttpRequest();
+    var dataURL = "roles.json";
+    request.open('GET', dataURL);
+    request.responseType = 'json';
+    request.send();
+
+    //log error when request gets failed
+    request.onerror = function () {
+        console.log("XHR error");
+    };
+
+    request.onload = function () {
+        //received json data via XHR
+        var data = request.response;
+        //creating roles table from json data
+        createRolesTable(data);
+    };
+
+    function createRolesTable(roles) {
+        //roles is an array of objects called "role"
+        var rows = '';
+        roles.forEach(function (role) {
+            //role is an object containing information about each team role
+            //index marks current lead
+            var index = 0;
+            //regular expression used in searching for 1 in a string
+            var regExp = /^1/i;
+            //creating each row by iterating over each lead in a role
+            role["lead"].forEach(function (lead) {
+                //rowRole is displayed once for each role
+                rowRole = index == 0 ? '<a href="#">' + role["role"] + '</a>' : "";
+
+                var rowSubRole = "";
+                //checking if a value exists at an index in role["sub-role"] array
+                if (typeof role["sub-role"][index] !== 'undefined' && role["sub-role"][index] !== null) {
+                    rowSubRole = role["sub-role"][index];
+                }
+
+                //checking if lead is unfilled or prefer deputy role
+                if (lead == "Unfilled") {
+                    lead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                }
+                if (regExp.test(lead)) {
+                    //replacing 1 from string
+                    lead = lead.replace(/^1/i, '');
+                    lead = '<span style="color: blue;">' + lead + '<sup>1</sup></span>';
+                }
+
+                //checking if a value exists at an index in role["deputy"] array
+                var rowDeputy = "";
+                if (typeof role["deputy"][index] !== 'undefined' && role["deputy"][index] !== null) {
+                    rowDeputy = role["deputy"][index];
+                    if (rowDeputy == "Unfilled") {
+                        rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                    }
+                    if (regExp.test(rowDeputy)) {
+                        //replacing 1 from string
+                        rowDeputy = rowDeputy.replace(/^1/i, '');
+                        rowDeputy = '<span style="color: blue;">' + rowDeputy + '<sup>1</sup></span>';
+                    }
+                }
+
+                //generating rows
+                rows += '<tr>' +
+                          '<td>' + rowRole + '</td>' +
+                          '<td>' + rowSubRole + '</td>' +
+                          '<td>' + lead + '</td>' +
+                          '<td>' + rowDeputy + '</td>' +
+                        '</tr>';
+                index++;
+            });
+        });
+
+        rows += '<tr>' +
+                  '<td>' + '<span style="color: blue;"><sup>1</sup>Would prefer deputy role</span>' + '</td>' +
+                  '<td></td>' +
+                  '<td></td>' +
+                  '<td></td>' +
+                '</tr>';
+        $("#roles-table").append(rows);
+    }
 
     $('#os-selector ul').each(function(){
       // For each set of tabs, we want to keep track of
