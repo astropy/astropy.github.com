@@ -55,7 +55,7 @@ $( document ).ready(function(){
             //creating each row by iterating over each lead in a role
             role["lead"].forEach(function (lead) {
                 //rowRole is displayed once for each role
-                rowRole = index == 0 ? '<a href="#">' + role["role"] + '</a>' : "";
+                rowRole = index == 0 ? '<a href="#' + role["url"] + '">' + role["role"] + '</a>' : "";
 
                 var rowSubRole = "";
                 //checking if a value exists at an index in role["sub-role"] array
