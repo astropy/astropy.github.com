@@ -22,7 +22,7 @@ $( document ).ready(function(){
 			$(this).removeClass("subhover"); //On hover out, remove class "subhover"
 	});
 
-    //creating Astropy roles table using roles.json
+    //creating Astropy roles table & roles lists using roles.json
     var request = new XMLHttpRequest();
     var dataURL = "roles.json";
     request.open('GET', dataURL);
@@ -39,6 +39,8 @@ $( document ).ready(function(){
         var data = request.response;
         //creating roles table from json data
         createRolesTable(data);
+        //creating roles lists from json data
+        createRolesList(data);
     };
 
     function createRolesTable(roles) {
@@ -67,7 +69,7 @@ $( document ).ready(function(){
                 }
                 if (regExp.test(lead)) {
                     //replacing 1 from string
-                    lead = lead.replace(/^1/i, '');
+                    lead = lead.replace(regExp, '');
                     lead = '<span style="color: blue;">' + lead + '<sup>1</sup></span>';
                 }
 
@@ -80,7 +82,7 @@ $( document ).ready(function(){
                     }
                     if (regExp.test(rowDeputy)) {
                         //replacing 1 from string
-                        rowDeputy = rowDeputy.replace(/^1/i, '');
+                        rowDeputy = rowDeputy.replace(regExp, '');
                         rowDeputy = '<span style="color: blue;">' + rowDeputy + '<sup>1</sup></span>';
                     }
                 }
@@ -103,6 +105,41 @@ $( document ).ready(function(){
                   '<td></td>' +
                 '</tr>';
         $("#roles-table").append(rows);
+    }
+
+    function createRolesList(roles) {
+        //roles is an array of objects called "role"
+        //index marks current role with non-empty description array
+        var index = 0;
+        roles.forEach(function (role) {
+            //role is an object containing information about each team role
+            //checking if role["description"] array isn't empty
+            if (role["description"].length != 0) {
+                var list = '';
+                //generate list by iterating over each description in the role
+                if (index != 5) {
+                    role["description"].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    $(".roles-list").eq(index).append(list);
+                } else {
+                    //separate case for index 5 representing tutorials & guides section
+                    //where role["description"] array contains two sub-arrays
+                    list = '';
+                    roles[index+1]["description"][0].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    $(".roles-list").eq(index).append(list);
+
+                    list = '';
+                    roles[index+1]["description"][1].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    $(".roles-list-copy").append(list);
+                }
+                index++;
+            }
+        });
     }
 
     $('#os-selector ul').each(function(){
