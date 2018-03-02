@@ -320,7 +320,7 @@
             "repo_url": "https://github.com/spacetelescope/gwcs",
             "pypi_name": "gwcs",
             "image": null,
-            "description": "Package for managing the generalized World Coordinate System (WCS) of astronomical data.",
+            "description": "Package for managing the world coordinate system (WCS) of astronomical data.",
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
