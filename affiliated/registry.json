@@ -600,7 +600,7 @@
             "repo_url": "https://github.com/pyspeckit/pyspeckit",
             "pypi_name": "pyspeckit",
             "description": "An extensible spectroscopic analysis toolkit for astronomy.",
-            "image": null
+            "image": null,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
