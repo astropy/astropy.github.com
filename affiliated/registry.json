@@ -682,6 +682,26 @@
                 "python3": "Good",
                 "last-updated": "2017-11-08"
             }
+        },
+        {
+            "name": "synphot",
+            "maintainer": "Pey Lian Lim",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://synphot.readthedocs.io",
+            "repo_url": "https://github.com/spacetelescope/synphot_refactor",
+            "pypi_name": "synphot",
+            "description": "A Python astronomy package for synthetic photometry.",
+            "image": "http://synphot.readthedocs.io/en/latest/_images/spectrum-2.png",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         }
     ]
 }
