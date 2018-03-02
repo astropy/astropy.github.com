@@ -293,7 +293,7 @@
         },
         {
             "name": "spherical_geometry",
-            "maintainer": "Bernie Simon and Michael Droettboom",
+            "maintainer": "Bernie Simon",
             "provisional": "2015-12-26",
             "stable": false,
             "home_url": "https://spacetelescope.github.io/spherical_geometry/spherical_geometry/",
