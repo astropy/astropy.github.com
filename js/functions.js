@@ -40,7 +40,7 @@ $( document ).ready(function(){
         //creating roles table from json data
         createRolesTable(data);
         //creating roles lists from json data
-        createRolesList(data);
+        createRolesDescription(data);
     };
 
     function createRolesTable(roles) {
@@ -107,39 +107,47 @@ $( document ).ready(function(){
         $("#roles-table").append(rows);
     }
 
-    function createRolesList(roles) {
+    function createRolesDescription(roles) {
         //roles is an array of objects called "role"
-        //index marks current role with non-empty description array
-        var index = 0;
+        var blocks = "";
         roles.forEach(function (role) {
             //role is an object containing information about each team role
-            //checking if role["description"] array isn't empty
-            if (role["description"].length != 0) {
-                var list = '';
+            var list = "";
+            //checking if role["sub-description"] array isn't empty
+            if (role["sub-description"].length != 0) {
                 //generate list by iterating over each description in the role
-                if (index != 5) {
+                if (role["description"].length == 2 && role["description"][0] instanceof Array) {
+                    //separate case for sections where
+                    //both role["description"] & role["sub-description"] contain two sub-arrays
+                    role["description"][0].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    blocks += '<br/>' +
+                              '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
+                              '<strong>' + role["strong"][0] + '</strong>' +
+                              '<p>' + role["sub-description"][0] + '</p>' +
+                              '<ul>' + list + '</ul>';
+
+                    list = '';
+                    role["description"][1].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    blocks += '<br/>' +
+                              '<strong>' + role["strong"][1] + '</strong>' +
+                              '<p>' + role["sub-description"][1] + '</p>' +
+                              '<ul>' + list + '</ul>';
+                } else {
                     role["description"].forEach(function (description) {
                         list += '<li>' + description + '</li>';
                     });
-                    $(".roles-list").eq(index).append(list);
-                } else {
-                    //separate case for index 5 representing tutorials & guides section
-                    //where role["description"] array contains two sub-arrays
-                    list = '';
-                    roles[index+1]["description"][0].forEach(function (description) {
-                        list += '<li>' + description + '</li>';
-                    });
-                    $(".roles-list").eq(index).append(list);
-
-                    list = '';
-                    roles[index+1]["description"][1].forEach(function (description) {
-                        list += '<li>' + description + '</li>';
-                    });
-                    $(".roles-list-copy").append(list);
+                    blocks += '<br/>' +
+                              '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
+                              '<p>' + role["sub-description"] + '</p>' +
+                              '<ul>' + list + '</ul>';
                 }
-                index++;
             }
         });
+        $("#roles-description").append(blocks);
     }
 
     $('#os-selector ul').each(function(){
