@@ -20,9 +20,135 @@ $( document ).ready(function(){
 			$(this).addClass("subhover"); //On hover over, add class "subhover"
 		}, function(){	//On Hover Out
 			$(this).removeClass("subhover"); //On hover out, remove class "subhover"
-
 	});
 
+    //creating Astropy roles table & roles lists using roles.json
+    var request = new XMLHttpRequest();
+    var dataURL = "roles.json";
+    request.open('GET', dataURL);
+    request.responseType = 'json';
+    request.send();
+
+    //log error when request gets failed
+    request.onerror = function () {
+        console.log("XHR error");
+    };
+
+    request.onload = function () {
+        //received json data via XHR
+        var data = request.response;
+        //creating roles table from json data
+        createRolesTable(data);
+        //creating roles lists from json data
+        createRolesDescription(data);
+    };
+
+    function createRolesTable(roles) {
+        //roles is an array of objects called "role"
+        var rows = '';
+        roles.forEach(function (role) {
+            //role is an object containing information about each team role
+            //index marks current lead
+            var index = 0;
+            //regular expression used in searching for 1 in a string
+            var preferDeputyRegexp = /^1/i;
+            //creating each row by iterating over each lead in a role
+            role["lead"].forEach(function (lead) {
+                //rowRole is displayed once for each role
+                rowRole = index == 0 ? '<a href="#' + role["url"] + '">' + role["role"] + '</a>' : "";
+
+                var rowSubRole = "";
+                //checking if a value exists at an index in role["sub-role"] array
+                if (typeof role["sub-role"][index] !== 'undefined' && role["sub-role"][index] !== null) {
+                    rowSubRole = role["sub-role"][index];
+                }
+
+                //checking if lead is unfilled or prefer deputy role
+                if (lead == "Unfilled") {
+                    lead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                }
+                if (preferDeputyRegexp.test(lead)) {
+                    //replacing 1 from string
+                    lead = lead.replace(preferDeputyRegexp, '');
+                    lead = '<span style="color: blue;">' + lead + '<sup>1</sup></span>';
+                }
+
+                //checking if a value exists at an index in role["deputy"] array
+                var rowDeputy = "";
+                if (typeof role["deputy"][index] !== 'undefined' && role["deputy"][index] !== null) {
+                    rowDeputy = role["deputy"][index];
+                    if (rowDeputy == "Unfilled") {
+                        rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                    }
+                    if (preferDeputyRegexp.test(rowDeputy)) {
+                        //replacing 1 from string
+                        rowDeputy = rowDeputy.replace(preferDeputyRegexp, '');
+                        rowDeputy = '<span style="color: blue;">' + rowDeputy + '<sup>1</sup></span>';
+                    }
+                }
+
+                //generating rows
+                rows += '<tr>' +
+                          '<td>' + rowRole + '</td>' +
+                          '<td>' + rowSubRole + '</td>' +
+                          '<td>' + lead + '</td>' +
+                          '<td>' + rowDeputy + '</td>' +
+                        '</tr>';
+                index++;
+            });
+        });
+
+        rows += '<tr>' +
+                  '<td>' + '<span style="color: blue;"><sup>1</sup>Would prefer deputy role</span>' + '</td>' +
+                  '<td></td>' +
+                  '<td></td>' +
+                  '<td></td>' +
+                '</tr>';
+        $("#roles-table").append(rows);
+    }
+
+    function createRolesDescription(roles) {
+        //roles is an array of objects called "role"
+        var blocks = "";
+        roles.forEach(function (role) {
+            //role is an object containing information about each team role
+            var list = "";
+            //checking if role["description"] array isn't empty
+            if (role["description"].length != 0) {
+                //generate list by iterating over each description in the role
+                if (role["sub-description"].length == 2 && role["sub-description"][0] instanceof Array) {
+                    //separate case for sections where
+                    //both role["sub-description"] & role["description"] contain two sub-arrays
+                    role["sub-description"][0].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    blocks += '<br/>' +
+                              '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
+                              '<strong>' + role["role-subhead"][0] + '</strong>' +
+                              '<p>' + role["description"][0] + '</p>' +
+                              '<ul>' + list + '</ul>';
+
+                    list = '';
+                    role["sub-description"][1].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    blocks += '<br/>' +
+                              '<strong>' + role["role-subhead"][1] + '</strong>' +
+                              '<p>' + role["description"][1] + '</p>' +
+                              '<ul>' + list + '</ul>';
+                } else {
+                    role["sub-description"].forEach(function (description) {
+                        list += '<li>' + description + '</li>';
+                    });
+                    blocks += '<br/>' +
+                              '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
+                              '<p>' + role["description"] + '</p>' +
+                              '<ul>' + list + '</ul>';
+                }
+            }
+        });
+        $("#roles-description").append(blocks);
+    }
 
     $('#os-selector ul').each(function(){
       // For each set of tabs, we want to keep track of
