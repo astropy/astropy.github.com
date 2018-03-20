@@ -6,9 +6,9 @@
       "lead" : ["Tom Aldcroft", "Kelle Cruz", "Tom Robitaille", "Erik Tollerud"],
       "deputy" : [],
       "role-head" : ["Coordination committee member (4 people)"],
-      "strong" : [],
-      "sub-description" : ["Overall coordination and management of the Astropy project, including:"],
-      "description" : ["Keeping a large-scale view of the Astropy ecosystem", "Evaluating new affiliated package submissions and review of existing affiliated packages", "Approving or rejecting Astropy APEs", "Evaluating and merging core package pull requests as needed (e.g., for sub-packages without a maintainer)", "Arbitrating disagreements in the core package, including final decisions when otherwise deadlocked", "Maintaining the list of roles and related github permissions", "Managing finances for the project", "Coordinating with NumFOCUS and other funding organizations", "Securing funding for the project via discussions and proposals to funding agencies"]
+      "role-subhead" : [],
+      "description" : ["Overall coordination and management of the Astropy project, including:"],
+      "sub-description" : ["Keeping a large-scale view of the Astropy ecosystem", "Evaluating new affiliated package submissions and review of existing affiliated packages", "Approving or rejecting Astropy APEs", "Evaluating and merging core package pull requests as needed (e.g., for sub-packages without a maintainer)", "Arbitrating disagreements in the core package, including final decisions when otherwise deadlocked", "Maintaining the list of roles and related github permissions", "Managing finances for the project", "Coordinating with NumFOCUS and other funding organizations", "Securing funding for the project via discussions and proposals to funding agencies"]
 }, {
       "role" : "Ombudsperson",
       "url" : "Ombudsperson",
@@ -16,9 +16,9 @@
       "lead" : ["Steve Crawford"],
       "deputy" : [],
       "role-head" : ["Ombudsperson"],
-      "strong" : [],
-      "sub-description" : ["Provide a point of contact for sensitive issues separate from the coordinating committee, including:"],
-      "description" : ["Monitoring the <a href='mailto:confidential@astropy.org'>confidential@astropy.org</a> email account", "Solicit and provide anonymized feedback to the astropy coordination committee regarding coordination of the project", "Assist the coordination committee and community engagement coordinator with violations of the code of conduct or other ethical concerns"]
+      "role-subhead" : [],
+      "description" : ["Provide a point of contact for sensitive issues separate from the coordinating committee, including:"],
+      "sub-description" : ["Monitoring the <a href='mailto:confidential@astropy.org'>confidential@astropy.org</a> email account", "Solicit and provide anonymized feedback to the astropy coordination committee regarding coordination of the project", "Assist the coordination committee and community engagement coordinator with violations of the code of conduct or other ethical concerns"]
 }, {
       "role" : "Community engagement coordinator",
       "url" : "Community_engagement_coordinator",
@@ -26,9 +26,9 @@
       "lead" : ["Kelle Cruz", "Adrian Price-Whelan", "Kelle Cruz", "Tom Robitaille", "Adrian Price-Whelan"],
       "deputy" : ["Unfilled", "Tom Robitaille", "Tom Robitaille, Erik Tollerud", "Unfilled", "Erik Tollerud, Tom Robitaille, Kelle Cruz"],
       "role-head" : ["Community engagement coordinator"],
-      "strong" : [],
-      "sub-description" : ["Facilitate engagement with the astropy community, including:"],
-      "description" : ["Maintain the @astropy twitter account", "Monitor/moderate the Python Users in Astronomy Facebook group", "Keep track of/help organize conferences and workshops"]
+      "role-subhead" : [],
+      "description" : ["Facilitate engagement with the astropy community, including:"],
+      "sub-description" : ["Maintain the @astropy twitter account", "Monitor/moderate the Python Users in Astronomy Facebook group", "Keep track of/help organize conferences and workshops"]
 }, {
       "role" : "Astropy GSoC coordinator",
       "url" : "Astropy_GSoC_coordinator",
@@ -36,9 +36,9 @@
       "lead" : ["Brigitta Sipocz"],
       "deputy" : ["Tom Aldcroft, Erik Tollerud"],
       "role-head" : [],
-      "strong" : [],
-      "sub-description" : [],
-      "description" : []
+      "role-subhead" : [],
+      "description" : [],
+      "sub-description" : []
 }, {
       "role" : "Learn Coordinator",
       "url" : "Learn_coordinator",
@@ -46,9 +46,9 @@
       "lead" : ["Kelle Cruz"],
       "deputy" : ["Unfilled"],
       "role-head" : ["Learn coordinator"],
-      "strong" : [],
-      "sub-description" : ["Oversee the Astropy \"Learn\" ecosystem, including:"],
-      "description" : ["Ensuring that the documentation, tutorials, and guide materials are internally consistent and cover key areas of the ecosystem", "Overseeing the maintainers for the aforementioned areas", "Organizing sprints or other events focused on Astropy learning materials"]
+      "role-subhead" : [],
+      "description" : ["Oversee the Astropy \"Learn\" ecosystem, including:"],
+      "sub-description" : ["Ensuring that the documentation, tutorials, and guide materials are internally consistent and cover key areas of the ecosystem", "Overseeing the maintainers for the aforementioned areas", "Organizing sprints or other events focused on Astropy learning materials"]
 }, {
       "role" : "Documentation & examples maintainer",
       "url" : "Documentation_&amp;_examples_maintainer",
@@ -56,9 +56,9 @@
       "lead" : ["Tom Robitaille"],
       "deputy" : ["Erik Tollerud"],
       "role-head" : ["Documentation & examples maintainer"],
-      "strong" : [],
-      "sub-description" : ["Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:"],
-      "description" : ["Managing the Sphinx infrastructure", "Implementing changes and improvements to the documentation website", "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"]
+      "role-subhead" : [],
+      "description" : ["Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:"],
+      "sub-description" : ["Managing the Sphinx infrastructure", "Implementing changes and improvements to the documentation website", "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"]
 }, {
       "role" : "Tutorial & guides",
       "url" : "Tutorial_&amp;_guides",
@@ -66,9 +66,9 @@
       "lead" : ["Adrian Price-Whelan", "Lia Corrales"],
       "deputy" : ["Erik Tollerud", "Unfilled"],
       "role-head" : ["Tutorial & guides"],
-      "strong" : [["Infrastructure maintainer"], ["Content coordinator"]],
-      "sub-description" : [["Maintain the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:"], ["Oversee the material included in Tutorials and Guides, including:"]],
-      "description" : [["Facilitating the display and discoverability of the tutorials", "Rendering of the Jupyter notebooks", "Integrated testing of notebooks"], ["Reviewing issues and pull requests", "Soliciting new content as needed", "Working with Infrastructure Maintainers to maintain website"]]
+      "role-subhead" : [["Infrastructure maintainer"], ["Content coordinator"]],
+      "description" : [["Maintain the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:"], ["Oversee the material included in Tutorials and Guides, including:"]],
+      "sub-description" : [["Facilitating the display and discoverability of the tutorials", "Rendering of the Jupyter notebooks", "Integrated testing of notebooks"], ["Reviewing issues and pull requests", "Soliciting new content as needed", "Working with Infrastructure Maintainers to maintain website"]]
 }, {
       "role" : "Astropy.org web page maintainer",
       "url" : "Astropyorg_web_page_maintainer",
@@ -76,9 +76,9 @@
       "lead" : ["1Erik Tollerud"],
       "deputy" : ["Grant Tremblay"],
       "role-head" : ["Astropy.org web page maintainer"],
-      "strong" : [],
-      "sub-description" : ["Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:"],
-      "description" : ["Maintaining contributor/roles list", "Managing pull requests to the website repository", "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)"]
+      "role-subhead" : [],
+      "description" : ["Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:"],
+      "sub-description" : ["Maintaining contributor/roles list", "Managing pull requests to the website repository", "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)"]
 }, {
       "role" : "Astropy-helpers maintainer",
       "url" : "Astropyhelpers_maintainer",
@@ -86,9 +86,9 @@
       "lead" : ["Unfilled"],
       "deputy" : ["Erik Tollerud, Brigitta Sipocz"],
       "role-head" : ["Astropy-helpers maintainer"],
-      "strong" : [],
-      "sub-description" : ["Lead the development and maintenance of the astropy-helpers repository, including:"],
-      "description" : ["Managing issues/pull requests for the astropy-helpers repository", "Assisting the core package release coordinator, including performing (or helping perform) the release process for astropy-helpers during core package releases", "Performing any necessary incremental/bugfix releases between Astropy releases", "Communicating to affiliated package maintainers the availability of new versions of astropy-helpers, and assist in updating in cases where changes are not trivial"]
+      "role-subhead" : [],
+      "description" : ["Lead the development and maintenance of the astropy-helpers repository, including:"],
+      "sub-description" : ["Managing issues/pull requests for the astropy-helpers repository", "Assisting the core package release coordinator, including performing (or helping perform) the release process for astropy-helpers during core package releases", "Performing any necessary incremental/bugfix releases between Astropy releases", "Communicating to affiliated package maintainers the availability of new versions of astropy-helpers, and assist in updating in cases where changes are not trivial"]
 }, {
       "role" : "Astropy testing maintainer",
       "url" : "Astropy_testing_maintainer",
@@ -96,9 +96,9 @@
       "lead" : ["Dan Davella"],
       "deputy" : ["Erik Tollerud, Tom Robitaille"],
       "role-head" : ["Astropy testing maintainer"],
-      "strong" : [],
-      "sub-description" : ["Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:"],
-      "description" : ["Managing issues/pull request for the Astropy core package regarding testing infrastructure", "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required", "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)", "Supporting and enabling affiliated package usage of the testing infrastructure"]
+      "role-subhead" : [],
+      "description" : ["Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:"],
+      "sub-description" : ["Managing issues/pull request for the Astropy core package regarding testing infrastructure", "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required", "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)", "Supporting and enabling affiliated package usage of the testing infrastructure"]
 }, {
       "role" : "Packagetemplate_maintainer",
       "url" : "Packagetemplate_maintainer",
@@ -106,9 +106,9 @@
       "lead" : ["1Tom Robitaille"],
       "deputy" : ["Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan"],
       "role-head" : ["Package-template maintainer"],
-      "strong" : [],
-      "sub-description" : ["Lead the development of maintenance of the affiliated package package-template, which is used by affiliated packages. This includes:"],
-      "description" : ["Managing issues/pull requests in the package-template repository", "Keeping the affiliated package-template up-to-date with the astropy-helpers", "Tag new releases from time to time, and keep the TEMPLATE_CHANGES up-to-date", "Communicate any ‘releases’ with affiliated package maintainers via the astropy-affiliated-maintainers mailing list"]
+      "role-subhead" : [],
+      "description" : ["Lead the development of maintenance of the affiliated package package-template, which is used by affiliated packages. This includes:"],
+      "sub-description" : ["Managing issues/pull requests in the package-template repository", "Keeping the affiliated package-template up-to-date with the astropy-helpers", "Tag new releases from time to time, and keep the TEMPLATE_CHANGES up-to-date", "Communicate any ‘releases’ with affiliated package maintainers via the astropy-affiliated-maintainers mailing list"]
 }, {
       "role" : "CI-helpers maintainer",
       "url" : "CIhelpers_maintainer",
@@ -116,9 +116,9 @@
       "lead" : ["Brigitta Sipocz"],
       "deputy" : ["Unfilled"],
       "role-head" : ["CI-helpers maintainer"],
-      "strong" : [],
-      "sub-description" : ["Lead the maintenance of the ci-helpers, including:"],
-      "description" : ["Managing issues/pull requests in the ci-helpers repository", "Responding in a timely fashion to breakages in CI caused e.g. by updates in conda, Travis, or AppVeyor, by including workarounds", "Advertise the ci-helpers beyond the astropy project and try to expand adoption"]
+      "role-subhead" : [],
+      "description" : ["Lead the maintenance of the ci-helpers, including:"],
+      "sub-description" : ["Managing issues/pull requests in the ci-helpers repository", "Responding in a timely fashion to breakages in CI caused e.g. by updates in conda, Travis, or AppVeyor, by including workarounds", "Advertise the ci-helpers beyond the astropy project and try to expand adoption"]
 }, {
       "role" : "Distribution coordinator",
       "url" : "Distribution_coordinator",
@@ -126,9 +126,9 @@
       "lead" : ["Matt Craig", "Ole Streicher", "Sergio Pascual", "Sébastien Fabbro", "Médéric Boquien", "Christoph Deil"],
       "deputy" : ["Unfilled", "Unfilled", "Unfilled", "Unfilled", "Miguel de Val-Borro, Stuart Mumford", "Hans Moritz Günther"],
       "role-head" : ["Distribution coordinator (1 per distribution channel)"],
-      "strong" : [],
-      "sub-description" : ["Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system."],
-      "description" : []
+      "role-subhead" : [],
+      "description" : ["Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system."],
+      "sub-description" : []
 }, {
       "role" : "Core package release coordinator",
       "url" : "Core_package_release_coordinator",
@@ -136,9 +136,9 @@
       "lead" : ["Brigitta Sipocz"],
       "deputy" : ["Tom Robitaille, Erik Tollerud"],
       "role-head" : ["Core package release coordinator"],
-      "strong" : [],
-      "sub-description" : ["Oversee the release process for the astropy core package, including:"],
-      "description" : ["Performing new releases", "Coordinate releases of astropy-helpers with the astropy-helpers maintainer(s)", "Maintaining the change log and “what’s new” documentation page", "Maintaining the bugfix branches", "Updating Astropy’s PyPI entry as needed", "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media", "Notifying the Distribution Coordinators of any release", "Make sure that the package gets updated in conda and coordinate with distribution coordinators", "Keep documentation for release process up to date"]
+      "role-subhead" : [],
+      "description" : ["Oversee the release process for the astropy core package, including:"],
+      "sub-description" : ["Performing new releases", "Coordinate releases of astropy-helpers with the astropy-helpers maintainer(s)", "Maintaining the change log and “what’s new” documentation page", "Maintaining the bugfix branches", "Updating Astropy’s PyPI entry as needed", "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media", "Notifying the Distribution Coordinators of any release", "Make sure that the package gets updated in conda and coordinate with distribution coordinators", "Keep documentation for release process up to date"]
 }, {
       "role" : "Sub-package maintainer",
       "url" : "Subpackage_maintainer",
@@ -146,8 +146,8 @@
       "lead" : ["David Shupe", "Adam Ginsburg", "Erik Tollerud", "Alex Conley", "Tom Aldcroft", "Unfilled", "1Tom Robitaille", "Unfilled", "Nadia Dencheva", "Matt Craig", "1Tom Robitaille", "Steve Crawford", "Tom Aldcroft", "Tom Aldcroft", "Marten van Kerkwijk", "Pey Lian Lim", "Larry Bradley", "Unfilled"],
       "deputy" : ["Marten van Kerkwijk", "Axel Donath, Larry Bradley", "Stuart Littlefair, Adrian Price-Whelan", "Unfilled", "Hans Moritz Günther", "Simon Conseil, Michael Seifert, Dan D'Avella", "Matteo Bachetti", "Pey Lian Lim", "Pey Lian Lim", "Steve Crawford, Michael Seifert", "Unfilled", "Larry Bradley", "Marten van Kerkwijk", "Marten van Kerkwijk", "Adrian Price-Whelan", "Brigitta Sipocz, Erik Tollerud", "Tom Robitaille", "Nadia Dencheva"],
       "role-head" : ["Sub-package maintainer (1 per core package sub-package)"],
-      "strong" : [],
-      "sub-description" : ["Maintain a sub-package of the astropy core package, including:"],
-      "description" : ["Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem", "Merging Pull Requests in the sub-package", "Keeping track of the “big picture” progress of the sub-package - includes new feature development and significant bugs", "Keeping track of frequent contributors to the sub-package and their relevant areas of expertise"]
+      "role-subhead" : [],
+      "description" : ["Maintain a sub-package of the astropy core package, including:"],
+      "sub-description" : ["Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem", "Merging Pull Requests in the sub-package", "Keeping track of the “big picture” progress of the sub-package - includes new feature development and significant bugs", "Keeping track of frequent contributors to the sub-package and their relevant areas of expertise"]
     }
 ]

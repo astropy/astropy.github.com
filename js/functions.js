@@ -113,36 +113,36 @@ $( document ).ready(function(){
         roles.forEach(function (role) {
             //role is an object containing information about each team role
             var list = "";
-            //checking if role["sub-description"] array isn't empty
-            if (role["sub-description"].length != 0) {
+            //checking if role["description"] array isn't empty
+            if (role["description"].length != 0) {
                 //generate list by iterating over each description in the role
-                if (role["description"].length == 2 && role["description"][0] instanceof Array) {
+                if (role["sub-description"].length == 2 && role["sub-description"][0] instanceof Array) {
                     //separate case for sections where
-                    //both role["description"] & role["sub-description"] contain two sub-arrays
-                    role["description"][0].forEach(function (description) {
+                    //both role["sub-description"] & role["description"] contain two sub-arrays
+                    role["sub-description"][0].forEach(function (description) {
                         list += '<li>' + description + '</li>';
                     });
                     blocks += '<br/>' +
                               '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
-                              '<strong>' + role["strong"][0] + '</strong>' +
-                              '<p>' + role["sub-description"][0] + '</p>' +
+                              '<strong>' + role["role-subhead"][0] + '</strong>' +
+                              '<p>' + role["description"][0] + '</p>' +
                               '<ul>' + list + '</ul>';
 
                     list = '';
-                    role["description"][1].forEach(function (description) {
+                    role["sub-description"][1].forEach(function (description) {
                         list += '<li>' + description + '</li>';
                     });
                     blocks += '<br/>' +
-                              '<strong>' + role["strong"][1] + '</strong>' +
-                              '<p>' + role["sub-description"][1] + '</p>' +
+                              '<strong>' + role["role-subhead"][1] + '</strong>' +
+                              '<p>' + role["description"][1] + '</p>' +
                               '<ul>' + list + '</ul>';
                 } else {
-                    role["description"].forEach(function (description) {
+                    role["sub-description"].forEach(function (description) {
                         list += '<li>' + description + '</li>';
                     });
                     blocks += '<br/>' +
                               '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
-                              '<p>' + role["sub-description"] + '</p>' +
+                              '<p>' + role["description"] + '</p>' +
                               '<ul>' + list + '</ul>';
                 }
             }
