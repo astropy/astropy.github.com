@@ -51,7 +51,7 @@ $( document ).ready(function(){
             //index marks current lead
             var index = 0;
             //regular expression used in searching for 1 in a string
-            var regExp = /^1/i;
+            var preferDeputyRegexp = /^1/i;
             //creating each row by iterating over each lead in a role
             role["lead"].forEach(function (lead) {
                 //rowRole is displayed once for each role
@@ -67,9 +67,9 @@ $( document ).ready(function(){
                 if (lead == "Unfilled") {
                     lead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
                 }
-                if (regExp.test(lead)) {
+                if (preferDeputyRegexp.test(lead)) {
                     //replacing 1 from string
-                    lead = lead.replace(regExp, '');
+                    lead = lead.replace(preferDeputyRegexp, '');
                     lead = '<span style="color: blue;">' + lead + '<sup>1</sup></span>';
                 }
 
@@ -80,9 +80,9 @@ $( document ).ready(function(){
                     if (rowDeputy == "Unfilled") {
                         rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
                     }
-                    if (regExp.test(rowDeputy)) {
+                    if (preferDeputyRegexp.test(rowDeputy)) {
                         //replacing 1 from string
-                        rowDeputy = rowDeputy.replace(regExp, '');
+                        rowDeputy = rowDeputy.replace(preferDeputyRegexp, '');
                         rowDeputy = '<span style="color: blue;">' + rowDeputy + '<sup>1</sup></span>';
                     }
                 }
