@@ -710,6 +710,26 @@
                 "python3": "Good",
                 "last-updated": "2017-11-08"
             }
+        },
+        {
+            "name": "feets",
+            "maintainer": "Juan B Cabral <jbc.developr@gmail.com>",
+            "provisional": false,
+            "stable": true,
+            "home_url": "http://feets.readthedocs.io",
+            "repo_url": "https://github.com/carpyncho/feets",
+            "pypi_name": "feets",
+            "description": "feATURE eXTRACTOR FOR tIME sERIES.",
+            "image": "https://github.com/carpyncho/feets/raw/master/res/logo_medium.png",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2018-04-05"
+            }
         }
     ]
 }
