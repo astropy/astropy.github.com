@@ -710,6 +710,17 @@
                 "python3": "Good",
                 "last-updated": "2017-11-08"
             }
+        },
+        {
+            "name": "baseband",
+            "maintainer": "Marten H. van Kerkwijk and Chenchong Zhu",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://baseband.readthedocs.io",
+            "repo_url": "https://github.com/mhvk/baseband",
+            "pypi_name": "baseband",
+            "description": "Radio baseband IO: readers and writers for VLBI and other baseband data formats.",
+            "image": null
         }
     ]
 }
