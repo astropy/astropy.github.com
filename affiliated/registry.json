@@ -710,6 +710,17 @@
                 "python3": "Good",
                 "last-updated": "2017-11-08"
             }
+        },
+        {
+            "name": "vip",
+            "maintainer": "Carlos Alberto Gomez Gonzalez",
+            "stable": "false",
+            "provisional": false,
+            "home_url": "http://vip.readthedocs.io/",
+            "repo_url": "https://github.com/vortex-exoplanet/VIP",
+            "pypi_name": "vip_hci",
+            "description": "A Python astronomy package for image processing of high-contrast imaging data",
+            "image": null
         }
     ]
 }
