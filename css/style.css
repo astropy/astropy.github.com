@@ -23,6 +23,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -540,18 +541,20 @@ section.install div h3{
 }
 
 .featured img{
-	float: left;
+	float: left+;
 	margin-right:10px;
 }
 
 table{
 	margin: 20px 0px;
-	word-break:break-all;
+	word-break:overflow-wrap;
 }
 
+/*
 tr{
 	border-bottom: 1px #efefef solid;
 }
+*/
 
 
 thead{
@@ -560,9 +563,19 @@ thead{
 	border-bottom: 1px black solid;
 }
 
+
+
 td{
-	padding:5px 3px;
+	padding:16px 5px;
+	font-size: 140%;
+	line-height: 1.3em;
 }
+
+
+td:first-child {
+    font-weight: bold;
+  }
+
 
 /* About */
 

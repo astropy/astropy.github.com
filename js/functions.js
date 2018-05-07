@@ -225,16 +225,26 @@ function url_translator(urltext) {
     if (urltext === undefined) {
         return 'None';
     } else {
-        return '<a href="' + urltext + '">' + urltext + '</a>';
+        return '<a href="' + urltext + '">' + 'Website' + '</a>';
     }
 }
+
+
+function repo_translator(urltext) {
+    if (urltext === undefined) {
+        return 'None';
+    } else {
+        return '<a href="' + urltext + '">' + 'Repository' + '</a>';
+    }
+}
+
 
 function pypi_translator(pypiname) {
     if (pypiname === undefined) {
         return 'None';
     } else {
         var urltext = 'http://pypi.python.org/pypi/' + pypiname;
-        return '<a href="' + urltext + '">' + pypiname + '</a>';
+        return '<a href="' + urltext + '">' + 'PyPI' + '</a>';
     }
 }
 
@@ -250,6 +260,7 @@ var _email_regex_str = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
 var _email_regex  = new RegExp(_email_regex_str, 'i');
 var _email_with_name_regex  = new RegExp('(.+)<(' + _email_regex_str + ')>', 'i');
 
+
 function maintainer_translator(maint, pkgnm) {
     var url, match;
     if (_email_with_name_regex.test(maint)) {
@@ -264,24 +275,13 @@ function maintainer_translator(maint, pkgnm) {
     }
 }
 
+
 function populateTables(data, tstat, xhr) {
-    populateTable('accepted-package-table', data, false);
-    populateTable('provisional-package-table', data, 'only')
+    populateTable('accepted-package-table', data);
 }
 
-function populateTable(tableid, data, allowprovisional) {
-    // First we use allowprovisional io decide what the checkProvisional function (used below) does
-    var checkProvisional;
-    if (allowprovisional === false) {
-        checkProvisional = function(provisional_status) { return provisional_status === false; }
-    } else if (allowprovisional == 'only') {
-        checkProvisional = function(provisional_status) { return provisional_status; }
-    } else if (allowprovisional === true) {
-        checkProvisional = function(provisional_status) { return true; }
-    } else {
-        throw "Invalid allowprovisional value " + allowprovisional;
-    }
 
+function populateTable(tableid, data) {
     // Now we get the table and prepare it
     var tab = document.getElementById(tableid);
     var ncols = tab.rows[0].cells.length;
@@ -289,9 +289,8 @@ function populateTable(tableid, data, allowprovisional) {
     //we have to delete the "Loading..." row
     tab.deleteRow(1);
 
-    var pkgi, row, nmcell, stablecell, pypicell, urlcell, rpocell, maintcell;
     if (data === null) {
-        row = tab.insertRow(1);
+        var row = tab.insertRow(1);
         row.insertCell(0).innerHTML = 'Could not load registry file!';
         for (i=0;i<(ncols - 1);i++) { row.insertCell(i + 1).innerHTML = ' '; }
     } else {
@@ -305,30 +304,88 @@ function populateTable(tableid, data, allowprovisional) {
             nmarr[i] = pkgi.name.toLowerCase();
             sortorder[i] = i;
         }
-        // This "sorts" the indecies using a compare function that actually sorts nmarr
+        // This "sorts" the indicies using a compare function that actually sorts nmarr
         sortorder.sort(function (a, b) { return nmarr[a] < nmarr[b] ? -1 : nmarr[a] > nmarr[b] ? 1 : 0; });
+
+        var pkgi;
+        var namerow, descrow, shieldrow, maintrow;
+        var nmcell, pypicell, urlcell, repocell;
+        var desccell, maintcell, shieldcell;
 
         for (i=0; i<sortorder.length; i++) {
             pkgi = pkgs[sortorder[i]];
-            row = tab.insertRow(i + 1);
+            namerow = tab.insertRow(i*4 + 1);
 
-            if (checkProvisional(pkgi.provisional)) {
-                nmcell = row.insertCell(0);
-                stablecell = row.insertCell(1);
-                pypicell = row.insertCell(2);
-                urlcell = row.insertCell(3);
-                repocell = row.insertCell(4);
-                maintcell = row.insertCell(5);
+            nmcell = namerow.insertCell(0);
+            urlcell = namerow.insertCell(1);
+            repocell = namerow.insertCell(2);
+            pypicell = namerow.insertCell(3);
 
-                nmcell.innerHTML = pkgi.name;
-                stablecell.innerHTML = bool_translator(pkgi.stable);
-                pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
-                urlcell.innerHTML = url_translator(pkgi.home_url);
-                repocell.innerHTML = url_translator(pkgi.repo_url);
-                maintcell.innerHTML = maintainer_translator(pkgi.maintainer, pkgi.name);
-            }
+            nmcell.innerHTML = pkgi.name;
+            urlcell.innerHTML = url_translator(pkgi.home_url);
+            repocell.innerHTML = repo_translator(pkgi.repo_url);
+            pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
+
+
+            descrow = tab.insertRow(i*4 + 2);
+            descrow.insertCell(0).innerHTML = "";
+            desccell = descrow.insertCell(1);
+            desccell.colSpan = "3";
+            desccell.innerHTML = pkgi.description;
+
+            maintrow = tab.insertRow(i*4 + 3);
+            maintrow.insertCell(0).innerHTML = "";
+            maintcell = maintrow.insertCell(1);
+            maintcell.colSpan = "3";
+            maintcell.innerHTML = "Maintainer(s): " + maintainer_translator(pkgi.maintainer, pkgi.name);
+
+            shieldrow = tab.insertRow(i*4 + 4);
+            shieldrow.insertCell(0).innerHTML = "";
+            shieldcell = shieldrow.insertCell(1);
+            shieldcell.colSpan = "3";
+            shieldcell.innerHTML = makeShields(pkgi)
+
         }
     }
+}
+
+var review_name_map = {"functionality": "Functionality",
+    "ecointegration": "Astropy%20integration",
+    "documentation": "Docs",
+    "testing": "Tests",
+    "devstatus": "Development",
+    "python3": "Python 3"
+};
+
+var review_default_color = "green";
+var review_color_map = {'Unmaintained': "red",
+    "Functional but low activity": "orange",
+    "Good": "green",
+    "Partial": "orange",
+    "Needs work": "red"
+};
+
+function makeShields(pkg) {
+  var shield_string = "";
+
+  var key, shield_name, pkgvalue, color, url;
+
+  for (key in review_name_map) {
+    console.log("K"+key);
+    if (review_name_map.hasOwnProperty(key)) {
+      shield_name = review_name_map[key];
+      pkgvalue = pkg.review[key];
+
+      color = review_color_map[pkgvalue];
+      if (typeof color == 'undefined') {
+        color = review_default_color;
+      }
+
+      url = "https://img.shields.io/badge/" + shield_name + "-" + pkgvalue + "-" + color + ".svg";
+      shield_string += "<img src=\"" + url + "\">" + " "
+    }
+  }
+  return shield_string
 }
 
 function guess_os() {
