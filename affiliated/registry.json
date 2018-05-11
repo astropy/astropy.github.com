@@ -730,6 +730,25 @@
                "python3": "Good",
                "last-updated": "2017-11-27"
            }
+       },
+       {
+          "name": "Saba",
+          "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
+          "provisional": false,
+          "stable": true,
+          "home_url": "https://github.com/astropy/saba",
+          "repo_url": "https://saba.readthedocs.io",
+          "pypi_name": "saba",
+          "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
+          "review": {
+            "functionality": "General package",
+              "ecointegration": "Good",
+              "documentation": "Good",
+              "testing": "Good",
+              "devstatus": "Functional but low activity",
+              "python3": "Good",
+              "last-updated": "2017-09-26"
+          }
        }
     ]
 }
