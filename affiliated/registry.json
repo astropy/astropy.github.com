@@ -736,8 +736,8 @@
           "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
           "provisional": false,
           "stable": true,
-          "home_url": "https://github.com/astropy/saba",
-          "repo_url": "https://saba.readthedocs.io",
+          "repo_url": "https://github.com/astropy/saba",
+          "home_url": "https://saba.readthedocs.io",
           "pypi_name": "saba",
           "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
           "review": {
