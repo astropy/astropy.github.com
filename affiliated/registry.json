@@ -2,11 +2,11 @@
     "packages": [
         {
             "name": "specutils",
-            "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, Erik Tollerud",
+            "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
             "provisional": false,
             "stable": false,
-            "home_url": "http://specutils.readthedocs.io",
-            "repo_url": "http://github.com/astropy/specutils.git",
+            "home_url": "https://specutils.readthedocs.io",
+            "repo_url": "https://github.com/astropy/specutils",
             "pypi_name": "specutils",
             "description": "Affiliated package for analysis tools and basic data types of astronomical spectra.",
             "image": null
@@ -16,121 +16,220 @@
             "maintainer": "Adam Ginsburg and Brigitta Sipocz <adam.g.ginsburg@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://astroquery.readthedocs.io",
-            "repo_url": "http://github.com/astropy/astroquery.git",
+            "home_url": "https://astroquery.readthedocs.io",
+            "repo_url": "https://github.com/astropy/astroquery",
             "pypi_name": "astroquery",
             "description": "Tools for querying online astronomical data sources.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "photutils",
             "maintainer": "Larry Bradley and Brigitta Sipocz <lbradley@stsci.edu>",
             "provisional": false,
             "stable": false,
-            "home_url": "http://photutils.readthedocs.io/",
-            "repo_url": "http://github.com/astropy/photutils.git",
+            "home_url": "https://photutils.readthedocs.io/",
+            "repo_url": "https://github.com/astropy/photutils",
             "pypi_name": "photutils",
             "description": "Photometry and related image-processing tools.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "ginga",
-            "maintainer": "Eric Jeschke <eric@naoj.org> and Pey-Lian Lim",
+            "maintainer": "Eric Jeschke and Pey-Lian Lim <eric@naoj.org>",
             "provisional": false,
             "stable": true,
             "home_url": "https://ejeschke.github.io/ginga",
-            "repo_url": "http://github.com/ejeschke/ginga",
+            "repo_url": "https://github.com/ejeschke/ginga",
             "pypi_name": "ginga",
             "description": "Ginga is a Python toolkit for building viewers for astronomical and scientific images stored in numpy data arrays and displaying them on a variety of different display platforms. The toolkit provides many features for building a viewer, including a flexible plugin framework that is provided as a customizable reference viewer for FITS images.",
-            "image": "https://ejeschke.github.io/ginga/images/Ginga_screenshot_MacOSX-1024x613.jpg"
+            "image": "https://ejeschke.github.io/ginga/images/Ginga_screenshot_MacOSX-1024x613.jpg",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "astroML",
             "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://astroml.github.com/",
-            "repo_url": "http://github.com/astroML/astroML",
+            "home_url": "https://astroml.github.com/",
+            "repo_url": "https://github.com/astroML/astroML",
             "pypi_name": "astroML",
             "description": "Tools for machine learning and data mining in Astronomy.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "PyDL",
             "maintainer": "Benjamin Alan Weaver <baweaver@lbl.gov>",
             "provisional": false,
             "stable": false,
-            "home_url": "https://github.com/weaverba137/pydl",
-            "repo_url": "http://github.com/weaverba137/pydl.git",
+            "home_url": "https://pydl.readthedocs.io",
+            "repo_url": "https://github.com/weaverba137/pydl",
             "pypi_name": "pydl",
             "image": null,
-            "description": "Python replacements for functions that are part of the IDL built-in library, or part of astronomical IDL libraries. The emphasis is on reproducing results of the astronomical library functions. Only the bare minimum of IDL built-in functions are implemented to support this."
+            "description": "Python replacements for functions that are part of the IDL built-in library, or part of astronomical IDL libraries. The emphasis is on reproducing results of the astronomical library functions. Only the bare minimum of IDL built-in functions are implemented to support this.",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Needs work",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://aplpy.github.io",
-            "repo_url": "http://github.com/aplpy/aplpy.git",
+            "home_url": "https://aplpy.github.io",
+            "repo_url": "https://github.com/aplpy/aplpy",
             "pypi_name": "APLpy",
             "description": "A Python module aimed at producing publication-quality plots of astronomical imaging data in FITS format. The module uses Matplotlib, a powerful and interactive plotting package. It is capable of creating output files in several graphical formats, including EPS, PDF, PS, PNG, and SVG.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "reproject",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://reproject.readthedocs.io",
-            "repo_url": "https://github.com/astrofrog/reproject.git",
+            "home_url": "https://reproject.readthedocs.io",
+            "repo_url": "https://github.com/astrofrog/reproject",
             "pypi_name": "reproject",
             "image": null,
-            "description": "Python-based astronomical image reprojection."
+            "description": "Python-based astronomical image reprojection.",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "PyVO",
             "maintainer": "Stefan Becker <sbecker@ari.uni-heidelberg.de>",
             "provisional": false,
             "stable": false,
-            "home_url": "http://pyvo.readthedocs.io/",
-            "repo_url": "https://github.com/pyvirtobs/pyvo.git",
+            "home_url": "https://pyvo.readthedocs.io/",
+            "repo_url": "https://github.com/pyvirtobs/pyvo",
             "pypi_name": "pyvo",
             "description": "Access to the Virtual Observatory through Python using IVOA Standards.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "gammapy",
             "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
             "provisional": false,
             "stable": false,
-            "home_url": "https://gammapy.readthedocs.io/",
-            "repo_url": "http://github.com/gammapy/gammapy.git",
+            "home_url": "http://gammapy.org",
+            "repo_url": "https://github.com/gammapy/gammapy",
             "pypi_name": "gammapy",
             "description": "A high level gamma-ray astronomy data analysis package.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "ccdproc",
             "maintainer": "Steven Crawford, Matt Craig, and Michael Seifert <ccdproc@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://ccdproc.readthedocs.io",
-            "repo_url": "http://github.com/astropy/ccdproc.git",
+            "home_url": "https://ccdproc.readthedocs.io",
+            "repo_url": "https://github.com/astropy/ccdproc",
             "pypi_name": "ccdproc",
             "description": "Package to do basic CCD data reduction.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "sncosmo",
             "maintainer": "Kyle Barbary",
             "provisional": false,
             "stable": true,
-            "home_url": "http://sncosmo.readthedocs.io",
-            "repo_url": "http://github.com/sncosmo/sncosmo",
+            "home_url": "https://sncosmo.readthedocs.io",
+            "repo_url": "https://github.com/sncosmo/sncosmo",
             "pypi_name": "sncosmo",
             "image": "https://avatars1.githubusercontent.com/u/5490746?v=3&s=500",
-            "description": "Supernova light curve models in Python. SNCosmo synthesizes supernova spectra and photometry from SN models, and has functions for fitting and sampling SN model parameters given photometric light curve data. It includes built-in supernova models such as the SALT2, MLCS2k2, Hsiao, Nugent, PSNID, SNANA and Whalen models, a variety of built-in bandpasses and magnitude systems, and allows custom models, bandpasses, and magnitude systems to be defined."
+            "description": "Supernova light curve models in Python. SNCosmo synthesizes supernova spectra and photometry from SN models, and has functions for fitting and sampling SN model parameters given photometric light curve data. It includes built-in supernova models such as the SALT2, MLCS2k2, Hsiao, Nugent, PSNID, SNANA and Whalen models, a variety of built-in bandpasses and magnitude systems, and allows custom models, bandpasses, and magnitude systems to be defined.",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "Glue",
@@ -138,76 +237,139 @@
             "provisional": false,
             "stable": true,
             "home_url": "http://www.glueviz.org",
-            "repo_url": "https://github.com/glue-viz/glue.git",
+            "repo_url": "https://github.com/glue-viz/glue",
             "pypi_name": "glueviz",
             "image": null,
-            "description": "Linked data visualizations across multiple files."
+            "description": "Linked data visualizations across multiple files.",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "pyregion",
             "maintainer": "Jae-Joon Lee and Christoph Deil",
             "provisional": false,
             "stable": true,
-            "home_url": "http://pyregion.readthedocs.io",
-            "repo_url": "https://github.com/astropy/pyregion.git",
+            "home_url": "https://pyregion.readthedocs.io",
+            "repo_url": "https://github.com/astropy/pyregion",
             "pypi_name": "pyregion",
             "image": null,
-            "description": null
+            "description": "Python module to parse DS9 and CIAO region files.",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "imexam",
             "maintainer": "Megan Sosey",
             "provisional": false,
             "stable": false,
-            "home_url": "http://imexam.readthedocs.io/imexam/index.html",
-            "repo_url": "http://github.com/spacetelescope/imexam",
+            "home_url": "https://imexam.readthedocs.io",
+            "repo_url": "https://github.com/spacetelescope/imexam",
             "pypi_name": "imexam",
             "description": "A package for functionality like IRAF's imexamine.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "spherical_geometry",
-            "maintainer": "Bernie Simon and Michael Droettboom",
+            "maintainer": "Bernie Simon",
             "provisional": "2015-12-26",
             "stable": false,
             "home_url": "https://spacetelescope.github.io/spherical_geometry/spherical_geometry/",
-            "repo_url": "https://github.com/spacetelescope/spherical_geometry.git",
+            "repo_url": "https://github.com/spacetelescope/spherical_geometry",
             "pypi_name": "spherical-geometry",
             "image": null,
-            "description": "Python package for handling spherical polygons that represent arbitrary regions of the sky."
+            "description": "Python package for handling spherical polygons that represent arbitrary regions of the sky.",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Needs work",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "gwcs",
             "maintainer": "Nadia Dencheva",
             "provisional": false,
             "stable": false,
-            "home_url": "http://gwcs.readthedocs.io",
-            "repo_url": "https://github.com/spacetelescope/gwcs.git",
+            "home_url": "https://gwcs.readthedocs.io",
+            "repo_url": "https://github.com/spacetelescope/gwcs",
             "pypi_name": "gwcs",
             "image": null,
-            "description": "Package for managing the World Coordinate System (WCS) of astronomical data."
+            "description": "Package for managing the world coordinate system (WCS) of astronomical data.",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "spectral-cube",
             "maintainer": "Adam Ginsburg",
             "provisional": false,
             "stable": true,
-            "home_url": "http://spectral-cube.rtfd.org",
+            "home_url": "https://spectral-cube.readthedocs.io",
             "repo_url": "https://github.com/radio-astro-tools/spectral-cube",
             "pypi_name": "spectral-cube",
             "image": null,
-            "description": "Library for reading and analyzing astrophysical spectral data cubes."
+            "description": "Library for reading and analyzing astrophysical spectral data cubes.",
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "python-cpl",
             "maintainer": "Ole Streicher",
             "provisional": false,
             "stable": false,
-            "home_url": "http://python-cpl.readthedocs.io",
+            "home_url": "https://python-cpl.readthedocs.io",
             "repo_url": "https://github.com/olebole/python-cpl",
             "pypi_name": "python-cpl",
             "description": "Framework to process ESO pipelines for the VLT instruments.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "astroplan",
@@ -218,18 +380,36 @@
             "repo_url": "https://github.com/astropy/astroplan",
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "Astro-SCRAPPY",
             "maintainer": "Curtis McCully <cmccully@lcogt.net>",
             "provisional": false,
             "stable": true,
-            "home_url": "http://github.com/astropy/astroscrappy",
+            "home_url": "https://github.com/astropy/astroscrappy",
             "repo_url": "https://github.com/astropy/astroscrappy",
             "pypi_name": "astroscrappy",
             "description": "A high-performance package to detect and remove cosmic rays from astronomical images.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Needs work",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "naima",
@@ -240,7 +420,16 @@
             "repo_url": "https://github.com/zblz/naima",
             "pypi_name": "naima",
             "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "omnifit",
@@ -251,7 +440,16 @@
             "repo_url": "https://github.com/RiceMunk/omnifit",
             "pypi_name": "omnifit",
             "image": null,
-            "description": null
+            "description": "Python library intended to help with the analysis of astronomical spectra for signs of interstellar ices.",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Functional but low activity",
+                "python3": "Partial",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "gala",
@@ -262,18 +460,36 @@
             "repo_url": "https://github.com/adrn/gala",
             "pypi_name": "astro-gala",
             "image": null,
-            "description": "A Python package for gravitational and galactic dynamics."
+            "description": "A Python package for gravitational and galactic dynamics.",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "galpy",
             "maintainer": "Jo Bovy",
             "provisional": false,
             "stable": true,
-            "home_url": "http://galpy.readthedocs.io/en/latest/",
+            "home_url": "https://galpy.readthedocs.io/en/latest/",
             "repo_url": "https://github.com/jobovy/galpy",
             "pypi_name": "galpy",
             "image": null,
-            "description": "A Python 2 and 3 package for galactic dynamics."
+            "description": "A Python 2 and 3 package for galactic dynamics.",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "HENDRICS",
@@ -284,7 +500,16 @@
             "home_url": "https://hendrics.readthedocs.io",
             "pypi_name": "hendrics",
             "description": "Spectral-timing analysis of X-ray data from the command line (formerly known as MaLTPyNT).",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "stingray",
@@ -294,18 +519,37 @@
             "repo_url": "https://github.com/StingraySoftware/stingray",
             "home_url": "https://stingraysoftware.github.io",
             "pypi_name": "stingray",
-            "description": "Python library for spectral-timing analysis of X-ray data."
-         },
+            "description": "Python library for spectral-timing analysis of X-ray data.",
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
+        },
         {
             "name": "Halotools",
             "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
             "provisional": false,
             "stable": true,
-            "home_url": "https://github.com/astropy/halotools",
+            "home_url": "https://halotools.readthedocs.io",
             "repo_url": "https://github.com/astropy/halotools",
             "pypi_name": "halotools",
             "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "cluster-lensing",
@@ -313,49 +557,99 @@
             "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/jesford/cluster-lensing",
-            "home_url": "http://jesford.github.io/cluster-lensing",
+            "home_url": "https://jesford.github.io/cluster-lensing",
             "pypi_name": "cluster-lensing",
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option).",
-            "image": null
-         },
-         {
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
+        },
+        {
             "name": "marxs",
-            "maintainer": "Hans Moritz Günther (hamogu)",
+            "maintainer": "Hans Moritz G\u00fcnther (hamogu)",
             "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/Chandra-MARX/marxs",
             "home_url": "https://marxs.readthedocs.io/",
             "pypi_name": "marxs",
             "description": "Multi-Architecture-Raytrace-Xraymission-Simulator",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "pyspeckit",
             "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
             "provisional": false,
             "stable": true,
-            "home_url": "https://pyspeckit.readthedocs.org",
+            "home_url": "https://pyspeckit.readthedocs.io",
             "repo_url": "https://github.com/pyspeckit/pyspeckit",
-            "pypi_name": "pyspeckit"
+            "pypi_name": "pyspeckit",
+            "description": "An extensible spectroscopic analysis toolkit for astronomy.",
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "linetools",
             "maintainer": "J. Xavier Prochaska, Nicolas Tejos, and Neil Crighton",
             "provisional": false,
             "stable": true,
-            "home_url": "http://linetools.readthedocs.io",
+            "home_url": "https://linetools.readthedocs.io",
             "repo_url": "https://github.com/linetools/linetools",
-            "pypi_name": "linetools"
+            "pypi_name": "linetools",
+            "description": "Package for the analysis of 1-D spectra for astronomy.",
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "poliastro",
-            "maintainer": "Juan Luis Cano Rodríguez",
+            "maintainer": "Juan Luis Cano Rodr\u00edguez",
             "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/poliastro/poliastro",
             "home_url": "http://docs.poliastro.space",
             "pypi_name": "poliastro",
-            "description": "Astrodynamics and Orbital Mechanics computations"
+            "description": "Astrodynamics and Orbital Mechanics computations",
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
         },
         {
             "name": "hips",
@@ -365,9 +659,19 @@
             "repo_url": "https://github.com/hipspy/hips",
             "home_url": "https://hips.readthedocs.io",
             "pypi_name": "hips",
-            "description": "A Python astronomy package for HiPS : Hierarchical Progressive Surveys."
-         },
-         {
+            "description": "A Python astronomy package for HiPS : Hierarchical Progressive Surveys.",
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
+        },
+        {
             "name": "regions",
             "maintainer": "Christoph Deil and Johannes King",
             "provisional": false,
@@ -375,9 +679,78 @@
             "repo_url": "https://github.com/astropy/regions",
             "home_url": "https://astropy-regions.readthedocs.io",
             "pypi_name": "regions",
-            "description": "A Python astronomy package region handling."
-         },
-         {
+            "description": "A Python astronomy package region handling.",
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
+        },
+        {
+            "name": "synphot",
+            "maintainer": "Pey Lian Lim",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://synphot.readthedocs.io",
+            "repo_url": "https://github.com/spacetelescope/synphot_refactor",
+            "pypi_name": "synphot",
+            "description": "A Python astronomy package for synthetic photometry.",
+            "image": "http://synphot.readthedocs.io/en/latest/_images/spectrum-2.png",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2017-11-08"
+            }
+        },
+        {
+           "name": "astropy-healpix",
+           "maintainer": "Christoph Deil <Deil.Christoph@gmail.com> and Thomas Robitaille <thomas.robitaille@gmail.com>",
+           "provisional": false,
+           "stable": false,
+           "repo_url": "https://github.com/astropy/astropy-healpix",
+           "home_url": "https://astropy-healpix.readthedocs.io/",
+           "pypi_name": "astropy-healpix",
+           "description": "A BSD-licensed HEALPix implementation for Astropy",
+           "image": null,
+           "review": {
+             "functionality": "General package",
+               "ecointegration": "Good",
+               "documentation": "Good",
+               "testing": "Good",
+               "devstatus": "Heavy development",
+               "python3": "Good",
+               "last-updated": "2017-11-27"
+           }
+       },
+       {
+          "name": "Saba",
+          "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
+          "provisional": false,
+          "stable": true,
+          "repo_url": "https://github.com/astropy/saba",
+          "home_url": "https://saba.readthedocs.io",
+          "pypi_name": "saba",
+          "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
+          "review": {
+            "functionality": "General package",
+              "ecointegration": "Good",
+              "documentation": "Good",
+              "testing": "Good",
+              "devstatus": "Functional but low activity",
+              "python3": "Good",
+              "last-updated": "2017-09-26"
+          }
+       },
+       {
             "name": "dust_extinction",
             "maintainer": "Karl Gordon",
             "provisional": false,
@@ -386,6 +759,7 @@
             "home_url": "http://dust-extinction.readthedocs.io",
             "pypi_name": "dust_extinction",
             "description": "Interstellar dust extinction curves",
+            "image": null,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",

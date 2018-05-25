@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../css/jquery.sidr.light.css" />
 
 
-<title>Astropy | v2.0 Released!</title>
+<title>Astropy | v3.0 Released!</title>
 
 <!-- Google analytics -->
 <script src="../js/analytics.js"></script>
@@ -78,13 +78,13 @@
 
 	<section>
 
-		<h1>Astropy v2.0 Released!</h1>
+		<h1>Astropy v3.0 Released!</h1>
 
 		<p>
 		Dear colleagues,
 		</p>
 		<p>
-		We are very happy to announce the v2.0 release of the Astropy package,
+		We are very happy to announce the v3.0 release of the Astropy package,
 		a core Python package for Astronomy:
 		</p>
 		<p align='center'>
@@ -94,26 +94,31 @@
 		<p>
 		Astropy is a community-driven Python package intended to contain much of the
 		core functionality and common tools needed for astronomy and astrophysics.
+		It is part of the Astropy Project, which aims to foster an ecosystem of
+		interoperable astronomy packages for Python.
 		</p>
 		<p>
 		New and improved major functionality in this release includes:
 		<ul>
-		<li>Most models now support parameters having units (i.e., being Quantity objects).</li>
-		<li>A new CCDData class that is directly useful for typical astronomical images and implements the NDData interface.</li>
-		<li>Coordinate frame objects can now carry proper motions and radial velocities, and will carry them through and transform them between frames. (This functionality is experimental and feedback is greatly desired.)</li>
-		<li>Many of the typical mixin columns for astropy tables can now be saved into ECSV files and fully round-tripped.</li>
-		<li>The fft and direct versions of the convolution algorithm in astropy.convolution are now more consistent and work better with typical use cases.</li>
-		<li>A variety of additions to the astropy.stats subpackage</li>
+			<li>Full support for velocities in the coordinates subpackage, including SkyCoord objects and proper motion corrections.</li>
+			<li>Very large ASCII files can now be read in as chunks, allowing larger tables to be efficiently read in, along with other performance improvements reading tables.</li>
+			<li>Time objects can now be read from or written to FITS files following the official FITS time standard. </li>
+			<li>Table mixin columns (e.g., quantities) can now be losslessly saved to HDF5 or FITS tables.</li>
+			<li>Constants can now be versioned using context managers.</li>
+			<li>Support for quantities in scipy special functions</li>
+			<li>A new command line script, "showtable", is available to display tables from any format Astropy can read.</li>
+			<li>The pytest plugins for testing Astropy have been moved to external packages, enabling their use in a wider range of Python packages.</li>
+			<li>False alarm probabilities are now available for the Lomb-Scargle periodogram implementation.</li>
 		</ul>
 		</p>
 		<p>
 		In addition, hundreds of smaller improvements and fixes have been made. An overview of the changes is provided at:
 		</p>
 		<p>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://docs.astropy.org/en/stable/whatsnew/2.0.html">http://docs.astropy.org/en/stable/whatsnew/2.0.html</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://docs.astropy.org/en/stable/whatsnew/3.0.html">http://docs.astropy.org/en/stable/whatsnew/3.0.html</a>
 		</p>
 		<p>
-		Note that the Astropy 2.x series will be the last versions of Astropy that will support Python 2.x.  Future versions of Astropy will only support Python 3.x. 
+		Note that the Astropy 3.x series is the first to only support Python 3.  Python 2 users can continue to use the 2.x series, which will receive bug fixes and support until the Python developers permanently sunset Python 2.7  (scheduled for 2019).
 		</p>
 		<p>
 		Instructions for installing Astropy are provided on our <a
@@ -125,7 +130,7 @@
 		</p>
 		<p>
 		If you make use of the <a href="https://www.continuum.io/downloads">Anaconda
-		Python Distribution</a>, you can update to Astropy v2.0 with:
+		Python Distribution</a>, you can update to Astropy v3.0 with:
 		</p>
 <pre>
 conda update astropy
@@ -143,13 +148,14 @@ pip install astropy --upgrade
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/astropy/astropy/issues">https://github.com/astropy/astropy/issues</a>
 		</p>
 		<p>
-		Over 232 developers have contributed code to Astropy so far, and you can find out more about the team behind Astropy here:
+		Over 253 developers have contributed code to Astropy so far, and you can find out more about the team behind Astropy here:
 		</p>
 		<p>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.astropy.org/team.html">http://www.astropy.org/team.html</a>
 		</p>
 		<p>
-		Astropy v2.0 now repaces v1.0 as the long term support release, and will be supported until the end of 2019.  The next major release of Astropy (scheduled for January 2018) will only support Python 3.x. So if you need to use Astropy in a very stable environment in Python 2.7, you should continue to use the 2.0.x series after 3.0.x is released.
+			As a reminder, Astropy v2.0 (our long term support release) will continue to be supported with bug fixes until the end 2019, so if you need to use Astropy in a very stable environment, you may want to consider staying on the v2.0.x set of releases (for which we have recently released v2.0.4).
+
 		</p>
 		<p>
 		If you use Astropy directly for your work, or as a dependency to another
@@ -158,10 +164,24 @@ pip install astropy --upgrade
 		</p>
 		<p class="citation"><cite>This research made use of Astropy, a
 		community-developed core Python package for Astronomy (Astropy Collaboration,
-		2013).</cite></p>
+		2018).</cite></p>
 
-		<p>where <cite>(Astropy Collaboration, 2013)</cite> is a citation to the <a href="https://doi.org/10.1051/0004-6361/201322068" target="_blank">Astropy Paper</a> (<a href="http://adsabs.harvard.edu/abs/2013A%26A...558A..33A" target="_blank">ADS</a> -
+		<p>where <cite>(Astropy Collaboration, 2018)</cite> is a citation to the <a href="https://arxiv.org/abs/1801.02634" target="_blank">Astropy Paper II</a> (<a href="http://adsabs.harvard.edu/abs/2018arXiv180102634T" target="_blank">ADS</a> -
+		<a href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2018arXiv180102634T&data_type=BIBTEX&db_key=PRE&nocookieset=1" target="_blank">BibTeX</a>).</p>
+		<p>
+		This paper is still under review, however, and an earlier paper is available
+		describing the status of the package at the time of v0.2. If your work has 
+		used Astropy since then, you are encouraged to acknowledge both papers:
+	  </p>
+
+		<p class="citation"><cite>This research made use of Astropy, a
+		community-developed core Python package for Astronomy (Astropy Collaboration,
+		2013, 2018).</cite></p>
+
+		<p>where <cite>(Astropy Collaboration, 2013)</cite> is a citation to the <a href="https://doi.org/10.1051/0004-6361/201322068" target="_blank">first Astropy Paper</a> (<a href="http://adsabs.harvard.edu/abs/2013A%26A...558A..33A" target="_blank">ADS</a> -
 		<a href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&amp;data_type=BIBTEX&amp;db_key=AST&amp;nocookieset=1" target="_blank">BibTeX</a>).</p>
+
+
 		<p>
 		Special thanks to the coordinator for this release: Brigitta Sipocz.
 		</p>
