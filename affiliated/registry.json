@@ -385,7 +385,16 @@
             "repo_url": "https://github.com/karllark/dust_extinction",
             "home_url": "http://dust-extinction.readthedocs.io",
             "pypi_name": "dust_extinction",
-            "description": "Interstellar dust extinction curves"
+            "description": "Interstellar dust extinction curves",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2018-5-25"
+            }
          }
     ]
 }
