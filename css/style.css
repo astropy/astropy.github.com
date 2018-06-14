@@ -550,11 +550,6 @@ table{
 	word-break:overflow-wrap;
 }
 
-/*
-tr{
-	border-bottom: 1px #efefef solid;
-}
-*/
 
 
 thead{
@@ -567,7 +562,7 @@ thead{
 
 td{
 	padding:16px 5px;
-	font-size: 140%;
+	font-size: 100%;
 	line-height: 1.3em;
 }
 
