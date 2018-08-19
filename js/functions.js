@@ -374,15 +374,17 @@ function makeShields(pkg) {
     console.log("K"+key);
     if (review_name_map.hasOwnProperty(key)) {
       shield_name = review_name_map[key];
-      pkgvalue = pkg.review[key];
+      if ("review" in pkg && key in pkg.review ) {
+        pkgvalue = pkg.review[key];
 
-      color = review_color_map[pkgvalue];
-      if (typeof color == 'undefined') {
-        color = review_default_color;
+        color = review_color_map[pkgvalue];
+        if (typeof color == 'undefined') {
+          color = review_default_color;
+        }
+
+        url = "https://img.shields.io/badge/" + shield_name + "-" + pkgvalue + "-" + color + ".svg";
+        shield_string += "<img src=\"" + url + "\">" + " "
       }
-
-      url = "https://img.shields.io/badge/" + shield_name + "-" + pkgvalue + "-" + color + ".svg";
-      shield_string += "<img src=\"" + url + "\">" + " "
     }
   }
   return shield_string
