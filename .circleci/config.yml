@@ -18,3 +18,11 @@ jobs:
           command: |
             conda install requests termcolor
             python affiliated/validate_registry.py
+      - store_artifacts:
+          path: /root/project
+          destination: html
+
+
+notify:
+  webhooks:
+    - url: https://giles.cadair.com/circleci
