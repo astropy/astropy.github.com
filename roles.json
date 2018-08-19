@@ -123,7 +123,7 @@
       "role" : "Distribution coordinator",
       "url" : "Distribution_coordinator",
       "sub-role" : ["Conda", "Debian", "Fedora", "Gentoo", "ArchLinux", "MacPorts"],
-      "lead" : ["Matt Craig", "Ole Streicher", "Sergio Pascual", "Sébastien Fabbro", "Médéric Boquien", "Christoph Deil"],
+      "lead" : ["Matt Craig", "Ole Streicher", "Sergio Pascual", "Unfilled", "Médéric Boquien", "Christoph Deil"],
       "deputy" : ["Unfilled", "Unfilled", "Unfilled", "Unfilled", "Miguel de Val-Borro, Stuart Mumford", "Hans Moritz Günther"],
       "role-head" : ["Distribution coordinator (1 per distribution channel)"],
       "role-subhead" : [],
