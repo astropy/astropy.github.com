@@ -13,11 +13,15 @@ jobs:
           name: Conda setup
           command: |
             conda config --set always_yes yes --set changeps1 no
+            conda install requests termcolor
       - run:
           name: Validate affiliated package JSON repository
           command: |
-            conda install requests termcolor
             python affiliated/validate_registry.py
+      - run:
+          name: Validate roles JSON file
+          command: |
+            python validate_roles.py
       - store_artifacts:
           path: /root/project
           destination: html
