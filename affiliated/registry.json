@@ -769,6 +769,26 @@
                 "python3": "Good",
                 "last-updated": "2018-5-25"
             }
+         },
+         {
+            "name": "corral",
+            "maintainer": "Toros Survey Team",
+            "provisional": false,
+            "stable": true,
+            "repo_url": "https://github.com/toros-astro/corral",
+            "home_url": "http://corral.readthedocs.io/",
+            "pypi_name": "corral-pipeline",
+            "description": "Corral will solve your pipeline needs by merging a database full connection interface with a MVC model, by making you able of editing your custom schemas and adding the possibility of writting specific processing steps following a intuitive data handling model.",
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2018-8-21"
+            }
          }
     ]
 }
