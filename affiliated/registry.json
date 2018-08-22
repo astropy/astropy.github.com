@@ -579,7 +579,7 @@
             "repo_url": "https://github.com/Chandra-MARX/marxs",
             "home_url": "https://marxs.readthedocs.io/",
             "pypi_name": "marxs",
-            "description": "Multi-Architecture-Raytrace-Xraymission-Simulator",
+            "description": "Multi-Architecture-Raytrace-Xraymission-Simulator (MARXS) is a toolsuite to ray-trace X-ray observatories. It is primarily aimed at astronomical X-ray satellites and sounding rocket payloads, but can be used to ray-trace experiments in the laboratory as well.",
             "image": null,
             "review": {
                 "functionality": "Specialized package",
