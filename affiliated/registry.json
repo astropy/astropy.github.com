@@ -939,6 +939,17 @@
                 "python3": "Good",
                 "last-updated": "2019-07-23"
             }
+          },
+          {
+             "name": "astroalign",
+             "maintainer": "Toros Survey Team",
+             "provisional": false,
+             "stable": true,
+             "repo_url": "https://github.com/toros-astro/astroalign",
+             "home_url": "http://astroalign.readthedocs.io/",
+             "pypi_name": "astroalign",
+             "description": "Astrometric registration of images when no WCS info is available",
+             "image": null
           }
      ]
 }
