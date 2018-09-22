@@ -29,6 +29,39 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+.footer {
+	color: black;
+	background-color: #f5f5f5;
+	position: relative;
+}
+.footer-text {
+	width: 50%;
+	padding: 12px 12px;
+}
+.footer-text a:hover {
+	color: #FF851B;
+}
+.footer-stamp {
+	position: absolute;
+	top: 20px;
+	right: 10px;
+}
+@media (max-width: 710px) {
+  .footer-text {
+	width: 40%;
+	padding: 12px 6px;
+  }
+}
+@media (max-width: 593px) {
+  .footer-text {
+	width: 90%;
+	padding: 12px 12px;
+  }
+  .footer-stamp {
+	position: static;
+	margin: 13px;
+  }
+}
 body {
 	line-height: 1;
 }
