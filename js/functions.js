@@ -295,7 +295,8 @@ function populateTable(tableid, data) {
         for (i=0;i<(ncols - 1);i++) { row.insertCell(i + 1).innerHTML = ' '; }
     } else {
         var pkgs = data.packages;
-
+        //inserting total number of affiliated packages at top of table
+        $("#total-pkgs").text(pkgs.length);
         //First figure out the correct order if we sort on the name
         var nmarr = new Array(pkgs.length);
         var sortorder = new Array(pkgs.length);
