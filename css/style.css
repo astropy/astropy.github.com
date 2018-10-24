@@ -697,3 +697,7 @@ color: white;
     border-right: 5px solid transparent;
     border-top: 5px solid white;
 }
+
+#roles-table td {
+	padding: 7px 5px;
+}
