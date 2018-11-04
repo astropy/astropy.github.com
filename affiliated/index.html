@@ -161,31 +161,74 @@
 
 	<h1>Becoming an Affiliated Package</h1>
 
-	<p>If you are a developer of an astronomy package and would like your package to become affiliated with the Astropy Project, leave a message on the <a href="http://groups.google.com/group/astropy-dev">astropy-dev</a> group requesting affiliated package status.  If you are comfortable doing so, you should also create a pull request adding your package to the registry file on the <a href="https://github.com/astropy/astropy.github.com">github repository for this web site</a>.  The Astropy coordination commitee and community will then consider your package based on the standards below. </p>
+	<p>If you are a developer of an astronomy package and would like your package
+	to become affiliated with the Astropy Project, please take a look at the
+	<a href="https://github.com/astropy/astropy-procedures/blob/master/documents/affiliated_package_review_process.md#proposing-an-affiliated-package">
+  instructions for proposing an affiliated package</a>. We recommend that you
+	also take a look at the
+	<a href="https://github.com/astropy/astropy-procedures/blob/master/documents/affiliated_package_review_guidelines.md">
+	guidelines for reviewing affiliated packages</a> since this will give you a
+	sense of whether your package is ready for review. Broadly speaking, your
+	package should:</p>
 
 	<ul>
-		<li>It should use <a href="http://docs.astropy.org/">classes and functions from the astropy package</a> wherever possible and appropriate. This facilitates re-use of code and sharing of resources.  </li>
 
-		<li>The package should have documentation that adequately explains the use of the package, at standards comparable to astropy. Additionally, user-facing classes and functions should all have docstrings. We suggest using sphinx, with the numpydoc-like <a href="http://docs.astropy.org/en/stable/development/docguide.html">docstring standards used by astropy</a>, but this is not a strict requirement as long as the documentation is of comparable quality.</li>
+		<li>Be useful to astronomers. Packages are acceptable whether they are
+		useful to a specific domain of astronomy or whether they are useful to a
+		large fraction of astronomers (and also beyond astronomy).
 
-		<li>The package should make a best-effort to include an easy-to-run test suite that covers its intended functionality. We realize this is not always possible, but when it is, a test suite is a crucial element of stable software and reproducible science.</li>
+		<li>Be written in a way that is readable and understandable by others. While
+		not a strict requirement, we also provide <a
+		href="http://docs.astropy.org/en/stable/development/codeguide.html">coding
+		guidelines</a> that will make your code easier to read by members of the
+		community.</li>
 
-		<li>The package developer(s) should make an effort to connect with the Astropy developer community, including developers from  the core astropy package or any related affiliated packages.</li>
+		<li>Use <a href="http://docs.astropy.org/">classes and functions from the
+		astropy package</a> wherever possible and appropriate, and (as much as
+		possible) avoid duplication with other packages in the Astropy ecosystem.
+		This facilitates re-use of code and sharing of resources.</li>
 
-		<li>While not a strict requirement, we also provide <a href="http://docs.astropy.org/en/stable/development/codeguide.html">coding guidelines</a> that will make your code easier to read by members of the community.</li>
+		<li>Have documentation that adequately explains the use
+		of the package, at standards comparable to astropy. Additionally,
+		user-facing classes and functions should all have docstrings. We suggest
+		using sphinx, with the numpydoc-like <a
+		href="http://docs.astropy.org/en/stable/development/docguide.html">docstring
+		standards used by astropy</a>, but this is not a strict requirement as long
+		as the documentation is of comparable quality.</li>
 
-		<li>We strongly encourage affiliated packages be compatible with Python 3.x. Tips for how to achieve this are given in the <a href="http://docs.astropy.org/en/stable/development/codeguide.html#writing-portable-code-for-python-2-and-3"> revelant section of the coding guidelines</a>. The recommended route is to use the <a href="http://pythonhosted.org/six/">six</a> package.</li>
+		<li>Make a best-effort to include an easy-to-run test
+		suite that covers its intended functionality. We realize this is not always
+		possible, but when it is, a test suite is a crucial element of stable
+		software and reproducible science.</li>
+
+		<li>Ideally be compatible with Python 3.x. Tips for how to achieve this are
+		given in the
+		<a href="http://docs.astropy.org/en/stable/development/codeguide.html#writing-portable-code-for-python-2-and-3">
+		revelant section of the coding guidelines</a>. The recommended route is to
+		use the <a href="http://pythonhosted.org/six/">six</a> package if you want
+		to also be Python 2-compatible.</li>
+
 	</ul>
 	</p>
 
+	<p>In addition, you should make an effort to connect with the Astropy
+	developer community, including developers from the core astropy package or
+	any related affiliated packages. If your package is determined to meet the above
+	standards, it will be accepted and added to the affiliated package registry.
+	Note however that if packages become unmaintained or do not meet the standards
+	anymore, they may be removed from the list of affiliated packages.</p>
 
-	<p>If your package is judged by the coordination committee to meet these
-	standards, it will be added to the affiliated package registry. Note however
-	that if packages become unmaintained or do not meet the standards anymore,
-	they may be removed from the list of affiliated packages.</p>
-
-	<h2>Affiliated Package Template</h2>
-	<p>If you are considering creating a new astronomy package and would like it to be an Astropy affiliated package, we provide a <a href="https://github.com/astropy/package-template">package template</a> to make it much easier to meet these standards. It provides the necessary structure to generate documentation like that used in the astropy package, a ready-to-use testing framework, and a variety of tools that streamline tasks like user configuration, caching downloaded files, or linking C-compiled extensions. More details on this template are available in the <a href="https://github.com/astropy/package-template/blob/master/README.rst">usage instructions for the template</a>.
+	<h2>Package Template</h2>
+	<p>If you are considering creating a new astronomy package and would like it
+	to be an Astropy affiliated package, we provide a <a
+	href="https://github.com/astropy/package-template">package template</a> to
+	make it much easier to meet these standards. It provides the necessary
+	structure to generate documentation like that used in the astropy package, a
+	ready-to-use testing framework, and a variety of tools that streamline tasks
+	like user configuration, caching downloaded files, or linking C-compiled
+	extensions. More details on this template are available in the <a
+	href="https://github.com/astropy/package-template/blob/master/README.rst">usage
+	instructions for the template</a>.
 	</p>
 <p>We recommend that you join the <a href="https://groups.google.com/forum/#!forum/astropy-affiliated-maintainers">astropy-affiliated-maintainers</a> mailing list to be kept informed of updates to the package template, as well as to have any dicussions related to setting up affiliated packages.</p>
 
