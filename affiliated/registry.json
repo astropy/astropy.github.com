@@ -579,7 +579,7 @@
             "repo_url": "https://github.com/Chandra-MARX/marxs",
             "home_url": "https://marxs.readthedocs.io/",
             "pypi_name": "marxs",
-            "description": "Multi-Architecture-Raytrace-Xraymission-Simulator",
+            "description": "Multi-Architecture-Raytrace-Xraymission-Simulator (MARXS) is a toolsuite to ray-trace X-ray observatories. It is primarily aimed at astronomical X-ray satellites and sounding rocket payloads, but can be used to ray-trace experiments in the laboratory as well.",
             "image": null,
             "review": {
                 "functionality": "Specialized package",
@@ -712,8 +712,87 @@
             }
         },
         {
+           "name": "astropy-healpix",
+           "maintainer": "Christoph Deil <Deil.Christoph@gmail.com> and Thomas Robitaille <thomas.robitaille@gmail.com>",
+           "provisional": false,
+           "stable": false,
+           "repo_url": "https://github.com/astropy/astropy-healpix",
+           "home_url": "https://astropy-healpix.readthedocs.io/",
+           "pypi_name": "astropy-healpix",
+           "description": "A BSD-licensed HEALPix implementation for Astropy",
+           "image": null,
+           "review": {
+             "functionality": "General package",
+               "ecointegration": "Good",
+               "documentation": "Good",
+               "testing": "Good",
+               "devstatus": "Heavy development",
+               "python3": "Good",
+               "last-updated": "2017-11-27"
+           }
+       },
+       {
+          "name": "Saba",
+          "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
+          "provisional": false,
+          "stable": true,
+          "repo_url": "https://github.com/astropy/saba",
+          "home_url": "https://saba.readthedocs.io",
+          "pypi_name": "saba",
+          "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
+          "review": {
+            "functionality": "General package",
+              "ecointegration": "Good",
+              "documentation": "Good",
+              "testing": "Good",
+              "devstatus": "Functional but low activity",
+              "python3": "Good",
+              "last-updated": "2017-09-26"
+          }
+       },
+       {
+            "name": "dust_extinction",
+            "maintainer": "Karl Gordon",
+            "provisional": false,
+            "stable": false,
+            "repo_url": "https://github.com/karllark/dust_extinction",
+            "home_url": "http://dust-extinction.readthedocs.io",
+            "pypi_name": "dust_extinction",
+            "description": "Interstellar dust extinction curves",
+            "image": null,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2018-5-25"
+            }
+         },
+         {
+            "name": "corral",
+            "maintainer": "Toros Survey Team",
+            "provisional": false,
+            "stable": true,
+            "repo_url": "https://github.com/toros-astro/corral",
+            "home_url": "http://corral.readthedocs.io/",
+            "pypi_name": "corral-pipeline",
+            "description": "Corral will solve your pipeline needs by merging a database full connection interface with a MVC model, by making you able of editing your custom schemas and adding the possibility of writting specific processing steps following a intuitive data handling model.",
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2018-8-21"
+            }
+        },
+        {
             "name": "baseband",
-            "maintainer": "Marten H. van Kerkwijk and Chenchong Zhu",
+            "maintainer": "Marten H. van Kerkwijk <mhvk@astro.utoronto.ca>",
             "provisional": false,
             "stable": true,
             "home_url": "https://baseband.readthedocs.io",
@@ -721,6 +800,15 @@
             "pypi_name": "baseband",
             "description": "Radio baseband IO: readers and writers for VLBI and other baseband data formats.",
             "image": null
+            "review": {
+                "functionality": "To be filled out by the reviewer",
+                "ecointegration": "To be filled out by the reviewer",
+                "documentation": "To be filled out by the reviewer",
+                "testing": "To be filled out by the reviewer",
+                "devstatus": "To be filled out by the reviewer",
+                "python3": "To be filled out by the reviewer",
+                "last-updated": "To be filled out by the reviewer"
+            }
         }
     ]
 }
