@@ -799,7 +799,7 @@
             "repo_url": "https://github.com/mhvk/baseband",
             "pypi_name": "baseband",
             "description": "Radio baseband IO: readers and writers for VLBI and other baseband data formats.",
-            "image": null
+            "image": null,
             "review": {
                 "functionality": "To be filled out by the reviewer",
                 "ecointegration": "To be filled out by the reviewer",
