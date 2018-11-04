@@ -20,7 +20,14 @@ REVIEW_DEVSTATUS = {'Unmaintained', 'Functional but low activity',
                     'Functional but unmaintained', 'Heavy development', 'Good'}
 REVIEW_GENERIC = {'Needs work', 'Partial', 'Good'}
 
-registry = json.load(open(os.path.join(os.path.dirname(__file__), "registry.json")))
+
+jsonfn = os.path.join(os.path.dirname(__file__), "registry.json")
+try:
+    registry = json.load(open(jsonfn))
+except json.decoder.JSONDecodeError as e:
+    cprint(jsonfn + ' : ' + e.args[0], color='red')
+    cprint("*** JSON file appears to be malformed - see above ***", color='red')
+    sys.exit(2)
 
 error = 0
 
@@ -117,5 +124,6 @@ for package in registry['packages']:
                     error += 1
 
 if error > 0:
-    cprint(f"** {error} error(s) occurred - see above for details **", file=sys.stderr, color='red')
+    sornot = 's' if error > 1 else ''
+    cprint(f"** {error} error{sornot} occurred - see above for details **", file=sys.stderr, color='red')
     sys.exit(1)
