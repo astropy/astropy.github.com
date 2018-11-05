@@ -799,7 +799,16 @@
             "home_url": "https://ytree.readthedocs.io/",
             "pypi_name": "ytree",
             "description": "A tool for working with merger-tree data from multiple sources.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "To be filled out by the reviewer",
+                "ecointegration": "To be filled out by the reviewer",
+                "documentation": "To be filled out by the reviewer",
+                "testing": "To be filled out by the reviewer",
+                "devstatus": "To be filled out by the reviewer",
+                "python3": "To be filled out by the reviewer",
+                "last-updated": "To be filled out by the reviewer"
+            }
          }
     ]
 }
