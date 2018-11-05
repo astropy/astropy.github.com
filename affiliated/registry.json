@@ -942,14 +942,21 @@
           },
           {
              "name": "astroalign",
-             "maintainer": "Toros Survey Team",
-             "provisional": false,
+             "maintainer": "TOROS Dev Team <martin.beroiz@utrgv.edu>",
              "stable": true,
-             "repo_url": "https://github.com/toros-astro/astroalign",
              "home_url": "http://astroalign.readthedocs.io/",
+             "repo_url": "https://github.com/toros-astro/astroalign",
              "pypi_name": "astroalign",
              "description": "Astrometric registration of images when no WCS info is available",
-             "image": null
+             "review": {
+                "functionality": "To be filled out by the reviewer",
+                "ecointegration": "To be filled out by the reviewer",
+                "documentation": "To be filled out by the reviewer",
+                "testing": "To be filled out by the reviewer",
+                "devstatus": "To be filled out by the reviewer",
+                "python3": "To be filled out by the reviewer",
+                "last-updated": "To be filled out by the reviewer"
+              }
           }
      ]
 }
