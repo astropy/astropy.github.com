@@ -771,6 +771,26 @@
             }
          },
          {
+            "name": "feets",
+            "maintainer": "Juan B Cabral <jbc.developr@gmail.com>",
+            "provisional": false,
+            "stable": true,
+            "repo_url": "https://github.com/carpyncho/feets",
+            "home_url": "http://feets.readthedocs.io",
+            "pypi_name": "feets",
+            "description": "feATURE eXTRACTOR FOR tIME sERIES.",
+            "image": "https://github.com/carpyncho/feets/raw/master/res/logo_medium.png",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2018-11-27"
+            }
+         },
+         {
             "name": "corral",
             "maintainer": "Toros Survey Team",
             "provisional": false,
@@ -789,26 +809,6 @@
                 "python3": "Good",
                 "last-updated": "2018-8-21"
             }
-         },
-         {
-            "name": "feets",
-            "maintainer": "Juan B Cabral <jbc.developr@gmail.com>",
-            "provisional": false,
-            "stable": true,
-            "repo_url": "https://github.com/carpyncho/feets",
-            "home_url": "http://feets.readthedocs.io",
-            "pypi_name": "feets",
-            "description": "feATURE eXTRACTOR FOR tIME sERIES.",
-            "image": "https://github.com/carpyncho/feets/raw/master/res/logo_medium.png",
-            "review": {
-                "functionality": "",
-                "ecointegration": "",
-                "documentation": "",
-                "testing": "",
-                "devstatus": "",
-                "python3": "",
-                "last-updated": ""
-            } 
-         } 
+         }
     ]
 }
