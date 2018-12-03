@@ -104,7 +104,7 @@
       "url" : "Packagetemplate_maintainer",
       "sub-role" : [],
       "lead" : ["1Thomas Robitaille"],
-      "deputy" : ["Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan"],
+      "deputy" : ["Brigitta Sipocz, Larry Bradley, Adrian Price-Whelan, Stuart Mumford"],
       "role-head" : ["Package-template maintainer"],
       "role-subhead" : [],
       "description" : ["Lead the development of maintenance of the affiliated package package-template, which is used by affiliated packages. This includes:"],
