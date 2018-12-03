@@ -143,7 +143,7 @@
       "role" : "Sub-package maintainer",
       "url" : "Subpackage_maintainer",
       "sub-role" : ["astropy.constants", "astropy.convolution", "astropy.coordinates", "astropy.cosmology", "astropy.io.ascii", "astropy.io.fits", "astropy.io.misc", "astropy.io.votable", "astropy.modeling", "astropy.nddata", "astropy.samp", "astropy.stats", "astropy.table", "astropy.time", "astropy.units", "astropy.utils", "astropy.visualization", "astropy.wcs"],
-      "lead" : ["David Shupe", "Adam Ginsburg", "Erik Tollerud", "Alex Conley", "Tom Aldcroft", "Unfilled", "1Thomas Robitaille", "Stefan Becker", "Nadia Dencheva", "Matt Craig", "1Thomas Robitaille", "Steve Crawford", "Tom Aldcroft", "Tom Aldcroft", "Marten van Kerkwijk", "Pey Lian Lim", "Larry Bradley", "Unfilled"],
+      "lead" : ["David Shupe", "Adam Ginsburg", "Erik Tollerud", "Alex Conley", "Tom Aldcroft", "Unfilled", "1Thomas Robitaille", "Stefan Becker", "Nadia Dencheva", "1Matt Craig", "1Thomas Robitaille", "Steve Crawford", "Tom Aldcroft", "Tom Aldcroft", "Marten van Kerkwijk", "Pey Lian Lim", "Larry Bradley", "Unfilled"],
       "deputy" : ["Marten van Kerkwijk", "Axel Donath, Larry Bradley", "Stuart Littlefair, Adrian Price-Whelan", "Unfilled", "Hans Moritz Günther", "Simon Conseil, Michael Seifert, Dan D'Avella", "Matteo Bachetti", "Pey Lian Lim", "Perry Greenfield, Thomas Robitaille", "Steve Crawford, Michael Seifert", "Unfilled", "Larry Bradley", "Marten van Kerkwijk", "Marten van Kerkwijk", "Adrian Price-Whelan", "Brigitta Sipocz, Erik Tollerud", "Thomas Robitaille", "Nadia Dencheva"],
       "role-head" : ["Sub-package maintainer (1 per core package sub-package)"],
       "role-subhead" : [],
