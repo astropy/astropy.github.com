@@ -679,7 +679,7 @@
             "repo_url": "https://github.com/astropy/regions",
             "home_url": "https://astropy-regions.readthedocs.io",
             "pypi_name": "regions",
-            "description": "A Python astronomy package region handling.",
+            "description": "A Python astronomy package for region handling, including serialization (input and output) and masking.",
             "image": null,
             "review": {
                 "functionality": "General package",
