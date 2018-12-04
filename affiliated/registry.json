@@ -9,7 +9,16 @@
             "repo_url": "https://github.com/astropy/specutils",
             "pypi_name": "specutils",
             "description": "Affiliated package for analysis tools and basic data types of astronomical spectra.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2018-12-04"
+            }
         },
         {
             "name": "astroquery",
