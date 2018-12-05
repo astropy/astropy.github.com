@@ -74,7 +74,7 @@
       "url" : "Astropyorg_web_page_maintainer",
       "sub-role" : [],
       "lead" : ["1Erik Tollerud"],
-      "deputy" : ["Grant Tremblay"],
+      "deputy" : ["Adrian Price-Whelan", "Grant Tremblay"],
       "role-head" : ["Astropy.org web page maintainer"],
       "role-subhead" : [],
       "description" : ["Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:"],
