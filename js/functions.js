@@ -88,8 +88,13 @@ $( document ).ready(function(){
                 }
 
                 //generating rows
-                rows += '<tr>' +
-                          '<td>' + rowRole + '</td>' +
+                if (index == 0) {
+                    rows += '<tr class="border-top">';
+                } else {
+                    rows += '<tr>';
+                }
+
+                rows +=   '<td>' + rowRole + '</td>' +
                           '<td>' + rowSubRole + '</td>' +
                           '<td>' + lead + '</td>' +
                           '<td>' + rowDeputy + '</td>' +

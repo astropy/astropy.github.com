@@ -605,8 +605,8 @@ td:first-child {
   }
 
 /* Create gray border after every 3rd row to visually separate packages */
-table tr:nth-of-type(4n) td {
-    border-bottom: 1px solid rgba(128,128,128,0.2);
+table tr.border-top {
+    border-top: 1px solid rgba(128,128,128,0.2);
 }
 
 
