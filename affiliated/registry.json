@@ -9,7 +9,16 @@
             "repo_url": "https://github.com/astropy/specutils",
             "pypi_name": "specutils",
             "description": "Affiliated package for analysis tools and basic data types of astronomical spectra.",
-            "image": null
+            "image": null,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2018-12-04"
+            }
         },
         {
             "name": "astroquery",
@@ -599,7 +608,7 @@
             "home_url": "https://pyspeckit.readthedocs.io",
             "repo_url": "https://github.com/pyspeckit/pyspeckit",
             "pypi_name": "pyspeckit",
-            "description": "An extensible spectroscopic analysis toolkit for astronomy.",
+            "description": "A toolkit for spectroscopic input/output, plotting, fitting, and manipulation.",
             "image": null,
             "review": {
                 "functionality": "General package",
@@ -679,7 +688,7 @@
             "repo_url": "https://github.com/astropy/regions",
             "home_url": "https://astropy-regions.readthedocs.io",
             "pypi_name": "regions",
-            "description": "A Python astronomy package region handling.",
+            "description": "A Python astronomy package for region handling, including serialization (input and output) and masking.",
             "image": null,
             "review": {
                 "functionality": "General package",
