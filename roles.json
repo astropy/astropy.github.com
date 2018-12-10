@@ -44,7 +44,7 @@
       "url" : "Learn_coordinator",
       "sub-role" : [],
       "lead" : ["Kelle Cruz"],
-      "deputy" : ["Adrian Price-Whelan"],
+      "deputy" : [],
       "role-head" : ["Learn coordinator"],
       "role-subhead" : [],
       "description" : ["Oversee the Astropy \"Learn\" ecosystem, including:"],
