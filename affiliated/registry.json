@@ -146,7 +146,7 @@
             "provisional": false,
             "stable": true,
             "home_url": "https://reproject.readthedocs.io",
-            "repo_url": "https://github.com/astrofrog/reproject",
+            "repo_url": "https://github.com/astropy/reproject",
             "pypi_name": "reproject",
             "image": null,
             "description": "Python-based astronomical image reprojection.",
