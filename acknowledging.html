@@ -55,9 +55,19 @@ Volume = {156},
 Year = 2018,
 Bdsk-Url-1 = {https://doi.org/10.3847/1538-3881/aabc4f}}`;
 
+        var zenodo = `@misc{astropy:zenodo,
+  author       = {The Astropy Collaboration},
+  title        = {{astropy v3.0.4: a core python package for
+                   astronomy}},
+  month        = aug,
+  year         = 2018,
+  doi          = {10.5281/zenodo.1461593},
+  url          = {https://doi.org/10.5281/zenodo.1461593}
+}`
+
         var $temp = $("<textarea>");
         $("body").append($temp);
-        $temp.val(bibtex2013 + '\r\n\r\n' + bibtex2018).select();
+        $temp.val(bibtex2013 + '\r\n\r\n' + bibtex2018 + '\r\n\r\n' + zenodo).select();
         document.execCommand("copy");
         $temp.remove();
     }
@@ -123,7 +133,7 @@ Bdsk-Url-1 = {https://doi.org/10.3847/1538-3881/aabc4f}}`;
 
 		<h2>In Publications</h2>
 
-		<p>If you use Astropy for work/research presented in a publication (whether directly, or as a dependency to another package), we ask that you please cite the Astropy papers, and recommend that you cite the Zenodo record for the version of Astropy that you use.
+		<p>If you use Astropy for work/research presented in a publication (whether directly, or as a dependency to another package), we ask that you please cite the Astropy papers. We also recommend that you cite the Zenodo record for the version of Astropy that you use:
             <ul>
                 <li><a href="https://arxiv.org/abs/1801.02634" target="_blank">Astropy Paper II</a>
                     (<a href="http://adsabs.harvard.edu/abs/2018arXiv180102634T" target="_blank">ADS</a> -
@@ -133,12 +143,12 @@ Bdsk-Url-1 = {https://doi.org/10.3847/1538-3881/aabc4f}}`;
                     (<a href="http://adsabs.harvard.edu/abs/2013A%26A...558A..33A" target="_blank">ADS</a> -
                     <a href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&amp;data_type=BIBTEX&amp;db_key=AST&amp;nocookieset=1" target="_blank">BibTeX</a>)
                 </li>
-                <li><a href="https://doi.org/10.5281/zenodo.1461536"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1461536.svg" alt="DOI"></a>
+                <li>Latest software version: <a href="https://doi.org/10.5281/zenodo.1461536"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1461536.svg" alt="DOI"></a>
                 </li>
             </ul>
     </p>
 
-        <a class="button" onclick="copyBibtex()">Copy BibTeX to clipboard</a>
+        <a class="button" onclick="copyBibtex()">Copy all BibTeX to clipboard</a>
 
         <p>
             We provide the following LaTeX/BibTeX acknowledgment if there is no specific place to cite the papers:
