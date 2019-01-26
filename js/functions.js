@@ -217,7 +217,7 @@ $( document ).ready(function(){
         });
     });
 
-    //making permalink visible only when user moves cursor on headline, otherwise hidden
+    // makes permalink visible only when user moves cursor on headline, otherwise hidden
     $("h1").hover(function() {
         $(this).children("a").css("visibility", "visible");
     }, function() {
