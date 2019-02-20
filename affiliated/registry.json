@@ -22,7 +22,7 @@
         },
         {
             "name": "astroquery",
-            "maintainer": "Adam Ginsburg and Brigitta Sipocz <adam.g.ginsburg@gmail.com>",
+            "maintainer": "Adam Ginsburg and Brigitta Sipőcz <adam.g.ginsburg@gmail.com>",
             "provisional": false,
             "stable": true,
             "home_url": "https://astroquery.readthedocs.io",
@@ -42,7 +42,7 @@
         },
         {
             "name": "photutils",
-            "maintainer": "Larry Bradley and Brigitta Sipocz <lbradley@stsci.edu>",
+            "maintainer": "Larry Bradley and Brigitta Sipőcz <lbradley@stsci.edu>",
             "provisional": false,
             "stable": false,
             "home_url": "https://photutils.readthedocs.io/",
@@ -82,7 +82,7 @@
         },
         {
             "name": "astroML",
-            "maintainer": "Jake Vanderplas <vanderplas@astro.washington.edu>",
+            "maintainer": "Jake Vanderplas and Brigitta Sipőcz <bsipocz@uw.edu>",
             "provisional": false,
             "stable": true,
             "home_url": "https://astroml.github.com/",
