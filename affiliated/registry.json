@@ -1,5 +1,23 @@
 {
     "packages": [
+      {
+            "name": "einsteinpy",
+            "maintainer": "Shreyas Bapat, Ritwik Saha, Bhavya Bhatt and Priyanshu Khandelwal <bapat.shreyas@gmail.com>",
+            "stable": true,
+            "home_url": "https://einsteinpy.github.io",
+            "repo_url": "https://github.com/einsteinpy/einsteinpy",
+            "pypi_name": "einsteinpy",
+            "description": "A Python Package for General Relativity and Gravitational Astronomy",
+            "review": {
+               "functionality": "To be filled out by the reviewer",
+               "ecointegration": "To be filled out by the reviewer",
+               "documentation": "To be filled out by the reviewer",
+               "testing": "To be filled out by the reviewer",
+               "devstatus": "To be filled out by the reviewer",
+               "python3": "To be filled out by the reviewer",
+               "last-updated": "To be filled out by the reviewer"
+            }
+        },
         {
             "name": "specutils",
             "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
