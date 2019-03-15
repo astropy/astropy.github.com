@@ -1,5 +1,23 @@
 {
     "packages": [
+	{
+	    "name": "sbpy",
+	    "maintainer": "Michael Mommert, Michael S. P. Kelley, Miguel de Val-Borro, Jian-Yang Li <sbpy.dev@gmail.com>",
+	    "stable": true,
+	    "home_url": "http://sbpy.org",
+	    "repo_url": "https://github.com/NASA-Planetary-Science/sbpy",
+	    "pypi_name": "",
+	    "description": "A Python Module for Small-Body Planetary Astronomy",
+	    "review": {
+		"functionality": "To be filled out by the reviewer",
+		"ecointegration": "To be filled out by the reviewer",
+		"documentation": "To be filled out by the reviewer",
+		"testing": "To be filled out by the reviewer",
+		"devstatus": "To be filled out by the reviewer",
+		"python3": "To be filled out by the reviewer",
+		"last-updated": "To be filled out by the reviewer"
+	    }
+	},
         {
             "name": "specutils",
             "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
