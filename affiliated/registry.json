@@ -1,6 +1,23 @@
 {
     "packages": [
         {
+            "name": "mirapy",
+            "maintainer": "Swapnil Sharma and Akhil Singhal <swap.sha96@gmail.com>",
+            "stable": true,
+            "home_url": "https://mirapy.org/",
+            "repo_url": "https://github.com/mirapy-org/mirapy",
+            "pypi_name": "mirapy",
+            "description": "MiraPy: A Python package for Deep Learning in Astronomy",
+            "review": {
+             "functionality": "To be filled out by the reviewer",
+             "ecointegration": "To be filled out by the reviewer",
+             "documentation": "To be filled out by the reviewer",
+             "testing": "To be filled out by the reviewer",
+             "devstatus": "To be filled out by the reviewer",
+             "python3": "To be filled out by the reviewer",
+             "last-updated": "To be filled out by the reviewer"
+        },
+        {
             "name": "specutils",
             "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
             "provisional": false,
