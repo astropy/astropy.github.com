@@ -1,6 +1,27 @@
 {
     "packages": [
         {
+            "name": "astropy core package",
+            "maintainer": "Astropy Coordination Committee",
+            "provisional": false,
+            "stable": true,
+            "home_url": "https://docs.astropy.org",
+            "repo_url": "https://github.com/astropy/astropy",
+            "pypi_name": "astropy",
+            "description": "A common core package for Astronomy in Python.",
+            "image": null,
+            "coordinated": true,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Good",
+                "last-updated": "2019-6-5"
+            }
+        },
+        {
             "name": "specutils",
             "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
             "provisional": false,
