@@ -282,7 +282,7 @@ function maintainer_translator(maint, pkgnm) {
 
 
 function populateTables(data, tstat, xhr) {
-    populateTable('accepted-package-table', data);
+    populateTable('affiliated-package-table', data);
 }
 
 
@@ -301,7 +301,7 @@ function populateTable(tableid, data) {
     } else {
         var pkgs = data.packages;
         //inserting total number of affiliated packages at top of table
-        $("#total-pkgs").text(pkgs.length);
+        $("#total-affil-pkgs").text(pkgs.length);
         //First figure out the correct order if we sort on the name
         var nmarr = new Array(pkgs.length);
         var sortorder = new Array(pkgs.length);
