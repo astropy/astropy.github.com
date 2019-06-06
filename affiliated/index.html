@@ -71,17 +71,21 @@
 
 
 
-	<h1>Affiliated Packages</h1>
+	<h1>Astropy Affiliated Packages</h1>
 
-	<p>A major part of the Astropy Project is the concept of “Affiliated Packages”. An affiliated package is an astronomy-related Python package that is not part of the astropy core package, but has requested to be included as part of the Astropy Project community. These packages demonstrate a commitment to Astropy’s goals of improving reuse, interoperability, and interface standards for Python astronomy and astrophysics packages.</p>
+	<p>A major part of the Astropy Project is the concept of “Astropy affiliated Packages”. An affiliated package is an astronomy-related Python package that is not part of the astropy core or coordinated packages, but has requested to be included as part of the Astropy Project community. These packages demonstrate a commitment to Astropy’s goals of improving reuse, interoperability, and interface standards for Python astronomy and astrophysics packages.  In many (but not all) cases, affiliated packages also follow similar devlopment processes and package templates as for the core package.</p>
 
 	<p>If you are developer interested in signing up as an affiliated package, details are in the <a href="#affiliated-instructions">Becoming an Affiliated Package</a> section.</p>
+
+	<h1>Astropy Coordinated Packages</h1>
+
+	<p>A related concept is that of “Astropy coordinated Packages”. Coordinated packages are similar to affiliated packages, but the Astropy Project as a whole maintain them.  In practice this means the Astropy coordination committee has administrative control of a coordinated package repository (delegated to the maintainers), and that maintainers of these packages have <a href="../team.html"> formal roles</a> in the Astropy Project.  The most prominent of these coordinated packages is the Astropy core package itself. In some cases these are packages identified by the core team as needing development separate from the core (either they are experimental or problem space-focused), while others started as affiliated packages but have become so important to the ecosystem that they grew to become coordinated.</p>
 
 	</section>
 
 	<section id="installing">
 
-	<h1>Installing Affiliated Packages</h1>
+	<h1>Installing Affiliated and Coordinated Packages</h1>
 
 	<p>  The simplest way to install and keep up-to-date most affiliated packages is to use the <a href="https://www.continuum.io/why-anaconda">Anaconda python distribution</a>.  This distribution includes the <a href="http://astropy.readthedocs.io/en/stable/index.html">Astropy core package</a> already built in, and you can then easily install or update affiliated packages using the <a href="https://anaconda.org/astropy/packages">Astropy Conda channel</a> of binary installable packages.  Once you have Anaconda installed, you can do <code>conda search --channel astropy some_affiliated_package</code>.  Most importantly, you can then install them with <code>conda install --channel astropy some_affiliated_package</code>.  The Astropy channel is maintained by the Astropy Project on Github via code in the <a href="https://github.com/astropy/conda-channel-astropy">conda-channel-astropy</a> repository. </p>
 
