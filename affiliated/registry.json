@@ -367,7 +367,7 @@
             "pypi_name": "gwcs",
             "image": null,
             "description": "Package for managing the world coordinate system (WCS) of astronomical data.",
-            "coordinated": true,
+            "coordinated": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -745,7 +745,7 @@
             "pypi_name": "regions",
             "description": "A Python astronomy package for region handling, including serialization (input and output) and masking.",
             "image": null,
-            "coordinated": false,
+            "coordinated": true,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -787,6 +787,7 @@
            "pypi_name": "astropy-healpix",
            "description": "A BSD-licensed HEALPix implementation for Astropy",
            "image": null,
+           "coordinated": true,
            "review": {
              "functionality": "General package",
                "ecointegration": "Good",
@@ -806,6 +807,7 @@
           "home_url": "https://saba.readthedocs.io",
           "pypi_name": "saba",
           "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
+          "coordinated": false,
           "review": {
             "functionality": "General package",
               "ecointegration": "Good",

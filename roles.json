@@ -152,9 +152,9 @@
 }, {
       "role" : "Coordinated package maintainer",
       "url" : "Coordinated_package_maintainer",
-      "sub-role" : ["astroquery", "gwcs", "astroplan", "photutils", "ccdproc", "specutils", "reproject"],
-      "lead" : ["Adam Ginsburg, Brigitta Sipőcz", "Nadia Dencheva", "Brett Morris", "Larry Bradley", "Matt Craig, Michael Seifert", "Nicholas Earl, Erik Tollerud", "Thomas Robitaille"],
-      "deputy" : ["Unfilled", "Unfilled", "Unfilled", "Brigitta Sipőcz", "Steven Crawford", "Adam Ginsburg, Steve Crawford", "Unfilled"],
+      "sub-role" : ["astroquery", "astropy-healpix", "photutils", "ccdproc", "specutils", "reproject", "regions"],
+      "lead" : ["Adam Ginsburg, Brigitta Sipőcz", "Christoph Deil", "Larry Bradley", "Matt Craig, Michael Seifert", "Nicholas Earl, Erik Tollerud", "Thomas Robitaille", "Christoph Deil"],
+      "deputy" : ["Unfilled", "Thomas Robitaille", "Brigitta Sipőcz", "Steven Crawford", "Adam Ginsburg, Steve Crawford", "Unfilled", "Johannes King"],
       "role-head" : ["Astropy coordinated package maintainer"],
       "role-subhead" : [],
       "description" : ["Maintain an astropy coordinated package, including:"],
