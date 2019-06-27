@@ -594,15 +594,16 @@ thead{
 
 
 td{
-	padding:12px 5px;
+	padding:5px 5px;
 	font-size: 100%;
 	line-height: 1.3em;
 }
 
 
-td:first-child {
-    font-weight: bold;
-  }
+td.first-package-row {
+	padding:15px 5px 5px 5px;
+	font-weight: bold;
+	}
 
 /* Create gray border after every 3rd row to visually separate packages */
 table tr.border-top {
