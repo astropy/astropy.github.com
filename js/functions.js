@@ -328,6 +328,8 @@ function populateTable(tableid, data) {
             pypicell = namerow.insertCell(3);
 
             nmcell.innerHTML = pkgi.name;
+            nmcell.className = 'first-package-row'
+            nmcell.setAttribute('width', 100)
             urlcell.innerHTML = url_translator(pkgi.home_url);
             repocell.innerHTML = repo_translator(pkgi.repo_url);
             pypicell.innerHTML = pypi_translator(pkgi.pypi_name);
