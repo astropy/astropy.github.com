@@ -1,6 +1,24 @@
 {
     "packages": [
         {
+            "name": "PyNeb",
+            "maintainer": "Christophe Morisset <chris.morisset@gmail.com>",
+            "stable": true,
+            "home_url": "http://www.iac.es/proyecto/PyNeb/",
+            "repo_url": "https://github.com/Morisset/PyNeb_devel",
+            "pypi_name": "PyNeb",
+            "description": "PyNeb (Luridiana V., Morisset C. and Shaw, R. A 2013) is a modern python tool to compute emission line emissivities (recombination and collisionally excited lines).",
+            "review": {
+                "functionality": "To be filled out by the reviewer",
+                "ecointegration": "To be filled out by the reviewer",
+                "documentation": "To be filled out by the reviewer",
+                "testing": "To be filled out by the reviewer",
+                "devstatus": "To be filled out by the reviewer",
+                "python3": "To be filled out by the reviewer",
+                "last-updated": "To be filled out by the reviewer"
+                       }
+        },
+        {
             "name": "specutils",
             "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
             "provisional": false,
