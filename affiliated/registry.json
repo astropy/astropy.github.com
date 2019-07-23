@@ -856,6 +856,24 @@
                 "python3": "Good",
                 "last-updated": "2019-06-18"
             }
-        }
-    ]
+        },
+        {
+            "name": "EinsteinPy",
+            "maintainer": "Shreyas Bapat, Ritwik Saha, Bhavya Bhatt and Priyanshu Khandelwal <bapat.shreyas@gmail.com>",
+            "stable": true,
+            "home_url": "https://einsteinpy.github.io",
+            "repo_url": "https://github.com/einsteinpy/einsteinpy",
+            "pypi_name": "einsteinpy",
+            "description": "A Python Package for General Relativity and Gravitational Astronomy",
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Heavy development",
+                "python3": "Good",
+                "last-updated": "2019-07-23"
+            }
+          }
+     ]
 }
