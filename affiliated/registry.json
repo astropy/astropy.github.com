@@ -910,6 +910,7 @@
             "repo_url": "https://github.com/NASA-Planetary-Science/sbpy",
             "pypi_name": "",
             "description": "A Python Module for Small-Body Planetary Astronomy",
+            "coordinated": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -928,6 +929,7 @@
             "repo_url": "https://github.com/einsteinpy/einsteinpy",
             "pypi_name": "einsteinpy",
             "description": "A Python Package for General Relativity and Gravitational Astronomy",
+            "coordinated": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
