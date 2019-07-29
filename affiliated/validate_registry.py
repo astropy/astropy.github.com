@@ -6,7 +6,7 @@ from datetime import datetime
 
 import requests
 
-REQUIRED_KEYS = {'name', 'maintainer', 'stable', 'home_url', 'repo_url'}
+REQUIRED_KEYS = {'name', 'maintainer', 'stable', 'home_url', 'repo_url', 'coordinated'}
 
 OPTIONAL_KEYS = {'provisional', 'stable', 'pypi_name', 'image', 'review', 'description'}
 

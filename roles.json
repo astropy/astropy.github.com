@@ -149,5 +149,15 @@
       "role-subhead" : [],
       "description" : ["Maintain a sub-package of the astropy core package, including:"],
       "sub-description" : ["Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem", "Merging Pull Requests in the sub-package", "Keeping track of the “big picture” progress of the sub-package - includes new feature development and significant bugs", "Keeping track of frequent contributors to the sub-package and their relevant areas of expertise"]
+}, {
+      "role" : "Coordinated package maintainer",
+      "url" : "Coordinated_package_maintainer",
+      "sub-role" : ["astroquery", "astropy-healpix", "photutils", "ccdproc", "specutils", "reproject", "regions"],
+      "lead" : ["Adam Ginsburg, Brigitta Sipőcz", "Christoph Deil", "Larry Bradley", "Matt Craig, Michael Seifert", "Nicholas Earl, Erik Tollerud", "Thomas Robitaille", "Christoph Deil"],
+      "deputy" : ["Unfilled", "Thomas Robitaille", "Brigitta Sipőcz", "Steven Crawford", "Adam Ginsburg, Steve Crawford", "Unfilled", "Johannes King"],
+      "role-head" : ["Astropy coordinated package maintainer"],
+      "role-subhead" : [],
+      "description" : ["Maintain an astropy coordinated package, including:"],
+      "sub-description" : ["Maintaining the github repository for the coordinated package", "Maintaining the coordinated package's infrastructure (usually via the helpers and package template)", "Monitoring features and bringing them for inclusion in the core package when relevant", "All the same responsilities as a sub-package, but for the coordinated package."]
     }
 ]

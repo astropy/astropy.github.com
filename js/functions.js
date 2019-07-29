@@ -282,13 +282,29 @@ function maintainer_translator(maint, pkgnm) {
 
 
 function populateTables(data, tstat, xhr) {
-    populateTable('accepted-package-table', data);
+    populatePackageTable('coordinated', filter_pkg_data(data, "coordinated", true));
+    populatePackageTable('affiliated', filter_pkg_data(data, "coordinated", false));
+}
+
+function filter_pkg_data(data, field, value) {
+    if (data === null) {
+      return null;
+    }
+    var pkgs = data.packages;
+    var filtered_data = [];
+
+    for (i=0; i<pkgs.length; i++) {
+        if (pkgs[i][field] == value) {
+            filtered_data.push(pkgs[i]);
+        }
+    }
+    return {'packages': filtered_data};
 }
 
 
-function populateTable(tableid, data) {
+function populatePackageTable(tableid, data) {
     // Now we get the table and prepare it
-    var tab = document.getElementById(tableid);
+    var tab = document.getElementById(tableid + "-package-table");
     var ncols = tab.rows[0].cells.length;
 
     //we have to delete the "Loading..." row
@@ -301,7 +317,7 @@ function populateTable(tableid, data) {
     } else {
         var pkgs = data.packages;
         //inserting total number of affiliated packages at top of table
-        $("#total-pkgs").text(pkgs.length);
+        $("#total-" + tableid + "-pkgs").text(pkgs.length);
         //First figure out the correct order if we sort on the name
         var nmarr = new Array(pkgs.length);
         var sortorder = new Array(pkgs.length);

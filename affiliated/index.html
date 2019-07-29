@@ -71,17 +71,53 @@
 
 
 
-	<h1>Affiliated Packages</h1>
+	<h1>Astropy Affiliated Packages</h1>
 
-	<p>A major part of the Astropy Project is the concept of “Affiliated Packages”. An affiliated package is an astronomy-related Python package that is not part of the astropy core package, but has requested to be included as part of the Astropy Project community. These packages demonstrate a commitment to Astropy’s goals of improving reuse, interoperability, and interface standards for Python astronomy and astrophysics packages.</p>
+	<p>A major part of the Astropy Project is the concept of “Astropy
+	affiliated packages”. An affiliated package is an astronomy-related Python
+    package that is not part of the astropy core package, and is not managed by
+    the project but is a part of the Astropy Project community. These packages
+    demonstrate a commitment to Astropy’s goals of improving reuse,
+    interoperability, and interface standards for Python astronomy and
+    astrophysics packages.  In many (but not all) cases, affiliated packages
+    also follow similar devlopment processes and package templates as for the
+    core package.</p>
 
-	<p>If you are developer interested in signing up as an affiliated package, details are in the <a href="#affiliated-instructions">Becoming an Affiliated Package</a> section.</p>
+	<p>If you are developer interested in signing up as an affiliated package,
+	details are in the <a href="#affiliated-instructions">Becoming an
+	Affiliated Package</a> section.</p>
+
+	<h1>Astropy Coordinated Packages</h1>
+
+	<p>A related concept is that of “Astropy coordinated packages”. Coordinated
+	packages are similar to affiliated packages, but the Astropy Project as a
+	whole maintains them.  In practice this means the Astropy coordination
+	committee has administrative control of a coordinated package repository
+	(delegated to the maintainers), and that maintainers of these packages have
+	<a href="../team.html"> formal roles</a> in the Astropy Project.  The most
+    prominent of these coordinated packages is the Astropy core package itself.
+    In some cases these are packages identified by the core team as needing
+    development separate from the core (either they are experimental or problem
+    space-focused), while others started as affiliated packages but have become
+    so important to the ecosystem that they grew to become coordinated.</p>
+
+	<h2>Astropy Infrastructure Packages</h2>
+
+	<p>One final related category are the "Astropy infrastructure packages". 
+	These packages are those that are necessary infrastructure for Astropy 
+	packages - e.g. testing and documentation machinery.  While occasionally
+	these have astro-specific functionality, in general they are more generic
+	packages that are useful to packages outside of astronomy, and as a result
+	may have some maintainers outside the Astropy prokect. But some are also
+	Astropy coordinated packages, with maintainers drawn from the infrastructure
+	roles.
+    </p>
 
 	</section>
 
 	<section id="installing">
 
-	<h1>Installing Affiliated Packages</h1>
+	<h1>Installing Affiliated and Coordinated Packages</h1>
 
 	<p>  The simplest way to install and keep up-to-date most affiliated packages is to use the <a href="https://www.continuum.io/why-anaconda">Anaconda python distribution</a>.  This distribution includes the <a href="http://astropy.readthedocs.io/en/stable/index.html">Astropy core package</a> already built in, and you can then easily install or update affiliated packages using the <a href="https://anaconda.org/astropy/packages">Astropy Conda channel</a> of binary installable packages.  Once you have Anaconda installed, you can do <code>conda search --channel astropy some_affiliated_package</code>.  Most importantly, you can then install them with <code>conda install --channel astropy some_affiliated_package</code>.  The Astropy channel is maintained by the Astropy Project on Github via code in the <a href="https://github.com/astropy/conda-channel-astropy">conda-channel-astropy</a> repository. </p>
 
@@ -89,13 +125,50 @@
 
 	</section>
 
+	<section id="coordinated-package-registry">
+	  <h1>Coordinated Packages</h1>
+	  <p>The following table lists all current Astropy coordinated packages. They are determined from the <a href="http://www.astropy.org/affiliated/registry.json">json file</a>, which is the actual authoritative registry.</p>
+<!--	  <h3><u>Affiliated Packages</u></h3>-->
+      <p>Total number of coordinated packages: <strong id="total-coordinated-pkgs"></strong></p>
+
+	<table border="1" class="docutils" id="coordinated-package-table">
+	<colgroup>
+	<col width="5%" />
+	<col width="3%" />
+	<col width="3%" />
+	<col width="10%" />
+	</colgroup>
+	<thead valign="bottom">
+	<tr class="row-odd">
+	<th class="head"></th>
+	<th class="head"></th>
+	<th class="head"></th>
+	<th class="head"></th>
+	</tr>
+	</thead>
+	<tbody valign="top">
+	<tr class="row-even"><td rowspan="1">Loading...</td>
+	<td rowspan="1">&nbsp;</td>
+	<td rowspan="1">&nbsp;</td>
+	<td rowspan="1">&nbsp;</td>
+	<td rowspan="1">&nbsp;</td>
+	</tr>
+	<tr class="row-odd">
+	<td colspan="1">&nbsp;</td>
+	<td colspan="3">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>
+
+	</section>
+
 	<section id="affiliated-package-registry">
 	  <h1>Affiliated Packages Registry</h1>
 	  <p>The following table lists all currently registered affiliated packages. They are determined from the <a href="http://www.astropy.org/affiliated/registry.json">json file</a>, which is the actual authoritative registry.</p>
 <!--	  <h3><u>Affiliated Packages</u></h3>-->
-      <p>Total number of affiliated packages: <strong id="total-pkgs"></strong></p>
+      <p>Total number of affiliated packages: <strong id="total-affiliated-pkgs"></strong></p>
 
-	<table border="1" class="docutils" id="accepted-package-table">
+	<table border="1" class="docutils" id="affiliated-package-table">
 	<colgroup>
 	<col width="5%" />
 	<col width="3%" />
@@ -123,39 +196,6 @@
 	</tr>
 	</tbody>
 	</table>
-
-<!--
-	<table border="1" class="docutils" id="accepted-package-table">
-	<colgroup>
-	<col width="17%" />
-	<col width="10%" />
-	<col width="14%" />
-	<col width="13%" />
-	<col width="21%" />
-	<col width="14%" />
-	</colgroup>
-	<thead valign="bottom">
-	<tr class="row-odd"><th class="head"></th>
-	<th class="head"></th>
-	<th class="head"></th>
-	<th class="head"></th>
-	<th class="head"></th>
-	<th class="head"></th>
-	</tr>
-	</thead>
-	<tbody valign="top">
-	<tr class="row-even"><td rowspan="2">Loading...</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	<td rowspan="2">&nbsp;</td>
-	</tr>
-	<tr class="row-odd"></tr>
-	</tbody>
-	</table>
--->
 
 	</section>
 
