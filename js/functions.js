@@ -404,6 +404,7 @@ var review_color_map = {'Unmaintained': "red",
     "Functional but low activity": "orange",
     "Good": "brightgreen",
     "Partial": "orange",
+    "No": "orange",
     "Needs work": "red"
 };
 
