@@ -130,6 +130,7 @@ a.paralink{
     font-size: 0.8em;
     padding: 0 4px 0 4px;
     text-decoration: none;
+		opacity: 0.8;
     visibility: hidden;
 }
 

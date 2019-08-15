@@ -223,6 +223,17 @@ $( document ).ready(function(){
     }, function() {
         $(this).children("a").css("visibility", "hidden");
     });
+    $("h2").hover(function() {
+        $(this).children("a").css("visibility", "visible");
+    }, function() {
+        $(this).children("a").css("visibility", "hidden");
+    });
+    $("h3").hover(function() {
+        $(this).children("a").css("visibility", "visible");
+    }, function() {
+        $(this).children("a").css("visibility", "hidden");
+    });
+
 }); // Document Ready
 
 
