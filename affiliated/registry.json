@@ -400,27 +400,6 @@
             }
         },
         {
-            "name": "python-cpl",
-            "maintainer": "Ole Streicher",
-            "provisional": false,
-            "stable": false,
-            "home_url": "https://python-cpl.readthedocs.io",
-            "repo_url": "https://github.com/olebole/python-cpl",
-            "pypi_name": "python-cpl",
-            "description": "Framework to process ESO pipelines for the VLT instruments.",
-            "image": null,
-            "coordinated": false,
-            "review": {
-                "functionality": "Specialized package",
-                "ecointegration": "Partial",
-                "documentation": "Partial",
-                "testing": "Partial",
-                "devstatus": "Functional but low activity",
-                "python3": "Good",
-                "last-updated": "2017-11-08"
-            }
-        },
-        {
             "name": "astroplan",
             "maintainer": "Brett Morris",
             "provisional": false,
