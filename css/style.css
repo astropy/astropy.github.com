@@ -126,6 +126,20 @@ a:hover{
 	color:#333;
 }
 
+a.paralink{
+    font-size: 0.8em;
+    padding: 0 4px 0 4px;
+    text-decoration: none;
+		opacity: 0.8;
+    visibility: hidden;
+}
+
+a.paralink:hover{
+    background-color: #FF5000;
+    color: white;
+    text-decoration: none;
+}
+
 h1{
 	font-size: 24px;
 	margin-top: 10px;

@@ -216,6 +216,24 @@ $( document ).ready(function(){
             });
         });
     });
+
+    // makes permalink visible only when user moves cursor on headline, otherwise hidden
+    $("h1").hover(function() {
+        $(this).children("a").css("visibility", "visible");
+    }, function() {
+        $(this).children("a").css("visibility", "hidden");
+    });
+    $("h2").hover(function() {
+        $(this).children("a").css("visibility", "visible");
+    }, function() {
+        $(this).children("a").css("visibility", "hidden");
+    });
+    $("h3").hover(function() {
+        $(this).children("a").css("visibility", "visible");
+    }, function() {
+        $(this).children("a").css("visibility", "hidden");
+    });
+
 }); // Document Ready
 
 
