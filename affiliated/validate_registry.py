@@ -18,6 +18,7 @@ REVIEW_KEYS = {'functionality', 'ecointegration', 'documentation', 'testing',
 REVIEW_FUNCTIONALITY = {'Specialized package', 'General package'}
 REVIEW_DEVSTATUS = {'Unmaintained', 'Functional but low activity',
                     'Functional but unmaintained', 'Heavy development', 'Good'}
+REVIEW_PYTHON3 = {'No', 'Yes'}
 REVIEW_GENERIC = {'Needs work', 'Partial', 'Good'}
 
 
@@ -116,6 +117,11 @@ for package in registry['packages']:
                 if value not in REVIEW_DEVSTATUS:
                     cprint(f"   ERROR: Invalid devstatus in review for {name}: '{value}'. "
                            f"Valid options are {', '.join(REVIEW_DEVSTATUS)}", file=sys.stderr, color='red')
+                    error += 1
+            elif key == 'python3':
+                if value not in REVIEW_PYTHON3:
+                    cprint(f"   ERROR: Invalid python3 in review for {name}: '{value}'. "
+                           f"Valid options are {', '.join(REVIEW_PYTHON3)}", file=sys.stderr, color='red')
                     error += 1
             else:
                 if value not in REVIEW_GENERIC:

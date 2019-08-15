@@ -17,7 +17,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2019-6-5"
             }
         },
@@ -38,7 +38,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2018-12-04"
             }
         },
@@ -59,7 +59,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -80,7 +80,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -101,7 +101,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -122,7 +122,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Functional but low activity",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -143,7 +143,7 @@
                 "documentation": "Needs work",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -164,7 +164,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Functional but low activity",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -185,7 +185,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -206,7 +206,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Functional but low activity",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -227,7 +227,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -248,7 +248,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -269,7 +269,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -290,7 +290,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -311,7 +311,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -332,7 +332,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -353,7 +353,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Functional but low activity",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -374,7 +374,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -395,7 +395,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -416,7 +416,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -437,7 +437,7 @@
                 "documentation": "Needs work",
                 "testing": "Partial",
                 "devstatus": "Functional but low activity",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -458,7 +458,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -479,7 +479,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Functional but low activity",
-                "python3": "Partial",
+                "python3": "No",
                 "last-updated": "2017-11-08"
             }
         },
@@ -500,7 +500,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -521,7 +521,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -542,7 +542,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -563,7 +563,7 @@
                 "documentation": "Partial",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -584,7 +584,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -605,7 +605,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -626,7 +626,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -647,7 +647,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -668,7 +668,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -689,7 +689,7 @@
                 "documentation": "Good",
                 "testing": "Partial",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -710,7 +710,7 @@
                 "documentation": "Partial",
                 "testing": "Good",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -731,7 +731,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -752,7 +752,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2017-11-08"
             }
         },
@@ -773,7 +773,7 @@
                "documentation": "Good",
                "testing": "Good",
                "devstatus": "Heavy development",
-               "python3": "Good",
+               "python3": "Yes",
                "last-updated": "2017-11-27"
            }
        },
@@ -793,7 +793,7 @@
               "documentation": "Good",
               "testing": "Good",
               "devstatus": "Functional but low activity",
-              "python3": "Good",
+              "python3": "Yes",
               "last-updated": "2017-09-26"
           }
        },
@@ -814,7 +814,7 @@
                 "documentation": "Partial",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2018-5-25"
             }
          },
@@ -835,7 +835,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2018-11-27"
             }
          },
@@ -856,7 +856,7 @@
                 "documentation": "Partial",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2018-8-21"
             }
         },
@@ -877,7 +877,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Good",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2018-11-27"
             }
         },
@@ -896,7 +896,7 @@
                 "documentation": "Partial",
                 "testing": "Partial",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2019-06-18"
             }
         },
@@ -915,7 +915,7 @@
                 "documentation": "Good",
                 "testing": "Good",
                 "devstatus": "Heavy development",
-                "python3": "Good",
+                "python3": "Yes",
                 "last-updated": "2019-07-23"
             }
           },
@@ -934,7 +934,7 @@
                  "documentation": "Good",
                  "testing": "Good",
                  "devstatus": "Good",
-                 "python3": "Good",
+                 "python3": "Yes",
                  "last-updated": "2019-08-15"
              }
           }
