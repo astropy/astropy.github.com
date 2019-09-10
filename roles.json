@@ -24,7 +24,7 @@
       "url" : "Community_engagement_coordinator",
       "sub-role" : ["Overall", "Twitter", "Facebook", "Slack", "Conferences"],
       "lead" : ["Kelle Cruz", "Matt Craig", "Kelle Cruz", "Thomas Robitaille", "Unfilled"],
-      "deputy" : ["Unfilled", "Steve Crawford", "Thomas Robitaille, Erik Tollerud", "Unfilled", "Adrian Price-Whelan, Erik Tollerud, Thomas Robitaille, Kelle Cruz"],
+      "deputy" : ["Unfilled", "Steve Crawford", "Erik Tollerud", "Unfilled", "Adrian Price-Whelan, Erik Tollerud, Thomas Robitaille, Kelle Cruz"],
       "role-head" : ["Community engagement coordinator"],
       "role-subhead" : [],
       "description" : ["Facilitate engagement with the astropy community, including:"],
