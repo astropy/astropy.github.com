@@ -887,7 +887,7 @@
             "stable": false,
             "home_url": "https://github.com/NASA-Planetary-Science/sbpy",
             "repo_url": "https://github.com/NASA-Planetary-Science/sbpy",
-            "pypi_name": "",
+            "pypi_name": "sbpy",
             "description": "A Python Module for Small-Body Planetary Astronomy",
             "coordinated": false,
             "review": {
