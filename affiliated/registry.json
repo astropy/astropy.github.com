@@ -937,6 +937,25 @@
                  "python3": "Yes",
                  "last-updated": "2019-08-15"
              }
+          },
+          {
+              "name": "ligo.skymap",
+              "maintainer": "Leo Singer <leo.singer@ligo.org>",
+              "stable": true,
+              "home_url": "http://lscsoft.docs.ligo.org/ligo.skymap/",
+              "repo_url": "https://git.ligo.org/lscsoft/ligo.skymap",
+              "pypi_name": "ligo.skymap",
+              "description": "Read, write, generate, simulate, and visualize LIGO/Virgo gravitational-wave probability sky maps.",
+              "coordinated": false,
+              "review": {
+                  "functionality": "To be filled out by the reviewer",
+                  "ecointegration": "To be filled out by the reviewer",
+                  "documentation": "To be filled out by the reviewer",
+                  "testing": "To be filled out by the reviewer",
+                  "devstatus": "To be filled out by the reviewer",
+                  "python3": "To be filled out by the reviewer",
+                  "last-updated": "To be filled out by the reviewer"
+              }
           }
      ]
 }
