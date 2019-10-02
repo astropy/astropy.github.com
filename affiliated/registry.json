@@ -202,12 +202,12 @@
         },
         {
             "name": "gammapy",
-            "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
+            "maintainer": "Axel Donath <Axel.Donath@mpi-hd.mpg.de> and Régis Terrier <rterrier@apc.in2p3.fr>",
             "stable": false,
-            "home_url": "http://gammapy.org",
+            "home_url": "https://gammapy.org",
             "repo_url": "https://github.com/gammapy/gammapy",
             "pypi_name": "gammapy",
-            "description": "A high level gamma-ray astronomy data analysis package.",
+            "description": "A Python package for gamma-ray astronomy",
             "image": null,
             "coordinated": false,
             "review": {
