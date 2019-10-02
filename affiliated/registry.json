@@ -282,7 +282,7 @@
         },
         {
             "name": "pyregion",
-            "maintainer": "Jae-Joon Lee and Christoph Deil",
+            "maintainer": "Jae-Joon Lee",
             "stable": true,
             "home_url": "https://pyregion.readthedocs.io",
             "repo_url": "https://github.com/astropy/pyregion",
@@ -662,7 +662,7 @@
         },
         {
             "name": "hips",
-            "maintainer": "Christoph Deil and Thomas Boch",
+            "maintainer": "Thomas Boch",
             "stable": false,
             "repo_url": "https://github.com/hipspy/hips",
             "home_url": "https://hips.readthedocs.io",
