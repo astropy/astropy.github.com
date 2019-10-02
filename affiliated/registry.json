@@ -682,7 +682,7 @@
         },
         {
             "name": "regions",
-            "maintainer": "Christoph Deil and Johannes King",
+            "maintainer": "Larry Bradley and Adam Ginsburg",
             "stable": false,
             "repo_url": "https://github.com/astropy/regions",
             "home_url": "https://astropy-regions.readthedocs.io",
