@@ -182,7 +182,7 @@
         },
         {
             "name": "PyVO",
-            "maintainer": "Stefan Becker <sbecker@ari.uni-heidelberg.de>",
+            "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
             "stable": false,
             "home_url": "https://pyvo.readthedocs.io/",
             "repo_url": "https://github.com/pyvirtobs/pyvo",
