@@ -183,7 +183,7 @@
         {
             "name": "PyVO",
             "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
-            "stable": false,
+            "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
             "repo_url": "https://github.com/pyvirtobs/pyvo",
             "pypi_name": "pyvo",
