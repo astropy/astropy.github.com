@@ -182,8 +182,8 @@
         },
         {
             "name": "PyVO",
-            "maintainer": "Stefan Becker <sbecker@ari.uni-heidelberg.de>",
-            "stable": false,
+            "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
+            "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
             "repo_url": "https://github.com/pyvirtobs/pyvo",
             "pypi_name": "pyvo",
@@ -195,9 +195,9 @@
                 "ecointegration": "Partial",
                 "documentation": "Partial",
                 "testing": "Partial",
-                "devstatus": "Functional but low activity",
+                "devstatus": "Good",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2019-10-06"
             }
         },
         {
