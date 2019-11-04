@@ -15,6 +15,29 @@
 
 <!-- Google analytics -->
 <script src="js/analytics.js"></script>
+
+<!-- Meow woof -->
+<script>
+window.onload = function() {
+  var today = new Date();
+  var month = today.getMonth() + 1;
+  var date = today.getDate();
+
+  if (month == 4 && date == 1) {
+    $('#hero img').attr('src', 'images/astropy_meow.png');
+    $('#hero img').attr('onerror', 'this.src=\x27images/astropy_meow.png\x27; this.onerror=null;');
+
+    var dogeContainer = document.getElementById("prenew");
+    var dogeImg = document.createElement("img");
+    dogeImg.onload=function() {
+      dogeContainer.appendChild(dogeImg);
+    }
+    dogeImg.src = 'images/astropy_doge.png';
+    dogeImg.alt = 'wow so open very python';
+  }
+};
+</script>
+
 </head>
 
 <body id="index">
@@ -76,10 +99,10 @@
 		<p class="acknowledge">Please remember to <a href="acknowledging.html">acknowledge and cite</a> the use of Astropy!</p>
   </section>
 
-<section class="whatsnew">
+<section class="whatsnew"><div id="prenew"></div>
 	What's new in <a href="http://docs.astropy.org/en/stable/whatsnew/3.2.html">Astropy 3.2?</a>
 	<p class="version">Current Version: 3.2.3</p>
-
+	
 </section>
 
 	<section class="install">
