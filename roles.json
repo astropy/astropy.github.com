@@ -122,10 +122,10 @@
 }, {
       "role" : "Distribution coordinator",
       "url" : "Distribution_coordinator",
-      "sub-role" : ["Conda", "Debian", "Fedora", "Gentoo", "ArchLinux", "MacPorts"],
-      "lead" : ["Matt Craig", "Ole Streicher", "Sergio Pascual", "Unfilled", "Médéric Boquien", "Christoph Deil"],
-      "deputy" : ["Unfilled", "Unfilled", "Unfilled", "Unfilled", "Miguel de Val-Borro, Stuart Mumford", "Hans Moritz Günther"],
-      "role-head" : ["Distribution coordinator (1 per distribution channel)"],
+      "sub-role" : [],
+      "lead" : ["Matt Craig, Ole Streicher, Sergio Pascual, Médéric Boquien"],
+      "deputy" : ["Miguel de Val-Borro, Stuart Mumford, Hans Moritz Günther"],
+      "role-head" : ["Distribution coordinators"],
       "role-subhead" : [],
       "description" : ["Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system."],
       "sub-description" : []
