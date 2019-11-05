@@ -90,12 +90,12 @@
       "description" : ["Lead the development and maintenance of the astropy-helpers repository, including:"],
       "sub-description" : ["Managing issues/pull requests for the astropy-helpers repository", "Assisting the core package release coordinator, including performing (or helping perform) the release process for astropy-helpers during core package releases", "Performing any necessary incremental/bugfix releases between Astropy releases", "Communicating to affiliated package maintainers the availability of new versions of astropy-helpers, and assist in updating in cases where changes are not trivial"]
 }, {
-      "role" : "Astropy testing maintainer",
-      "url" : "Astropy_testing_maintainer",
+      "role" : "Testing infrastructure maintainer",
+      "url" : "Testing_infrastructure_maintainer",
       "sub-role" : [],
       "lead" : ["Unfilled"],
       "deputy" : ["Erik Tollerud, Thomas Robitaille"],
-      "role-head" : ["Astropy testing maintainer"],
+      "role-head" : ["Testing infrastructure maintainer"],
       "role-subhead" : [],
       "description" : ["Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:"],
       "sub-description" : ["Managing issues/pull request for the Astropy core package regarding testing infrastructure", "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required", "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)", "Supporting and enabling affiliated package usage of the testing infrastructure"]
