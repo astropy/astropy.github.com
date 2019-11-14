@@ -103,12 +103,6 @@ $( document ).ready(function(){
             });
         });
 
-        rows += '<tr>' +
-                  '<td>' + '<span style="color: blue;"><sup>1</sup>Would prefer deputy role</span>' + '</td>' +
-                  '<td></td>' +
-                  '<td></td>' +
-                  '<td></td>' +
-                '</tr>';
         $("#roles-table").append(rows);
     }
 
