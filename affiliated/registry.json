@@ -20,6 +20,23 @@
              "last-updated": "2020-1-21"
           }
         },
+          "name": "lenstronomy",
+          "maintainer": "Simon Birrer <sibirrer@gmail.com>",
+          "stable": true,
+          "home_url": "https://lenstronomy.readthedocs.io",
+          "repo_url": "https://github.com/sibirrer/lenstronomy",
+          "pypi_name": "lenstronomy",
+          "description": "Multi-purpose gravitational lensing and image modeling package",
+          "review": {
+             "functionality": "To be filled out by the reviewer",
+             "ecointegration": "To be filled out by the reviewer",
+             "documentation": "To be filled out by the reviewer",
+             "testing": "To be filled out by the reviewer",
+             "devstatus": "To be filled out by the reviewer",
+             "python3": "To be filled out by the reviewer",
+             "last-updated": "To be filled out by the reviewer"
+          }
+        },
         {
             "name": "astropy core package",
             "maintainer": "Astropy Coordination Committee",
