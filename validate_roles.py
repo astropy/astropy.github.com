@@ -3,15 +3,23 @@ import sys
 import json
 from termcolor import cprint
 
-REQUIRED_KEYS = {"role", "url", "sub-role", "lead", "deputy", "role-head",
-                 "role-subhead", "description", "sub-description"}
+REQUIRED_KEYS = {"role", "url", "role-head", "responsibilities"}
 
-LIST_KEYS = {"sub-role", "lead", "deputy", "role-head", "role-subhead",
-             "description", "sub-description"}
 
-STRING_KEYS = {"role", "url"}
+def assert_is_list(i, key, value):
+    if isinstance(value, list):
+        return 0
+    else:
+        cprint(f"   ERROR: Key \"{key}\" for role #{i} should be a list but instead is a {type(value)}", file=sys.stderr, color='red')
+        return 1
 
-LENGTH_MATCH_KEYSETS = [{"sub-role", "lead", "deputy"}]
+
+def assert_is_string(i, key, value):
+    if isinstance(value, str):
+        return 0
+    else:
+        cprint(f"   ERROR: Key \"{key}\" for role #{i} should be a string but instead is a {type(value)}", file=sys.stderr, color='red')
+        return 1
 
 
 jsonfn = "roles.json"
@@ -34,34 +42,32 @@ for i, role in enumerate(roles):
             cprint(f"   ERROR: Missing key(s) for role #{i}: {key_difference}", file=sys.stderr, color='red')
             error += 1
 
-        for key, value in role.items():
-            tval = type(value)
+        error += assert_is_string(i, 'role', role['role'])
+        error += assert_is_string(i, 'url', role['url'])
+        error += assert_is_string(i, 'role-head', role['role-head'])
 
-            if key in LIST_KEYS:
-                if not isinstance(value, list):
-                    cprint(f"   ERROR: Key \"{key}\" for role #{i} should be a list but instead is a {tval}", file=sys.stderr, color='red')
-                    error += 1
+        if 'sub-roles' in role:
+            if 'lead' in role or 'deputy' in role:
+                cprintf(f"   ERROR: lead and deputy should not be defined at top level for role #{i} since sub-roles are defined")
+                error += 1
+            for sub_role in role['sub-roles']:
+                error += assert_is_string(i, 'sub-roles[role]', sub_role['role'])
+                error += assert_is_list(i, 'sub-roles[lead]', sub_role['lead'])
+                error += assert_is_list(i, 'sub-roles[deputy]', sub_role['deputy'])
+        else:
+            error += assert_is_list(i, 'lead', role['lead'])
+            error += assert_is_list(i, 'deputy', role['deputy'])
 
-            if key in STRING_KEYS:
-                if not isinstance(value, str):
-                    cprint(f"   ERROR: Key \"{key}\" for role #{i} should be a string but instead is a {tval}", file=sys.stderr, color='red')
-                    error += 1
-
-        for keyset in LENGTH_MATCH_KEYSETS:
-            # this prevents exceptions if some of the keys are missing
-            lastlen = lastkey = None
-            for key in keyset & set(role.keys()):
-                thislen = len(role[key])
-                if thislen is 0:
-                    continue
-                if lastlen is not None and thislen != lastlen:
-                    cprint(f"   ERROR: Key \"{key}\" for role #{i} is length {thislen} which does not match \"{lastkey}\" (length {lastlen})", file=sys.stderr, color='red')
-                    error += 1
-                lastlen = thislen
-                lastkey = key
-
-
-
+        if isinstance(role['responsibilities'], list):
+            for resp in role['responsibilities']:
+                error += assert_is_string(i, 'responsibilities[description]', resp['description'])
+                for detail in resp['details']:
+                    error += assert_is_string(i, 'responsibilities[detail]', detail)
+        else:
+            resp = role['responsibilities']
+            error += assert_is_string(i, 'responsibilities[description]', resp['description'])
+            for detail in resp['details']:
+                error += assert_is_string(i, 'responsibilities[detail]', detail)
 
 if error > 0:
     sornot = 's' if error > 1 else ''
