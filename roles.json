@@ -80,9 +80,9 @@
         "url": "Astropy_GSoC_coordinator",
         "lead": "Brigitta Sip\u0151cz",
         "deputy": "Z\u00e9 Vin\u00edcius, Erik Tollerud",
-        "role-head": null,
+        "role-head": "Astropy GSoC coordinator",
         "responsibilities": {
-            "description": null,
+            "description": "Coordinate the participation of Astropy in the Google Summer of Code Project",
             "detail": []
         }
     },
