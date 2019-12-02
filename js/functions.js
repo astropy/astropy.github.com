@@ -50,41 +50,33 @@ $( document ).ready(function(){
             //role is an object containing information about each team role
             //index marks current lead
             var index = 0;
-            //regular expression used in searching for 1 in a string
-            var preferDeputyRegexp = /^1/i;
+
+            // for roles where there are no sub-roles, the lead and deputy are defined
+            // at the top-level of the JSON role dict - for convenience below we create
+            // a virtual sub-role with no heading
+            if (!('sub-roles' in role)) {
+                role['sub-roles'] = [{'role': '',
+                                      'lead':role['lead'],
+                                      'deputy':role['deputy']}];
+            }
+
             //creating each row by iterating over each lead in a role
-            role["lead"].forEach(function (lead) {
+            role["sub-roles"].forEach(function (subrole) {
                 //rowRole is displayed once for each role
                 rowRole = index == 0 ? '<a href="#' + role["url"] + '">' + role["role"] + '</a>' : "";
 
-                var rowSubRole = "";
-                //checking if a value exists at an index in role["sub-role"] array
-                if (typeof role["sub-role"][index] !== 'undefined' && role["sub-role"][index] !== null) {
-                    rowSubRole = role["sub-role"][index];
+                var rowSubRole = subrole['role'];
+
+                if (role['lead'] == "Unfilled") {
+                    rowLead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                } else {
+                    rowLead = subrole['lead'];
                 }
 
-                //checking if lead is unfilled or prefer deputy role
-                if (lead == "Unfilled") {
-                    lead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
-                }
-                if (preferDeputyRegexp.test(lead)) {
-                    //replacing 1 from string
-                    lead = lead.replace(preferDeputyRegexp, '');
-                    lead = '<span style="color: blue;">' + lead + '<sup>1</sup></span>';
-                }
-
-                //checking if a value exists at an index in role["deputy"] array
-                var rowDeputy = "";
-                if (typeof role["deputy"][index] !== 'undefined' && role["deputy"][index] !== null) {
-                    rowDeputy = role["deputy"][index];
-                    if (rowDeputy == "Unfilled") {
-                        rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
-                    }
-                    if (preferDeputyRegexp.test(rowDeputy)) {
-                        //replacing 1 from string
-                        rowDeputy = rowDeputy.replace(preferDeputyRegexp, '');
-                        rowDeputy = '<span style="color: blue;">' + rowDeputy + '<sup>1</sup></span>';
-                    }
+                if (subrole['deputy'] == "Unfilled") {
+                    rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                } else {
+                    rowDeputy = subrole['deputy'];
                 }
 
                 //generating rows
@@ -96,7 +88,7 @@ $( document ).ready(function(){
 
                 rows +=   '<td>' + rowRole + '</td>' +
                           '<td>' + rowSubRole + '</td>' +
-                          '<td>' + lead + '</td>' +
+                          '<td>' + rowLead + '</td>' +
                           '<td>' + rowDeputy + '</td>' +
                         '</tr>';
                 index++;
@@ -113,37 +105,43 @@ $( document ).ready(function(){
             //role is an object containing information about each team role
             var list = "";
             //checking if role["description"] array isn't empty
-            if (role["description"].length != 0) {
-                //generate list by iterating over each description in the role
-                if (role["sub-description"].length == 2 && role["sub-description"][0] instanceof Array) {
-                    //separate case for sections where
-                    //both role["sub-description"] & role["description"] contain two sub-arrays
-                    role["sub-description"][0].forEach(function (description) {
-                        list += '<li>' + description + '</li>';
-                    });
-                    blocks += '<br/>' +
-                              '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
-                              '<strong>' + role["role-subhead"][0] + '</strong>' +
-                              '<p>' + role["description"][0] + '</p>' +
-                              '<ul>' + list + '</ul>';
+            if (role["responsibilities"] != null) {
 
-                    list = '';
-                    role["sub-description"][1].forEach(function (description) {
-                        list += '<li>' + description + '</li>';
-                    });
-                    blocks += '<br/>' +
-                              '<strong>' + role["role-subhead"][1] + '</strong>' +
-                              '<p>' + role["description"][1] + '</p>' +
-                              '<ul>' + list + '</ul>';
-                } else {
-                    role["sub-description"].forEach(function (description) {
-                        list += '<li>' + description + '</li>';
-                    });
-                    blocks += '<br/>' +
-                              '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>' +
-                              '<p>' + role["description"] + '</p>' +
-                              '<ul>' + list + '</ul>';
+                // If responsibilities is a dict, wrap inside a list so that all entries have a list
+                // dicts
+                if (role['responsibilities'].constructor == Object) {
+                    role['responsibilities'] = [role['responsibilities']];
                 }
+
+                console.log(role['responsibilities']);
+
+                blocks += '<br/>' +
+                '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>';
+
+                index = 0;
+
+                role['responsibilities'].forEach(function (resp) {
+
+                    console.log(resp);
+
+                    detail_list = '';
+                    resp["detail"].forEach(function (detail) {
+                        detail_list += '<li>' + detail + '</li>';
+                    });
+
+                    if ('subrole-head' in resp) {
+                        if (index > 0) {
+                            blocks += '<br>';
+                        }
+                        blocks += '<strong>' + resp["subrole-head"] + '</strong>';
+                    }
+                    blocks += '<p>' + resp["description"] + '</p>' +
+                              '<ul>' + detail_list + '</ul>';
+
+                    index += 1;
+
+                })
+
             }
         });
         $("#roles-description").append(blocks);
