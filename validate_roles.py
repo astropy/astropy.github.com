@@ -6,7 +6,7 @@ from termcolor import cprint
 REQUIRED_KEYS = {"role", "url", "role-head", "responsibilities"}
 
 
-def assert_list(i, key, value):
+def assert_is_list(i, key, value):
     if isinstance(value, list):
         return 0
     else:
@@ -14,7 +14,7 @@ def assert_list(i, key, value):
         return 1
 
 
-def assert_string(i, key, value):
+def assert_is_string(i, key, value):
     if isinstance(value, str):
         return 0
     else:
