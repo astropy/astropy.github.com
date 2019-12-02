@@ -42,32 +42,32 @@ for i, role in enumerate(roles):
             cprint(f"   ERROR: Missing key(s) for role #{i}: {key_difference}", file=sys.stderr, color='red')
             error += 1
 
-        error += assert_string(i, 'role', role['role'])
-        error += assert_string(i, 'url', role['url'])
-        error += assert_string(i, 'role-head', role['role-head'])
+        error += assert_is_string(i, 'role', role['role'])
+        error += assert_is_string(i, 'url', role['url'])
+        error += assert_is_string(i, 'role-head', role['role-head'])
 
         if 'sub-roles' in role:
             if 'lead' in role or 'deputy' in role:
                 cprintf(f"   ERROR: lead and deputy should not be defined at top level for role #{i} since sub-roles are defined")
                 error += 1
             for sub_role in role['sub-roles']:
-                error += assert_string(i, 'sub-roles[role]', sub_role['role'])
-                error += assert_list(i, 'sub-roles[lead]', sub_role['lead'])
-                error += assert_list(i, 'sub-roles[deputy]', sub_role['deputy'])
+                error += assert_is_string(i, 'sub-roles[role]', sub_role['role'])
+                error += assert_is_list(i, 'sub-roles[lead]', sub_role['lead'])
+                error += assert_is_list(i, 'sub-roles[deputy]', sub_role['deputy'])
         else:
-            error += assert_list(i, 'lead', role['lead'])
-            error += assert_list(i, 'deputy', role['deputy'])
+            error += assert_is_list(i, 'lead', role['lead'])
+            error += assert_is_list(i, 'deputy', role['deputy'])
 
         if isinstance(role['responsibilities'], list):
             for resp in role['responsibilities']:
-                error += assert_string(i, 'responsibilities[description]', resp['description'])
+                error += assert_is_string(i, 'responsibilities[description]', resp['description'])
                 for detail in resp['details']:
-                    error += assert_string(i, 'responsibilities[detail]', detail)
+                    error += assert_is_string(i, 'responsibilities[detail]', detail)
         else:
             resp = role['responsibilities']
-            error += assert_string(i, 'responsibilities[description]', resp['description'])
+            error += assert_is_string(i, 'responsibilities[description]', resp['description'])
             for detail in resp['details']:
-                error += assert_string(i, 'responsibilities[detail]', detail)
+                error += assert_is_string(i, 'responsibilities[detail]', detail)
 
 if error > 0:
     sornot = 's' if error > 1 else ''
