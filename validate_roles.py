@@ -52,11 +52,11 @@ for i, role in enumerate(roles):
                 error += 1
             for sub_role in role['sub-roles']:
                 error += assert_string(i, 'sub-roles[role]', sub_role['role'])
-                error += assert_string(i, 'sub-roles[lead]', sub_role['lead'])
-                error += assert_string(i, 'sub-roles[deputy]', sub_role['deputy'])
+                error += assert_list(i, 'sub-roles[lead]', sub_role['lead'])
+                error += assert_list(i, 'sub-roles[deputy]', sub_role['deputy'])
         else:
-            error += assert_string(i, 'lead', role['lead'])
-            error += assert_string(i, 'deputy', role['deputy'])
+            error += assert_list(i, 'lead', role['lead'])
+            error += assert_list(i, 'deputy', role['deputy'])
 
         if isinstance(role['responsibilities'], list):
             for resp in role['responsibilities']:

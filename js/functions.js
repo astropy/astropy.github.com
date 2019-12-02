@@ -56,8 +56,8 @@ $( document ).ready(function(){
             // a virtual sub-role with no heading
             if (!('sub-roles' in role)) {
                 role['sub-roles'] = [{'role': '',
-                                      'lead':role['lead'],
-                                      'deputy':role['deputy']}];
+                                      'lead': role['lead'],
+                                      'deputy': role['deputy']}];
             }
 
             //creating each row by iterating over each lead in a role
@@ -67,16 +67,16 @@ $( document ).ready(function(){
 
                 var rowSubRole = subrole['role'];
 
-                if (role['lead'] == "Unfilled") {
+                if (subrole['lead'][0] == "Unfilled") {
                     rowLead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
                 } else {
-                    rowLead = subrole['lead'];
+                    rowLead = subrole['lead'].join(', ');
                 }
 
-                if (subrole['deputy'] == "Unfilled") {
+                if (subrole['deputy'][0] == ["Unfilled"]) {
                     rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
                 } else {
-                    rowDeputy = subrole['deputy'];
+                    rowDeputy = subrole['deputy'].join(', ');
                 }
 
                 //generating rows
