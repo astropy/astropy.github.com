@@ -7,7 +7,7 @@
         "role-head": "Coordination committee member (4 people)",
         "responsibilities": {
             "description": "Overall coordination and management of the Astropy project, including:",
-            "detail": [
+            "details": [
                 "Keeping a large-scale view of the Astropy ecosystem",
                 "Evaluating new affiliated package submissions and review of existing affiliated packages",
                 "Approving or rejecting Astropy APEs",
@@ -28,7 +28,7 @@
         "role-head": "Ombudsperson",
         "responsibilities": {
             "description": "Provide a point of contact for sensitive issues separate from the coordinating committee, including:",
-            "detail": [
+            "details": [
                 "Monitoring the <a href='mailto:confidential@astropy.org'>confidential@astropy.org</a> email account",
                 "Solicit and provide anonymized feedback to the astropy coordination committee regarding coordination of the project",
                 "Assist the coordination committee and community engagement coordinator with violations of the code of conduct or other ethical concerns"
@@ -68,7 +68,7 @@
         ],
         "responsibilities": {
             "description": "Facilitate engagement with the astropy community, including:",
-            "detail": [
+            "details": [
                 "Maintain the @astropy twitter account",
                 "Monitor/moderate the Python Users in Astronomy Facebook group",
                 "Keep track of/help organize conferences and workshops"
@@ -83,7 +83,7 @@
         "role-head": "Astropy GSoC coordinator",
         "responsibilities": {
             "description": "Coordinate the participation of Astropy in the Google Summer of Code Project",
-            "detail": []
+            "details": []
         }
     },
     {
@@ -94,7 +94,7 @@
         "role-head": "Learn coordinator",
         "responsibilities": {
             "description": "Oversee the Astropy \"Learn\" ecosystem, including:",
-            "detail": [
+            "details": [
                 "Ensuring that the documentation, tutorials, and guide materials are internally consistent and cover key areas of the ecosystem",
                 "Overseeing the maintainers for the aforementioned areas",
                 "Organizing sprints or other events focused on Astropy learning materials"
@@ -109,7 +109,7 @@
         "role-head": "Documentation infrastructure maintainer",
         "responsibilities": {
             "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
-            "detail": [
+            "details": [
                 "Managing the Sphinx infrastructure",
                 "Implementing changes and improvements to the documentation website",
                 "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
@@ -136,7 +136,7 @@
             {
                 "subrole-head": "Infrastructure maintainer",
                 "description": "Maintain the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
-                "detail": [
+                "details": [
                     "Facilitating the display and discoverability of the tutorials",
                     "Rendering of the Jupyter notebooks",
                     "Integrated testing of notebooks"
@@ -145,7 +145,7 @@
             {
                 "subrole-head": "Content coordinator",
                 "description": "Oversee the material included in Tutorials and Guides, including:",
-                "detail": [
+                "details": [
                     "Reviewing issues and pull requests",
                     "Soliciting new content as needed",
                     "Working with Infrastructure Maintainers to maintain website"
@@ -161,7 +161,7 @@
         "role-head": "Astropy.org web page maintainer",
         "responsibilities": {
             "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
-            "detail": [
+            "details": [
                 "Maintaining contributor/roles list",
                 "Managing pull requests to the website repository",
                 "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)"
@@ -176,7 +176,7 @@
         "role-head": "Astropy-helpers maintainer",
         "responsibilities": {
             "description": "Lead the development and maintenance of the astropy-helpers repository, including:",
-            "detail": [
+            "details": [
                 "Managing issues/pull requests for the astropy-helpers repository",
                 "Assisting the core package release coordinator, including performing (or helping perform) the release process for astropy-helpers during core package releases",
                 "Performing any necessary incremental/bugfix releases between Astropy releases",
@@ -192,7 +192,7 @@
         "role-head": "Testing infrastructure maintainer",
         "responsibilities": {
             "description": "Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:",
-            "detail": [
+            "details": [
                 "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
                 "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
                 "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
@@ -208,7 +208,7 @@
         "role-head": "Package-template maintainer",
         "responsibilities": {
             "description": "Lead the development of maintenance of the affiliated package package-template, which is used by affiliated packages. This includes:",
-            "detail": [
+            "details": [
                 "Managing issues/pull requests in the package-template repository",
                 "Keeping the affiliated package-template up-to-date with the astropy-helpers",
                 "Tag new releases from time to time, and keep the TEMPLATE_CHANGES up-to-date",
@@ -224,7 +224,7 @@
         "role-head": "CI-helpers maintainer",
         "responsibilities": {
             "description": "Lead the maintenance of the ci-helpers, including:",
-            "detail": [
+            "details": [
                 "Managing issues/pull requests in the ci-helpers repository",
                 "Responding in a timely fashion to breakages in CI caused e.g. by updates in conda, Travis, or AppVeyor, by including workarounds",
                 "Advertise the ci-helpers beyond the astropy project and try to expand adoption"
@@ -239,7 +239,7 @@
         "role-head": "Distribution coordinators",
         "responsibilities": {
             "description": "Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system.",
-            "detail": []
+            "details": []
         }
     },
     {
@@ -250,7 +250,7 @@
         "role-head": "Core package release coordinator",
         "responsibilities": {
             "description": "Oversee the release process for the astropy core package, including:",
-            "detail": [
+            "details": [
                 "Performing new releases",
                 "Coordinate releases of astropy-helpers with the astropy-helpers maintainer(s)",
                 "Maintaining the change log and \u201cwhat\u2019s new\u201d documentation page",
@@ -371,7 +371,7 @@
         ],
         "responsibilities": {
             "description": "Maintain a sub-package of the astropy core package, including:",
-            "detail": [
+            "details": [
                 "Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem",
                 "Merging Pull Requests in the sub-package",
                 "Keeping track of the \u201cbig picture\u201d progress of the sub-package - includes new feature development and significant bugs",
@@ -422,7 +422,7 @@
         ],
         "responsibilities": {
             "description": "Maintain an astropy coordinated package, including:",
-            "detail": [
+            "details": [
                 "Maintaining the github repository for the coordinated package",
                 "Maintaining the coordinated package's infrastructure (usually via the helpers and package template)",
                 "Monitoring features and bringing them for inclusion in the core package when relevant",

@@ -61,12 +61,12 @@ for i, role in enumerate(roles):
         if isinstance(role['responsibilities'], list):
             for resp in role['responsibilities']:
                 error += assert_string(i, 'responsibilities[description]', resp['description'])
-                for detail in resp['detail']:
+                for detail in resp['details']:
                     error += assert_string(i, 'responsibilities[detail]', detail)
         else:
             resp = role['responsibilities']
             error += assert_string(i, 'responsibilities[description]', resp['description'])
-            for detail in resp['detail']:
+            for detail in resp['details']:
                 error += assert_string(i, 'responsibilities[detail]', detail)
 
 if error > 0:

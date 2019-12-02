@@ -125,7 +125,7 @@ $( document ).ready(function(){
                     console.log(resp);
 
                     detail_list = '';
-                    resp["detail"].forEach(function (detail) {
+                    resp["details"].forEach(function (detail) {
                         detail_list += '<li>' + detail + '</li>';
                     });
 
