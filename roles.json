@@ -124,7 +124,7 @@
       "url" : "Distribution_coordinator",
       "sub-role" : [],
       "lead" : ["Matt Craig, Ole Streicher, Sergio Pascual, Médéric Boquien"],
-      "deputy" : ["Miguel de Val-Borro, Stuart Mumford, Hans Moritz Günther"],
+      "deputy" : ["Miguel de Val-Borro, Stuart Mumford"],
       "role-head" : ["Distribution coordinators"],
       "role-subhead" : [],
       "description" : ["Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system."],
