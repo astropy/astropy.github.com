@@ -172,7 +172,7 @@
         "role": "Astropy-helpers maintainer",
         "url": "Astropyhelpers_maintainer",
         "lead": ["Thomas Robitaille"],
-        "deputy": ["Erik Tollerud", "Brigitta Sip\u0151cz"],
+        "deputy": ["Erik Tollerud", "Brigitta Sip\u0151cz", "Stuart Mumford"],
         "role-head": "Astropy-helpers maintainer",
         "responsibilities": {
             "description": "Lead the development and maintenance of the astropy-helpers repository, including:",
