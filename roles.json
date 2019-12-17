@@ -154,6 +154,19 @@
         ]
     },
     {
+        "role": "Workshop coordinator",
+        "url": "Astropy_workshop_coordinator",
+        "lead": ["David Shupe, Brett Morris"],
+        "deputy": ["Unfilled"],
+        "role-head": "Astropy Workshop coordinator",
+        "responsibilities": {
+            "description": "Organize and coordinate Astropy workshops for training and outreach to users",
+            "details": ["Maintain the astropy-workshops repository",
+                        "Oversee staffing/volunteers for workshops",
+                        "Identify opportunities for workshops in diverse geographic locations"]
+        }
+    },
+    {
         "role": "Astropy.org web page maintainer",
         "url": "Astropyorg_web_page_maintainer",
         "lead": ["Erik Tollerud"],
