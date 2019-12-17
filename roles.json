@@ -154,11 +154,11 @@
         ]
     },
     {
-        "role": "Workshop coordinator",
-        "url": "Astropy_workshop_coordinator",
+        "role": "Workshops coordinator",
+        "url": "Astropy_workshops_coordinator",
         "lead": ["David Shupe, Brett Morris"],
         "deputy": ["Unfilled"],
-        "role-head": "Astropy Workshop coordinator",
+        "role-head": "Astropy Workshops coordinator",
         "responsibilities": {
             "description": "Organize and coordinate Astropy workshops for training and outreach to users",
             "details": ["Maintain the astropy-workshops repository",
