@@ -722,7 +722,7 @@
         },
         {
            "name": "astropy-healpix",
-           "maintainer": "Christoph Deil <Deil.Christoph@gmail.com> and Thomas Robitaille <thomas.robitaille@gmail.com>",
+           "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
            "stable": false,
            "repo_url": "https://github.com/astropy/astropy-healpix",
            "home_url": "https://astropy-healpix.readthedocs.io/",
