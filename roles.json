@@ -404,7 +404,7 @@
             },
             {
                 "role": "astropy-healpix",
-                "lead": ["Christoph Deil"],
+                "lead": ["Unfilled"],
                 "deputy": ["Thomas Robitaille"]
             },
             {
@@ -429,8 +429,8 @@
             },
             {
                 "role": "regions",
-                "lead": ["Christoph Deil"],
-                "deputy": ["Johannes King"]
+                "lead": ["Larry Bradley", "Adam Ginsburg"],
+                "deputy": ["Unfilled"]
             }
         ],
         "responsibilities": {
