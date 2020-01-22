@@ -1,5 +1,23 @@
 {
     "packages": [
+         {
+          "name": "statmorph",
+          "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
+          "stable": true,
+          "home_url": "https://statmorph.readthedocs.io/",
+          "repo_url": "https://github.com/vrodgom/statmorph",
+          "pypi_name": "statmorph",
+          "description": "A Python package for calculating non-parametric morphological diagnostics of galaxy images, as well as fitting 2D Sérsic profiles.",
+          "review": {
+             "functionality": "Specialized package",
+             "ecointegration": "Partial",
+             "documentation": "Partial",
+             "testing": "Partial",
+             "devstatus": "Functional but low activity",
+             "python3": "Good",
+             "last-updated": "2020-1-21"
+          }
+        },
         {
             "name": "astropy core package",
             "maintainer": "Astropy Coordination Committee",
