@@ -920,7 +920,7 @@
             "name": "mocpy",
             "maintainer": "Matthieu Baumann <matthieu.baumann@astro.unistra.fr> and Thomas Boch <thomas.boch@astro.unistra.fr>",
             "stable": true,
-            "home_url": "https://mocpy.readthedocs.io/en/latest/",
+            "home_url": "https://cds-astro.github.io/mocpy/",
             "repo_url": "https://github.com/cds-astro/mocpy",
             "pypi_name": "mocpy",
             "description": "MOCPy is a Python library allowing easy creation, parsing and manipulation of MOCs (Multi-Order Coverage maps). These coverage maps heavily rely on the HEALPix sky partionning scheme. A MOC is therefore a set of HEALPix cells at different orders. This allows the description of any arbitrary maps on the sky.",
