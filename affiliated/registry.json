@@ -8,13 +8,15 @@
           "repo_url": "https://github.com/vrodgom/statmorph",
           "pypi_name": "statmorph",
           "description": "A Python package for calculating non-parametric morphological diagnostics of galaxy images, as well as fitting 2D Sérsic profiles.",
+          "image": null,
+          "coordinated": false,
           "review": {
              "functionality": "Specialized package",
              "ecointegration": "Partial",
              "documentation": "Partial",
              "testing": "Partial",
              "devstatus": "Functional but low activity",
-             "python3": "Good",
+             "python3": "Yes",
              "last-updated": "2020-1-21"
           }
         },
