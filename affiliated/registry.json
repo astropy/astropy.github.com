@@ -934,6 +934,26 @@
                 "python3": "Yes",
                 "last-updated": "2019-11-04"
             }
+        },
+        {
+            "name": "agnpy",
+            "maintainer": "Cosimo Nigro <cosimonigro2@gmail.com>",
+            "stable": true,
+            "home_url": "https://agnpy.readthedocs.io/en/latest/",
+            "repo_url": "https://github.com/cosimoNigro/agnpy",
+            "pypi_name": "agnpy",
+            "description": "Modelling Active Galactic Nuclei radiative processes with python. agnpy focuses on the numerical computation of the photon spectra produced by leptonic radiative processes in jetted Active Galactic Nuclei (AGN).",
+            "coordinated": false,
+            "review": {
+                "functionality": "To be filled out by the reviewer",
+                "ecointegration": "To be filled out by the reviewer",
+                "documentation": "To be filled out by the reviewer",
+                "testing": "To be filled out by the reviewer",
+                "devstatus": "To be filled out by the reviewer",
+                "python3": "To be filled out by the reviewer",
+                "last-updated": "To be filled out by the reviewer"
+            }
         }
+
     ]
 }
