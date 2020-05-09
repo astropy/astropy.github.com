@@ -205,7 +205,7 @@
             "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
             "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
-            "repo_url": "https://github.com/pyvirtobs/pyvo",
+            "repo_url": "https://github.com/astropy/pyvo",
             "pypi_name": "pyvo",
             "description": "Access to the Virtual Observatory through Python using IVOA Standards.",
             "image": null,
