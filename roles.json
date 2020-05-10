@@ -156,7 +156,7 @@
     {
         "role": "Workshops coordinator",
         "url": "Astropy_workshops_coordinator",
-        "lead": ["David Shupe, Brett Morris"],
+        "lead": ["David Shupe", "Brett Morris"],
         "deputy": ["Unfilled"],
         "role-head": "Astropy Workshops coordinator",
         "responsibilities": {
@@ -164,6 +164,21 @@
             "details": ["Maintain the astropy-workshops repository",
                         "Oversee staffing/volunteers for workshops",
                         "Identify opportunities for workshops in diverse geographic locations"]
+        }
+    },
+    {
+        "role": "Affiliated package review editor",
+        "url": "Affiliated_package_review_editor",
+        "lead": ["Pey-Lian Lim", "Hans Moritz G\u00fcnther"],
+        "deputy": ["Unfilled"],
+        "role-head": "Affiliated package review editor",
+        "responsibilities": {
+            "description": "Oversee the affiliated package submission and review process, including:",
+            "details": [
+                "Keeping track of submissions to the affiliated package ecosystem",
+                "Managing the review process for packages",
+                "Making decisions regarding accepting and rejecting packages based on reviews"
+            ]
         }
     },
     {
