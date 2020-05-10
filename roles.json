@@ -177,7 +177,8 @@
             "details": [
                 "Keeping track of submissions to the affiliated package ecosystem",
                 "Managing the review process for packages",
-                "Making decisions regarding accepting and rejecting packages based on reviews"
+                "Making decisions regarding accepting and rejecting packages based on reviews",
+                "Organizing the re-review of packages that have not been recently reviewed"
             ]
         }
     },
