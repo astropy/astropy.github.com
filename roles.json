@@ -314,7 +314,7 @@
             {
                 "role": "astropy.io.misc",
                 "lead": ["Unfilled"],
-                "deputy": ["Thomas Robitaille", "Matteo Bachetti"]
+                "deputy": ["Thomas Robitaille", "Matteo Bachetti", "Ed Slavich"]
             },
             {
                 "role": "astropy.io.votable",
