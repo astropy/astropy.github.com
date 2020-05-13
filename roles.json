@@ -102,6 +102,22 @@
         }
     },
     {
+        "role": "Interim finance committee member",
+        "url": "finance_committee_member",
+        "lead": ["Kelle Cruz", "Hans Moritz G\u00fcnther", "John Swinbank", "Erik Tollerud", "Steve Crawford (Ombudsperson)"],
+        "deputy": [""],
+        "role-head": "Interim finance committee member",
+        "responsibilities": {
+            "description": "Plan, oversee, and disburse the Astropy project finances, including:",
+            "details": [
+		"Determine the process for paying people from Astropy Project-level funding.",
+		"Paying and overseeing people in supporting roles (e.g. documentation copy-editors, contract lawyers).",
+		"Oversee payment for services, licenses, and travel (e.g., Python in Astro, SciPy), and other miscellaneous expenses the Project already pays for.",
+		"Maintain and continuously develop a transparent process for reporting all of the above to the Coordination Committee and wider community, related record keeping, and planning the same for future possible financial committee efforts."
+            ]
+        }
+    },
+    {
         "role": "Documentation infrastructure maintainer",
         "url": "Documentation_infrastructure_maintainer",
         "lead": ["Unfilled"],
