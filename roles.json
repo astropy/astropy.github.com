@@ -330,7 +330,7 @@
             {
                 "role": "astropy.io.misc",
                 "lead": ["Unfilled"],
-                "deputy": ["Matteo Bachetti"]
+                "deputy": ["Matteo Bachetti", "Ed Slavich"]
             },
             {
                 "role": "astropy.io.votable",
