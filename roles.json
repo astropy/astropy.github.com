@@ -304,7 +304,7 @@
             {
                 "role": "astropy.io.ascii",
                 "lead": ["Tom Aldcroft"],
-                "deputy": ["Hans Moritz G\u00fcnther"]
+                "deputy": ["Hans Moritz G\u00fcnther", "Derek Homeier"]
             },
             {
                 "role": "astropy.io.fits",
