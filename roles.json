@@ -56,14 +56,14 @@
                 "deputy": ["Erik Tollerud"]
             },
             {
-                "role": "Slack",
-                "lead": ["Thomas Robitaille"],
+                "role": "Slack/Matrix",
+                "lead": ["Unfilled"],
                 "deputy": ["Unfilled"]
             },
             {
                 "role": "Conferences",
                 "lead": ["Unfilled"],
-                "deputy": ["Adrian Price-Whelan", "Erik Tollerud", "Thomas Robitaille", "Kelle Cruz"]
+                "deputy": ["Adrian Price-Whelan", "Erik Tollerud", "Kelle Cruz"]
             }
         ],
         "responsibilities": {
@@ -104,8 +104,8 @@
     {
         "role": "Documentation infrastructure maintainer",
         "url": "Documentation_infrastructure_maintainer",
-        "lead": ["Thomas Robitaille"],
-        "deputy": ["Erik Tollerud"],
+        "lead": ["Unfilled"],
+        "deputy": ["Erik Tollerud", "Thomas Robitaille"],
         "role-head": "Documentation infrastructure maintainer",
         "responsibilities": {
             "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
@@ -184,7 +184,7 @@
     {
         "role": "Astropy-helpers maintainer",
         "url": "Astropyhelpers_maintainer",
-        "lead": ["Thomas Robitaille"],
+        "lead": ["Unfilled"],
         "deputy": ["Erik Tollerud", "Brigitta Sip\u0151cz", "Stuart Mumford"],
         "role-head": "Astropy-helpers maintainer",
         "responsibilities": {
@@ -314,7 +314,7 @@
             {
                 "role": "astropy.io.misc",
                 "lead": ["Unfilled"],
-                "deputy": ["Thomas Robitaille", "Matteo Bachetti"]
+                "deputy": ["Matteo Bachetti"]
             },
             {
                 "role": "astropy.io.votable",
@@ -324,7 +324,7 @@
             {
                 "role": "astropy.modeling",
                 "lead": ["Nadia Dencheva"],
-                "deputy": ["Perry Greenfield", "Thomas Robitaille"]
+                "deputy": ["Perry Greenfield"]
             },
             {
                 "role": "astropy.nddata",
@@ -353,13 +353,13 @@
             },
             {
                 "role": "astropy.timeseries",
-                "lead": ["Thomas Robitaille"],
-                "deputy": ["Brigitta Sip\u0151cz"]
+                "lead": ["Unfilled"],
+                "deputy": ["Brigitta Sip\u0151cz", "Thomas Robitaille"]
             },
             {
                 "role": "astropy.uncertainties",
                 "lead": ["Erik Tollerud"],
-                "deputy": ["Thomas Robitaille", "Marten van Kerkwijk"]
+                "deputy": ["Marten van Kerkwijk"]
             },
             {
                 "role": "astropy.units",
