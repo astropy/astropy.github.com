@@ -48,7 +48,7 @@ $( document ).ready(function(){
         var rows = '';
         roles.forEach(function (role) {
             //role is an object containing information about each team role
-            //index marks current lead
+            //index marks current people
             var index = 0;
 
             // for roles where there are no sub-roles, the people are defined
@@ -56,20 +56,20 @@ $( document ).ready(function(){
             // a virtual sub-role with no heading
             if (!('sub-roles' in role)) {
                 role['sub-roles'] = [{'role': '',
-                                      'lead': role['lead']}];
+                                      'people': role['people']}];
             }
 
-            //creating each row by iterating over each lead in a role
+            //creating each row by iterating over each person in a role
             role["sub-roles"].forEach(function (subrole) {
                 //rowRole is displayed once for each role
                 rowRole = index == 0 ? '<a href="#' + role["url"] + '">' + role["role"] + '</a>' : "";
 
                 var rowSubRole = subrole['role'];
 
-                if (subrole['lead'][0] == "Unfilled") {
-                    rowLead = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+                if (subrole['people'][0] == "Unfilled") {
+                    rowPeople = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
                 } else {
-                    rowLead = subrole['lead'].join(', ');
+                    rowPeople = subrole['people'].join(', ');
                 }
 
                 //generating rows
@@ -81,7 +81,7 @@ $( document ).ready(function(){
 
                 rows +=   '<td>' + rowRole + '</td>' +
                           '<td>' + rowSubRole + '</td>' +
-                          '<td>' + rowLead + '</td>' +
+                          '<td>' + rowPeople + '</td>' +
                         '</tr>';
                 index++;
             });
