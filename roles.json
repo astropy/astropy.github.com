@@ -290,7 +290,7 @@
     {
         "role": "Sub-package maintainer",
         "url": "Subpackage_maintainer",
-        "role-head": "Sub-package maintainer (1 per core package sub-package)",
+        "role-head": "Sub-package maintainer (at least one per core package sub-package)",
         "sub-roles": [
             {
                 "role": "astropy.constants",
@@ -302,7 +302,7 @@
             },
             {
                 "role": "astropy.coordinates",
-                "people": ["Erik Tollerud", "Stuart Littlefair", "Adrian Price-Whelan", "Juan Luis Cano Rodr\u00edguez"]
+                "people": ["Erik Tollerud", "Stuart Littlefair", "Adrian Price-Whelan", "Juan Luis Cano Rodr\u00edguez", "Marten van Kerkwijk"]
             },
             {
                 "role": "astropy.cosmology",
