@@ -51,13 +51,12 @@ $( document ).ready(function(){
             //index marks current lead
             var index = 0;
 
-            // for roles where there are no sub-roles, the lead and deputy are defined
+            // for roles where there are no sub-roles, the people are defined
             // at the top-level of the JSON role dict - for convenience below we create
             // a virtual sub-role with no heading
             if (!('sub-roles' in role)) {
                 role['sub-roles'] = [{'role': '',
-                                      'lead': role['lead'],
-                                      'deputy': role['deputy']}];
+                                      'lead': role['lead']}];
             }
 
             //creating each row by iterating over each lead in a role
@@ -73,12 +72,6 @@ $( document ).ready(function(){
                     rowLead = subrole['lead'].join(', ');
                 }
 
-                if (subrole['deputy'][0] == ["Unfilled"]) {
-                    rowDeputy = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
-                } else {
-                    rowDeputy = subrole['deputy'].join(', ');
-                }
-
                 //generating rows
                 if (index == 0) {
                     rows += '<tr class="border-top">';
@@ -89,7 +82,6 @@ $( document ).ready(function(){
                 rows +=   '<td>' + rowRole + '</td>' +
                           '<td>' + rowSubRole + '</td>' +
                           '<td>' + rowLead + '</td>' +
-                          '<td>' + rowDeputy + '</td>' +
                         '</tr>';
                 index++;
             });
