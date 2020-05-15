@@ -2,7 +2,12 @@
     {
         "role": "Coordination committee member",
         "url": "Coordination_committee_member",
-        "people": ["Tom Aldcroft", "Kelle Cruz", "Thomas Robitaille", "Erik Tollerud"],
+        "people": [
+            "Tom Aldcroft",
+            "Kelle Cruz",
+            "Thomas Robitaille",
+            "Erik Tollerud"
+        ],
         "role-head": "Coordination committee member (4 people)",
         "responsibilities": {
             "description": "Overall coordination and management of the Astropy project, including:",
@@ -22,7 +27,9 @@
     {
         "role": "Ombudsperson",
         "url": "Ombudsperson",
-        "people": ["Steve Crawford"],
+        "people": [
+            "Steve Crawford"
+        ],
         "role-head": "Ombudsperson",
         "responsibilities": {
             "description": "Provide a point of contact for sensitive issues separate from the coordinating committee, including:",
@@ -40,23 +47,37 @@
         "sub-roles": [
             {
                 "role": "Overall",
-                "people": ["Kelle Cruz"]
+                "people": [
+                    "Kelle Cruz"
+                ]
             },
             {
                 "role": "Twitter",
-                "people": ["Matt Craig", "Steve Crawford"]
+                "people": [
+                    "Matt Craig",
+                    "Steve Crawford"
+                ]
             },
             {
                 "role": "Facebook",
-                "people": ["Kelle Cruz", "Erik Tollerud"]
+                "people": [
+                    "Kelle Cruz",
+                    "Erik Tollerud"
+                ]
             },
             {
                 "role": "Slack/Matrix",
-                "people": ["Stuart Mumford"]
+                "people": [
+                    "Stuart Mumford"
+                ]
             },
             {
                 "role": "Conferences",
-                "people": ["Adrian Price-Whelan", "Erik Tollerud", "Kelle Cruz"]
+                "people": [
+                    "Kelle Cruz",
+                    "Adrian Price-Whelan",
+                    "Erik Tollerud"
+                ]
             }
         ],
         "responsibilities": {
@@ -71,7 +92,11 @@
     {
         "role": "Astropy GSoC coordinator",
         "url": "Astropy_GSoC_coordinator",
-        "people": ["Brigitta Sip\u0151cz", "Z\u00e9 Vin\u00edcius", "Erik Tollerud"],
+        "people": [
+            "Brigitta Sip\u0151cz",
+            "Erik Tollerud",
+            "Z\u00e9 Vin\u00edcius"
+        ],
         "role-head": "Astropy GSoC coordinator",
         "responsibilities": {
             "description": "Coordinate the participation of Astropy in the Google Summer of Code Project",
@@ -81,7 +106,9 @@
     {
         "role": "Learn Coordinator",
         "url": "Learn_coordinator",
-        "people": ["Kelle Cruz"],
+        "people": [
+            "Kelle Cruz"
+        ],
         "role-head": "Learn coordinator",
         "responsibilities": {
             "description": "Oversee the Astropy \"Learn\" ecosystem, including:",
@@ -95,22 +122,31 @@
     {
         "role": "Interim finance committee member",
         "url": "finance_committee_member",
-        "people": ["Kelle Cruz", "Hans Moritz G\u00fcnther", "John Swinbank", "Erik Tollerud", "Steve Crawford (Ombudsperson)"],
+        "people": [
+            "Steve Crawford (Ombudsperson)",
+            "Kelle Cruz",
+            "Hans Moritz G\u00fcnther",
+            "John Swinbank",
+            "Erik Tollerud"
+        ],
         "role-head": "Interim finance committee member",
         "responsibilities": {
             "description": "Plan, oversee, and disburse the Astropy project finances, including:",
             "details": [
-		"Determine the process for paying people from Astropy Project-level funding.",
-		"Paying and overseeing people in supporting roles (e.g. documentation copy-editors, contract lawyers).",
-		"Oversee payment for services, licenses, and travel (e.g., Python in Astro, SciPy), and other miscellaneous expenses the Project already pays for.",
-		"Maintain and continuously develop a transparent process for reporting all of the above to the Coordination Committee and wider community, related record keeping, and planning the same for future possible financial committee efforts."
+                "Determine the process for paying people from Astropy Project-level funding.",
+                "Paying and overseeing people in supporting roles (e.g. documentation copy-editors, contract lawyers).",
+                "Oversee payment for services, licenses, and travel (e.g., Python in Astro, SciPy), and other miscellaneous expenses the Project already pays for.",
+                "Maintain and continuously develop a transparent process for reporting all of the above to the Coordination Committee and wider community, related record keeping, and planning the same for future possible financial committee efforts."
             ]
         }
     },
     {
         "role": "Documentation infrastructure maintainer",
         "url": "Documentation_infrastructure_maintainer",
-        "people": ["Erik Tollerud", "Thomas Robitaille"],
+        "people": [
+            "Thomas Robitaille",
+            "Erik Tollerud"
+        ],
         "role-head": "Documentation infrastructure maintainer",
         "responsibilities": {
             "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
@@ -128,11 +164,16 @@
         "sub-roles": [
             {
                 "role": "Infrastructure",
-                "people": ["Adrian Price-Whelan", "Erik Tollerud"]
+                "people": [
+                    "Adrian Price-Whelan",
+                    "Erik Tollerud"
+                ]
             },
             {
                 "role": "Content",
-                "people": ["Lia Corrales"]
+                "people": [
+                    "Lia Corrales"
+                ]
             }
         ],
         "responsibilities": [
@@ -159,13 +200,18 @@
     {
         "role": "Workshops coordinator",
         "url": "Astropy_workshops_coordinator",
-        "people": ["David Shupe", "Brett Morris"],
+        "people": [
+            "David Shupe",
+            "Brett Morris"
+        ],
         "role-head": "Astropy Workshops coordinator",
         "responsibilities": {
             "description": "Organize and coordinate Astropy workshops for training and outreach to users",
-            "details": ["Maintain the astropy-workshops repository",
-                        "Oversee staffing/volunteers for workshops",
-                        "Identify opportunities for workshops in diverse geographic locations"]
+            "details": [
+                "Maintain the astropy-workshops repository",
+                "Oversee staffing/volunteers for workshops",
+                "Identify opportunities for workshops in diverse geographic locations"
+            ]
         }
     },
     {
@@ -187,7 +233,10 @@
     {
         "role": "Astropy.org web page maintainer",
         "url": "Astropyorg_web_page_maintainer",
-        "people": ["Erik Tollerud", "Adrian Price-Whelan"],
+        "people": [
+            "Adrian Price-Whelan",
+            "Erik Tollerud"
+        ],
         "role-head": "Astropy.org web page maintainer",
         "responsibilities": {
             "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
@@ -201,7 +250,11 @@
     {
         "role": "Astropy-helpers maintainer",
         "url": "Astropyhelpers_maintainer",
-        "people": ["Erik Tollerud", "Brigitta Sip\u0151cz", "Stuart Mumford"],
+        "people": [
+            "Stuart Mumford",
+            "Brigitta Sip\u0151cz",
+            "Erik Tollerud"
+        ],
         "role-head": "Astropy-helpers maintainer",
         "responsibilities": {
             "description": "Lead the development and maintenance of the astropy-helpers repository, including:",
@@ -216,7 +269,10 @@
     {
         "role": "Testing infrastructure maintainer",
         "url": "Testing_infrastructure_maintainer",
-        "people": ["Erik Tollerud", "Thomas Robitaille"],
+        "people": [
+            "Thomas Robitaille",
+            "Erik Tollerud"
+        ],
         "role-head": "Testing infrastructure maintainer",
         "responsibilities": {
             "description": "Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:",
@@ -231,7 +287,13 @@
     {
         "role": "Package template maintainer",
         "url": "Packagetemplate_maintainer",
-        "people": ["Thomas Robitaille", "Brigitta Sip\u0151cz", "Larry Bradley", "Adrian Price-Whelan", "Stuart Mumford"],
+        "people": [
+            "Larry Bradley",
+            "Stuart Mumford",
+            "Adrian Price-Whelan",
+            "Thomas Robitaille",
+            "Brigitta Sip\u0151cz"
+        ],
         "role-head": "Package-template maintainer",
         "responsibilities": {
             "description": "Lead the development of maintenance of the affiliated package package-template, which is used by affiliated packages. This includes:",
@@ -246,7 +308,9 @@
     {
         "role": "CI-helpers maintainer",
         "url": "CIhelpers_maintainer",
-        "people": ["Brigitta Sip\u0151cz"],
+        "people": [
+            "Brigitta Sip\u0151cz"
+        ],
         "role-head": "CI-helpers maintainer",
         "responsibilities": {
             "description": "Lead the maintenance of the ci-helpers, including:",
@@ -260,7 +324,14 @@
     {
         "role": "Distribution coordinator",
         "url": "Distribution_coordinator",
-        "people": ["Matt Craig", "Ole Streicher", "Sergio Pascual", "M\u00e9d\u00e9ric Boquien", "Miguel de Val-Borro", "Stuart Mumford"],
+        "people": [
+            "M\u00e9d\u00e9ric Boquien",
+            "Matt Craig",
+            "Stuart Mumford",
+            "Sergio Pascual",
+            "Ole Streicher",
+            "Miguel de Val-Borro"
+        ],
         "role-head": "Distribution coordinators",
         "responsibilities": {
             "description": "Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system.",
@@ -270,7 +341,11 @@
     {
         "role": "Core package release coordinator",
         "url": "Core_package_release_coordinator",
-        "people": ["Brigitta Sip\u0151cz", "Thomas Robitaille", "Erik Tollerud"],
+        "people": [
+            "Thomas Robitaille",
+            "Brigitta Sip\u0151cz",
+            "Erik Tollerud"
+        ],
         "role-head": "Core package release coordinator",
         "responsibilities": {
             "description": "Oversee the release process for the astropy core package, including:",
@@ -294,83 +369,149 @@
         "sub-roles": [
             {
                 "role": "astropy.constants",
-                "people": ["David Shupe", "Marten van Kerkwijk"]
+                "people": [
+                    "Marten van Kerkwijk",
+                    "David Shupe"
+                ]
             },
             {
                 "role": "astropy.convolution",
-                "people": ["Adam Ginsburg", "Axel Donath", "Larry Bradley"]
+                "people": [
+                    "Larry Bradley",
+                    "Axel Donath",
+                    "Adam Ginsburg"
+                ]
             },
             {
                 "role": "astropy.coordinates",
-                "people": ["Erik Tollerud", "Stuart Littlefair", "Adrian Price-Whelan", "Juan Luis Cano Rodr\u00edguez", "Marten van Kerkwijk"]
+                "people": [
+                    "Marten van Kerkwijk",
+                    "Stuart Littlefair",
+                    "Adrian Price-Whelan",
+                    "Juan Luis Cano Rodr\u00edguez",
+                    "Erik Tollerud"
+                ]
             },
             {
                 "role": "astropy.cosmology",
-                "people": ["Unfilled"]
+                "people": [
+                    "Unfilled"
+                ]
             },
             {
                 "role": "astropy.io.ascii",
-                "people": ["Tom Aldcroft", "Hans Moritz G\u00fcnther", "Derek Homeier"]
+                "people": [
+                    "Tom Aldcroft",
+                    "Hans Moritz G\u00fcnther",
+                    "Derek Homeier"
+                ]
             },
             {
                 "role": "astropy.io.fits",
-                "people": ["Simon Conseil", "Michael Seifert"]
+                "people": [
+                    "Simon Conseil",
+                    "Michael Seifert"
+                ]
             },
             {
                 "role": "astropy.io.misc",
-                "people": ["Matteo Bachetti", "Ed Slavich"]
+                "people": [
+                    "Matteo Bachetti",
+                    "Ed Slavich"
+                ]
             },
             {
                 "role": "astropy.io.votable",
-                "people": ["Thomas Boch", "Tom Donaldson", "Pey Lian Lim"]
+                "people": [
+                    "Thomas Boch",
+                    "Tom Donaldson",
+                    "Pey Lian Lim"
+                ]
             },
             {
                 "role": "astropy.modeling",
-                "people": ["Nadia Dencheva", "Perry Greenfield"]
+                "people": [
+                    "Nadia Dencheva",
+                    "Perry Greenfield"
+                ]
             },
             {
                 "role": "astropy.nddata",
-                "people": ["Matt Craig", "Steve Crawford", "Michael Seifert"]
+                "people": [
+                    "Matt Craig",
+                    "Steve Crawford",
+                    "Michael Seifert"
+                ]
             },
             {
                 "role": "astropy.samp",
-                "people": ["Unfilled"]
+                "people": [
+                    "Unfilled"
+                ]
             },
             {
                 "role": "astropy.stats",
-                "people": ["Steve Crawford", "Larry Bradley"]
+                "people": [
+                    "Larry Bradley",
+                    "Steve Crawford"
+                ]
             },
             {
                 "role": "astropy.table",
-                "people": ["Tom Aldcroft", "Marten van Kerkwijk"]
+                "people": [
+                    "Tom Aldcroft",
+                    "Marten van Kerkwijk"
+                ]
             },
             {
                 "role": "astropy.time",
-                "people": ["Tom Aldcroft", "Marten van Kerkwijk"]
+                "people": [
+                    "Tom Aldcroft",
+                    "Marten van Kerkwijk"
+                ]
             },
             {
                 "role": "astropy.timeseries",
-                "people": ["Brigitta Sip\u0151cz", "Thomas Robitaille"]
+                "people": [
+                    "Thomas Robitaille",
+                    "Brigitta Sip\u0151cz"
+                ]
             },
             {
                 "role": "astropy.uncertainties",
-                "people": ["Erik Tollerud", "Marten van Kerkwijk"]
+                "people": [
+                    "Marten van Kerkwijk",
+                    "Erik Tollerud"
+                ]
             },
             {
                 "role": "astropy.units",
-                "people": ["Marten van Kerkwijk", "Adrian Price-Whelan"]
+                "people": [
+                    "Marten van Kerkwijk",
+                    "Adrian Price-Whelan"
+                ]
             },
             {
                 "role": "astropy.utils",
-                "people": ["Pey Lian Lim", "Brigitta Sip\u0151cz", "Erik Tollerud"]
+                "people": [
+                    "Pey Lian Lim",
+                    "Brigitta Sip\u0151cz",
+                    "Erik Tollerud"
+                ]
             },
             {
                 "role": "astropy.visualization",
-                "people": ["Larry Bradley", "Thomas Robitaille", "Stuart Mumford"]
+                "people": [
+                    "Larry Bradley",
+                    "Stuart Mumford",
+                    "Thomas Robitaille"
+                ]
             },
             {
                 "role": "astropy.wcs",
-                "people": ["Nadia Dencheva"]
+                "people": [
+                    "Nadia Dencheva"
+                ]
             }
         ],
         "responsibilities": {
@@ -390,31 +531,54 @@
         "sub-roles": [
             {
                 "role": "astroquery",
-                "people": ["Adam Ginsburg", "Brigitta Sip\u0151cz", "Clara Brasseur"]
+                "people": [
+                    "Clara Brasseur",
+                    "Adam Ginsburg",
+                    "Brigitta Sip\u0151cz"
+                ]
             },
             {
                 "role": "astropy-healpix",
-                "people": ["Thomas Robitaille"]
+                "people": [
+                    "Thomas Robitaille"
+                ]
             },
             {
                 "role": "photutils",
-                "people": ["Larry Bradley", "Brigitta Sip\u0151cz"]
+                "people": [
+                    "Larry Bradley",
+                    "Brigitta Sip\u0151cz"
+                ]
             },
             {
                 "role": "ccdproc",
-                "people": ["Matt Craig", "Michael Seifert", "Steven Crawford"]
+                "people": [
+                    "Matt Craig",
+                    "Steven Crawford",
+                    "Michael Seifert"
+                ]
             },
             {
                 "role": "specutils",
-                "people": ["Nicholas Earl", "Erik Tollerud", "Adam Ginsburg", "Steve Crawford"]
+                "people": [
+                    "Steve Crawford",
+                    "Nicholas Earl",
+                    "Adam Ginsburg",
+                    "Erik Tollerud"
+                ]
             },
             {
                 "role": "reproject",
-                "people": ["Thomas Robitaille"]
+                "people": [
+                    "Thomas Robitaille"
+                ]
             },
             {
                 "role": "regions",
-                "people": ["Larry Bradley", "Adam Ginsburg"]
+                "people": [
+                    "Larry Bradley",
+                    "Adam Ginsburg"
+                ]
             }
         ],
         "responsibilities": {
