@@ -322,7 +322,7 @@
             },
             {
                 "role": "astropy.io.votable",
-                "people": ["Pey Lian Lim", "Thomas Boch", "Tom Donaldson", "Pey Lian Lim"]
+                "people": ["Thomas Boch", "Tom Donaldson", "Pey Lian Lim"]
             },
             {
                 "role": "astropy.modeling",
