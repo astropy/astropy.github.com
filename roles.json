@@ -370,8 +370,8 @@
             {
                 "role": "astropy.constants",
                 "people": [
-                    "Marten van Kerkwijk",
-                    "David Shupe"
+                    "David Shupe",
+                    "Marten van Kerkwijk"
                 ]
             },
             {
@@ -385,11 +385,11 @@
             {
                 "role": "astropy.coordinates",
                 "people": [
-                    "Marten van Kerkwijk",
                     "Stuart Littlefair",
                     "Adrian Price-Whelan",
                     "Juan Luis Cano Rodr\u00edguez",
-                    "Erik Tollerud"
+                    "Erik Tollerud",
+                    "Marten van Kerkwijk"
                 ]
             },
             {
@@ -480,15 +480,15 @@
             {
                 "role": "astropy.uncertainties",
                 "people": [
-                    "Marten van Kerkwijk",
-                    "Erik Tollerud"
+                    "Erik Tollerud",
+                    "Marten van Kerkwijk"
                 ]
             },
             {
                 "role": "astropy.units",
                 "people": [
-                    "Marten van Kerkwijk",
-                    "Adrian Price-Whelan"
+                    "Adrian Price-Whelan",
+                    "Marten van Kerkwijk"
                 ]
             },
             {
