@@ -206,8 +206,9 @@ cite{
 section.notice {
 	font-size: 13pt;
 	font-style: italic;
-	padding: 30px;
-	margin-top: 30px;
+	padding: 10px;
+	margin: 20px;
+	margin-top: 50px;
 	border: 1px solid #FF5000;
 	webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -410,7 +411,6 @@ nav .pull-right{
 
 section#hero{
 	text-align: center;
-	position:absolute;
 	left:0px;
 	top:0;
 	width:100%;
@@ -489,7 +489,6 @@ section#hero div#documentation ul li a {
 /*Front Page*/
 
 section.whatsnew{
-	margin-top:420px;
 	border:1px #E8E8E8 solid;
 	border-right-style:none;
 	border-left-style:none;
