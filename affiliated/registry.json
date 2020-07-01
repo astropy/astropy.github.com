@@ -1,9 +1,28 @@
 {
     "packages": [
+         {
+          "name": "statmorph",
+          "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
+          "stable": true,
+          "home_url": "https://statmorph.readthedocs.io/",
+          "repo_url": "https://github.com/vrodgom/statmorph",
+          "pypi_name": "statmorph",
+          "description": "A Python package for calculating non-parametric morphological diagnostics of galaxy images, as well as fitting 2D Sérsic profiles.",
+          "image": null,
+          "coordinated": false,
+          "review": {
+             "functionality": "Specialized package",
+             "ecointegration": "Partial",
+             "documentation": "Partial",
+             "testing": "Partial",
+             "devstatus": "Functional but low activity",
+             "python3": "Yes",
+             "last-updated": "2020-1-21"
+          }
+        },
         {
             "name": "astropy core package",
             "maintainer": "Astropy Coordination Committee",
-            "provisional": false,
             "stable": true,
             "home_url": "https://docs.astropy.org",
             "repo_url": "https://github.com/astropy/astropy",
@@ -24,7 +43,6 @@
         {
             "name": "specutils",
             "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
-            "provisional": false,
             "stable": false,
             "home_url": "https://specutils.readthedocs.io",
             "repo_url": "https://github.com/astropy/specutils",
@@ -45,7 +63,6 @@
         {
             "name": "astroquery",
             "maintainer": "Adam Ginsburg and Brigitta Sipőcz <adam.g.ginsburg@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://astroquery.readthedocs.io",
             "repo_url": "https://github.com/astropy/astroquery",
@@ -66,7 +83,6 @@
         {
             "name": "photutils",
             "maintainer": "Larry Bradley and Brigitta Sipőcz <lbradley@stsci.edu>",
-            "provisional": false,
             "stable": false,
             "home_url": "https://photutils.readthedocs.io/",
             "repo_url": "https://github.com/astropy/photutils",
@@ -87,7 +103,6 @@
         {
             "name": "ginga",
             "maintainer": "Eric Jeschke and Pey-Lian Lim <eric@naoj.org>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://ejeschke.github.io/ginga",
             "repo_url": "https://github.com/ejeschke/ginga",
@@ -108,7 +123,6 @@
         {
             "name": "astroML",
             "maintainer": "Jake Vanderplas and Brigitta Sipőcz <bsipocz@uw.edu>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://astroml.github.com/",
             "repo_url": "https://github.com/astroML/astroML",
@@ -121,15 +135,14 @@
                 "ecointegration": "Partial",
                 "documentation": "Good",
                 "testing": "Partial",
-                "devstatus": "Functional but low activity",
+                "devstatus": "Good",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2019-10-06"
             }
         },
         {
             "name": "PyDL",
             "maintainer": "Benjamin Alan Weaver <baweaver@lbl.gov>",
-            "provisional": false,
             "stable": false,
             "home_url": "https://pydl.readthedocs.io",
             "repo_url": "https://github.com/weaverba137/pydl",
@@ -150,7 +163,6 @@
         {
             "name": "APLpy",
             "maintainer": "Thomas Robitaille and Eli Bressert <astropython@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://aplpy.github.io",
             "repo_url": "https://github.com/aplpy/aplpy",
@@ -171,7 +183,6 @@
         {
             "name": "reproject",
             "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://reproject.readthedocs.io",
             "repo_url": "https://github.com/astropy/reproject",
@@ -191,11 +202,10 @@
         },
         {
             "name": "PyVO",
-            "maintainer": "Stefan Becker <sbecker@ari.uni-heidelberg.de>",
-            "provisional": false,
-            "stable": false,
+            "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
+            "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
-            "repo_url": "https://github.com/pyvirtobs/pyvo",
+            "repo_url": "https://github.com/astropy/pyvo",
             "pypi_name": "pyvo",
             "description": "Access to the Virtual Observatory through Python using IVOA Standards.",
             "image": null,
@@ -205,20 +215,19 @@
                 "ecointegration": "Partial",
                 "documentation": "Partial",
                 "testing": "Partial",
-                "devstatus": "Functional but low activity",
+                "devstatus": "Good",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2019-10-06"
             }
         },
         {
             "name": "gammapy",
-            "maintainer": "Christoph Deil <Deil.Christoph@gmail.com>",
-            "provisional": false,
+            "maintainer": "Axel Donath <Axel.Donath@mpi-hd.mpg.de> and Régis Terrier <rterrier@apc.in2p3.fr>",
             "stable": false,
-            "home_url": "http://gammapy.org",
+            "home_url": "https://gammapy.org",
             "repo_url": "https://github.com/gammapy/gammapy",
             "pypi_name": "gammapy",
-            "description": "A high level gamma-ray astronomy data analysis package.",
+            "description": "A Python package for gamma-ray astronomy",
             "image": null,
             "coordinated": false,
             "review": {
@@ -234,7 +243,6 @@
         {
             "name": "ccdproc",
             "maintainer": "Steven Crawford, Matt Craig, and Michael Seifert <ccdproc@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://ccdproc.readthedocs.io",
             "repo_url": "https://github.com/astropy/ccdproc",
@@ -255,7 +263,6 @@
         {
             "name": "sncosmo",
             "maintainer": "Kyle Barbary",
-            "provisional": false,
             "stable": true,
             "home_url": "https://sncosmo.readthedocs.io",
             "repo_url": "https://github.com/sncosmo/sncosmo",
@@ -276,7 +283,6 @@
         {
             "name": "Glue",
             "maintainer": "Chris Beaumont and Thomas Robitaille <thomas.robitaille@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "http://www.glueviz.org",
             "repo_url": "https://github.com/glue-viz/glue",
@@ -296,8 +302,7 @@
         },
         {
             "name": "pyregion",
-            "maintainer": "Jae-Joon Lee and Christoph Deil",
-            "provisional": false,
+            "maintainer": "Jae-Joon Lee",
             "stable": true,
             "home_url": "https://pyregion.readthedocs.io",
             "repo_url": "https://github.com/astropy/pyregion",
@@ -318,7 +323,6 @@
         {
             "name": "imexam",
             "maintainer": "Megan Sosey",
-            "provisional": false,
             "stable": false,
             "home_url": "https://imexam.readthedocs.io",
             "repo_url": "https://github.com/spacetelescope/imexam",
@@ -339,7 +343,6 @@
         {
             "name": "spherical_geometry",
             "maintainer": "Bernie Simon",
-            "provisional": "2015-12-26",
             "stable": false,
             "home_url": "https://spacetelescope.github.io/spherical_geometry/spherical_geometry/",
             "repo_url": "https://github.com/spacetelescope/spherical_geometry",
@@ -360,7 +363,6 @@
         {
             "name": "gwcs",
             "maintainer": "Nadia Dencheva",
-            "provisional": false,
             "stable": false,
             "home_url": "https://gwcs.readthedocs.io",
             "repo_url": "https://github.com/spacetelescope/gwcs",
@@ -381,7 +383,6 @@
         {
             "name": "spectral-cube",
             "maintainer": "Adam Ginsburg",
-            "provisional": false,
             "stable": true,
             "home_url": "https://spectral-cube.readthedocs.io",
             "repo_url": "https://github.com/radio-astro-tools/spectral-cube",
@@ -402,7 +403,6 @@
         {
             "name": "astroplan",
             "maintainer": "Brett Morris",
-            "provisional": false,
             "stable": false,
             "home_url": "https://astroplan.readthedocs.io/",
             "repo_url": "https://github.com/astropy/astroplan",
@@ -423,7 +423,6 @@
         {
             "name": "Astro-SCRAPPY",
             "maintainer": "Curtis McCully <cmccully@lcogt.net>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://github.com/astropy/astroscrappy",
             "repo_url": "https://github.com/astropy/astroscrappy",
@@ -444,7 +443,6 @@
         {
             "name": "naima",
             "maintainer": "Victor Zabalza <vzabalza@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://naima.readthedocs.io/",
             "repo_url": "https://github.com/zblz/naima",
@@ -465,7 +463,6 @@
         {
             "name": "omnifit",
             "maintainer": "Aleksi Suutarinen <aleksi.suutarinen@iki.fi>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://ricemunk.github.io/omnifit/",
             "repo_url": "https://github.com/RiceMunk/omnifit",
@@ -486,7 +483,6 @@
         {
             "name": "gala",
             "maintainer": "Adrian Price-Whelan <http://adrian.pw>",
-            "provisional": false,
             "stable": true,
             "home_url": "http://gala.adrian.pw/en/latest/",
             "repo_url": "https://github.com/adrn/gala",
@@ -507,7 +503,6 @@
         {
             "name": "galpy",
             "maintainer": "Jo Bovy",
-            "provisional": false,
             "stable": true,
             "home_url": "https://galpy.readthedocs.io/en/latest/",
             "repo_url": "https://github.com/jobovy/galpy",
@@ -528,7 +523,6 @@
         {
             "name": "HENDRICS",
             "maintainer": "Matteo Bachetti <matteo@matteobachetti.it>",
-            "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/StingraySoftware/HENDRICS",
             "home_url": "https://hendrics.readthedocs.io",
@@ -549,7 +543,6 @@
         {
             "name": "stingray",
             "maintainer": "Daniela Huppenkothen, Matteo Bachetti, Abigail Stevens, Simone Migliari, and Paul Balm",
-            "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/StingraySoftware/stingray",
             "home_url": "https://stingraysoftware.github.io",
@@ -570,7 +563,6 @@
         {
             "name": "Halotools",
             "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://halotools.readthedocs.io",
             "repo_url": "https://github.com/astropy/halotools",
@@ -591,7 +583,6 @@
         {
             "name": "cluster-lensing",
             "maintainer": "Jes Ford",
-            "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/jesford/cluster-lensing",
             "home_url": "https://jesford.github.io/cluster-lensing",
@@ -612,7 +603,6 @@
         {
             "name": "marxs",
             "maintainer": "Hans Moritz G\u00fcnther (hamogu)",
-            "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/Chandra-MARX/marxs",
             "home_url": "https://marxs.readthedocs.io/",
@@ -633,7 +623,6 @@
         {
             "name": "pyspeckit",
             "maintainer": "Adam Ginsburg <adam.g.ginsburg@gmail.com>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://pyspeckit.readthedocs.io",
             "repo_url": "https://github.com/pyspeckit/pyspeckit",
@@ -654,7 +643,6 @@
         {
             "name": "linetools",
             "maintainer": "J. Xavier Prochaska, Nicolas Tejos, and Neil Crighton",
-            "provisional": false,
             "stable": true,
             "home_url": "https://linetools.readthedocs.io",
             "repo_url": "https://github.com/linetools/linetools",
@@ -675,7 +663,6 @@
         {
             "name": "poliastro",
             "maintainer": "Juan Luis Cano Rodr\u00edguez",
-            "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/poliastro/poliastro",
             "home_url": "http://docs.poliastro.space",
@@ -695,8 +682,7 @@
         },
         {
             "name": "hips",
-            "maintainer": "Christoph Deil and Thomas Boch",
-            "provisional": false,
+            "maintainer": "Thomas Boch",
             "stable": false,
             "repo_url": "https://github.com/hipspy/hips",
             "home_url": "https://hips.readthedocs.io",
@@ -716,8 +702,7 @@
         },
         {
             "name": "regions",
-            "maintainer": "Christoph Deil and Johannes King",
-            "provisional": false,
+            "maintainer": "Larry Bradley and Adam Ginsburg",
             "stable": false,
             "repo_url": "https://github.com/astropy/regions",
             "home_url": "https://astropy-regions.readthedocs.io",
@@ -738,7 +723,6 @@
         {
             "name": "synphot",
             "maintainer": "Pey Lian Lim",
-            "provisional": false,
             "stable": true,
             "home_url": "https://synphot.readthedocs.io",
             "repo_url": "https://github.com/spacetelescope/synphot_refactor",
@@ -758,8 +742,7 @@
         },
         {
            "name": "astropy-healpix",
-           "maintainer": "Christoph Deil <Deil.Christoph@gmail.com> and Thomas Robitaille <thomas.robitaille@gmail.com>",
-           "provisional": false,
+           "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
            "stable": false,
            "repo_url": "https://github.com/astropy/astropy-healpix",
            "home_url": "https://astropy-healpix.readthedocs.io/",
@@ -780,7 +763,6 @@
        {
           "name": "Saba",
           "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
-          "provisional": false,
           "stable": true,
           "repo_url": "https://github.com/astropy/saba",
           "home_url": "https://saba.readthedocs.io",
@@ -800,7 +782,6 @@
        {
             "name": "dust_extinction",
             "maintainer": "Karl Gordon",
-            "provisional": false,
             "stable": false,
             "repo_url": "https://github.com/karllark/dust_extinction",
             "home_url": "http://dust-extinction.readthedocs.io",
@@ -821,7 +802,6 @@
          {
             "name": "feets",
             "maintainer": "Juan B Cabral <jbc.developr@gmail.com>",
-            "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/carpyncho/feets",
             "home_url": "http://feets.readthedocs.io",
@@ -842,7 +822,6 @@
          {
             "name": "corral",
             "maintainer": "Toros Survey Team",
-            "provisional": false,
             "stable": true,
             "repo_url": "https://github.com/toros-astro/corral",
             "home_url": "http://corral.readthedocs.io/",
@@ -863,7 +842,6 @@
         {
             "name": "baseband",
             "maintainer": "Marten H. van Kerkwijk <mhvk@astro.utoronto.ca>",
-            "provisional": false,
             "stable": true,
             "home_url": "https://baseband.readthedocs.io",
             "repo_url": "https://github.com/mhvk/baseband",
@@ -887,7 +865,7 @@
             "stable": false,
             "home_url": "https://github.com/NASA-Planetary-Science/sbpy",
             "repo_url": "https://github.com/NASA-Planetary-Science/sbpy",
-            "pypi_name": "",
+            "pypi_name": "sbpy",
             "description": "A Python Module for Small-Body Planetary Astronomy",
             "coordinated": false,
             "review": {
@@ -939,6 +917,24 @@
              }
           },
           {
+            "name": "mocpy",
+            "maintainer": "Matthieu Baumann <matthieu.baumann@astro.unistra.fr> and Thomas Boch <thomas.boch@astro.unistra.fr>",
+            "stable": true,
+            "home_url": "https://cds-astro.github.io/mocpy/",
+            "repo_url": "https://github.com/cds-astro/mocpy",
+            "pypi_name": "mocpy",
+            "description": "MOCPy is a Python library allowing easy creation, parsing and manipulation of MOCs (Multi-Order Coverage maps). These coverage maps heavily rely on the HEALPix sky partionning scheme. A MOC is therefore a set of HEALPix cells at different orders. This allows the description of any arbitrary maps on the sky.",
+            "coordinated": false,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2019-11-04"
+            },
+            {
               "name": "ligo.skymap",
               "maintainer": "Leo Singer <leo.singer@ligo.org>",
               "stable": true,
@@ -948,13 +944,13 @@
               "description": "Read, write, generate, simulate, and visualize LIGO/Virgo gravitational-wave probability sky maps.",
               "coordinated": false,
               "review": {
-                  "functionality": "To be filled out by the reviewer",
-                  "ecointegration": "To be filled out by the reviewer",
-                  "documentation": "To be filled out by the reviewer",
-                  "testing": "To be filled out by the reviewer",
-                  "devstatus": "To be filled out by the reviewer",
-                  "python3": "To be filled out by the reviewer",
-                  "last-updated": "To be filled out by the reviewer"
+                  "functionality": "Specialized package",
+                  "ecointegration": "Good",
+                  "documentation": "Good",
+                  "testing": "Good",
+                  "devstatus": "Good",
+                  "python3": "Yes",
+                  "last-updated": "2020-07-01"
               }
           }
      ]
