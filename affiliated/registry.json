@@ -882,7 +882,7 @@
             "name": "EinsteinPy",
             "maintainer": "Shreyas Bapat, Ritwik Saha, Bhavya Bhatt and Priyanshu Khandelwal <bapat.shreyas@gmail.com>",
             "stable": true,
-            "home_url": "https://einsteinpy.github.io",
+            "home_url": "https://einsteinpy.org",
             "repo_url": "https://github.com/einsteinpy/einsteinpy",
             "pypi_name": "einsteinpy",
             "description": "A Python Package for General Relativity and Gravitational Astronomy",
