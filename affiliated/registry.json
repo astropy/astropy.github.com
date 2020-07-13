@@ -205,7 +205,7 @@
             "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
             "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
-            "repo_url": "https://github.com/pyvirtobs/pyvo",
+            "repo_url": "https://github.com/astropy/pyvo",
             "pypi_name": "pyvo",
             "description": "Access to the Virtual Observatory through Python using IVOA Standards.",
             "image": null,
@@ -882,7 +882,7 @@
             "name": "EinsteinPy",
             "maintainer": "Shreyas Bapat, Ritwik Saha, Bhavya Bhatt and Priyanshu Khandelwal <bapat.shreyas@gmail.com>",
             "stable": true,
-            "home_url": "https://einsteinpy.github.io",
+            "home_url": "https://einsteinpy.org",
             "repo_url": "https://github.com/einsteinpy/einsteinpy",
             "pypi_name": "einsteinpy",
             "description": "A Python Package for General Relativity and Gravitational Astronomy",
@@ -934,8 +934,27 @@
                 "python3": "Yes",
                 "last-updated": "2019-11-04"
             }
-        },
-        {
+          },
+          {
+            "name": "ligo.skymap",
+            "maintainer": "Leo Singer <leo.singer@ligo.org>",
+            "stable": true,
+            "home_url": "http://lscsoft.docs.ligo.org/ligo.skymap/",
+            "repo_url": "https://git.ligo.org/lscsoft/ligo.skymap",
+            "pypi_name": "ligo.skymap",
+            "description": "Read, write, generate, simulate, and visualize LIGO/Virgo gravitational-wave probability sky maps.",
+            "coordinated": false,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2020-07-01"
+              }
+           },
+          {
             "name": "agnpy",
             "maintainer": "Cosimo Nigro <cosimonigro2@gmail.com>",
             "stable": true,
@@ -945,15 +964,14 @@
             "description": "Modelling Active Galactic Nuclei radiative processes with python. agnpy focuses on the numerical computation of the photon spectra produced by leptonic radiative processes in jetted Active Galactic Nuclei (AGN).",
             "coordinated": false,
             "review": {
-                "functionality": "To be filled out by the reviewer",
-                "ecointegration": "To be filled out by the reviewer",
-                "documentation": "To be filled out by the reviewer",
-                "testing": "To be filled out by the reviewer",
-                "devstatus": "To be filled out by the reviewer",
-                "python3": "To be filled out by the reviewer",
-                "last-updated": "To be filled out by the reviewer"
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Heavy development",
+                "python3": "Yes",
+                "last-updated": "2020-07-13"
             }
-        }
-
+        },
     ]
 }

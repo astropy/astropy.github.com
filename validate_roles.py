@@ -47,16 +47,14 @@ for i, role in enumerate(roles):
         error += assert_is_string(i, 'role-head', role['role-head'])
 
         if 'sub-roles' in role:
-            if 'lead' in role or 'deputy' in role:
-                cprintf(f"   ERROR: lead and deputy should not be defined at top level for role #{i} since sub-roles are defined")
+            if 'people' in role:
+                cprint(f"   ERROR: people should not be defined at top level for role #{i} since sub-roles are defined")
                 error += 1
             for sub_role in role['sub-roles']:
                 error += assert_is_string(i, 'sub-roles[role]', sub_role['role'])
-                error += assert_is_list(i, 'sub-roles[lead]', sub_role['lead'])
-                error += assert_is_list(i, 'sub-roles[deputy]', sub_role['deputy'])
+                error += assert_is_list(i, 'sub-roles[people]', sub_role['people'])
         else:
-            error += assert_is_list(i, 'lead', role['lead'])
-            error += assert_is_list(i, 'deputy', role['deputy'])
+            error += assert_is_list(i, 'people', role['people'])
 
         if isinstance(role['responsibilities'], list):
             for resp in role['responsibilities']:
