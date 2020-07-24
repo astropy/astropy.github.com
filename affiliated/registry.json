@@ -28,13 +28,13 @@
           "pypi_name": "lenstronomy",
           "description": "Multi-purpose gravitational lensing and image modeling package",
           "review": {
-             "functionality": "To be filled out by the reviewer",
-             "ecointegration": "To be filled out by the reviewer",
-             "documentation": "To be filled out by the reviewer",
-             "testing": "To be filled out by the reviewer",
-             "devstatus": "To be filled out by the reviewer",
-             "python3": "To be filled out by the reviewer",
-             "last-updated": "To be filled out by the reviewer"
+             "functionality": "Specialized package",
+             "ecointegration": "Partial",
+             "documentation": "Good",
+             "testing": "Good",
+             "devstatus": "Good",
+             "python3": "Yes",
+             "last-updated": "2020-07-24"
           }
         },
         {
