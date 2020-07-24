@@ -28,6 +28,7 @@
           "repo_url": "https://github.com/sibirrer/lenstronomy",
           "pypi_name": "lenstronomy",
           "description": "Multi-purpose gravitational lensing and image modeling package",
+          "coordinated": false,
           "review": {
              "functionality": "Specialized package",
              "ecointegration": "Partial",
