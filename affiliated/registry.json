@@ -20,6 +20,7 @@
              "last-updated": "2020-1-21"
           }
         },
+        {
           "name": "lenstronomy",
           "maintainer": "Simon Birrer <sibirrer@gmail.com>",
           "stable": true,
