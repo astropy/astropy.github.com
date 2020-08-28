@@ -28,7 +28,7 @@
         "role": "Ombudsperson",
         "url": "Ombudsperson",
         "people": [
-            "Steve Crawford"
+            "Unfilled"
         ],
         "role-head": "Ombudsperson",
         "responsibilities": {
@@ -54,8 +54,7 @@
             {
                 "role": "Twitter",
                 "people": [
-                    "Matt Craig",
-                    "Steve Crawford"
+                    "Matt Craig"
                 ]
             },
             {
@@ -123,11 +122,11 @@
         "role": "Interim finance committee member",
         "url": "finance_committee_member",
         "people": [
-            "Steve Crawford (Ombudsperson)",
             "Kelle Cruz",
             "Hans Moritz G\u00fcnther",
             "John Swinbank",
-            "Erik Tollerud"
+            "Erik Tollerud",
+            "Unfilled (Ombudsperson)"
         ],
         "role-head": "Interim finance committee member",
         "responsibilities": {
