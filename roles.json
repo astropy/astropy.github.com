@@ -143,8 +143,10 @@
         "role": "Documentation infrastructure maintainer",
         "url": "Documentation_infrastructure_maintainer",
         "people": [
+            "Pey Lian Lim",
             "Thomas Robitaille",
-            "Erik Tollerud"
+            "Erik Tollerud",
+            "Brigitta Sip\u0151cz"
         ],
         "role-head": "Documentation infrastructure maintainer",
         "responsibilities": {
@@ -269,8 +271,10 @@
         "role": "Testing infrastructure maintainer",
         "url": "Testing_infrastructure_maintainer",
         "people": [
+            "Pey Lian Lim",
             "Thomas Robitaille",
-            "Erik Tollerud"
+            "Erik Tollerud",
+            "Brigitta Sip\u0151cz"
         ],
         "role-head": "Testing infrastructure maintainer",
         "responsibilities": {
