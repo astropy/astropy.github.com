@@ -268,6 +268,25 @@
         }
     },
     {
+        "role": "DevOps and Operations",
+        "url": "devops_team",
+        "people": [
+            "Madison Bray",
+            "Pey Lian Lim",
+            "Brigitta Sip\u0151cz"
+        ],
+        "role-head": "DevOps and Operations",
+        "responsibilities": {
+            "description": "Ensure the smooth running of the project",
+            "details": [
+                "Set up and maintain continuous integration services",
+                "Ensure adequate labelling of issues and pull requests",
+                "Perform triaging of issues and pull requests, including moving between repositories",
+                "Merging non-controversial pull requests"
+            ]
+        }
+    },
+    {
         "role": "Testing infrastructure maintainer",
         "url": "Testing_infrastructure_maintainer",
         "people": [
