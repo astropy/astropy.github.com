@@ -280,7 +280,7 @@
             "description": "Ensure the smooth running of the project",
             "details": [
                 "Set up and maintain continuous integration services",
-                "Ensure adequate labelling of issues and pull requests",
+                "Ensure adequate labeling of issues and pull requests",
                 "Perform triaging of issues and pull requests, including moving between repositories",
                 "Merging non-controversial pull requests"
             ]
