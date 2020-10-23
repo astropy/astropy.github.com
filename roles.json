@@ -281,8 +281,8 @@
             "details": [
                 "Set up and maintain continuous integration services",
                 "Ensure adequate labeling of issues and pull requests",
-                "Perform triaging of issues and pull requests, including moving between repositories",
-                "Merging non-controversial pull requests"
+                "Perform initial triaging of issues and pull requests, including moving between repositories",
+                "Merge non-controversial pull requests"
             ]
         }
     },
