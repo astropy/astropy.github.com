@@ -93,7 +93,19 @@
 		<p>
 		New and improved major functionality in this release includes:
 		<ul>
-			<li>ADD</li>
+			<li>A new SpectralCoord class for representing and transforming spectral quantities</li>
+			<li>Support for writing Dask arrays to FITS files</li>
+			<li>Added True Equator Mean Equinox (TEME) frame for satellite two-line ephemeris data</li>
+			<li>Support for in-place setting of array-valued SkyCoord and frame objects</li>
+			<li>Change in the definition of equality comparison for coordinate classes</li>
+			<li>Support use of SkyCoord in table vstack, dstack, and insert_row</li>
+			<li>Support for table cross-match join with SkyCoord or N-d columns</li>
+			<li>Support for custom attributes in Table subclasses</li>
+			<li>Added a new Time subformat unix_tai</li>
+			<li>Added support for the -TAB convention in FITS WCS</li>
+			<li>Support for replacing submodels in CompoundModel</li>
+			<li>Support for units on otherwise unitless models via the Model.coerce_units method.</li>
+			<li>Support for ASDF serialization of models</li>
 		</ul>
 		</p>
 		<p>
