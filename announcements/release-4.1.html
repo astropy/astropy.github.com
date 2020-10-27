@@ -123,17 +123,23 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://docs.astropy.org">http://docs.astropy.org</a>
 		</p>
 		<p>
-		If you make use of the <a href="https://www.continuum.io/downloads">Anaconda
-		Python Distribution</a>, you can update to Astropy v4.1 with:
-		</p>
-<pre>
-conda update -c astropy astropy
-</pre>
-		<p>
-		  Whereas if you usually use pip, you can do:
+		  If you usually use pip/vanilla Python, you can do:
 		</p>
 <pre>
 pip install astropy --upgrade
+</pre>
+		<p>
+		If you make use of the <a href="https://www.continuum.io/downloads">Anaconda
+		Python Distribution</a>, soon you will be able update to Astropy v4.1 with:
+		</p>
+<pre>
+conda update astropy
+</pre>
+		<p>
+		Or if you can't wait for Anaconda to update their default version you can use the astropy channel:
+		</p>
+<pre>
+conda update -c astropy astropy
 </pre>
 		<p>
 		Please report any issues, or request new features via our GitHub repository:
