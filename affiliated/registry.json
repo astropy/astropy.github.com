@@ -505,7 +505,7 @@
             "stable": true,
             "home_url": "http://gala.adrian.pw/en/latest/",
             "repo_url": "https://github.com/adrn/gala",
-            "pypi_name": "astro-gala",
+            "pypi_name": "gala",
             "image": null,
             "description": "A Python package for gravitational and galactic dynamics. gala contains functionality for representing gravitational potential models, numerically integrating orbits, and non-linear dynamics. gala also relies heavily on Astropy's unit and coordinates subpackages.",
             "coordinated": false,
