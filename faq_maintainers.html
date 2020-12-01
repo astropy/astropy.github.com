@@ -22,7 +22,7 @@
 <!-- TODO: Table of contents? Split into sub-categories? Search box? -->
 
 <p>
-<b>Q: What is tested on Travis CI and why?</b><br/>
+<b>Q: What is tested on GitHub Actions and why?</b><br/>
 A: Test matrix involving different architecture, OSes, dependency combos, and
 dependency versions. The goal is to catch most of the incompatibilities or bugs
 before a pull request is merged or a release.
@@ -30,9 +30,8 @@ before a pull request is merged or a release.
 
 <p>
 <b>Q: What is tested on Circle CI and why (as opposed to Travis)?</b><br/>
-A: CircleCI complements Travis CI by running jobs that the latter cannot
-easily support, such as 32-bit architecture, parallel execution, and jobs
-that require access to artifacts.
+A: CircleCI complements GitHub Actions by running jobs that the latter cannot
+easily support, such as jobs that require access to artifacts.
 </p>
 
 <p>
@@ -56,16 +55,18 @@ itself has also increased.
 A: Please see
 <a href="https://github.com/astropy/ci-helpers/blob/master/README.md">ci-helpers README</a>.
 It was created to decrease code duplication and to ease setting up Travis CI
-and Appveyor CI for packages within the Astropy project.
+and Appveyor CI for packages within the Astropy project. However, now that Astropy
+has moved away from both of those services, ci-helpers is no longer actively
+developed nor maintained.
 </p>
 
 <p>
-<b>Q: Why is there a distinction between “final tests” and “comprehensive tests”?</b><br/>
-A: Comprehensive tests belong in the second stage of CI jobs that run after the
-initial stage. They tests most of the combos. The final tests include jobs
-that are unstable (accessing remote data and using dev versions of key
-dependencies) or very slow; thus not worth running unless all the other jobs
-have passed first.
+<b>Q: What happened to astropy-helpers?</b><br/>
+A: Astropy has dropped usage and support for astropy-helpers as per
+<a href="https://github.com/astropy/astropy-APEs/blob/master/APE17.rst">APE 17</a>.
+If you still have a package that uses it and it works for you, then great.
+However, if it stops working, we recommend you migrate away using the
+<a href="https://docs.astropy.org/projects/package-template/en/latest/ape17.html">APE 17 migration guide</a>.
 </p>
 
 </body>
