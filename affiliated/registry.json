@@ -918,10 +918,10 @@
           },
           {
              "name": "astroalign",
-             "maintainer": "TOROS Dev Team <martin.beroiz@utrgv.edu>",
+             "maintainer": "Martin Beroiz <martinberoiz@gmail.com>",
              "stable": true,
              "home_url": "http://astroalign.readthedocs.io/",
-             "repo_url": "https://github.com/toros-astro/astroalign",
+             "repo_url": "https://github.com/quatrope/astroalign",
              "pypi_name": "astroalign",
              "description": "Astrometric registration of images when no WCS info is available",
              "coordinated": false,
