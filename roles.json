@@ -430,8 +430,7 @@
             {
                 "role": "astropy.io.fits",
                 "people": [
-                    "Simon Conseil",
-                    "Michael Seifert"
+                    "Simon Conseil"
                 ]
             },
             {
@@ -459,8 +458,7 @@
             {
                 "role": "astropy.nddata",
                 "people": [
-                    "Matt Craig",
-                    "Michael Seifert"
+                    "Matt Craig"
                 ]
             },
             {
@@ -572,8 +570,7 @@
             {
                 "role": "ccdproc",
                 "people": [
-                    "Matt Craig",
-                    "Michael Seifert"
+                    "Matt Craig"
                 ]
             },
             {
