@@ -12,12 +12,12 @@
           "coordinated": false,
           "review": {
              "functionality": "Specialized package",
-             "ecointegration": "Partial",
-             "documentation": "Partial",
-             "testing": "Partial",
-             "devstatus": "Functional but low activity",
+             "ecointegration": "Good",
+             "documentation": "Good",
+             "testing": "Good",
+             "devstatus": "Good",
              "python3": "Yes",
-             "last-updated": "2020-1-21"
+             "last-updated": "2021-01-12"
           }
         },
         {
