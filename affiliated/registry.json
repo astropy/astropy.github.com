@@ -61,7 +61,7 @@
         },
         {
             "name": "specutils",
-            "maintainer": "Nicholas Earl, Adam Ginsburg, Steve Crawford, and Erik Tollerud",
+            "maintainer": "Nicholas Earl, Adam Ginsburg, and Erik Tollerud",
             "stable": false,
             "home_url": "https://specutils.readthedocs.io",
             "repo_url": "https://github.com/astropy/specutils",
@@ -261,7 +261,7 @@
         },
         {
             "name": "ccdproc",
-            "maintainer": "Steven Crawford, Matt Craig, and Michael Seifert <ccdproc@gmail.com>",
+            "maintainer": "Steven Crawford and Matt Craig <ccdproc@gmail.com>",
             "stable": true,
             "home_url": "https://ccdproc.readthedocs.io",
             "repo_url": "https://github.com/astropy/ccdproc",
