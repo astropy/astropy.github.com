@@ -826,7 +826,7 @@
             "home_url": "http://feets.readthedocs.io",
             "pypi_name": "feets",
             "description": "feATURE eXTRACTOR FOR tIME sERIES.",
-            "image": "https://github.com/carpyncho/feets/raw/main/res/logo_medium.png",
+            "image": "https://github.com/carpyncho/feets/raw/master/res/logo_medium.png",
             "coordinated": false,
             "review": {
                 "functionality": "Specialized package",
