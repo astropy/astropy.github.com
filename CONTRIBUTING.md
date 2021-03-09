@@ -1,4 +1,4 @@
-For general information on the contribution process, see the [Astropy core package contributing guidelines](https://github.com/astropy/astropy/blob/master/CONTRIBUTING.md).  This document only contains specific details for the astropy web page repository.
+For general information on the contribution process, see the [Astropy core package contributing guidelines](https://github.com/astropy/astropy/blob/main/CONTRIBUTING.md).  This document only contains specific details for the astropy web page repository.
 
 # Affiliated Packages
 
