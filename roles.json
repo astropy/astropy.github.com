@@ -131,9 +131,9 @@
         "responsibilities": {
             "description": "Plan, oversee, and disburse the Astropy project finances, including:",
             "details": [
-                "Determine and manage the process for paying people from Astropy Project-level funding.",
+                "Determine and manage the process for paying people from Astropy project-level funding.",
                 "Paying and overseeing people in supporting roles (e.g. documentation copy-editors, contract lawyers).",
-                "Oversee payment for services, licenses, and travel (e.g., Python in Astro, SciPy), and other miscellaneous expenses the Project already pays for.",
+                "Oversee payment for services, licenses, and travel (e.g., Python in Astro, SciPy), and other miscellaneous expenses the project already pays for.",
                 "Maintain and continuously develop a transparent process for reporting all of the above to the Coordination Committee and wider community, related record keeping, and planning the same for future possible financial committee efforts."
             ]
         }
