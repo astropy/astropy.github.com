@@ -141,9 +141,9 @@
         },
         {
             "name": "astroML",
-            "maintainer": "Jake Vanderplas and Brigitta Sipőcz <bsipocz@uw.edu>",
+            "maintainer": "Jake Vanderplas and Brigitta Sipőcz <brigitta.sipocz@gmail.com>",
             "stable": true,
-            "home_url": "https://astroml.github.com/",
+            "home_url": "http://www.astroml.org/",
             "repo_url": "https://github.com/astroML/astroML",
             "pypi_name": "astroML",
             "description": "Tools for machine learning and data mining in Astronomy.",
