@@ -1,5 +1,23 @@
 {
     "packages": [
+        { 
+            "name": "PypeIt", 
+            "maintainer": "J. Xavier Prochaska <xavier@ucolick.org>", 
+            "stable": true, 
+            "home_url": "https://pypeit.readthedocs.io/en/release/", 
+            "repo_url": "https://github.com/pypeit/PypeIt", 
+            "pypi_name": "pypeit", 
+            "description": "Data Reduction Pipeline software for many optical + near-IR spectrographs", 
+            "review": { 
+                "functionality": "To be filled out by the reviewer", 
+                "ecointegration": "To be filled out by the reviewer", 
+                "documentation": "To be filled out by the reviewer", 
+                "testing": "To be filled out by the reviewer", 
+                "devstatus": "To be filled out by the reviewer", 
+                "python3": "To be filled out by the reviewer", 
+                "last-updated": "To be filled out by the reviewer" 
+            } 
+        },
          {
           "name": "statmorph",
           "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
