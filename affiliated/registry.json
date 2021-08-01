@@ -1,5 +1,23 @@
 {
     "packages": [
+        {
+        "name": "pyds9plugin",
+        "maintainer": "Vincent Picouet, vincent@picouet.fr",
+        "stable": true,
+        "home_url": "https://nuage.osupytheas.fr/s/TW4dZsf5XzJcQFC",
+        "repo_url": "https://github.com/vpicouet/pyds9plugin",
+        "pypi_name": "pyds9plugin",
+        "description": "A python DS9 extension for quicklook processing of astronomical images. This highly interactive extension can be generalized automatically to a set of images to turn the plug-in into a real multi-processing pipeline.",
+        "review": {
+         "functionality": "To be filled out by the reviewer",
+         "ecointegration": "To be filled out by the reviewer",
+         "documentation": "To be filled out by the reviewer",
+         "testing": "To be filled out by the reviewer",
+         "devstatus": "To be filled out by the reviewer",
+         "python3": "To be filled out by the reviewer",
+        "last-updated": "To be filled out by the reviewer"
+        }
+        },
          {
           "name": "statmorph",
           "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
