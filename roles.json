@@ -75,7 +75,6 @@
                 "role": "Conferences",
                 "people": [
                     "Kelle Cruz",
-                    "Adrian Price-Whelan",
                     "Erik Tollerud"
                 ]
             }
@@ -167,7 +166,8 @@
                 "role": "Infrastructure",
                 "people": [
                     "Adrian Price-Whelan",
-                    "Erik Tollerud"
+                    "Erik Tollerud",
+                    "Jonathan Sick"
                 ]
             },
             {
@@ -312,7 +312,6 @@
         "people": [
             "Larry Bradley",
             "Stuart Mumford",
-            "Adrian Price-Whelan",
             "Thomas Robitaille",
             "Brigitta Sip\u0151cz"
         ],
