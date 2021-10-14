@@ -49,7 +49,7 @@
             {
                 "role": "Overall",
                 "people": [
-                    "Kelle Cruz"
+                    "Unfilled"
                 ]
             },
             {
@@ -119,7 +119,7 @@
         }
     },
     {
-        "role": "Interim finance committee member",
+        "role": "Finance committee member",
         "url": "finance_committee_member",
         "people": [
             "Kelle Cruz",
@@ -127,7 +127,7 @@
             "John Swinbank",
             "Erik Tollerud"
         ],
-        "role-head": "Interim finance committee member",
+        "role-head": "Finance committee member",
         "responsibilities": {
             "description": "Plan, oversee, and disburse the Astropy project finances, including:",
             "details": [
