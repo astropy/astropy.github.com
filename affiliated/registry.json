@@ -9,16 +9,16 @@
           "pypi_name": "",
           "description": "SpectraPy is a Python3 library, which collects algorithms and methods for data reduction of astronomical spectra obtained by a through slits spectrograph. The library is designed to be spectrograph independent. Current implementation is focused on the extraction of 2D spectra.",
           "review": {
-             "functionality": "To be filled out by the reviewer",
-             "ecointegration": "To be filled out by the reviewer",
-             "documentation": "To be filled out by the reviewer",
-             "testing": "To be filled out by the reviewer",
-             "devstatus": "To be filled out by the reviewer",
-             "python3": "To be filled out by the reviewer",
-             "last-updated": "To be filled out by the reviewer"
+             "functionality": "General package",
+             "ecointegration": "Partial",
+             "documentation": "Good",
+             "testing": "Good",
+             "devstatus": "Functional but low activity",
+             "python3": "Yes",
+             "last-updated": "2021-10-14"
           }
         },
-         {
+        {
           "name": "statmorph",
           "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
           "stable": true,
