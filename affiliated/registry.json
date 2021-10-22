@@ -1,6 +1,25 @@
 {
     "packages": [
         {
+          "name": "PyCBC",
+          "maintainer": "Alexander Harvey Nitz <alex.nitz@gmail.com>",
+          "stable": true,
+          "home_url": "https://pycbc.org/",
+          "repo_url": "https://github.com/gwastro/pycbc",
+          "pypi_name": "pycbc",
+          "description": "Core package to analyze gravitational-wave data, find signals, and study their parameters.",
+          "coordinated": false,
+          "review": {
+            "functionality": "Specialized package",
+            "ecointegration": "Partial",
+            "documentation": "Partial",
+            "testing": "Partial",
+            "devstatus": "Good",
+            "python3": "Yes",
+            "last-updated": "2021-10-22"
+          }
+        },
+        {
           "name": "SpectraPy",
           "maintainer": "Marco Fumana <marco.fumana@inaf.it>",
           "stable": true,
