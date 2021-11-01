@@ -1,6 +1,25 @@
 {
     "packages": [
         {
+          "name": "BayesicFitting",
+          "maintainer": "Do Kester <dokester@home.nl> and Migo Mueller",
+          "stable": true,
+          "home_url": "https://bayesicfitting.nl/",
+          "repo_url": "https://github.com/dokester/BayesicFitting",
+          "pypi_name": "BayesicFitting",
+          "description": "General purpose toolbox for Bayesian fitting and evidence calculation.",
+          "coordinated": false,
+          "review": {
+            "functionality": "",
+            "ecointegration": "",
+            "documentation": "",
+            "testing": "",
+            "devstatus": "",
+            "python3": "",
+            "last-updated": ""
+          }
+        },
+        {
           "name": "PyCBC",
           "maintainer": "Alexander Harvey Nitz <alex.nitz@gmail.com>",
           "stable": true,
