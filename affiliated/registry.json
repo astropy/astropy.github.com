@@ -10,13 +10,13 @@
           "description": "General purpose toolbox for Bayesian fitting and evidence calculation.",
           "coordinated": false,
           "review": {
-            "functionality": "",
-            "ecointegration": "",
-            "documentation": "",
-            "testing": "",
-            "devstatus": "",
-            "python3": "",
-            "last-updated": ""
+            "functionality": "General package",
+            "ecointegration": "Partial",
+            "documentation": "Good",
+            "testing": "Good",
+            "devstatus": "Good",
+            "python3": "Yes",
+            "last-updated": "2021-10-29"
           }
         },
         {
