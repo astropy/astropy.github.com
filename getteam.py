@@ -14,7 +14,7 @@ def get_astropy_credits(warner=print):
     returns False if the repo can't be found.
     """
     import os
-    from urllib2 import urlopen
+    from urllib.request import urlopen
 
     creditspath = os.environ.get('ASTROPY_REPO_PATH', 'http://raw.github.com/astropy/astropy/main/docs/credits.rst')
 
@@ -96,11 +96,14 @@ def process_html(fn, newcoordinators, newcontributors, indent='\t\t\t'):
                     lines.extend([(indent + '<li>' + c + '</li>') for c in newcontributors])
                     lines.append(l)
                     incontrib = False
+                else:
+                    if '<ul class="team">' in l:
+                        lines.append(l)
                 #skip otherwise
             else:
                 if '<ul class="coordinators">' in l:
                     incoord = True
-                elif '<ul class="team">' in l:
+                elif '<h3 id="core-package-contributors">' in l:
                     incontrib = True
                 lines.append(l)
 
@@ -115,8 +118,8 @@ if __name__ == '__main__':
     coordinators = extract_names_list(dt, 'Astropy Project Coordinators')
     contributors = extract_names_list(dt, 'Core Package Contributors')
 
-    newhtml = process_html('about.html', coordinators, contributors)
-    print('Replacing "about.html" with updated version.  Be sure to "git diff '
-          'about.html" before committing to ensure no funny  business happened.')
-    with open('about.html', 'w') as f:
+    newhtml = process_html('team.html', coordinators, contributors)
+    print('Replacing "team.html" with updated version.  Be sure to "git diff '
+          'team.html" before committing to ensure no funny  business happened.')
+    with open('team.html', 'wb') as f:
         f.write(newhtml.encode('UTF-8'))
