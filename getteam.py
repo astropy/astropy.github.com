@@ -120,6 +120,6 @@ if __name__ == '__main__':
 
     newhtml = process_html('team.html', coordinators, contributors)
     print('Replacing "team.html" with updated version.  Be sure to "git diff '
-          'team.html" before committing to ensure no funny  business happened.')
+          'team.html" before committing to ensure no funny business happened.')
     with open('team.html', 'wb') as f:
         f.write(newhtml.encode('UTF-8'))
