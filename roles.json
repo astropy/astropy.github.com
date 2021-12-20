@@ -109,9 +109,9 @@
         }
     },
     {
-        "role": "Learn",
-        "url": "Learn",
-	"role-head": "Learn",
+        "role": "Learn Team",
+        "url": "Learn_team",
+	"role-head": "Learn Team",
 	"sub-roles": [
 	    {
 		"role": "Coordinators",
