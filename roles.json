@@ -260,25 +260,6 @@
         }
     },
     {
-        "role": "Astropy-helpers maintainer",
-        "url": "Astropyhelpers_maintainer",
-        "people": [
-            "Stuart Mumford",
-            "Brigitta Sip\u0151cz",
-            "Erik Tollerud"
-        ],
-        "role-head": "Astropy-helpers maintainer",
-        "responsibilities": {
-            "description": "Lead the development and maintenance of the astropy-helpers repository, including:",
-            "details": [
-                "Managing issues/pull requests for the astropy-helpers repository",
-                "Assisting the core package release coordinator, including performing (or helping perform) the release process for astropy-helpers during core package releases",
-                "Performing any necessary incremental/bugfix releases between Astropy releases",
-                "Communicating to affiliated package maintainers the availability of new versions of astropy-helpers, and assist in updating in cases where changes are not trivial"
-            ]
-        }
-    },
-    {
         "role": "DevOps and Operations Specialist",
         "url": "devops_team",
         "people": [
