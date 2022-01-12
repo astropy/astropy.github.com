@@ -525,16 +525,16 @@
             "repo_url": "https://github.com/RiceMunk/omnifit",
             "pypi_name": "omnifit",
             "image": null,
-            "description": "Python library intended to help with the analysis of astronomical spectra for signs of interstellar ices.",
+            "description": "Package for doing astronomical spectroscopy fitting of interstellar ices.",
             "coordinated": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
                 "documentation": "Partial",
-                "testing": "Partial",
+                "testing": "Good",
                 "devstatus": "Functional but low activity",
-                "python3": "No",
-                "last-updated": "2017-11-08"
+                "python3": "Yes",
+                "last-updated": "2021-01-12"
             }
         },
         {
