@@ -13,10 +13,10 @@
             "functionality": "General package",
             "ecointegration": "Partial",
             "documentation": "Good",
-            "testing": "Good",
+            "testing": "Partial",
             "devstatus": "Good",
             "python3": "Yes",
-            "last-updated": "2021-10-29"
+            "last-updated": "2021-11-25"
           }
         },
         {
