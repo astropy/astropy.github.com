@@ -371,26 +371,24 @@
         }
     },
     {
-        "role": "Core package release coordinator",
-        "url": "Core_package_release_coordinator",
+        "role": "Release team",
+        "url": "release_team",
         "people": [
+            "E. Madison Bray",
+            "Simon Conseil",
             "Thomas Robitaille",
-            "Brigitta Sip\u0151cz",
-            "Erik Tollerud"
+            "Brigitta Sip\u0151cz"
         ],
-        "role-head": "Core package release coordinator",
+        "role-head": "Release team",
         "responsibilities": {
-            "description": "Oversee the release process for the astropy core package, including:",
+            "description": "Oversee the release process for packages in the project, including:",
             "details": [
-                "Performing new releases",
-                "Coordinate releases of astropy-helpers with the astropy-helpers maintainer(s)",
-                "Maintaining the change log and \u201cwhat\u2019s new\u201d documentation page",
-                "Maintaining the bugfix branches",
-                "Updating Astropy\u2019s PyPI entry as needed",
+                "Carrying out releases of the core astropy package",
+                "Notifying the Distribution Coordinators of any core astropy package release",
                 "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media",
-                "Notifying the Distribution Coordinators of any release",
-                "Make sure that the package gets updated in conda and coordinate with distribution coordinators",
-                "Keep documentation for release process up to date"
+                "Keeping documentation for the release process of the core package up to date",
+                "Designing policies to improve the uniformity of release procedures across the astropy organization (including coordinated and infrastructure packages)",
+                "Testing the interoperability of the core, coordinated, and infrastructure packages and provide safeguards against breaking the ecosystem."
             ]
         }
     },
