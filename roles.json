@@ -387,7 +387,7 @@
                 "Notifying the Distribution Coordinators of any core astropy package release",
                 "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media",
                 "Keeping documentation for the release process of the core package up to date",
-                "Designing policies to improve the uniformity of release procedures across the astropy organization (including coordinated and infrastructure packages)",
+                "Designing policies to improve the uniformity of release procedures for coordinated and infrastructure packages",
                 "Testing the interoperability of the core, coordinated, and infrastructure packages and provide safeguards against breaking the ecosystem."
             ]
         }
