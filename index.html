@@ -19,6 +19,12 @@
 <!-- Meow woof -->
 <script>
 window.onload = function() {
+
+  $.getJSON('https://pypi.org/pypi/astropy/json', function(data) {
+	document.getElementById('core-package-version').innerHTML = 'Current Version: ' + data.info.version;
+  });
+
+
   var today = new Date();
   var month = today.getMonth() + 1;
   var date = today.getDate();
@@ -35,6 +41,7 @@ window.onload = function() {
     dogeImg.src = 'images/astropy_doge.png';
     dogeImg.alt = 'wow so open very python';
   }
+
 };
 </script>
 
@@ -104,7 +111,7 @@ window.onload = function() {
 
 <section class="whatsnew"><div id="prenew"></div>
 	What's new in <a href="http://docs.astropy.org/en/stable/whatsnew/5.0.html">Astropy 5.0?</a>
-	<p class="version">Current Version: 5.0.1</p>
+	<p class="version" id="core-package-version"></p>
 
 </section>
 
