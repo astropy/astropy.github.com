@@ -1048,6 +1048,24 @@
                 "python3": "Yes",
                 "last-updated": "2020-07-13"
             }
+        },
+        {
+            "name": "kanon",
+            "maintainer": "Léni Gauffier <lenigauffier@gmail.com>",
+            "stable": true,
+            "home_url": "https://kanon.readthedocs.io/",
+            "repo_url": "https://github.com/legau/kanon",
+            "pypi_name": "kanon",
+            "description": "History of astronomy package, historical geocentric models and number systems",
+            "review": {
+                 "functionality": "To be filled out by the reviewer",
+                 "ecointegration": "To be filled out by the reviewer",
+                 "documentation": "To be filled out by the reviewer",
+                 "testing": "To be filled out by the reviewer",
+                 "devstatus": "To be filled out by the reviewer",
+                 "python3": "To be filled out by the reviewer",
+                 "last-updated": "To be filled out by the reviewer"
+            }
         }
     ]
 }
