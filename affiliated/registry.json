@@ -1057,6 +1057,7 @@
             "repo_url": "https://github.com/legau/kanon",
             "pypi_name": "kanon",
             "description": "History of astronomy package, historical geocentric models and number systems",
+            "coordinated": false,
             "review": {
                  "functionality": "Specialized package",
                  "ecointegration": "Good",
