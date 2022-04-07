@@ -994,7 +994,7 @@
           },
           {
             "name": "mocpy",
-            "maintainer": "Matthieu Baumann <matthieu.baumann@astro.unistra.fr> and Thomas Boch <thomas.boch@astro.unistra.fr>",
+            "maintainer": "François-Xavier Pineau <francois-xavier.pineau@astro.unistra.fr>, Matthieu Baumann <matthieu.baumann@astro.unistra.fr>, and Thomas Boch <thomas.boch@astro.unistra.fr>",
             "stable": true,
             "home_url": "https://cds-astro.github.io/mocpy/",
             "repo_url": "https://github.com/cds-astro/mocpy",
