@@ -318,7 +318,7 @@
         },
         {
             "name": "ccdproc",
-            "maintainer": "Steven Crawford and Matt Craig <ccdproc@gmail.com>",
+            "maintainer": "Matt Craig <ccdproc@gmail.com>",
             "stable": true,
             "home_url": "https://ccdproc.readthedocs.io",
             "repo_url": "https://github.com/astropy/ccdproc",
