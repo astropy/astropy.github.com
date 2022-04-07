@@ -956,7 +956,7 @@
         },
         {
             "name": "EinsteinPy",
-            "maintainer": "Shreyas Bapat, Ritwik Saha, Bhavya Bhatt and Priyanshu Khandelwal <bapat.shreyas@gmail.com>",
+            "maintainer": "Shreyas Bapat, Ritwik Saha, Bhavya Bhatt, and Priyanshu Khandelwal <bapat.shreyas@gmail.com>",
             "stable": true,
             "home_url": "https://einsteinpy.org",
             "repo_url": "https://github.com/einsteinpy/einsteinpy",
