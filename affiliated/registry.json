@@ -418,7 +418,7 @@
         },
         {
             "name": "spherical_geometry",
-            "maintainer": "Bernie Simon",
+            "maintainer": "Mihai Cara",
             "stable": false,
             "home_url": "https://spacetelescope.github.io/spherical_geometry/spherical_geometry/",
             "repo_url": "https://github.com/spacetelescope/spherical_geometry",
