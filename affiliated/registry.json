@@ -278,7 +278,7 @@
         },
         {
             "name": "PyVO",
-            "maintainer": "Christine Banek, Adrian Demian, and Stefan Becker",
+            "maintainer": "Christine Banek, Adrian Damian, Stefan Becker, and Tom Donaldson",
             "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
             "repo_url": "https://github.com/astropy/pyvo",
