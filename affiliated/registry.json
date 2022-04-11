@@ -458,7 +458,7 @@
         },
         {
             "name": "spectral-cube",
-            "maintainer": "Adam Ginsburg",
+            "maintainer": "Adam Ginsburg and Eric Koch",
             "stable": true,
             "home_url": "https://spectral-cube.readthedocs.io",
             "repo_url": "https://github.com/radio-astro-tools/spectral-cube",
