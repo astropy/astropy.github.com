@@ -13,6 +13,7 @@
         "responsibilities": {
             "description": "Overall coordination and management of the Astropy project, including:",
             "details": [
+		"Formally detailed in the <a href='https://github.com/astropy/astropy-APEs/blob/main/APE0.rst#the-coordination-committee'>The Astropy Project Governance Charter (APE 0)</a>",
                 "Keeping a large-scale view of the Astropy ecosystem",
                 "Evaluating new affiliated package submissions and review of existing affiliated packages",
                 "Approving or rejecting Astropy APEs",
@@ -35,6 +36,7 @@
         "responsibilities": {
             "description": "Provide a point of contact for sensitive issues separate from the coordinating committee, including:",
             "details": [
+		"Formally detailed in the <a href='https://github.com/astropy/astropy-APEs/blob/main/APE0.rst#the-ombudsperson'>The Astropy Project Governance Charter (APE 0)</a>",
                 "Monitoring the <a href='mailto:confidential@astropy.org'>confidential@astropy.org</a> email account",
                 "Solicit and provide anonymized feedback to the astropy coordination committee regarding coordination of the project",
                 "Assist the coordination committee and community engagement coordinator with violations of the code of conduct or other ethical concerns"
