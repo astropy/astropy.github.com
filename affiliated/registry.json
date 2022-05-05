@@ -123,7 +123,7 @@
             "home_url": "https://specutils.readthedocs.io",
             "repo_url": "https://github.com/astropy/specutils",
             "pypi_name": "specutils",
-            "description": "Affiliated package for analysis tools and basic data types of astronomical spectra.",
+            "description": "Coordinated package for analysis tools and basic data types of astronomical spectra.",
             "image": null,
             "coordinated": true,
             "review": {
@@ -134,6 +134,26 @@
                 "devstatus": "Heavy development",
                 "python3": "Yes",
                 "last-updated": "2018-12-04"
+            }
+        },
+        {
+            "name": "specreduce",
+            "maintainer": "Tim Pickering and Erik Tollerud",
+            "stable": false,
+            "home_url": "https://specreduce.readthedocs.io",
+            "repo_url": "https://github.com/astropy/specreduce",
+            "pypi_name": "specreduce",
+            "description": "Coordinated package to provide a data reduction toolkit for optical and infrared spectroscopy, on which applications such as pipeline processes for specific instruments can be built..",
+            "image": null,
+            "coordinated": true,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Heavy development",
+                "python3": "Yes",
+                "last-updated": "2022-05-05"
             }
         },
         {
