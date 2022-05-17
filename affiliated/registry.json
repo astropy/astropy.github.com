@@ -1,6 +1,5 @@
 {
     "packages": [
-                {
         {
           "name": "PyAutoLens",
           "maintainer": "James Nightingale <james.w.nightingale@durham.ac.uk>",
