@@ -1,13 +1,14 @@
 {
     "packages": [
                 {
-          "name": "PyAutoGalaxy",
+        {
+          "name": "PyAutoLens",
           "maintainer": "James Nightingale <james.w.nightingale@durham.ac.uk>",
           "stable": true,
-          "home_url": "https://pyautogalaxy.readthedocs.io/en/latest/",
-          "repo_url": "https://github.com/Jammy2211/PyAutoGalaxy",
-          "pypi_name": "https://pypi.org/project/autogalaxy/",
-          "description": "Analysing the morphologies and structures of large multi-wavelength galaxy samples. ",
+          "home_url": "https://pyautolens.readthedocs.io/en/latest/",
+          "repo_url": "https://github.com/Jammy2211/PyAutoLens",
+          "pypi_name": "https://pypi.org/project/autolens/",
+          "description": "Analysis, modeling and simulations of strong gravitational lenses.",
           "review": {
              "functionality": "To be filled out by the reviewer",
              "ecointegration": "To be filled out by the reviewer",
