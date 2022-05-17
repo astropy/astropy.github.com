@@ -6,7 +6,8 @@
           "stable": true,
           "home_url": "https://pyautolens.readthedocs.io/en/latest/",
           "repo_url": "https://github.com/Jammy2211/PyAutoLens",
-          "pypi_name": "https://pypi.org/project/autolens/",
+          "pypi_name": "autolens",
+          "coordinated": false,
           "description": "Analysis, modeling and simulations of strong gravitational lenses.",
           "review": {
              "functionality": "To be filled out by the reviewer",
