@@ -1,6 +1,24 @@
 {
     "packages": [
         {
+          "name": "PyAutoGalaxy",
+          "maintainer": "James Nightingale <james.w.nightingale@durham.ac.uk>",
+          "stable": true,
+          "home_url": "https://pyautogalaxy.readthedocs.io/en/latest/",
+          "repo_url": "https://github.com/Jammy2211/PyAutoGalaxy",
+          "pypi_name": "https://pypi.org/project/autogalaxy/",
+          "description": "Analysing the morphologies and structures of large multi-wavelength galaxy samples. ",
+          "review": {
+             "functionality": "To be filled out by the reviewer",
+             "ecointegration": "To be filled out by the reviewer",
+             "documentation": "To be filled out by the reviewer",
+             "testing": "To be filled out by the reviewer",
+             "devstatus": "To be filled out by the reviewer",
+             "python3": "To be filled out by the reviewer",
+             "last-updated": "To be filled out by the reviewer"
+          }
+        },
+        {
           "name": "BayesicFitting",
           "maintainer": "Do Kester <dokester@home.nl> and Migo Mueller",
           "stable": true,
