@@ -143,7 +143,7 @@
             "home_url": "https://specreduce.readthedocs.io",
             "repo_url": "https://github.com/astropy/specreduce",
             "pypi_name": "specreduce",
-            "description": "Coordinated package to provide a data reduction toolkit for optical and infrared spectroscopy, on which applications such as pipeline processes for specific instruments can be built..",
+            "description": "Coordinated package to provide a data reduction toolkit for optical and infrared spectroscopy, on which applications such as pipeline processes for specific instruments can be built.",
             "image": null,
             "coordinated": true,
             "review": {
