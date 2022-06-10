@@ -373,6 +373,21 @@
         }
     },
     {
+        "role": "Dev-telecon coordinator",
+        "url": "devtelecon_coordinator",
+        "people": [
+            "Clara Brasseur",
+            "Hans Moritz G\u00fcnther",
+            "Adrian Price-Whelan",
+            "Nathaniel Starkman"
+        ],
+        "role-head": "Developer telecon coordinators",
+        "responsibilities": {
+            "description": "Organize monthly developer telecons",
+            "details": []
+        }
+    },
+    {
         "role": "Release team",
         "url": "release_team",
         "people": [
