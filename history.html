@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Astropy. A Community Python Library for Astronomy." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="favicon.ico" />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.sidr.light.css" />
+
+
+<title>Astropy</title>
+
+<!-- Google analytics -->
+<script src="js/analytics.js"></script>
+
+<!-- Meow woof -->
+<script>
+window.onload = function() {
+
+  $.getJSON('https://pypi.org/pypi/astropy/json', function(data) {
+    document.getElementById('core-package-version').innerHTML = 'Current Version: ' + data.info.version;
+  });
+
+
+  var today = new Date();
+  var month = today.getMonth() + 1;
+  var date = today.getDate();
+
+  if (month == 4 && date == 1) {
+    $('#hero img').attr('src', 'images/astropy_meow.png');
+    $('#hero img').attr('onerror', 'this.src=\x27images/astropy_meow.png\x27; this.onerror=null;');
+
+    var dogeContainer = document.getElementById("prenew");
+    var dogeImg = document.createElement("img");
+    dogeImg.onload=function() {
+      dogeContainer.appendChild(dogeImg);
+    }
+    dogeImg.src = 'images/astropy_doge.png';
+    dogeImg.alt = 'wow so open very python';
+  }
+
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav>
+        <div id="mobile-header">
+            <!-- Menu Icon -->
+            <a id="responsive-menu-button" href="#sidr-main"><div><svg senable-background="new 0 0 24 24" height="24px" id="Layer_1" version="1.1" viewBox="0 0 24 24" width="24px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><g><path d="M23.244,17.009H0.75c-0.413,0-0.75,0.36-0.75,0.801v3.421C0,21.654,0.337,22,0.75,22h22.494c0.414,0,0.75-0.346,0.75-0.77    V17.81C23.994,17.369,23.658,17.009,23.244,17.009z M23.244,9.009H0.75C0.337,9.009,0,9.369,0,9.81v3.421    c0,0.424,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.345,0.75-0.769V9.81C23.994,9.369,23.658,9.009,23.244,9.009z     M23.244,1.009H0.75C0.337,1.009,0,1.369,0,1.81V5.23c0,0.423,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.346,0.75-0.769V1.81    C23.994,1.369,23.658,1.009,23.244,1.009z"/></g></g></svg></div></a>
+            <!-- -->
+        </div>
+        <a href="index.html"><img src="images/astropy_word.svg" height="32" onerror="this.src='images/astropy_word_32.png; this.onerror=null;"/></a>
+        <div id="navigation">
+            <ul>
+                <li>
+                    <div class="dropdown">
+                        <a>About</a>
+                        <div class="dropdown-content">
+                            <ul>
+                                <li><a href="about.html">About Astropy</a></li>
+                                <li><a href="code_of_conduct.html">Code of Conduct</a></li>
+                                <li><a href="acknowledging.html">Acknowledging & Citing</a></li>
+                                <li><a href="history.html">History</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="help.html">Get Help</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a href="http://docs.astropy.org">Documentation</a>
+                        <div class="dropdown-content">
+                            <ul>
+                                <li><a href="http://docs.astropy.org" target="_blank">Current Release</a></li>
+                                <li><a href="http://devdocs.astropy.org/" target="_blank">In Development</a></li>
+                                <li><a href="https://astropy.readthedocs.io/en/lts/index.html" target="_blank">Long-Term Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="affiliated/index.html">Affiliated Packages</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="credits.html">Credits</a></li>
+            </ul>
+        </div>
+        <div class="search pull-right">
+            <form action="http://docs.astropy.org/en/stable/search.html" method="get">
+              <input type="text" name="q" placeholder="Search Documentation" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+    </nav>
+
+    <section>
+        <h1>A brief history of the Astropy Project</h1>
+
+        <p>Some of the earliest use of Python in astronomy was at the Space Telescope
+        Science Institute (STScI) with their release of PyRAF around 2000. That
+        release helped raise awareness of Python as a scripting language, leading to
+        its use at more institutions. STScI was also active in the development of
+        Python tools for science, including a pre-cursor to numpy and early versions
+        of matplotlib. By the early 2010s there were multiple independent efforts
+        by institutions and individuals to use Python for data analysis.</p>
+
+        <p>The initial trigger for Astropy was a <a
+        href="https://mail.python.org/pipermail/astropy/2011-June/001075.html">conversation
+        in 2011 on the astropy mailing list (which pre-dated The Astropy Project by
+        over a decade)</a> on the topic of how many “general astronomy” packages were
+        being written in Python. This discussion thread led to the creation of a <a
+        href="https://web.archive.org/web/20140811231510/http://astropy.wikispaces.com/%20“Original%20astropy%20wiki”">short-lived
+        wiki</a> where over 100 participants voted in favor of a shared package to
+        combine the efforts of these different developers into a single space. This
+        demonstrated broad interest in such an effort. With that motivation and
+        charge in place, this same wiki was used to organize a planning meeting for
+        this effort.</p>
+
+        <p>That planning meeting, in Fall 2011, was the formal beginning of the
+        Astropy Project and was held at the <a
+        href="https://github.com/astropy/astropy/wiki/CfAMeeting2011%20“CfA%20Astropy%20meeting”">Harvard
+        Center for Astrophysics</a>. The <a
+        href="https://github.com/astropy/astropy/wiki/CfAMeeting2011#participants%20“CfA%20meeting%20participants”">list
+        of attendees</a> at that meeting underscores what has been essential to the
+        launch, growth, and continued development of Astropy: it was a mix of
+        graduate students, postdocs, scientists, and professional software developers.
+        The attendees with permanent positions were willing to contribute both code
+        and their time to the project; Space Telescope Science Institute
+        (STScI) additionally contributed substantial staff time to the project. The
+        early-career attendees had either already devoted substantial time to code
+        development, would do so over the ensuing years, or both.</p>
+
+        <p>The foundation of Astropy’s subsequent success was the combination of
+        institutional resources, a deliberate effort to include and foster the growth
+        of a broad community of contributors, the rapid growth of GitHub and the
+        surrounding ecosystem of open source development tools, and a willingness of
+        early-career professionals to contribute code to an open community project.
+        The initial release for users of the core astropy package, version 0.2 on
+        February 19, 2013, was less than 18 months after the CfA meeting and already
+        contained many of the core subpackages that are part of the package today.
+        That was possible only because some of the code already existed in a form
+        that could be adapted to Astropy. Major pieces had been written by staff at
+        STScI that were contributed by the Institute to the project. There were also
+        large contributions from early participants who were graduate students and
+        postdocs.</p>
+
+        <p>By the time of the first stable release in 2013, the number of contributors
+        to the code base was over 20, including several people who were not involved
+        in the initial meeting. Though most of the lines of code at that point had
+        been written by a handful of people, the effort they put into welcoming and
+        supporting new contributors was just as important and is not easily captured
+        in a single number. The project made an effort early on to provide prompt,
+        constructive, and welcoming feedback to new contributors. The promptness was
+        a key factor in encouraging early contributors and was possible in part
+        because STScI devoted substantial staff time to the project with the explicit
+        intent of growing the community of contributors.</p>
+
+        <p>One of the Project’s first efforts to formally recruit early career
+        scientists was participation in
+        <a href="https://github.com/astropy/astropy/wiki#google-summer-of-code">Google’s Summer of Code (GSoC) program</a>.
+        That program provides participants with a stipend in exchange for doing
+        extensive work on open source projects during the northern hemisphere summer.
+        It was the first of several efforts to grow the community of contributors.
+        These efforts yielded a handful of very active long-term contributors to the
+        project whose cumulative work goes well beyond the initial code contributions
+        made by participants.</p>
+
+        <p>Another critical element in the growth of the Astropy Project was the
+        Python in Astronomy conference series. The first Python in Astronomy
+        conference was held in 2015. The hope was that the conference would encourage
+        the development of Python packages in astronomy outside of the astropy core,
+        foster the adoption of Astropy in the broader community, and serve as an
+        introduction to contributing to open source software. Though it was not an
+        Astropy conference, many of the astropy core developers were attending. For
+        example, the initial Code of Conduct for the Astropy Project was written at
+        the conference and the “Python in Astronomy” Facebook group was started,
+        among <a href="http://openastronomy.org/pyastro/2015/">other
+        activities</a>.</p>
+
+        <p>The intent from the first coordination meeting in 2011 was to put some
+        functionality into more specialized packages, called affiliated packages,
+        that were developed independent of the core project but followed the same
+        coding, testing and documentation conventions and often used the same
+        continuous integration (CI) infrastructure. The first affiliated packages
+        were created in 2011. That model has been quite successful: as of early 2022
+        there are almost 50 affiliated packages. The use of common conventions across
+        the packages has eased the burden of maintaining those packages as the
+        project ecosystem grows.</p>
+
+        <p>Deliberate community development has been essential to the success of the
+        Project and has included several aspects. Astropy was an early and
+        enthusiastic adopter of an explicit Code of Conduct. This served to formalize
+        the welcoming atmosphere established early in the project. Community presence
+        has included setting up social media spaces for Python in Astronomy,
+        workshops at AAS meetings, work on learning materials for Astropy and
+        development of the project’s web presence. The Facebook group “Python in
+        Astronomy’’ has been wildly successful with over 6400 members and nearly
+        daily postings. This success is in part because of careful moderation by
+        members of the project early in the list's history to keep conversations on topic, though community moderators have taken on more of those responsibilities as time has gone on. Workshops at AAS
+        meetings have helped several hundred astronomers adopt Python and astropy as
+        part of their workflow.</p>
+
+        <p>The day-to-day effort of managing the Astropy codebase is unglamorous but
+        critical. Tasks include promptly labeling and triaging new issues, responding
+        to new pull requests, and watching for and fixing changes that break part of
+        the infrastructure. There have been times when that infrastructure has
+        shifted very rapidly, such as when <a
+        href="https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing%20“Travis-CI%20open%20sources%20limits”">Travis-CI
+        stopped hosting open source packages</a>. Transitioning the entire ecosystem
+        to a new infrastructure required substantial effort by a number of people,
+        though it was facilitated primarily by a single individual. Indeed, much of
+        this day-to-day work has been done by a handful of people, many of whom are
+        in permanent positions at STScI and a few other institutions.</p>
+
+        <p>The patterns at the beginning of the project have persisted throughout: it
+        is the combined effort of individuals and institutions that includes
+        scientists and software developers. It includes early-career individuals and
+        those in permanent positions.</p>
+
+        <p>There are a few important changes to the project since its inception. One
+        is external funding from the Moore Foundation in 2019 and from NASA in 2022,
+        which provides monetary support for contributors at all career stages in
+        addition to funding for Project needs. Another is the establishment of a
+        formal governance structure
+        (<a href="https://github.com/astropy/astropy-APEs/blob/main/APE0.rst">APE 0
+        adopted in 2021</a>) that is open and responsive to community needs.</p>
+
+        <p>Another development that was perhaps not envisioned at the start of the
+        project is some contributors choosing to make Astropy an essential part of
+        their career. Their involvement since the beginning of the project has
+        provided continuity to the project and represents taking a risk that
+        potential future employers may not scientifically value this software work,
+        regardless of its impact on astronomy as a whole.</p>
+
+        <p>As of summer 2022, the success of the Project hinged on a number of factors,
+        including the willingness of institutions and individuals to contribute
+        extensive prior work to a community project, a deliberate effort to foster
+        new contributors, and an effort to create a welcoming community. It is
+        difficult to see how the project could have come so far absent any of these
+        factors or absent any one of the groups of contributors. Institutional
+        support and individual contributions has been inextricably linked.</p>
+
+    </section>
+
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/jquery.sidr.min.js"></script>
+        <script src="js/functions.js"></script>
+
+        <hr>
+        <p>
+        <img style="vertical-align:middle" src="images/astropy_brandmark.png" height=20><span style="vertical-align:middle">
+        <a href="code_of_conduct.html"> The Astropy project is committed to fostering an inclusive community</a></span>.
+        </p>
+
+    </footer>
+</div>
+
+
+</body>
+</html>
