@@ -1,6 +1,24 @@
 {
     "packages": [
         {
+            "name": "ZodiPy",
+            "maintainer": "Metin San <metin.san@astro.uio.no>",
+            "stable": true,
+            "home_url": "https://cosmoglobe.github.io/zodipy/",
+            "repo_url": "https://github.com/cosmoglobe/zodipy",
+            "pypi_name": "zodipy",
+            "description": "ZodiPy is a Python tool for simulating the zodiacal emission that a solar system observer sees, either in the form of timestreams or binned HEALPix maps.",
+            "review": {
+               "functionality": "To be filled out by the reviewer",
+               "ecointegration": "To be filled out by the reviewer",
+               "documentation": "To be filled out by the reviewer",
+               "testing": "To be filled out by the reviewer",
+               "devstatus": "To be filled out by the reviewer",
+               "python3": "To be filled out by the reviewer",
+               "last-updated": "To be filled out by the reviewer"
+            }
+          },
+        {
           "name": "BayesicFitting",
           "maintainer": "Do Kester <dokester@home.nl> and Migo Mueller",
           "stable": true,
