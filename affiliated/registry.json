@@ -8,6 +8,7 @@
             "repo_url": "https://github.com/cosmoglobe/zodipy",
             "pypi_name": "zodipy",
             "description": "ZodiPy is a Python tool for simulating the zodiacal emission that a solar system observer sees, either in the form of timestreams or binned HEALPix maps.",
+            "coordinated": false,
             "review": {
                "functionality": "To be filled out by the reviewer",
                "ecointegration": "To be filled out by the reviewer",
