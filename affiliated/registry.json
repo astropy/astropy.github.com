@@ -79,10 +79,10 @@
         },
         {
           "name": "lenstronomy",
-          "maintainer": "Simon Birrer <sibirrer@gmail.com>",
+          "maintainer": "Simon Birrer <sibirrer@gmail.com>, Anowar Shajib, Daniel Gilman",
           "stable": true,
           "home_url": "https://lenstronomy.readthedocs.io",
-          "repo_url": "https://github.com/sibirrer/lenstronomy",
+          "repo_url": "https://github.com/lenstronomy/lenstronomy",
           "pypi_name": "lenstronomy",
           "description": "Multi-purpose gravitational lensing and image modeling package",
           "coordinated": false,
