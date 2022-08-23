@@ -79,7 +79,7 @@
         },
         {
           "name": "lenstronomy",
-          "maintainer": "Simon Birrer <sibirrer@gmail.com>, Anowar Shajib, Daniel Gilman",
+          "maintainer": "Simon Birrer, Anowar Shajib, and Daniel Gilman <sibirrer@gmail.com>",
           "stable": true,
           "home_url": "https://lenstronomy.readthedocs.io",
           "repo_url": "https://github.com/lenstronomy/lenstronomy",
