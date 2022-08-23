@@ -2,7 +2,7 @@
     "packages": [
         {
           "name": "BayesicFitting",
-          "maintainer": "Do Kester <dokester@home.nl> and Migo Mueller",
+          "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
           "stable": true,
           "home_url": "https://bayesicfitting.nl/",
           "repo_url": "https://github.com/dokester/BayesicFitting",
@@ -977,7 +977,7 @@
         },
         {
             "name": "sbpy",
-            "maintainer": "Michael Mommert, Michael S. P. Kelley, Miguel de Val-Borro, Jian-Yang Li <sbpy.dev@gmail.com>",
+            "maintainer": "Michael Mommert, Michael S. P. Kelley, Miguel de Val-Borro, and Jian-Yang Li <sbpy.dev@gmail.com>",
             "stable": false,
             "home_url": "https://github.com/NASA-Planetary-Science/sbpy",
             "repo_url": "https://github.com/NASA-Planetary-Science/sbpy",
