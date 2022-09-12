@@ -378,7 +378,6 @@
         "people": [
             "Clara Brasseur",
             "Hans Moritz G\u00fcnther",
-            "Adrian Price-Whelan",
             "Nathaniel Starkman"
         ],
         "role-head": "Developer telecon coordinators",
@@ -550,7 +549,6 @@
             {
                 "role": "astropy.units",
                 "people": [
-                    "Adrian Price-Whelan",
                     "Nathaniel Starkman",
                     "Marten van Kerkwijk"
                 ]
