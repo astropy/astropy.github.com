@@ -29,10 +29,10 @@
             {
                 "description": "Organisation and communication:",
                 "details": [
-                    "The <a href='https: //github.com/astropy/astropy-project/tree/main/policies'>policies are on github</a>, in particular <a href='https: //github.com/astropy/astropy-project/tree/main/policies/coco-operating-policies.md'>in this document</a>.",
-                    "Meeting records are kept <a href='https://docs.google.com/document/u/0/d/1kKzSVTom27HiWaw5yTGZDL7vLVAjBGhueXAl2wuSlMY/edit'>in running notes</a>.",
-                    "Communication with in the coordination committee happes through regular zoom meetings (see running notes) and a private slack channel.",
-                    "Coordination committee members read email to <a href='mailto:coordinators@astropy.org'>coordinators@astropy.org</a> or can be notified as <a href='https://github.com/orgs/astropy/teams/coordinators'>github team @astropy/coordinators</a>.",
+                    "Policies: <a href='https: //github.com/astropy/astropy-project/tree/main/policies/coco-operating-policies.md'>CoCo Operating Policies</a>.",
+                    "Meeting records: <a href='https://docs.google.com/document/u/0/d/1kKzSVTom27HiWaw5yTGZDL7vLVAjBGhueXAl2wuSlMY/edit'>CoCo Running Notes</a>.",
+                    "Communication within the coordination committee happens through regular zoom meetings and a private Slack channel.",
+                    "Contact the Coordination Committee via email to <a href='mailto:coordinators@astropy.org'>coordinators@astropy.org</a> or by tagging the <a href='https://github.com/orgs/astropy/teams/coordinators'>github team @astropy/coordinators</a>.",
                     "Coordination committee members send project updates to appropriate email lists (e.g. <a href='https://groups.google.com/u/1/g/astropy-dev'>astropy-dev</a>)."
                 ]
             }
