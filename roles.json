@@ -654,6 +654,14 @@
                     "Larry Bradley",
                     "Adam Ginsburg"
                 ]
+            },
+            {
+                "role": "asdf-astropy",
+                "people": [
+                    "Nadia Dencheva",
+                    "Perry Greenfield",
+                    "William Jamieson"
+                ]
             }
         ],
         "responsibilities": {
