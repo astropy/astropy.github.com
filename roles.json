@@ -269,7 +269,8 @@
             "details": [
                 "Maintaining contributor/roles list",
                 "Managing pull requests to the website repository",
-                "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)"
+                "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
+                "Managing the astropy.org DNS entries and releated domain name upkeep"
             ]
         }
     },
