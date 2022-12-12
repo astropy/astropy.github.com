@@ -14,16 +14,15 @@ def get_astropy_credits(warner=print):
     returns False if the repo can't be found.
     """
     import os
-    from urllib.request import urlopen
+    import requests
 
-    creditspath = os.environ.get('ASTROPY_REPO_PATH', 'http://raw.github.com/astropy/astropy/main/docs/credits.rst')
+    creditspath = os.environ.get('ASTROPY_REPO_PATH', 'https://raw.githubusercontent.com/astropy/astropy/main/docs/credits.rst')
 
     if creditspath.startswith('http'):
         #url - download page from web
         u = None
         try:
-            u = urlopen(creditspath)
-            return u.read()
+            return requests.get(creditspath).content
         except Exception as e:
             warner('Could not download credits.rst from requested path: "{0}" Using placeholder for "The Team" page.'.format(e))
             return False
@@ -72,7 +71,7 @@ def extract_names_list(docs, sectionname, warner=print):
     return names
 
 
-def process_html(fn, newcoordinators, newcontributors, indent='\t\t\t'):
+def process_html(fn, newcontributors, indent='\t\t\t'):
     """
     Returns a string of html mean to look like the input, but with content from
     the credits file.
@@ -84,14 +83,7 @@ def process_html(fn, newcoordinators, newcontributors, indent='\t\t\t'):
             if l.endswith('\n'):
                 l = l[:-1]  # strip newline
 
-            if incoord:
-                if '</ul>' in l:
-                    lines.extend([(indent + '<li>' + c + '</li>') for c in newcoordinators])
-                    lines.append(l)
-                    incoord = False
-                #skip otherwise
-
-            elif incontrib:
+            if incontrib:
                 if '</ul>' in l:
                     lines.extend([(indent + '<li>' + c + '</li>') for c in newcontributors])
                     lines.append(l)
@@ -101,9 +93,9 @@ def process_html(fn, newcoordinators, newcontributors, indent='\t\t\t'):
                         lines.append(l)
                 #skip otherwise
             else:
-                if '<ul class="coordinators">' in l:
-                    incoord = True
-                elif '<h3 id="core-package-contributors">' in l:
+                # if '<ul class="coordinators">' in l:
+                #     incoord = True
+                if '<h3 id="core-package-contributors">' in l:
                     incontrib = True
                 lines.append(l)
 
@@ -115,10 +107,9 @@ if __name__ == '__main__':
 
     dt = publish_doctree(get_astropy_credits())
 
-    coordinators = extract_names_list(dt, 'Astropy Project Coordinators')
     contributors = extract_names_list(dt, 'Core Package Contributors')
 
-    newhtml = process_html('team.html', coordinators, contributors)
+    newhtml = process_html('team.html', contributors)
     print('Replacing "team.html" with updated version.  Be sure to "git diff '
           'team.html" before committing to ensure no funny business happened.')
     with open('team.html', 'wb') as f:
