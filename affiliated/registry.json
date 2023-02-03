@@ -1,6 +1,24 @@
 {
     "packages": [
         {
+          "name": "Pyxel",
+          "maintainer": "The Pyxel development team <pyxel@esa.int>",
+          "stable": true,
+          "home_url": "https://esa.gitlab.io/pyxel",
+          "repo_url": "https://gitlab.com/esa/pyxel",
+          "pypi_name": "pyxel-sim",
+          "description": "Pyxel detector simulation framework",
+          "coordinated": false,
+          "review": {
+             "functionality": "To be filled out by the reviewer",
+             "ecointegration": "To be filled out by the reviewer",
+             "documentation": "To be filled out by the reviewer",
+             "testing": "To be filled out by the reviewer",
+             "devstatus": "To be filled out by the reviewer",
+             "python3": "To be filled out by the reviewer",
+             "last-updated": "To be filled out by the reviewer"
+          }
+        },        {
           "name": "BayesicFitting",
           "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
           "stable": true,
