@@ -125,43 +125,17 @@
     {
         "role": "Learn Team",
         "url": "Learn_team",
-	"role-head": "Learn Team",
-	"sub-roles": [
-	    {
-		"role": "Coordinators",
-		"people": [
-		    "Lia Corrales",
-		    "Kelle Cruz",
-		    "Adrian Price-Whelan",
-		    "Matt Craig"
-		]
-	    },
-	    {
-		"role": "Infrastructure",
-		"people": [
-		    "Adrian Price-Whelan",
-		    "Erik Tollerud",
-		    "Jonathan Sick"
-		]
-	    },
-	    {
-		"role": "Content Editors",
-		"people": [
-		    "Lia Corrales",
-		    "Kelle Cruz",
-		    "Matt Craig",
-		    "Adrian Price-Whelan"
-		]
-	    },
-	    {
-		"role": "Workshop Coordinators",
-		"people": [
-		    "David Shupe",
-		    "Brett Morris",
-		    "Kelle Cruz"
-		]
-	    }
-	],
+        "role-head": "Learn Team",
+        "people": [
+            "Lia Corrales (coordinator, content editor)",
+            "Matt Craig (coordinator, content editor)",
+            "Kelle Cruz (coordinator, content editor, workshop coordinator)",
+            "Brett Morris (workshop coordinator)",
+            "Adrian Price-Whelan (coordinator, infrastructure, content editor)",
+            "David Shupe (workshop coordinator)",
+            "Jonathan Sick (infrastructure)",
+            "Erik Tollerud (infrastructure)"
+        ],
         "responsibilities": [
             {
 		"subrole-head": "Coordinators",
