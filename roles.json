@@ -109,20 +109,6 @@
         }
     },
     {
-        "role": "Astropy GSoC coordinator",
-        "url": "Astropy_GSoC_coordinator",
-        "people": [
-            "Brigitta Sip\u0151cz",
-            "Erik Tollerud",
-            "Z\u00e9 Vin\u00edcius"
-        ],
-        "role-head": "Astropy GSoC coordinator",
-        "responsibilities": {
-            "description": "Coordinate the participation of Astropy in the Google Summer of Code Project",
-            "details": []
-        }
-    },
-    {
         "role": "Learn Team",
         "url": "Learn_team",
 	"role-head": "Learn Team",
