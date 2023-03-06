@@ -59,44 +59,12 @@
         "role": "Community engagement coordinator",
         "url": "Community_engagement_coordinator",
         "role-head": "Community engagement coordinator",
-        "sub-roles": [
-            {
-                "role": "Overall",
-                "people": [
-                    "Unfilled"
-                ]
-            },
-            {
-                "role": "Twitter",
-                "people": [
-                    "Matt Craig"
-                ]
-            },
-            {
-                "role": "Facebook",
-                "people": [
-                    "Kelle Cruz",
-                    "Erik Tollerud"
-                ]
-            },
-            {
-                "role": "Slack/Matrix",
-                "people": [
-                    "Stuart Mumford"
-                ]
-            },
-            {
-                "role": "Discourse",
-                "people": [
-                    "Stuart Mumford"
-                ]
-            },            {
-                "role": "Conferences",
-                "people": [
-                    "Kelle Cruz",
-                    "Erik Tollerud"
-                ]
-            }
+        "people": [
+            "Matt Craig (Twitter)",
+            "Kelle Cruz (Facebook, Conferences)",
+            "Stuart Mumford (Discourse/Matrix/Slack)",
+            "Erik Tollerud (Facebook, Conferences",
+
         ],
         "responsibilities": {
             "description": "Facilitate engagement with the astropy community, including:",
@@ -104,7 +72,7 @@
                 "Maintain the @astropy twitter account",
                 "Monitor/moderate the Python Users in Astronomy Facebook group",
                 "Keep track of/help organize conferences and workshops",
-	  	"Maintain infrastructure for a specific channel (e.g., discourse)"
+	  	        "Maintain infrastructure for a specific channel (e.g., Discourse)"
             ]
         }
     },
