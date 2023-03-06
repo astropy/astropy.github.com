@@ -222,21 +222,25 @@
         }
     },
     {
-        "role": "Documentation infrastructure maintainer",
-        "url": "Documentation_infrastructure_maintainer",
+        "role": "Core infrastructure maintainer",
+        "url": "Core_infrastructure_maintainer",
         "people": [
             "Simon Conseil",
             "Pey Lian Lim",
             "Thomas Robitaille",
             "Brigitta Sip\u0151cz"
         ],
-        "role-head": "Documentation infrastructure maintainer",
+        "role-head": "Core infrastructure maintainer",
         "responsibilities": {
-            "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
+            "description": "Lead development and maintenance of the documentation and testing infrastructure for Astropy and the helpers, including:",
             "details": [
                 "Managing the Sphinx infrastructure",
                 "Implementing changes and improvements to the documentation website",
-                "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
+                "Overseeing content (although primary responsibility for content lies with subpackage maintainers)",
+                "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
+                "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
+                "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
+                "Supporting and enabling affiliated package usage of the testing infrastructure"
             ]
         }
     },
@@ -309,26 +313,6 @@
                 "Ensure adequate labeling of issues and pull requests",
                 "Perform initial triaging of issues and pull requests, including moving between repositories",
                 "Merge non-controversial pull requests"
-            ]
-        }
-    },
-    {
-        "role": "Testing infrastructure maintainer",
-        "url": "Testing_infrastructure_maintainer",
-        "people": [
-            "Simon Conseil",
-            "Pey Lian Lim",
-            "Thomas Robitaille",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Testing infrastructure maintainer",
-        "responsibilities": {
-            "description": "Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:",
-            "details": [
-                "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
-                "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
-                "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
-                "Supporting and enabling affiliated package usage of the testing infrastructure"
             ]
         }
     },
