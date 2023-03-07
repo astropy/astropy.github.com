@@ -239,6 +239,7 @@
                 "Overseeing content (although primary responsibility for content lies with subpackage maintainers)",
                 "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
                 "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
+                "Set up and maintain continuous integration services",
                 "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
                 "Supporting and enabling affiliated package usage of the testing infrastructure"
             ]
