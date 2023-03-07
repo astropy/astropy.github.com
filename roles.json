@@ -60,13 +60,13 @@
         "url": "Community_engagement_coordinator",
         "role-head": "Community engagement coordinator",
         "people": [
-            "Matt Craig (Twitter)",
-            "Kelle Cruz (Facebook, Conferences)",
-            "Stuart Mumford (Discourse/Matrix/Slack)",
-            "Erik Tollerud (Facebook, Conferences)"
+            "Matt Craig",
+            "Kelle Cruz",
+            "Stuart Mumford",
+            "Erik Tollerud"
         ],
         "responsibilities": {
-            "description": "Facilitate engagement with the astropy community, including:",
+            "description": "Facilitate engagement with the astropy community, as laid out in <a href='https://github.com/astropy/astropy-project/tree/main/community_engagement'>community_engagement</a>, including:",
             "details": [
                 "Maintain the @astropy twitter account",
                 "Monitor/moderate the Python Users in Astronomy Facebook group",
