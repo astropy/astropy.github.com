@@ -232,7 +232,7 @@
         ],
         "role-head": "Core infrastructure maintainer",
         "responsibilities": {
-            "description": "Lead development and maintenance of the documentation and testing infrastructure for Astropy and the helpers, including:",
+            "description": "Lead development and maintenance of the documentation and testing infrastructure (also see <a href='https://github.com/astropy/astropy-project/tree/main/infrastructure'>infrastructure</a>) for Astropy and the helpers, including:",
             "details": [
                 "Managing the Sphinx infrastructure",
                 "Implementing changes and improvements to the documentation website",
