@@ -381,8 +381,7 @@
                 "Maintain, review, and advocate for useful interaction between multiple sub-packages", 
                 "Perform initial triaging of issues and pull requests, including moving between repositories",
                 "Ensure adequate labeling of issues and pull requests",
-                "Keeping track of frequent contributors and their relevant areas of expertise",
-                "Set up and maintain continuous integration services"
+                "Keeping track of frequent contributors and their relevant areas of expertise"
             ]
         }
     },
