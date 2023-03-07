@@ -127,53 +127,24 @@
         "url": "Learn_team",
         "role-head": "Learn Team",
         "people": [
-            "Lia Corrales (coordinator, content editor)",
-            "Matt Craig (coordinator, content editor)",
-            "Kelle Cruz (coordinator, content editor, workshop coordinator)",
-            "Brett Morris (workshop coordinator)",
-            "Adrian Price-Whelan (coordinator, infrastructure, content editor)",
-            "David Shupe (workshop coordinator)",
-            "Jonathan Sick (infrastructure)",
-            "Erik Tollerud (infrastructure)"
+            "Lia Corrales",
+            "Matt Craig",
+            "Kelle Cruz",
+            "Brett Morris",
+            "Adrian Price-Whelan",
+            "David Shupe",
+            "Jonathan Sick",
+            "Erik Tollerud"
         ],
-        "responsibilities": [
-            {
-		"subrole-head": "Coordinators",
-		"description": "Oversee the Astropy \"Learn\" ecosystem, including:",
-		"details": [
-                    "Ensuring that the documentation, tutorials, and guide materials are internally consistent and cover key areas of the ecosystem",
-                    "Overseeing the maintainers for the aforementioned areas",
-                    "Organizing sprints or other events focused on Astropy learning materials"
-		]
-	    },
-	    {
-                "subrole-head": "Infrastructure Maintainers",
-                "description": "Maintain the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
-                "details": [
-                    "Facilitating the display and discoverability of the tutorials",
-                    "Rendering of the Jupyter notebooks",
-                    "Integrated testing of notebooks"
-                ]
-	    },
-	    {
-                "subrole-head": "Content Editors",
-                "description": "Oversee the material included in Tutorials and Guides, including:",
-                "details": [
-                    "Reviewing issues and pull requests",
-                    "Soliciting new content as needed",
-                    "Working with Infrastructure Maintainers to maintain website"
-                ]
-            },
-	    {
-		"subrole-head": "Workshop Coordinators",
-		"description": "Organize and coordinate Astropy workshops for training and outreach to users",
-		"details": [
-                    "Maintain the astropy-workshops repository",
-                    "Oversee staffing/volunteers for workshops",
-                    "Identify opportunities for workshops in diverse geographic locations"
-		]
+        "responsibilities": {
+            "description": "Maintain the Learn ecosystem, as laid out in <a href='https://github.com/astropy/astropy-project/tree/main/learn'>learn</a>, including:",
+            "details": [
+                "Oversee the Astropy Learn ecosystem.",
+                "Maintain the Tutorials website.",
+                "Oversee the material included in Tutorials and Guides.",
+                "Organize and coordinate Astropy workshops for training and outreach to users."
+            ]
 	    }
-	]
     },
     {
         "role": "Finance committee member",
