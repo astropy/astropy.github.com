@@ -275,25 +275,6 @@
         }
     },
     {
-        "role": "Astropy-helpers maintainer",
-        "url": "Astropyhelpers_maintainer",
-        "people": [
-            "Stuart Mumford",
-            "Brigitta Sip\u0151cz",
-            "Erik Tollerud"
-        ],
-        "role-head": "Astropy-helpers maintainer",
-        "responsibilities": {
-            "description": "Lead the development and maintenance of the astropy-helpers repository, including:",
-            "details": [
-                "Managing issues/pull requests for the astropy-helpers repository",
-                "Assisting the core package release coordinator, including performing (or helping perform) the release process for astropy-helpers during core package releases",
-                "Performing any necessary incremental/bugfix releases between Astropy releases",
-                "Communicating to affiliated package maintainers the availability of new versions of astropy-helpers, and assist in updating in cases where changes are not trivial"
-            ]
-        }
-    },
-    {
         "role": "DevOps and Operations Specialist",
         "url": "devops_team",
         "people": [
@@ -349,22 +330,6 @@
                 "Keeping the affiliated package-template up-to-date with the astropy-helpers",
                 "Tag new releases from time to time, and keep the TEMPLATE_CHANGES up-to-date",
                 "Communicate any \u2018releases\u2019 with affiliated package maintainers via the astropy-affiliated-maintainers mailing list"
-            ]
-        }
-    },
-    {
-        "role": "CI-helpers maintainer",
-        "url": "CIhelpers_maintainer",
-        "people": [
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "CI-helpers maintainer",
-        "responsibilities": {
-            "description": "Lead the maintenance of the ci-helpers, including:",
-            "details": [
-                "Managing issues/pull requests in the ci-helpers repository",
-                "Responding in a timely fashion to breakages in CI caused e.g. by updates in conda, Travis, or AppVeyor, by including workarounds",
-                "Advertise the ci-helpers beyond the astropy project and try to expand adoption"
             ]
         }
     },
