@@ -1,6 +1,25 @@
 {
     "packages": [
         {
+          "name": "martini",
+          "maintainer": "Kyle Oman <kyle.a.oman@durham.ac.uk>",
+          "stable": true,
+          "home_url": "https://martini.readthedocs.io/en/latest/",
+          "repo_url": "https://github.com/kyleaoman/martini",
+          "pypi_name": "astromartini",
+          "description": "For creating synthetic spatially-resolved HI line observations (data cubes) of smoothed-particle hydrodynamics simulations of galaxies.",
+          "coordinated": false,
+          "review": {
+            "functionality": "To be filled out by the reviewer",
+            "ecointegration": "To be filled out by the reviewer",
+            "documentation": "To be filled out by the reviewer",
+            "testing": "To be filled out by the reviewer",
+            "devstatus": "To be filled out by the reviewer",
+            "python3": "To be filled out by the reviewer",
+            "last-updated": "To be filled out by the reviewer"
+          }
+        },
+        {
           "name": "BayesicFitting",
           "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
           "stable": true,
