@@ -1,5 +1,24 @@
 {
     "packages": [
+         {
+          "name": "dolphot_lc",
+          "maintainer": "Ramona White <whit2452@umn.edu>",
+          "stable": true,
+          "home_url": "https://dolphot-lc.readthedocs.io/en/latest/",
+          "repo_url": "https://github.com/patkel/dolphot_lc",
+          "pypi_name": "dolphot-lc",
+          "description": "Dolphot-LC is an automated Hubble Space Telescope (HST) data pipeline based on the popular Dolphot analysis package. This package allows for the creation of lightcurves and difference images from HST data.",
+          "coordinated": false,
+          "review": {
+             "functionality": "To be filled out by the reviewer",
+             "ecointegration": "To be filled out by the reviewer",
+             "documentation": "To be filled out by the reviewer",
+             "testing": "To be filled out by the reviewer",
+             "devstatus": "To be filled out by the reviewer",
+             "python3": "To be filled out by the reviewer",
+             "last-updated": "To be filled out by the reviewer"
+          }
+        },
         {
           "name": "BayesicFitting",
           "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
