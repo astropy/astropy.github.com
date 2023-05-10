@@ -59,52 +59,19 @@
         "role": "Community engagement coordinator",
         "url": "Community_engagement_coordinator",
         "role-head": "Community engagement coordinator",
-        "sub-roles": [
-            {
-                "role": "Overall",
-                "people": [
-                    "Unfilled"
-                ]
-            },
-            {
-                "role": "Twitter",
-                "people": [
-                    "Matt Craig"
-                ]
-            },
-            {
-                "role": "Facebook",
-                "people": [
-                    "Kelle Cruz",
-                    "Erik Tollerud"
-                ]
-            },
-            {
-                "role": "Slack/Matrix",
-                "people": [
-                    "Stuart Mumford"
-                ]
-            },
-            {
-                "role": "Discourse",
-                "people": [
-                    "Stuart Mumford"
-                ]
-            },            {
-                "role": "Conferences",
-                "people": [
-                    "Kelle Cruz",
-                    "Erik Tollerud"
-                ]
-            }
+        "people": [
+            "Matt Craig",
+            "Kelle Cruz",
+            "Stuart Mumford",
+            "Erik Tollerud"
         ],
         "responsibilities": {
-            "description": "Facilitate engagement with the astropy community, including:",
+            "description": "Facilitate engagement with the astropy community, as laid out in <a href='https://github.com/astropy/astropy-project/tree/main/community_engagement'>community_engagement</a>, including:",
             "details": [
                 "Maintain the @astropy twitter account",
                 "Monitor/moderate the Python Users in Astronomy Facebook group",
                 "Keep track of/help organize conferences and workshops",
-	  	"Maintain infrastructure for a specific channel (e.g., discourse)"
+	  	        "Maintain the infrastructure of the relevant discussion forums and platforms."
             ]
         }
     },
