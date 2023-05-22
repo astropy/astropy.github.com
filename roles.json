@@ -207,29 +207,108 @@
         }
     },
     {
-        "role": "Documentation infrastructure maintainer",
-        "url": "Documentation_infrastructure_maintainer",
+    "role": "Infrastructure Team",
+    "url": "Infrastructure_team",
+    "role-head": "Infrastructure Team",
+    "sub-roles": [
+        {
+        "role": "DevOps and Operations Specialist",
+        "people": [
+            "Pey Lian Lim",
+            "Brigitta Sip\u0151cz"
+        ]
+        },
+        {
+        "role": "CI Infrastructure",
         "people": [
             "Simon Conseil",
             "Pey Lian Lim",
             "Thomas Robitaille",
             "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Documentation infrastructure maintainer",
-        "responsibilities": {
-            "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
-            "details": [
-                "Managing the Sphinx infrastructure",
-                "Implementing changes and improvements to the documentation website",
-                "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
-            ]
+        ]
+        },
+        {
+        "role": "Documentation Infrastructure",
+        "people": [
+            "Simon Conseil",
+            "Pey Lian Lim",
+            "Thomas Robitaille",
+            "Brigitta Sip\u0151cz"
+        ]
+        },
+        {
+        "role": "Metrics",
+        "people": ["Unfilled"]
+        },
+        {
+        "role": "Website and Data",
+        "people": [
+            "Adrian Price-Whelan",
+            "Erik Tollerud"
+        ]
         }
+    ],
+    "responsibilities": [
+        {
+        "subrole-head": "DevOps and Operations Specialist",
+        "description": "Ensure the smooth running of the project:",
+        "details": [
+            "Perform initial triaging of issues and pull requests, including moving between repositories in the project.",
+            "Perform first responder duties across the project, including guiding first-time contributors.",
+            "Monitor the health of the project in terms of development and operations; if necessary, also alert the relevant project members of any issues and/or formulate responses.",
+            "Monitor the CI statuses and promptly report any CI breakage to the relevant project members.",
+            "Merge non-controversial pull requests in the project.",
+            "Liaison with other projects that share similar infrastructure."
+        ]
+        },
+        {
+        "subrole-head": "CI Infrastructure",
+        "description": "Lead development and maintenance of the continuous integration (CI) testing infrastructure for Astropy, including:",
+        "details": [
+            "Set up and maintain continuous integration services.",
+            "Managing issues/pull request for the astropy core package regarding testing infrastructure.",
+            "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required.",
+            "Maintaining the 'metapackage' with the testing machinery (e.g., pytest-astropy).",
+            "Maintaining the visualization tests data in astropy-figure-tests repository.",
+            "Supporting and enabling affiliated package usage of the testing infrastructure."
+        ]
+        },
+        {
+        "subrole-head": "Documentation Infrastructure",
+        "description": "Maintain the <a href='https://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
+        "details": [
+            "Managing the Sphinx infrastructure, theme, and plugins.",
+            "Managing the ReadTheDocs infrastructure.",
+            "Maintaining the 'metapackage' with the documentation machinery (sphinx-astropy at the time of this writing).",
+            "Implementing changes and improvements to the documentation website.",
+            "Overseeing content (although primary responsibility for content lies with subpackage maintainers)."
+        ]
+        },
+        {
+        "subrole-head": "Metrics",
+        "description": "Manage the tools needed for project metrics:",
+        "details": [
+            "Run benchmarks (mostly the core package) and publish results at a frequent cadence.",
+            "Maintain the benchmark tools.",
+            "Managing pull requests to the benchmark repository.",
+            "Lead the effort to revive project dashboard."
+        ]
+        },
+        {
+        "subrole-head": "Website and Data",
+        "description": "Manage the <a href='https://astropy.org'>astropy.org</a> website, including:",
+        "details": [
+            "Managing pull requests to the website repository.",
+            "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>).",
+            "Managing the astropy.org DNS entries and related domain name upkeep."
+        ]
+        }
+    ]
     },
     {
         "role": "Affiliated package review editor",
         "url": "Affiliated_package_review_editor",
         "people": ["Derek Homeier", "William Jamieson"],
-        "deputy": ["Unfilled"],
         "role-head": "Affiliated package review editor",
         "responsibilities": {
             "description": "Oversee the affiliated package submission and review process, including:",
@@ -238,63 +317,6 @@
                 "Managing the review process for packages",
                 "Making decisions regarding accepting and rejecting packages based on reviews",
                 "Organizing the re-review of packages that have not been recently reviewed"
-            ]
-        }
-    },
-    {
-        "role": "Astropy.org web page maintainer",
-        "url": "Astropyorg_web_page_maintainer",
-        "people": [
-            "Adrian Price-Whelan",
-            "Erik Tollerud"
-        ],
-        "role-head": "Astropy.org web page maintainer",
-        "responsibilities": {
-            "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
-            "details": [
-                "Maintaining contributor/roles list",
-                "Managing pull requests to the website repository",
-                "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
-                "Managing the astropy.org DNS entries and related domain name upkeep"
-            ]
-        }
-    },
-    {
-        "role": "DevOps and Operations Specialist",
-        "url": "devops_team",
-        "people": [
-            "E. Madison Bray",
-            "Pey Lian Lim",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "DevOps and Operations",
-        "responsibilities": {
-            "description": "Ensure the smooth running of the project",
-            "details": [
-                "Set up and maintain continuous integration services",
-                "Ensure adequate labeling of issues and pull requests",
-                "Perform initial triaging of issues and pull requests, including moving between repositories",
-                "Merge non-controversial pull requests"
-            ]
-        }
-    },
-    {
-        "role": "Testing infrastructure maintainer",
-        "url": "Testing_infrastructure_maintainer",
-        "people": [
-            "Simon Conseil",
-            "Pey Lian Lim",
-            "Thomas Robitaille",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Testing infrastructure maintainer",
-        "responsibilities": {
-            "description": "Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:",
-            "details": [
-                "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
-                "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
-                "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
-                "Supporting and enabling affiliated package usage of the testing infrastructure"
             ]
         }
     },
@@ -351,7 +373,6 @@
         "role": "Release team",
         "url": "release_team",
         "people": [
-            "E. Madison Bray",
             "Simon Conseil",
             "Thomas Robitaille",
             "Brigitta Sip\u0151cz"
@@ -360,40 +381,29 @@
         "responsibilities": {
             "description": "Oversee the release process for packages in the project, including:",
             "details": [
-                "Carrying out releases of the core astropy package",
-                "Notifying the Distribution Coordinators of any core astropy package release",
-                "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media",
-                "Keeping documentation for the release process of the core package up to date",
-                "Designing policies to improve the uniformity of release procedures for the coordinated and infrastructure packages of the Astropy Project",
-                "Testing the interoperability of the core, coordinated, and infrastructure packages and provide safeguards against breaking the ecosystem."
+                "Carrying out releases of the core astropy package.",
+                "Notifying the Distribution Coordinators of any core astropy package release.",
+                "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media.",
+                "Keeping documentation for the release process of the core package up to date.",
+                "Designing and carrying out policies to improve the uniformity of release procedures for the coordinated and infrastructure packages of the Astropy Project.",
+                "Testing the interoperability of the core, coordinated, and infrastructure packages and provide safeguards against breaking the ecosystem.",
+                "Applying updates and fixes to the build process and the release infrastructure (e.g., extension-helpers, sphinx-changelog, pyinstaller) as needed."
             ]
         }
     },
     {
-        "role": "Core astropy package maintainer (general)",
-        "url": "Core_package_general_maintainer",
-        "people": [
-            "Derek Homeier",
-            "Pey Lian Lim",
-            "Ole Streicher"
-        ],
-        "role-head": "Core astropy package maintainer (general)",
-        "responsibilities": {
-            "description": "Maintain the astropy core package in aspects that are not specific to a single sub-package",
-            "details": [
-                "Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem, in particular for pull requests spanning multiple sub-packages",
-                "Merging Pull Requests that are non-controversial or after reaching out to relevant subpackage maintainers",
-                "Maintain, review, and advocate for useful interaction between multiple sub-packages", 
-                "Perform initial triaging of issues and pull requests",
-                "Keeping track of frequent contributors and their relevant areas of expertise"
-            ]
-        }
-    },
-    {
-        "role": "Core astropy package maintainer (sub-package)",
-        "url": "Subpackage_maintainer",
-        "role-head": "Sub-package maintainer (at least one per core package sub-package)",
+        "role": "Core astropy package maintainer",
+        "url": "Core_package_maintainer",
+        "role-head": "Core astropy package maintainer",
         "sub-roles": [
+            {
+                "role": "General",
+                "people": [
+                    "Derek Homeier",
+                    "Pey Lian Lim",
+                    "Ole Streicher"
+                ]
+            },
             {
                 "role": "astropy.constants",
                 "people": [
@@ -539,16 +549,30 @@
                 ]
             }
         ],
-        "responsibilities": {
+        "responsibilities": [
+        {
+            "subrole-head":"Core astropy package maintainer (general)",
+            "description": "Maintain the astropy core package in aspects that are not specific to a single sub-package:",
+            "details": [
+                "Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall Astropy ecosystem, in particular for pull requests spanning multiple sub-packages.",
+                "Merging pull requests that are non-controversial or after reaching out to relevant subpackage maintainers.",
+                "Maintain, review, and advocate for useful interaction between multiple sub-packages.",
+                "Perform initial triaging and ensure adequate labeling of issues and pull requests.",
+                "Keeping track of frequent contributors and their relevant areas of expertise."
+            ]
+        },
+        {
+            "subrole-head":"Core astropy sub-package maintainer (at least one per sub-package)",
             "description": "Maintain a sub-package of the astropy core package, including:",
             "details": [
-                "Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem",
-                "Merging Pull Requests in the sub-package",
-                "Keeping track of the \u201cbig picture\u201d progress of the sub-package - includes new feature development and significant bugs",
-                "Perform initial triaging of issues and pull requests",
-                "Keeping track of frequent contributors to the sub-package and their relevant areas of expertise"
+                "Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall Astropy ecosystem.",
+                "Merging Pull Requests in the sub-package.",
+                "Keeping track of the \u201cbig picture\u201d progress of the sub-package - includes new feature development and significant bugs.",
+                "Perform initial triaging and ensure adequate labeling of issues and pull requests.",
+                "Keeping track of frequent contributors to the sub-package and their relevant areas of expertise."
             ]
         }
+    ]
     },
     {
         "role": "Coordinated package maintainer",
