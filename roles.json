@@ -464,7 +464,8 @@
             {
                 "role": "astropy.nddata",
                 "people": [
-                    "Matt Craig"
+                    "Matt Craig",
+		    "Brett Morris"
                 ]
             },
             {
