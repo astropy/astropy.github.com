@@ -374,7 +374,8 @@
         "url": "Core_package_general_maintainer",
         "people": [
             "Derek Homeier",
-            "Pey Lian Lim"
+            "Pey Lian Lim",
+            "Ole Streicher"
         ],
         "role-head": "Core astropy package maintainer (general)",
         "responsibilities": {
