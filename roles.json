@@ -115,27 +115,18 @@
 	    {
 		"role": "Coordinators",
 		"people": [
-		    "Lia Corrales",
-		    "Kelle Cruz",
-		    "Adrian Price-Whelan",
-		    "Matt Craig"
+		    "Unfilled"
 		]
 	    },
 	    {
-		"role": "Infrastructure",
+		"role": "Learn content and infrastructure",
 		"people": [
+            "Lia Corrales",
+            "Kelle Cruz",
+            "Matt Craig",
 		    "Adrian Price-Whelan",
 		    "Erik Tollerud",
 		    "Jonathan Sick"
-		]
-	    },
-	    {
-		"role": "Content Editors",
-		"people": [
-		    "Lia Corrales",
-		    "Kelle Cruz",
-		    "Matt Craig",
-		    "Adrian Price-Whelan"
 		]
 	    },
 	    {
@@ -158,21 +149,14 @@
 		]
 	    },
 	    {
-                "subrole-head": "Infrastructure Maintainers",
-                "description": "Maintain the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
+                "subrole-head": "Learn content and infrastructure",
+                "description": "Maintain the infrastructure and edit content of the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
                 "details": [
                     "Facilitating the display and discoverability of the tutorials",
                     "Rendering of the Jupyter notebooks",
-                    "Integrated testing of notebooks"
-                ]
-	    },
-	    {
-                "subrole-head": "Content Editors",
-                "description": "Oversee the material included in Tutorials and Guides, including:",
-                "details": [
+                    "Integrated testing of notebooks",
                     "Reviewing issues and pull requests",
-                    "Soliciting new content as needed",
-                    "Working with Infrastructure Maintainers to maintain website"
+                    "Soliciting new content as needed"
                 ]
             },
 	    {
