@@ -238,7 +238,6 @@
             "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
             "details": [
                 "Managing pull requests to the website repository in general",
-                "and for the sites.json file in particular",
                 "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
                 "Managing the astropy.org DNS entries and related domain name upkeep"
             ]
