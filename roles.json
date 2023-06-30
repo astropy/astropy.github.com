@@ -229,15 +229,15 @@
         "role": "Astropy.org web page maintainer",
         "url": "Astropyorg_web_page_maintainer",
         "people": [
-            "Adrian Price-Whelan",
+            "Hans Moritz G\u00fcnther",
+            "Derek Homeier",
             "Erik Tollerud"
         ],
         "role-head": "Astropy.org web page maintainer",
         "responsibilities": {
             "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
             "details": [
-                "Maintaining contributor/roles list",
-                "Managing pull requests to the website repository",
+                "Managing pull requests to the website repository in general",
                 "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
                 "Managing the astropy.org DNS entries and related domain name upkeep"
             ]
