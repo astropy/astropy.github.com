@@ -1,6 +1,25 @@
 {
     "packages": [
         {
+          "name": "regularizePSF",
+          "maintainer": "Marcus Hughes <marcus.hughes@swri.org>",
+          "stable": true,
+          "home_url": "https://punch-mission.github.io/regularizepsf/",
+          "repo_url": "https://github.com/punch-mission/regularizepsf",
+          "pypi_name": "regularizepsf",
+          "description": "regularizePSF is a package for manipulating and correcting variable point spread functions in astronomical images",
+          "coordinated": false,
+          "review": {
+             "functionality": "General package",
+             "ecointegration": "Partial",
+             "documentation": "Good",
+             "testing": "Good",
+             "devstatus": "Good",
+             "python3": "Yes",
+             "last-updated": "2023-04-21"
+          }
+        },
+        {
           "name": "BayesicFitting",
           "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
           "stable": true,
