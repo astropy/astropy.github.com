@@ -283,26 +283,6 @@
         }
     },
     {
-        "role": "Package template maintainer",
-        "url": "Packagetemplate_maintainer",
-        "people": [
-            "Larry Bradley",
-            "Stuart Mumford",
-            "Thomas Robitaille",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Package-template maintainer",
-        "responsibilities": {
-            "description": "Lead the development of maintenance of the affiliated package package-template, which is used by affiliated packages. This includes:",
-            "details": [
-                "Managing issues/pull requests in the package-template repository",
-                "Keeping the affiliated package-template up-to-date with the astropy-helpers",
-                "Tag new releases from time to time, and keep the TEMPLATE_CHANGES up-to-date",
-                "Communicate any \u2018releases\u2019 with affiliated package maintainers via the astropy-affiliated-maintainers mailing list"
-            ]
-        }
-    },
-    {
         "role": "Distribution coordinator",
         "url": "Distribution_coordinator",
         "people": [
