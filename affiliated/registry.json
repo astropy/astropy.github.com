@@ -1,6 +1,25 @@
 {
     "packages": [
         {
+          "name": "PetroFit",
+          "maintainer": "Robel Geda and Steve Crawford <robel@princeton.edu>",
+          "stable": true,
+          "home_url": "https://petrofit.readthedocs.io/en/latest/index.html",
+          "repo_url": "https://github.com/PetroFit/petrofit",
+          "pypi_name": "petrofit",
+          "description": "Package for calculating Petrosian properties (radii, concentration, etc.) and fitting 2D galaxy light profiles (Sersic, Nuker, Core Sersic etc.)",
+          "coordinated": false,
+          "review": {
+             "functionality": "To be filled out by the reviewer",
+             "ecointegration": "To be filled out by the reviewer",
+             "documentation": "To be filled out by the reviewer",
+             "testing": "To be filled out by the reviewer",
+             "devstatus": "To be filled out by the reviewer",
+             "python3": "To be filled out by the reviewer",
+             "last-updated": "To be filled out by the reviewer"
+          }
+        },
+        {
           "name": "regularizePSF",
           "maintainer": "Marcus Hughes <marcus.hughes@swri.org>",
           "stable": true,
