@@ -479,7 +479,7 @@
             "name": "spherical_geometry",
             "maintainer": "Mihai Cara",
             "stable": false,
-            "home_url": "https://spacetelescope.github.io/spherical_geometry/spherical_geometry/",
+            "home_url": "https://spherical-geometry.readthedocs.io",
             "repo_url": "https://github.com/spacetelescope/spherical_geometry",
             "pypi_name": "spherical-geometry",
             "image": null,
