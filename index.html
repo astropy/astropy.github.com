@@ -118,19 +118,12 @@ window.onload = function() {
 
 	<section class="install">
 		<h1 id="install-astropy">Install Astropy<a class="paralink" href="#install-astropy" title="Permalink to this headline">¶</a></h1>
-	  The <a href="https://www.anaconda.com/download/">Anaconda
-	    Python Distribution</a> includes astropy and is the recommended way to install both
-	  Python and the astropy package. Once you have Anaconda
-	  installed use the following to update to the latest version of astropy:
-          <p/><pre>conda update astropy</pre>
-	  If you instead installed <a href="https://conda.io/miniconda.html">miniconda</a>,
-	  you can use the following to install astropy and its dependencies:
-	  <p/><pre>conda install astropy</pre>
-          To install astropy from source into a existing Python installation without using
-		  Anaconda, use the following:
-          <p/><pre>pip install astropy</pre>
-
-
+        There are a number of ways of installing the latest version of the astropy core package. If you normally use <code>pip</code> to install Python packages, you can do:
+        <p/><pre>pip install astropy[recommended] --upgrade</pre>
+        If instead you normally use <code>conda</code>, you can do:
+        <p/><pre>conda install -c conda-forge astropy</pre>
+        or using <code>update</code> instead of <code>install</code> if <code>astropy</code> is already installed.
+        The astropy core package is also available in a number of other package managers, so be sure to check your preferred one!
 	<p>More detailed <a href="http://astropy.readthedocs.io/en/stable/install.html">installation instructions</a> (e.g., for building from source code locally) are in the documentation.</p>
 	</section>
 
