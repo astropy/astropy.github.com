@@ -75,6 +75,22 @@
         }
     },
     {
+        "role": "Maintainer Mentorship coordinator",
+        "url": "mentorship",
+        "people": [
+            "Tom Aldcroft"
+        ],
+        "role-head": "Maintainer Mentorship coordinator",
+        "responsibilities": {
+            "description": "Lead the maintainer mentorship program, including:",
+            "details": [
+                "identifying active and experienced contributors that would like to become maintainers",
+                "finding mentors for new maintainers",
+                "develop opportunities for new maintainers"
+            ]
+        }
+    },
+    {
         "role": "Community engagement coordinator",
         "url": "Community_engagement_coordinator",
         "role-head": "Community engagement coordinator",
@@ -137,7 +153,7 @@
 		    "Unfilled"
 		]
 	    },
-	    {
+        {
 		"role": "Learn content and infrastructure",
 		"people": [
             "Lia Corrales",
