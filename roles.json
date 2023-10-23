@@ -16,7 +16,6 @@
                 "details": [
 		            "Formally detailed in the <a href='https://github.com/astropy/astropy-APEs/blob/main/APE0.rst#the-coordination-committee'>The Astropy Project Governance Charter (APE 0)</a>",
                   "Keeping a large-scale view of the Astropy ecosystem",
-                  "Evaluating new affiliated package submissions and review of existing affiliated packages",
                   "Approving or rejecting Astropy APEs",
                   "Evaluating and merging core package pull requests as needed (e.g., for sub-packages without a maintainer)",
                    "Arbitrating disagreements in the core package, including final decisions when otherwise deadlocked",
