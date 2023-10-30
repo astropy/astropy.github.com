@@ -346,7 +346,7 @@
         "responsibilities": {
             "description": "Organize security reporting and auditing for packages in the project, including:",
             "details": [
-                "Monitor and reply to security reports (this role needs admin privileges on github to access reports submitted through github's secure reporting form)",
+                "Monitor and reply to security reports (this role needs admin privileges on GitHub to access reports submitted through GitHub's secure reporting form)",
                 "Coordinate the response to any security report with the relevant package maintainers and outside security experts",
                 "Coordinate security audits with external experts as needed and available",
                 "Release CVEs as necessary"
