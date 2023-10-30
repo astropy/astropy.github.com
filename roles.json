@@ -333,6 +333,26 @@
         }
     },
     {
+        "role": "Security team",
+        "url": "security_team",
+        "people": [
+            "Hans Moritz G\u00fcnther",
+            "Pey Lian Lim",
+            "Thomas Robitaille",
+            "Erik Tollerud"
+        ],
+        "role-head": "Security team",
+        "responsibilities": {
+            "description": "Organize security reporting and auditing for packages in the project, including:",
+            "details": [
+                "Monitor and reply to security reports (this role needs admin privileges on GitHub to access reports submitted through GitHub's secure reporting form)",
+                "Coordinate the response to any security report with the relevant package maintainers and outside security experts",
+                "Coordinate security audits with external experts as needed and available",
+                "Release CVEs as necessary"
+            ]
+        }
+    },
+    {
         "role": "Core astropy package maintainer (general)",
         "url": "Core_package_general_maintainer",
         "people": [
