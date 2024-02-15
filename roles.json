@@ -235,7 +235,7 @@
             "details": [
                 "Representing Astropy as pyOpenSci Software Review Editor",
                 "Keeping track of submissions to the affiliated package ecosystem",
-                "Guiding submissions tthrough the pre-submission and submission steps to the <a href='https://www.pyopensci.org/software-peer-review/how-to/author-guide.html#submit-your-package-for-peer-review'>Peer Review system</a>"
+                "Guiding submissions through the pre-submission and submission steps to the <a href='https://www.pyopensci.org/software-peer-review/how-to/author-guide.html#submit-your-package-for-peer-review'>Peer Review system</a>"
             ]
         }
     },
