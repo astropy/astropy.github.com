@@ -231,12 +231,11 @@
         "deputy": ["Unfilled"],
         "role-head": "Affiliated package review editor",
         "responsibilities": {
-            "description": "Oversee the affiliated package submission and review process, including:",
+            "description": "Oversee affiliated packages in partnership with <a href='https://www.pyopensci.org/software-peer-review/partners/scientific-communities.html'>pyOpenSci</a>, including:",
             "details": [
+                "Representing Astropy as pyOpenSci Software Review Editor",
                 "Keeping track of submissions to the affiliated package ecosystem",
-                "Managing the review process for packages",
-                "Making decisions regarding accepting and rejecting packages based on reviews",
-                "Organizing the re-review of packages that have not been recently reviewed"
+                "Guiding submissions through the pre-submission and submission steps to the <a href='https://www.pyopensci.org/software-peer-review/how-to/author-guide.html#submit-your-package-for-peer-review'>Peer Review system</a>"
             ]
         }
     },
