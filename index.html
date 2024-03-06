@@ -81,7 +81,6 @@ window.onload = function() {
 							<ul>
 								<li><a href="http://docs.astropy.org" target="_blank">Current Release</a></li>
 								<li><a href="http://devdocs.astropy.org/" target="_blank">In Development</a></li>
-								<li><a href="https://astropy.readthedocs.io/en/lts/index.html" target="_blank">Long-Term Support</a></li>
 							</ul>
 						</div>
 					</div>
@@ -111,26 +110,19 @@ window.onload = function() {
     </section>
 
 <section class="whatsnew"><div id="prenew"></div>
-	What's new in <a href="http://docs.astropy.org/en/stable/whatsnew/5.1.html">Astropy 5.1?</a>
+	What's new in <a href="http://docs.astropy.org/en/stable/whatsnew/6.0.html">Astropy 6.0?</a>
 	<p class="version" id="core-package-version"></p>
 
 </section>
 
 	<section class="install">
 		<h1 id="install-astropy">Install Astropy<a class="paralink" href="#install-astropy" title="Permalink to this headline">¶</a></h1>
-	  The <a href="https://www.anaconda.com/download/">Anaconda
-	    Python Distribution</a> includes astropy and is the recommended way to install both
-	  Python and the astropy package. Once you have Anaconda
-	  installed use the following to update to the latest version of astropy:
-          <p/><pre>conda update astropy</pre>
-	  If you instead installed <a href="https://conda.io/miniconda.html">miniconda</a>,
-	  you can use the following to install astropy and its dependencies:
-	  <p/><pre>conda install astropy</pre>
-          To install astropy from source into a existing Python installation without using
-		  Anaconda, use the following:
-          <p/><pre>pip install astropy</pre>
-
-
+        There are a number of ways of installing the latest version of the astropy core package. If you normally use <code>pip</code> to install Python packages, you can do:
+        <p/><pre>pip install astropy[recommended] --upgrade</pre>
+        If instead you normally use <code>conda</code>, you can do:
+        <p/><pre>conda install -c conda-forge astropy</pre>
+        or using <code>update</code> instead of <code>install</code> if <code>astropy</code> is already installed.
+        The astropy core package is also available in a number of other package managers, so be sure to check your preferred one!
 	<p>More detailed <a href="http://astropy.readthedocs.io/en/stable/install.html">installation instructions</a> (e.g., for building from source code locally) are in the documentation.</p>
 	</section>
 
@@ -158,11 +150,24 @@ window.onload = function() {
 	</section>
 
 	<section class="cite">
-		<h1 id="support-astropy">Support Astropy<a class="paralink" href="#support-astropy" title="Permalink to this headline">¶</a></h1>
-		<p>If you use Astropy in your work, we would be grateful if you could include an acknowledgment in papers and/or presentations. See <a href="acknowledging.html">Acknowledging & Citing Astropy</a> for details. </p>
-		<p>You can also purchase apparel and trinkets from <a href="http://fashion.astropy.org">fashion.astropy.org</a>, and a portion of the profits go to support the project!</p>
-		<p> If you are interested in directly financially supporting Astropy (either one-time or recurring), you can do so via our fiscal sponsor NumFOCUS: </p>
-		<a class="button" href="https://numfocus.salsalabs.org/donate-to-astropy/index.html" target="_blank">Donate to Astropy</a>
+		<h1 id="support-astropy">Support Astropy<a class="paralink" href="#support-astropy"
+				title="Permalink to this headline">¶</a></h1>
+		<p>If you use Astropy in your work, we would be grateful if you could include an acknowledgment in papers and/or
+	presentations. See <a href="acknowledging.html">Acknowledging & Citing Astropy</a> for details. </p>
+		<p>You can also purchase apparel and trinkets from <a href="http://fashion.astropy.org">fashion.astropy.org</a>, and
+			a portion of the profits go to support the project!</p>
+		<p> If you are interested in directly financially supporting Astropy (either one-time or recurring), you can do so
+			via our fiscal sponsor NumFOCUS: </p>
+		<a class="button" href="https://numfocus.salsalabs.org/donate-to-astropy/index.html" target="_blank">Donate to
+			Astropy</a>
+	</section>
+
+	<section class="whatsnext">
+		<h1 id="zenodo">Zenodo community<a class="paralink" href="#szenodo-community" title="Permalink to this headline">¶</a></h1>
+		<p>Documents, notes from previous meetings, and talks about Astropy are collected in a Zenodo community for long-term archiving.
+		   Everyone is encouraged to submit talks, etc. and other relevant materials.
+		</p>
+		<a class="button" href="https://www.zenodo.org/communities/astropy" target="_blank">Zenodo community</a>
 	</section>
 
 	<footer>
