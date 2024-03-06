@@ -19,6 +19,7 @@
                "last-updated": "2024-02-24"
             }
           },
+          {
           "name": "regularizePSF",
           "maintainer": "Marcus Hughes <marcus.hughes@swri.org>",
           "stable": true,
