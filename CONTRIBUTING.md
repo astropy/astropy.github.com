@@ -2,6 +2,8 @@ For general information on the contribution process, see the [Astropy core packa
 
 # Affiliated Packages
 
+To propose inclusion of a package as an affiliated package, we work with pyOpenSci to support
+the review process, which when complete will lead to your package being listed here.
 The details of the review process are outlined at http://affiliated.astropy.org.
 
 # Modifying Roles in the Team section
