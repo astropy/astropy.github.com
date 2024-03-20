@@ -15,10 +15,6 @@ jobs:
             conda config --set always_yes yes --set changeps1 no
             conda install requests termcolor
       - run:
-          name: Validate affiliated package JSON repository
-          command: |
-            python affiliated/validate_registry.py
-      - run:
           name: Validate roles JSON file
           command: |
             python validate_roles.py

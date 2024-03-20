@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../css/jquery.sidr.light.css" />
 
 
-<title>Astropy | Affiliated Packages</title>
+<title>Astropy | Legacy Affiliated Packages</title>
 
 <!-- Google analytics -->
 <script src="../js/analytics.js"></script>
@@ -70,6 +70,11 @@
 	<section>
 
 
+	<h1 id="legacy-affiliated-packages">Legacy Page: Pre-APE 22<a class="paralink" href="#legacy-affiliated-packages" title="Permalink to this headline">¶</a></h1>
+
+<p>This page contains the legacy process and listing of Astropy Affiliated Packages
+that pre-dated <a href="https://github.com/astropy/astropy-APEs/blob/main/APE22.rst">APE 22</a>.
+This page is frozen as of March 6, 2024.</p>
 
 	<h1 id="affiliated-packages">Astropy Affiliated Packages<a class="paralink" href="#affiliated-packages" title="Permalink to this headline">¶</a></h1>
 
@@ -119,18 +124,17 @@
 
 	<h1 id="installing-affiliated-packages">Installing Affiliated and Coordinated Packages<a class="paralink" href="#installing-affiliated-packages" title="Permalink to this headline">¶</a></h1>
 
-	<p>All packages should be available on PyPI. Some are available via conda, particularly
-	through the conda-forge channel. That said, affiliated packages are developed 
-	independently of the Astropy core library. You should refer to the package's
-	documentation first if you encounter problems.</p>
+	<p>  The simplest way to install and keep up-to-date most affiliated packages is to use the <a href="https://www.continuum.io/why-anaconda">Anaconda python distribution</a>.  This distribution includes the <a href="http://astropy.readthedocs.io/en/stable/index.html">Astropy core package</a> already built in, and you can then easily install or update affiliated packages using the <a href="https://anaconda.org/astropy/packages">Astropy Conda channel</a> of binary installable packages.  Once you have Anaconda installed, you can do <code>conda search --channel astropy some_affiliated_package</code>.  Most importantly, you can then install them with <code>conda install --channel astropy some_affiliated_package</code>.  The Astropy channel is maintained by the Astropy Project on Github via code in the <a href="https://github.com/astropy/conda-channel-astropy">conda-channel-astropy</a> repository. </p>
+
+	<p> If you do not have Anaconda or wish to install from source, for most affiliated packages, downloading the source code and doing <code>python setup.py install</code> will work.  Many also support the Astropy core package's additional build and install options, as they use the affiliated package template (detailed more in the <a href="#affiliated-instructions">Becoming an Affiliated Package</a> section). That said, affiliated packages are developed independently of the Astropy core library.  This means they are free to develop their packages as they see fit, and can have a variety of different requirements or  unusual install procedures.  Hence you should refer to the package's documentation first if you encounter problems.</p>
 
 	</section>
 
-  <!-- NOTE: We still use affiliated/registry.json for this. -->
 	<section id="coordinated-package-registry">
 	  <h1 id="coordinated-package-list">Coordinated Packages<a class="paralink" href="#coordinated-package-list" title="Permalink to this headline">¶</a></h1>
-	  <p>The following table lists all current Astropy coordinated packages.</p>
-    <p>Total number of coordinated packages: <strong id="total-coordinated-pkgs"></strong></p>
+	  <p>The following table lists all current Astropy coordinated packages. They are determined from the <a href="http://www.astropy.org/affiliated/registry.json">json file</a>, which is the actual authoritative registry.</p>
+<!--	  <h3><u>Affiliated Packages</u></h3>-->
+      <p>Total number of coordinated packages: <strong id="total-coordinated-pkgs"></strong></p>
 
 	<table border="1" class="docutils" id="coordinated-package-table">
 	<colgroup>
@@ -165,18 +169,38 @@
 
 	<section id="affiliated-package-registry">
 	  <h1 id="affiliated-package-list">Affiliated Packages Registry<a class="paralink" href="#affiliated-package-list" title="Permalink to this headline">¶</a></h1>
-	  <p>The following table lists all currently registered affiliated packages.</p>
-    <p>NOTE: The listing is currently empty because Astropy has just accepted
-    <a href="https://github.com/astropy/astropy-APEs/blob/main/APE22.rst">APE 22</a>
-    in January 2024. We are in the midst of transitioning to the new process in
-    partnership with pyOpenSci, so we really appreciate your patience.
-    Pre-APE 22 legacy listing is available <a href="legacy.html">here</a>.
-    </p>
+	  <p>The following table lists all currently registered affiliated packages. They are determined from the <a href="http://www.astropy.org/affiliated/registry.json">json file</a>, which is the actual authoritative registry.</p>
+<!--	  <h3><u>Affiliated Packages</u></h3>-->
+      <p>Total number of affiliated packages: <strong id="total-affiliated-pkgs"></strong></p>
 
-<!-- TODO: Leah Wasser is going to give Erik Tollerud some RSS/XML to ingest here
-(maybe https://github.com/pyOpenSci/pyopensci.github.io/blob/main/_data/packages.yml).
-We have promised pyOpenSci that we would also link back to their canonical listing
-here, with their Astropy filter applied. -->
+	<table border="1" class="docutils" id="affiliated-package-table">
+	<colgroup>
+	<col width="5%" />
+	<col width="3%" />
+	<col width="3%" />
+	<col/>
+	</colgroup>
+	<thead valign="bottom">
+	<tr class="row-odd">
+	<th class="head"></th>
+	<th class="head"></th>
+	<th class="head"></th>
+	<th class="head"></th>
+	</tr>
+	</thead>
+	<tbody valign="top">
+	<tr class="row-even"><td rowspan="1">Loading...</td>
+	<td rowspan="1">&nbsp;</td>
+	<td rowspan="1">&nbsp;</td>
+	<td rowspan="1">&nbsp;</td>
+	<td rowspan="1">&nbsp;</td>
+	</tr>
+	<tr class="row-odd">
+	<td colspan="1">&nbsp;</td>
+	<td colspan="3">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>
 
 	</section>
 
@@ -184,26 +208,17 @@ here, with their Astropy filter applied. -->
 
 	<h1 id="becoming-an-affiliated-package">Becoming an Affiliated Package<a class="paralink" href="#becoming-an-affiliated-package" title="Permalink to this headline">¶</a></h1>
 
-  <p>Astropy <a href="https://www.pyopensci.org/partners.html">uses the pyOpenSci peer review process</a>
-  to vet affiliated packages. If you are a developer of an astronomy package and would like your package to become
-  affiliated with the Astropy Project, you submit your package directly to pyOpenSci.  
-  Astropy will be involved in the review, which will allow your package to become an
-  affiliated package through that review process. You can also opt to be fast tracked through
-  <a href="https://joss.theoj.org/">JOSS</a> if desired. Read the pyOpenSci author guide to learn
-  <a href="https://www.pyopensci.org/software-peer-review/how-to/author-guide.html">
-  how to get started with submitting a package to pyOpenSci through their affiliated partner program Guidebook</a>.
-  </p>
-
-	<p>In addition to pyOpenSci criteria, we also apply
+	<p>If you are a developer of an astronomy package and would like your package
+	to become affiliated with the Astropy Project, please take a look at the
+	<a href="https://github.com/astropy/astropy-project/blob/main/affiliated/affiliated_package_review_process.md#proposing-an-affiliated-package">
+  instructions for proposing an affiliated package</a>. We recommend that you
+	also take a look at the
 	<a href="https://github.com/astropy/astropy-project/blob/main/affiliated/affiliated_package_review_guidelines.md">
-	Astropy-specific guidelines for reviewing affiliated packages</a>.
-	This will give you a
+	guidelines for reviewing affiliated packages</a> since this will give you a
 	sense of whether your package is ready for review. Broadly speaking, your
 	package should:</p>
 
 	<ul>
-
-		<li>Comply with general pyOpenSci review standards. Please see <a href="https://www.pyopensci.org/software-peer-review/how-to/author-guide.html">Peer Review Guide for Python Open Source Authors</a> for more details.</li>
 
 		<li>Be potentially useful to astronomers.  This can mean useful to a
 		specific sub-domain of astronomy, or more broadly useful to a large
@@ -211,27 +226,48 @@ here, with their Astropy filter applied. -->
 		astronomy).</li>
 
 		<li>Specifically use, interface with, or provide complementary capabilities
-		to other Astropy packages.</li>
+		  to other Astropy packages.</li>
+
+		<li>Be written in a way that is readable and understandable by others. While
+		not a strict requirement, we also provide <a
+		href="http://docs.astropy.org/en/stable/development/codeguide.html">coding
+		guidelines</a> that will make your code easier to read by members of the
+		community.</li>
 
 		<li>Use <a href="http://docs.astropy.org/">classes and functions from the
 		astropy core package</a> wherever possible and appropriate, and (as much as
 		possible) avoid duplication with other packages in the Astropy ecosystem.
 		This facilitates re-use of code and sharing of resources.</li>
 
+		<li>Have documentation that adequately explains the use
+		of the package. Additionally,
+		user-facing classes and functions should all have docstrings. We suggest
+		using sphinx, with the numpydoc-like <a
+		href="http://docs.astropy.org/en/stable/development/docguide.html">docstring
+		standards used by astropy</a>, but this is not a strict requirement as long
+		as the documentation is of comparable quality.</li>
+
+		<li>Make a best-effort to include an easy-to-run test
+		suite that covers its intended functionality. We realize this is not always
+		possible, but when it is, a test suite is a crucial element of stable
+		software and reproducible science.</li>
+
+		<li>Use Python 3.x. Packages are allowed to be 2.x compatible, but must support recent versions of Python 3.x.</li>
+
 		<li>Be open to contributions from others. While this most straightforwardly
 		means it follows a Github-based open development model (like the Astropy core
 		package), alternative approaches are perfectly valid as long as they are
-		consistent with basic principles of open source; e.g.,
-		<a href="https://choosealicense.com/">an OSI-approved license</a>.</li>
+		consistent with basic principles of open source. (E.g.,
+		<a href="https://choosealicense.com/">an OSI-approved license</a>)</li>
 
 		<li>Include instructions to users on how to cite your package. This is commonly done
-	  with a CITATION file. This file could include a Zenodo record (highly recommended),
-		acknowledgement text, and/or journal article(s). Where possible, full BibTeX entries of
-		these citations are recommended.</li>
+			with a CITATION file. This file could include a Zenodo record (highly recommended),
+			acknowledgement text, and/or journal article(s). Where possible, full BibTeX entries of these citations
+			are recommended. </li>
 
 		<li>Include citations to other relevant papers and software following
-		<a href="https://www.astrobetter.com/blog/2019/07/01/citing-astronomy-software-inline-text-examples/">leading
-		practices for citing astronomy software</a>.</li>
+			<a href="https://www.astrobetter.com/blog/2019/07/01/citing-astronomy-software-inline-text-examples/">leading
+				practices for citing astronomy software</a>.</li>
 
 	</ul>
 	</p>
@@ -241,7 +277,7 @@ here, with their Astropy filter applied. -->
 	any related affiliated packages. If your package is determined to meet the above
 	standards, it will be accepted and added to the affiliated package registry.
 	Note however that if packages become unmaintained or do not meet the standards
-	anymore, they may be removed from the list of affiliated packages, <a href="https://www.pyopensci.org/software-peer-review/our-process/policies.html#after-acceptance-package-ownership-and-maintenance">as per pyOpenSci policy.</a></p>
+	anymore, they may be removed from the list of affiliated packages.</p>
 
 	<h2 id="package-template">Package Template<a class="paralink" href="#package-template" title="Permalink to this headline">¶</a></h2>
 	<p>If you are considering creating a new astronomy package and would like it
@@ -254,51 +290,12 @@ here, with their Astropy filter applied. -->
 	href="https://packaging-guide.openastronomy.org/en/latest/#using-the-template">usage
 	instructions for the template</a>.
 	</p>
+<p>We recommend that you join the <a href="https://groups.google.com/forum/#!forum/astropy-affiliated-maintainers">astropy-affiliated-maintainers</a> mailing list to be kept informed of updates to the package template, as well as to have any dicussions related to setting up affiliated packages.</p>
 
-<p>Additionally, it is also acceptable to use
-<a href="https://www.pyopensci.org/python-package-guide/index.html">pyOpenSci Python Package Guide</a>
-if you think that better suits your package needs.</p>
 
-<p>We recommend that you join the <a href="https://groups.google.com/forum/#!forum/astropy-affiliated-maintainers">astropy-affiliated-maintainers</a> mailing list to be kept informed of any dicussions related to affiliated packages.</p>
+
 
 	</section>
-
-<section id="affiliated-faqs">
-
-	<h1 id="affiliated-package-faqs">Affiliated Package: FAQs<a class="paralink" href="#affiliated-package-faqs" title="Permalink to this headline">¶</a></h1>
-
-  <h2 id="affil-new-pkg">I want my package to be Astropy Affiliated<a class="paralink" href="#affil-new-pkg" title="Permalink to this headline">¶</a></h2>
-
-  <p>Thank you for your interest! Please see <a href="#becoming-an-affiliated-package">Becoming an Affiliated Package</a> above. When in doubt, feel free to contact Astropy Affiliated Editors for advice.</p>
-
-	<h2 id="affil-maintainer-no-time">I no longer have time to maintain my Astropy Affiliated package<a class="paralink" href="#affil-maintainer-no-time" title="Permalink to this headline">¶</a></h2>
-
-	<p>Please contact pyOpenSci, as per <a href="https://www.pyopensci.org/software-peer-review/our-process/policies.html#peer-review-guidelines-policies">Peer Review Guidelines & Policies</a>.</p>
-
-  <h2 id="affil-pkg-delist">I want to delist my package as Astropy Affiliated<a class="paralink" href="#affil-pkg-delist" title="Permalink to this headline">¶</a></h2>
-
-  <p>Please see <a href="https://www.pyopensci.org/software-peer-review/our-process/policies.html#requesting-package-removal-from-the-pyopensci-ecosystem">Requesting package removal from the pyOpenSci ecosystem</a>.</p>
-
-  <h2 id="new-affil-editor">I am a new Editor<a class="paralink" href="#new-affil-editor" title="Permalink to this headline">¶</a></h2>
-
-  <p>Welcome and thank you! We usually do not switch out all our Editors at the same time,
-  so the incumbent co-Editor could help you contact pyOpenSci to add you to
-  <a href="https://www.pyopensci.org/about-peer-review/#meet-our-editorial-board">pyOpenSci editorial board</a>
-  with the understanding that we are taking the person you are replacing off that board
-  and that your role is Astropy- and astronomy-focused.</p>
-
-  <p>Your name would also be added to <a href="../team.html">Astropy Team</a> under the same role.</p>
-
-	<h2 id="new-affil-reviewer">I am a new reviewer<a class="paralink" href="#new-affil-reviewer" title="Permalink to this headline">¶</a></h2>
-
-	<p>Welcome and thank you! Please submit the sign-up form that can be found under
-<a href="https://www.pyopensci.org/about-peer-review/#get-involved-with-peer-review">Become a pyOpenSci reviewer</a>. Do not forget to check "Astropy"/"astronomy"/"astrophysics"
-when you see them as options.</p>
-
-  <p>It is important that you understand your reviews will be done in public. There is no option to remain anonymous.</p>
-
-</section>
-
 
 	<footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
