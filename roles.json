@@ -28,7 +28,7 @@
             {
                 "description": "Organization and communication:",
                 "details": [
-                    "Policies: <a href='https: //github.com/astropy/astropy-project/tree/main/policies/coco-operating-policies.md'>CoCo Operating Policies</a>.",
+                    "Policies: <a href='https://github.com/astropy/astropy-project/tree/main/policies/coco-operating-policies.md'>CoCo Operating Policies</a>.",
                     "Meeting records: <a href='https://docs.google.com/document/d/1t7gEE6gIgNUCyObQFq3aYFMcOh4V4m27CNrxBGYwQuw/edit?usp=sharing'>CoCo Running Notes</a>.",
                     "Communication within the coordination committee happens through regular Zoom meetings and a private Slack channel.",
                     "Contact the Coordination Committee via email to <a href='mailto:coordinators@astropy.org'>coordinators@astropy.org</a> or by tagging the <a href='https://github.com/orgs/astropy/teams/coordinators'>github team @astropy/coordinators</a>.",
