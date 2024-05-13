@@ -434,6 +434,7 @@
             {
                 "role": "astropy.io.fits",
                 "people": [
+                    "Thomas Robitaille",
                     "Simon Conseil"
                 ]
             },
