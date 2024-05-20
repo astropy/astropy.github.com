@@ -250,7 +250,7 @@ function pypi_translator(pypiname) {
     if (pypiname === undefined) {
         return 'None';
     } else {
-        var urltext = 'http://pypi.python.org/pypi/' + pypiname;
+        var urltext = 'https://pypi.python.org/pypi/' + pypiname;
         return '<a href="' + urltext + '">' + 'PyPI' + '</a>';
     }
 }
@@ -260,6 +260,15 @@ function bool_translator(stable) {
         return 'Yes';
     } else {
         return 'No';
+    }
+}
+
+function ghuser_translator(fullname, ghname) {
+    if (fullname === undefined || ghname === undefined) {
+        return 'None';
+    } else {
+        var urltext = 'https://github.com/' + ghname;
+        return '<a href="' + urltext + '">' + fullname + '</a>';
     }
 }
 
