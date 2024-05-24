@@ -316,8 +316,7 @@
         "role": "Dev-telecon coordinator",
         "url": "devtelecon_coordinator",
         "people": [
-            "Hans Moritz G\u00fcnther",
-            "Nathaniel Starkman"
+            "Hans Moritz G\u00fcnther"
         ],
         "role-head": "Developer telecon coordinators",
         "responsibilities": {
