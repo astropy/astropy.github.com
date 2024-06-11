@@ -408,7 +408,6 @@
                 "people": [
                     "Stuart Littlefair",
                     "Adrian Price-Whelan",
-                    "Erik Tollerud",
                     "Eero Vaher",
                     "Marten van Kerkwijk"
                 ]
@@ -515,8 +514,7 @@
                 "role": "astropy.utils",
                 "people": [
                     "Pey Lian Lim",
-                    "Brigitta Sip\u0151cz",
-                    "Erik Tollerud"
+                    "Brigitta Sip\u0151cz"
                 ]
             },
             {
