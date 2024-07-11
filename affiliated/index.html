@@ -414,14 +414,7 @@ when you see them as options.</p>
           if (partners == null) {
               continue;
           }
-          var found_astropy = false;
-          for (var p2=0; p2<partners.length; p2++) {
-              var cur_partner = partners[p2];
-              if (cur_partner.startsWith("astropy")) {
-                  found_astropy = true;
-                  break;
-              }
-          }
+          let found_astropy = partners.some(e => e.includes("astropy"));
           if (!found_astropy) {
               continue;
           }
