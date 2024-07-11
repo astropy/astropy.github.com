@@ -410,9 +410,21 @@ when you see them as options.</p>
 		   var info = "";
 		   for (var p=0; p<parsed.length; p++) {
 		      var package = parsed[p];
-		      if (package["partners"] == null || package["partners"].indexOf("astropy") == -1) {
-		      	  continue;
-		      }
+          var partners = package["partners"];
+          if (partners == null) {
+              continue;
+          }
+          var found_astropy = false;
+          for (var p2=0; p2<partners.length; p2++) {
+              var cur_partner = partners[p2];
+              if (cur_partner.startsWith("astropy")) {
+                  found_astropy = true;
+                  break;
+              }
+          }
+          if (!found_astropy) {
+              continue;
+          }
 
           namerow = tab.insertRow(i*4 + 1);
 
