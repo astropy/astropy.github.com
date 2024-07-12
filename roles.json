@@ -336,18 +336,6 @@
         }
     },
     {
-        "role": "Dev-telecon coordinator",
-        "url": "devtelecon_coordinator",
-        "people": [
-            "Hans Moritz G\u00fcnther"
-        ],
-        "role-head": "Developer telecon coordinators",
-        "responsibilities": {
-            "description": "Organize monthly developer telecons",
-            "details": []
-        }
-    },
-    {
         "role": "Core astropy package maintainer (general)",
         "url": "Core_package_general_maintainer",
         "people": [
@@ -607,6 +595,18 @@
                 "Monitoring features and bringing them for inclusion in the core package when relevant",
                 "All the same responsilities as a sub-package, but for the coordinated package."
             ]
+        }
+    },
+    {
+        "role": "Dev-telecon coordinator",
+        "url": "devtelecon_coordinator",
+        "people": [
+            "Hans Moritz G\u00fcnther"
+        ],
+        "role-head": "Developer telecon coordinators",
+        "responsibilities": {
+            "description": "Organize monthly developer telecons",
+            "details": []
         }
     },
     {
