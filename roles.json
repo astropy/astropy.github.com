@@ -377,7 +377,7 @@
             "details": [
                 "Evaluating new pull requests for quality, API consistency, Astropy coding standards, and appropriateness within the overall astropy ecosystem, in particular for pull requests spanning multiple sub-packages",
                 "Merging Pull Requests that are non-controversial or after reaching out to relevant subpackage maintainers",
-                "Maintain, review, and advocate for useful interaction between multiple sub-packages", 
+                "Maintain, review, and advocate for useful interaction between multiple sub-packages",
                 "Perform initial triaging of issues and pull requests",
                 "Keeping track of frequent contributors and their relevant areas of expertise"
             ]
@@ -587,7 +587,8 @@
                 "role": "reproject",
                 "people": [
                     "Stuart Mumford",
-                    "Thomas Robitaille"
+                    "Thomas Robitaille",
+                    "Sam van Kooten"
                 ]
             },
             {
