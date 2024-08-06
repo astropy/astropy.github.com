@@ -206,25 +206,6 @@
 	]
     },
     {
-        "role": "Documentation infrastructure maintainer",
-        "url": "Documentation_infrastructure_maintainer",
-        "people": [
-            "Simon Conseil",
-            "Pey Lian Lim",
-            "Thomas Robitaille",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Documentation infrastructure maintainer",
-        "responsibilities": {
-            "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
-            "details": [
-                "Managing the Sphinx infrastructure",
-                "Implementing changes and improvements to the documentation website",
-                "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
-            ]
-        }
-    },
-    {
         "role": "Affiliated package review editor",
         "url": "Affiliated_package_review_editor",
         "people": ["Hans Moritz G\u00fcnther", "Derek Homeier"],
@@ -240,20 +221,42 @@
         }
     },
     {
-        "role": "Astropy.org web page maintainer",
-        "url": "Astropyorg_web_page_maintainer",
+        "role": "Release team",
+        "url": "release_team",
+        "people": [
+            "Simon Conseil",
+            "Thomas Robitaille"
+        ],
+        "role-head": "Release team",
+        "responsibilities": {
+            "description": "Oversee the release process for packages in the project, including:",
+            "details": [
+                "Carrying out releases of the core astropy package",
+                "Notifying the Distribution Coordinators of any core astropy package release",
+                "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media",
+                "Keeping documentation for the release process of the core package up to date",
+                "Designing policies to improve the uniformity of release procedures for the coordinated and infrastructure packages of the Astropy Project",
+                "Testing the interoperability of the core, coordinated, and infrastructure packages and provide safeguards against breaking the ecosystem."
+            ]
+        }
+    },
+    {
+        "role": "Security team",
+        "url": "security_team",
         "people": [
             "Hans Moritz G\u00fcnther",
-            "Derek Homeier",
+            "Pey Lian Lim",
+            "Thomas Robitaille",
             "Erik Tollerud"
         ],
-        "role-head": "Astropy.org web page maintainer",
+        "role-head": "Security team",
         "responsibilities": {
-            "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
+            "description": "Organize security reporting and auditing for packages in the project, including:",
             "details": [
-                "Managing pull requests to the website repository in general",
-                "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
-                "Managing the astropy.org DNS entries and related domain name upkeep"
+                "Monitor and reply to security reports (this role needs admin privileges on GitHub to access reports submitted through GitHub's secure reporting form)",
+                "Coordinate the response to any security report with the relevant package maintainers and outside security experts",
+                "Coordinate security audits with external experts as needed and available",
+                "Release CVEs as necessary"
             ]
         }
     },
@@ -296,70 +299,39 @@
         }
     },
     {
-        "role": "Distribution coordinator",
-        "url": "Distribution_coordinator",
-        "people": [
-            "Matt Craig",
-            "Stuart Mumford",
-            "Sergio Pascual",
-            "Ole Streicher",
-            "Miguel de Val-Borro"
-        ],
-        "role-head": "Distribution coordinators",
-        "responsibilities": {
-            "description": "Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system.",
-            "details": []
-        }
-    },
-    {
-        "role": "Dev-telecon coordinator",
-        "url": "devtelecon_coordinator",
-        "people": [
-            "Hans Moritz G\u00fcnther"
-        ],
-        "role-head": "Developer telecon coordinators",
-        "responsibilities": {
-            "description": "Organize monthly developer telecons",
-            "details": []
-        }
-    },
-    {
-        "role": "Release team",
-        "url": "release_team",
+        "role": "Documentation infrastructure maintainer",
+        "url": "Documentation_infrastructure_maintainer",
         "people": [
             "Simon Conseil",
-            "Thomas Robitaille"
+            "Pey Lian Lim",
+            "Thomas Robitaille",
+            "Brigitta Sip\u0151cz"
         ],
-        "role-head": "Release team",
+        "role-head": "Documentation infrastructure maintainer",
         "responsibilities": {
-            "description": "Oversee the release process for packages in the project, including:",
+            "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
             "details": [
-                "Carrying out releases of the core astropy package",
-                "Notifying the Distribution Coordinators of any core astropy package release",
-                "Working with the Community Engagement Coordinator to make release announcements via channels such as mailing lists and social media",
-                "Keeping documentation for the release process of the core package up to date",
-                "Designing policies to improve the uniformity of release procedures for the coordinated and infrastructure packages of the Astropy Project",
-                "Testing the interoperability of the core, coordinated, and infrastructure packages and provide safeguards against breaking the ecosystem."
+                "Managing the Sphinx infrastructure",
+                "Implementing changes and improvements to the documentation website",
+                "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
             ]
         }
     },
     {
-        "role": "Security team",
-        "url": "security_team",
+        "role": "Astropy.org web page maintainer",
+        "url": "Astropyorg_web_page_maintainer",
         "people": [
             "Hans Moritz G\u00fcnther",
-            "Pey Lian Lim",
-            "Thomas Robitaille",
+            "Derek Homeier",
             "Erik Tollerud"
         ],
-        "role-head": "Security team",
+        "role-head": "Astropy.org web page maintainer",
         "responsibilities": {
-            "description": "Organize security reporting and auditing for packages in the project, including:",
+            "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
             "details": [
-                "Monitor and reply to security reports (this role needs admin privileges on GitHub to access reports submitted through GitHub's secure reporting form)",
-                "Coordinate the response to any security report with the relevant package maintainers and outside security experts",
-                "Coordinate security audits with external experts as needed and available",
-                "Release CVEs as necessary"
+                "Managing pull requests to the website repository in general",
+                "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
+                "Managing the astropy.org DNS entries and related domain name upkeep"
             ]
         }
     },
@@ -623,6 +595,34 @@
                 "Monitoring features and bringing them for inclusion in the core package when relevant",
                 "All the same responsilities as a sub-package, but for the coordinated package."
             ]
+        }
+    },
+    {
+        "role": "Dev-telecon coordinator",
+        "url": "devtelecon_coordinator",
+        "people": [
+            "Hans Moritz G\u00fcnther"
+        ],
+        "role-head": "Developer telecon coordinators",
+        "responsibilities": {
+            "description": "Organize monthly developer telecons",
+            "details": []
+        }
+    },
+    {
+        "role": "Distribution coordinator",
+        "url": "Distribution_coordinator",
+        "people": [
+            "Matt Craig",
+            "Stuart Mumford",
+            "Sergio Pascual",
+            "Ole Streicher",
+            "Miguel de Val-Borro"
+        ],
+        "role-head": "Distribution coordinators",
+        "responsibilities": {
+            "description": "Create and maintain binary distribution packages for Astropy core and affiliated packages for a specific OS or package management system.",
+            "details": []
         }
     }
 ]
