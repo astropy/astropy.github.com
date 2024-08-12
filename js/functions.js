@@ -125,7 +125,7 @@ $( document ).ready(function(){
                         if (index > 0) {
                             blocks += '<br>';
                         }
-                        blocks += '<strong>' + resp["subrole-head"] + '</strong>';
+                        blocks += '<em>' + resp["subrole-head"] + '</em>';
                     }
                     blocks += '<p>' + resp["description"] + '</p>' +
                               '<ul>' + detail_list + '</ul>';
