@@ -1,0 +1,6 @@
+[tool.gilesbot]
+    [tool.gilesbot.circleci_artifacts]
+        enabled = true
+
+    [tool.gilesbot.pull_requests]
+        enabled = true
