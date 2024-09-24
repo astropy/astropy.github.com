@@ -309,7 +309,7 @@
         ],
         "role-head": "Documentation infrastructure maintainer",
         "responsibilities": {
-            "description": "Maintain the <a href='http://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
+            "description": "Maintain the <a href='https://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
             "details": [
                 "Managing the Sphinx infrastructure",
                 "Implementing changes and improvements to the documentation website",
