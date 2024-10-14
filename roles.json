@@ -185,7 +185,7 @@
 	    },
 	    {
                 "subrole-head": "Learn content and infrastructure",
-                "description": "Maintain the infrastructure and edit content of the <a href='http://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
+                "description": "Maintain the infrastructure and edit content of the <a href='https://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
                 "details": [
                     "Facilitating the display and discoverability of the tutorials",
                     "Rendering of the Jupyter notebooks",
@@ -261,79 +261,83 @@
         }
     },
     {
-        "role": "DevOps and Operations Specialist",
+        "role": "Infrastructure and Operations",
         "url": "devops_team",
-        "people": [
-            "Pey Lian Lim",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "DevOps and Operations",
-        "responsibilities": {
-            "description": "Ensure the smooth running of the project",
-            "details": [
-                "Set up and maintain continuous integration services",
-                "Ensure adequate labeling of issues and pull requests",
-                "Perform initial triaging of issues and pull requests, including moving between repositories",
-                "Merge non-controversial pull requests"
-            ]
-        }
-    },
-    {
-        "role": "Testing infrastructure maintainer",
-        "url": "Testing_infrastructure_maintainer",
-        "people": [
-            "Simon Conseil",
-            "Pey Lian Lim",
-            "Thomas Robitaille",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Testing infrastructure maintainer",
-        "responsibilities": {
-            "description": "Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:",
-            "details": [
-                "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
-                "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
-                "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
-                "Supporting and enabling affiliated package usage of the testing infrastructure"
-            ]
-        }
-    },
-    {
-        "role": "Documentation infrastructure maintainer",
-        "url": "Documentation_infrastructure_maintainer",
-        "people": [
-            "Simon Conseil",
-            "Pey Lian Lim",
-            "Thomas Robitaille",
-            "Brigitta Sip\u0151cz"
-        ],
-        "role-head": "Documentation infrastructure maintainer",
-        "responsibilities": {
-            "description": "Maintain the <a href='https://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
-            "details": [
-                "Managing the Sphinx infrastructure",
-                "Implementing changes and improvements to the documentation website",
-                "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
-            ]
-        }
-    },
-    {
-        "role": "Astropy.org web page maintainer",
-        "url": "Astropyorg_web_page_maintainer",
-        "people": [
-            "Hans Moritz G\u00fcnther",
-            "Derek Homeier",
-            "Erik Tollerud"
-        ],
-        "role-head": "Astropy.org web page maintainer",
-        "responsibilities": {
-            "description": "Manage the <a href='http://astropy.org'>astropy.org</a> web site, including:",
-            "details": [
-                "Managing pull requests to the website repository in general",
-                "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
-                "Managing the astropy.org DNS entries and related domain name upkeep"
-            ]
-        }
+        "role-head": "Infrastructure and Operations",
+        "sub-roles": [
+            {
+                "role": "Technical Lead",
+                "people": [
+                    "Pey Lian Lim",
+                    "Brigitta Sip\u0151cz"
+                ]
+            },
+            {
+                "role": "Testing infrastructure",
+                "people": [
+                    "Simon Conseil",
+                    "Pey Lian Lim",
+                    "Thomas Robitaille",
+                    "Brigitta Sip\u0151cz"
+                ]
+            },
+            {
+                "role": "Documentation infrastructure",
+                "people": [
+                    "Simon Conseil",
+                    "Pey Lian Lim",
+                    "Thomas Robitaille",
+                    "Brigitta Sip\u0151cz"
+                ]
+            },
+            {
+                "role": "Astropy.org web page maintainer",
+                "people": [
+                    "Hans Moritz G\u00fcnther",
+                    "Derek Homeier",
+                    "Erik Tollerud"
+                ]
+            }
+
+        ],        
+        "responsibilities": [
+            {
+                "subrole-head": "Technical Lead",
+                "description": "Ensure the smooth running of the project",
+                "details": [
+                    "Set up and maintain continuous integration services",
+                    "Move issues between repositories within the organization"
+                ]
+            },
+            {
+                "subrole-head": "Testing infrastructure",
+                "description": "Lead development and maintenance of the testing infrastructure for Astropy and the helpers, including:",
+                "details": [
+                    "Managing issues/pull request for the Astropy core package regarding testing infrastructure",
+                    "Managing issues/pull requests in the repositories containing the testing plugins, and determining when new plugins are required",
+                    "Maintaining the 'metapackage' with the testing machinery (pytest-astropy at the time of this writing)",
+                    "Supporting and enabling affiliated package usage of the testing infrastructure"
+                ]
+            },
+            {
+                "subrole-head": "Documentation infrastructure",
+                "description": "Maintain the <a href='https://docs.astropy.org/en/stable/index.html'>Astropy documentation</a> website, including:",
+                "details": [
+                    "Managing the Sphinx infrastructure",
+                    "Implementing changes and improvements to the documentation website",
+                    "Overseeing content (although primary responsibility for content lies with subpackage maintainers)"
+                ]
+            },
+            {
+                "subrole-head": "Astropy.org web page maintainer",
+                "description": "Manage the <a href='https://astropy.org'>astropy.org</a> web site, including:",
+                "details": [
+                    "Managing pull requests to the website repository in general",
+                    "Managing <a href='http://data.astropy.org'>data.astropy.org</a>, which is done by managing the astropy-data repository (which is automatically synced with <a href='http://data.astropy.org'>data.astropy.org</a>)",
+                    "Managing the astropy.org DNS entries and related domain name upkeep"
+                ]
+            }
+        ]
     },
     {
         "role": "Core astropy package maintainer",
