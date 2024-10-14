@@ -130,12 +130,18 @@
                     "Kelle Cruz",
                     "Erik Tollerud"
                 ]
+            },            {
+                "role": "Mastodon",
+                "people": [
+                    "Stuart Mumford"
+                ]
             }
+
         ],
         "responsibilities": {
             "description": "Facilitate engagement with the astropy community, including:",
             "details": [
-                "Maintain the @astropy twitter account",
+                "Maintain the @astropy social media accounts",
                 "Monitor/moderate the Python Users in Astronomy Facebook group",
                 "Keep track of/help organize conferences and workshops",
 	  	"Maintain infrastructure for a specific channel (e.g., discourse)"
