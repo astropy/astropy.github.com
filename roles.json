@@ -102,12 +102,6 @@
                 ]
             },
             {
-                "role": "Twitter",
-                "people": [
-                    "Matt Craig"
-                ]
-            },
-            {
                 "role": "Facebook",
                 "people": [
                     "Kelle Cruz"
@@ -133,12 +127,12 @@
             }
         ],
         "responsibilities": {
-            "description": "Facilitate engagement with the astropy community, including:",
+            "description": "Facilitate engagement with the Astropy community, including:",
             "details": [
-                "Maintain the @astropy twitter account",
+                "Maintain Astropy social media accounts",
                 "Monitor/moderate the Python Users in Astronomy Facebook group",
-                "Keep track of/help organize conferences and workshops",
-	  	"Maintain infrastructure for a specific channel (e.g., discourse)"
+                "Keep track of/help organize presence in conferences and workshops",
+	  	"Maintain infrastructure for communication channels (e.g., Discourse)"
             ]
         }
     },
