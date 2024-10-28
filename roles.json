@@ -55,6 +55,26 @@
         }
     },
     {
+        "role": "Strategic planning committee member",
+        "url": "strategic_planner",
+        "people": [
+            "All Coordination Committee Members"
+        ],
+        "role-head": "Strategic planner",
+        "responsibilities": {
+            "description": "Do long-term planning for the Astropy Project as a whole, including:",
+            "details": [
+                "Shape and provide a vision for next major steps in the Project, in consultation with the whole Astropy community.",
+                "Maintain an overview of all the project activities (both from developer and user perspectives).",
+                "Provide points of contact for external stakeholders on the above (with the Coordination Committee).",
+                "Monitor project activities to see how well aligned they are with the roadmap and strategic goals of the project, and report back to the community and Coordination Committee.",
+                "Coordinate writing grant proposals (in collaboration with the Finance Committee, Coordination Committee, and community).",
+                "Maintain the Astropy Project Roadmap.",
+                "Engage with, and collect input from, the whole Astropy Community on project vision and priorities."
+            ]
+        }
+    },
+    {
         "role": "Finance committee member",
         "url": "finance_committee_member",
         "people": [
