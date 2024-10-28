@@ -118,19 +118,26 @@
                 "people": [
                     "Stuart Mumford"
                 ]
-            },            {
+            },            
+            {
                 "role": "Conferences",
                 "people": [
                     "Kelle Cruz",
                     "Erik Tollerud"
                 ]
-            },            {
+            },
+            {
+                "role": "BlueSky",
+                "people": [
+                    "Brett Morris"
+                ]
+            },            
+            {
                 "role": "Mastodon",
                 "people": [
                     "Stuart Mumford"
                 ]
             }
-
         ],
         "responsibilities": {
             "description": "Facilitate engagement with the Astropy community, including:",
