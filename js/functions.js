@@ -241,7 +241,7 @@ function createRolesDescription(roles) {
                 role['responsibilities'] = [role['responsibilities']];
             }
 
-            console.log(role['responsibilities']);
+            //console.log(role['responsibilities']);
 
             blocks += '<br/>' +
             '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>';
@@ -250,7 +250,7 @@ function createRolesDescription(roles) {
 
             role['responsibilities'].forEach(function (resp) {
 
-                console.log(resp);
+                //console.log(resp);
 
                 detail_list = '';
                 resp["details"].forEach(function (detail) {
@@ -401,7 +401,7 @@ function makeShields(pkg) {
   var key, shield_name, pkgvalue, color, url;
 
   for (key in review_name_map) {
-    console.log("K"+key);
+    //console.log("K"+key);
     if (review_name_map.hasOwnProperty(key)) {
       shield_name = review_name_map[key];
       if ("review" in pkg && key in pkg.review ) {
