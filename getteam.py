@@ -5,7 +5,6 @@ reflect the  current ``credits.rst`` file from the astropy repository.
 Note that this first looks for the ``ASTROPY_REPO_PATH`` environment
 variable to try to find a local copy of the astropy repo.
 """
-from __future__ import print_function
 
 
 def get_astropy_credits(warner=print):
