@@ -750,6 +750,12 @@
 		<script src="js/jquery.sidr.min.js"></script>
 		<script src="js/functions.js"></script>
 
+	  <script type="text/javascript">
+		    $(document).ready(function() {
+		        $.getJSON("roles.json", populateRoles);
+		    });
+		</script>
+
         <hr>
 		<p>
 		<img style="vertical-align:middle" src="images/astropy_brandmark.png" height=20><span style="vertical-align:middle">

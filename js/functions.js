@@ -22,123 +22,6 @@ $( document ).ready(function(){
 			$(this).removeClass("subhover"); //On hover out, remove class "subhover"
 	});
 
-    //creating Astropy roles table & roles lists using roles.json
-    var request = new XMLHttpRequest();
-    var dataURL = "roles.json";
-    request.open('GET', dataURL);
-    request.responseType = 'json';
-    request.send();
-
-    //log error when request gets failed
-    request.onerror = function () {
-        console.log("XHR error");
-    };
-
-    request.onload = function () {
-        //received json data via XHR
-        var data = request.response;
-        //creating roles table from json data
-        createRolesTable(data);
-        //creating roles lists from json data
-        createRolesDescription(data);
-    };
-
-    function createRolesTable(roles) {
-        //roles is an array of objects called "role"
-        var rows = '';
-        roles.forEach(function (role) {
-            //role is an object containing information about each team role
-            //index marks current people
-            var index = 0;
-
-            // for roles where there are no sub-roles, the people are defined
-            // at the top-level of the JSON role dict - for convenience below we create
-            // a virtual sub-role with no heading
-            if (!('sub-roles' in role)) {
-                role['sub-roles'] = [{'role': '',
-                                      'people': role['people']}];
-            }
-
-            //creating each row by iterating over each person in a role
-            role["sub-roles"].forEach(function (subrole) {
-                //rowRole is displayed once for each role
-                rowRole = index == 0 ? '<a href="#' + role["url"] + '">' + role["role"] + '</a>' : "";
-
-                var rowSubRole = subrole['role'];
-
-                if (subrole['people'][0] == "Unfilled") {
-                    rowPeople = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
-                } else {
-                    rowPeople = subrole['people'].join(', ');
-                }
-
-                //generating rows
-                if (index == 0) {
-                    rows += '<tr class="border-top">';
-                } else {
-                    rows += '<tr>';
-                }
-
-                rows +=   '<td>' + rowRole + '</td>' +
-                          '<td>' + rowSubRole + '</td>' +
-                          '<td>' + rowPeople + '</td>' +
-                        '</tr>';
-                index++;
-            });
-        });
-
-        $("#roles-table").append(rows);
-    }
-
-    function createRolesDescription(roles) {
-        //roles is an array of objects called "role"
-        var blocks = "";
-        roles.forEach(function (role) {
-            //role is an object containing information about each team role
-            var list = "";
-            //checking if role["description"] array isn't empty
-            if (role["responsibilities"] != null) {
-
-                // If responsibilities is a dict, wrap inside a list so that all entries have a list
-                // dicts
-                if (role['responsibilities'].constructor == Object) {
-                    role['responsibilities'] = [role['responsibilities']];
-                }
-
-                console.log(role['responsibilities']);
-
-                blocks += '<br/>' +
-                '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>';
-
-                index = 0;
-
-                role['responsibilities'].forEach(function (resp) {
-
-                    console.log(resp);
-
-                    detail_list = '';
-                    resp["details"].forEach(function (detail) {
-                        detail_list += '<li>' + detail + '</li>';
-                    });
-
-                    if ('subrole-head' in resp) {
-                        if (index > 0) {
-                            blocks += '<br>';
-                        }
-                        blocks += '<em>' + resp["subrole-head"] + '</em>';
-                    }
-                    blocks += '<p>' + resp["description"] + '</p>' +
-                              '<ul>' + detail_list + '</ul>';
-
-                    index += 1;
-
-                })
-
-            }
-        });
-        $("#roles-description").append(blocks);
-    }
-
     $('#os-selector ul').each(function(){
       // For each set of tabs, we want to keep track of
       // which tab is active and it's associated content
@@ -255,6 +138,7 @@ function pypi_translator(pypiname) {
     }
 }
 
+
 function bool_translator(stable) {
     if (stable) {
         return 'Yes';
@@ -262,6 +146,7 @@ function bool_translator(stable) {
         return 'No';
     }
 }
+
 
 function ghuser_translator(fullname, ghname) {
     if (fullname === undefined || ghname === undefined) {
@@ -271,6 +156,7 @@ function ghuser_translator(fullname, ghname) {
         return '<a href="' + urltext + '">' + fullname + '</a>';
     }
 }
+
 
 var _email_regex_str = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
 var _email_regex  = new RegExp(_email_regex_str, 'i');
@@ -292,10 +178,117 @@ function maintainer_translator(maint, pkgnm) {
 }
 
 
+function createRolesTable(roles) {
+    //roles is an array of objects called "role"
+    var rows = '';
+    roles.forEach(function (role) {
+        //role is an object containing information about each team role
+        //index marks current people
+        var index = 0;
+
+        // for roles where there are no sub-roles, the people are defined
+        // at the top-level of the JSON role dict - for convenience below we create
+        // a virtual sub-role with no heading
+        if (!('sub-roles' in role)) {
+            role['sub-roles'] = [{'role': '',
+                                  'people': role['people']}];
+        }
+
+        //creating each row by iterating over each person in a role
+        role["sub-roles"].forEach(function (subrole) {
+            //rowRole is displayed once for each role
+            rowRole = index == 0 ? '<a href="#' + role["url"] + '">' + role["role"] + '</a>' : "";
+
+            var rowSubRole = subrole['role'];
+
+            if (subrole['people'][0] == "Unfilled") {
+                rowPeople = '<a href="mailto:coordinators@astropy.org"><span style="font-style: italic;">Unfilled</span></a>';
+            } else {
+                rowPeople = subrole['people'].join(', ');
+            }
+
+            //generating rows
+            if (index == 0) {
+                rows += '<tr class="border-top">';
+            } else {
+                rows += '<tr>';
+            }
+
+            rows +=   '<td>' + rowRole + '</td>' +
+                      '<td>' + rowSubRole + '</td>' +
+                      '<td>' + rowPeople + '</td>' +
+                    '</tr>';
+            index++;
+        });
+    });
+
+    $("#roles-table").append(rows);
+}
+
+
+function createRolesDescription(roles) {
+    //roles is an array of objects called "role"
+    var blocks = "";
+    roles.forEach(function (role) {
+        //role is an object containing information about each team role
+        var list = "";
+        //checking if role["description"] array isn't empty
+        if (role["responsibilities"] != null) {
+
+            // If responsibilities is a dict, wrap inside a list so that all entries have a list
+            // dicts
+            if (role['responsibilities'].constructor == Object) {
+                role['responsibilities'] = [role['responsibilities']];
+            }
+
+            //console.log(role['responsibilities']);
+
+            blocks += '<br/>' +
+            '<h3 id="' + role["url"] + '">' + role["role-head"] + '</h3>';
+
+            index = 0;
+
+            role['responsibilities'].forEach(function (resp) {
+
+                //console.log(resp);
+
+                detail_list = '';
+                resp["details"].forEach(function (detail) {
+                    detail_list += '<li>' + detail + '</li>';
+                });
+
+                if ('subrole-head' in resp) {
+                    if (index > 0) {
+                        blocks += '<br>';
+                    }
+                    blocks += '<em>' + resp["subrole-head"] + '</em>';
+                }
+                blocks += '<p>' + resp["description"] + '</p>' +
+                          '<ul>' + detail_list + '</ul>';
+
+                index += 1;
+
+            })
+
+        }
+    });
+    $("#roles-description").append(blocks);
+}
+
+
+function populateRoles(data, tstat, xhr) {
+    //creating roles table from json data
+    createRolesTable(data);
+    //creating roles lists from json data
+    createRolesDescription(data);
+}
+
+
 function populateTables(data, tstat, xhr) {
     populatePackageTable('coordinated', filter_pkg_data(data, "coordinated", true));
     populatePackageTable('affiliated', filter_pkg_data(data, "coordinated", false));
 }
+
 
 function filter_pkg_data(data, field, value) {
     if (data === null) {
@@ -401,13 +394,14 @@ var review_color_map = {'Unmaintained': "red",
     "Needs work": "red"
 };
 
+
 function makeShields(pkg) {
   var shield_string = "";
 
   var key, shield_name, pkgvalue, color, url;
 
   for (key in review_name_map) {
-    console.log("K"+key);
+    //console.log("K"+key);
     if (review_name_map.hasOwnProperty(key)) {
       shield_name = review_name_map[key];
       if ("review" in pkg && key in pkg.review ) {
@@ -425,6 +419,7 @@ function makeShields(pkg) {
   }
   return shield_string
 }
+
 
 function guess_os() {
     var OSName="source";

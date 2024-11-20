@@ -190,11 +190,9 @@
 		</tr>
 		</thead>
 		<tbody valign="top">
-		<tr class="row-even"><td rowspan="1">Loading...</td>
-		<td rowspan="1">&nbsp;</td>
-		<td rowspan="1">&nbsp;</td>
-		<td rowspan="1">&nbsp;</td>
-		<td rowspan="1">&nbsp;</td>
+		<tr class="row-even">
+		<td colspan="1">&nbsp;</td>
+		<td colspan="3">&nbsp;</td>
 		</tr>
 		<tr class="row-odd">
 		<td colspan="1">&nbsp;</td>
@@ -403,9 +401,7 @@ when you see them as options.</p>
 		   var parsed = yaml.parse(yamlString);
 		   var i = 0;
 
-       // We have to delete the "Loading..." row
        var tab = document.getElementById("pyos-package-table");
-       tab.deleteRow(1);
 
 		   var info = "";
 		   for (var p=0; p<parsed.length; p++) {

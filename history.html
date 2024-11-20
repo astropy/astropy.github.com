@@ -16,35 +16,6 @@
 <!-- Google analytics -->
 <script src="js/analytics.js"></script>
 
-<!-- Meow woof -->
-<script>
-window.onload = function() {
-
-  $.getJSON('https://pypi.org/pypi/astropy/json', function(data) {
-    document.getElementById('core-package-version').innerHTML = 'Current Version: ' + data.info.version;
-  });
-
-
-  var today = new Date();
-  var month = today.getMonth() + 1;
-  var date = today.getDate();
-
-  if (month == 4 && date == 1) {
-    $('#hero img').attr('src', 'images/astropy_meow.png');
-    $('#hero img').attr('onerror', 'this.src=\x27images/astropy_meow.png\x27; this.onerror=null;');
-
-    var dogeContainer = document.getElementById("prenew");
-    var dogeImg = document.createElement("img");
-    dogeImg.onload=function() {
-      dogeContainer.appendChild(dogeImg);
-    }
-    dogeImg.src = 'images/astropy_doge.png';
-    dogeImg.alt = 'wow so open very python';
-  }
-
-};
-</script>
-
 </head>
 
 <body>
