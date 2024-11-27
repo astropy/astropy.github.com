@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Astropy. A Community Python Library for Astronomy." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="favicon.ico" />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/jquery.sidr.light.css" />
+
+
+<title>Astropy | v7.0 Released!</title>
+
+<!-- Google analytics -->
+<script src="../js/analytics.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav>
+        <div id="mobile-header">
+            <!-- Menu Icon -->
+            <a id="responsive-menu-button" href="#sidr-main"><div><svg senable-background="new 0 0 24 24" height="24px" id="Layer_1" version="1.1" viewBox="0 0 24 24" width="24px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><g><path d="M23.244,17.009H0.75c-0.413,0-0.75,0.36-0.75,0.801v3.421C0,21.654,0.337,22,0.75,22h22.494c0.414,0,0.75-0.346,0.75-0.77    V17.81C23.994,17.369,23.658,17.009,23.244,17.009z M23.244,9.009H0.75C0.337,9.009,0,9.369,0,9.81v3.421    c0,0.424,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.345,0.75-0.769V9.81C23.994,9.369,23.658,9.009,23.244,9.009z     M23.244,1.009H0.75C0.337,1.009,0,1.369,0,1.81V5.23c0,0.423,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.346,0.75-0.769V1.81    C23.994,1.369,23.658,1.009,23.244,1.009z"/></g></g></svg></div></a>
+            <!-- -->
+        </div>
+        <a href="../index.html"><img src="../images/astropy_word.svg" height="32" onerror="this.src='../images/astropy_word_32.png; this.onerror=null;"/></a>
+        <div id="navigation">
+            <ul>
+                <li>
+                    <div class="dropdown">
+                        <a>About</a>
+                        <div class="dropdown-content">
+                            <ul>
+                                <li><a href="../about.html">About Astropy</a></li>
+                                <li><a href="../code_of_conduct.html">Code of Conduct</a></li>
+                                <li><a href="../acknowledging.html">Acknowledging & Citing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../help.html">Get Help</a></li>
+                <li><a href="../contribute.html">Contribute</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a href="https://docs.astropy.org">Documentation</a>
+                        <div class="dropdown-content">
+                            <ul>
+                                <li><a href="https://docs.astropy.org" target="_blank">Current Release</a></li>
+                                <li><a href="https://astropy.readthedocs.io/en/latest/" target="_blank">In Development</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="affiliated/index.html">Affiliated Packages</a></li>
+                <li><a href="team.html">Team</a></li>
+            </ul>
+        </div>
+        <div class="search pull-right">
+            <form action="https://docs.astropy.org/en/stable/search.html" method="get">
+              <input type="text" name="q" placeholder="Search Documentation" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+    </nav>
+
+
+    <section>
+
+        <h1>Astropy v7.0 Released!</h1>
+
+        <p>
+        Dear colleagues,
+        </p>
+        <p>
+        We are very happy to announce the v7.0 release of astropy, a core Python
+        package for Astronomy:
+        </p>
+        <p align='center'>
+            <img src="astropy_logo_notext.png" style="width:80px;height:80px;"><br>
+            <a href="http://www.astropy.org">http://www.astropy.org</a>
+        </p>
+        <p>
+        The astropy core package is a community-driven Python package intended to contain much of the
+        core functionality and common tools needed for astronomy and astrophysics.
+        It is part of the Astropy Project, which aims to foster an ecosystem of
+        interoperable astronomy packages for Python.
+        </p>
+        <p>
+        Notable changes in this release include:
+        <ul>
+          <li>Full MaskedQuantity Support in QTable</li>
+          <li>Coordinate frames can now be stored in tables</li>
+          <li>Table show_in_notebook is back with ipydatagrid</li>
+          <li>Ordering of table columns constructed from rows</li>
+          <li>Table.pformat is now independent of terminal dimensions</li>
+          <li>Quantity.to_string supports formatter for formatting</li>
+          <li>NumPy constructor functions with a like argument are now supported with Quantity</li>
+          <li>Change default type for meta attribute to dict and update ECSV writer</li>
+          <li>Improve the Contributor Documentation</li>
+          <li>Typing in astropy.stats</li>
+          <li>Converting units on dask and other array-like objects</li>
+          <li>Performance improvements in astropy.modeling</li>
+          <li>Fitting models in parallel with N-dimensional data</li>
+          <li>RGB image visualization enhancements</li>
+          <li>New Lorentz2D model</li>
+          <li>Faster guessing of formats in astropy.io.ascii</li>
+          <li>Support VOTable version 1.5</li>
+          <li>New `parquet.votable` format is available to read/write a Table from Parquet files with VOTable metadata included</li>
+          <li>New SimpleNorm class</li>
+          <li>New SigmaClippedStats class</li>
+          <li>Automatic placement of axis and tick labels for WCSAxes</li>
+          <li>Support for masks in coordinates</li>
+          <li>Minimum supported version of Python updated to 3.11</li>
+          <li>The astropy conda-forge package now has all the optional dependencies, a new astropy-base package is provided with only required dependencies.</li>
+        </ul>
+        </p>
+        <p>
+        In addition, hundreds of smaller improvements and fixes have been made.
+        An overview of the changes is provided at:
+        </p>
+        <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+          href="https://docs.astropy.org/en/stable/whatsnew/7.0.html">https://docs.astropy.org/en/stable/whatsnew/7.0.html</a>
+        </p>
+        <p>
+        Instructions for installing astropy are provided on our <a
+        href="http://www.astropy.org">website</a>, and extensive documentation
+        can be found at:
+        </p>
+        <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://docs.astropy.org">https://docs.astropy.org</a>
+        </p>
+        <p>
+          If you usually use pip to install packages, you can do:
+        </p>
+<pre>
+pip install astropy --upgrade
+</pre>
+
+        <p>
+        If you make use of conda (such as through the <a href="https://www.continuum.io/downloads">Anaconda
+        Python Distribution</a>), you should soon be able update to Astropy v7.0 with:
+        </p>
+<pre>
+conda update astropy
+</pre>
+        <p>
+        Or if you cannot wait for Anaconda to update their default version, you can use the conda-forge channel:
+        </p>
+<pre>
+conda update -c conda-forge astropy
+</pre>
+        <p>
+        Please report any issues, or request new features via our GitHub repository:
+        </p>
+        <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/astropy/astropy/issues">https://github.com/astropy/astropy/issues</a>
+        </p>
+        <p>
+        Over 540 people have contributed code to the core astropy package so far, and you can find out more about the team here:
+        </p>
+        <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.astropy.org/team.html">https://www.astropy.org/team.html</a>
+        </p>
+        <p>
+        If you use astropy directly for your work, or as a dependency to another
+        package, please remember to acknowledge it by citing the appropriate
+        Astropy paper.  For the most up-to-date suggestions, see
+        <a href="../acknowledging.html">the acknowledgement page</a>.
+        </p>
+
+
+        <p>
+        We hope that you enjoy using astropy as much as we enjoyed developing it!
+        </p>
+        <p>
+        Simon Conseil<br>
+        v7.0 Release Coordinator<br>
+        on behalf of The Astropy Project
+        </p>
+    </section>
+
+
+
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/jquery.sidr.min.js"></script>
+        <script src="js/functions.js"></script>
+    </footer>
+
+</div>
+
+</body>
+</html>
