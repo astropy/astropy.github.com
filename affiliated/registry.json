@@ -1015,9 +1015,9 @@
         },
         {
             "name": "sbpy",
-            "maintainer": "Michael Mommert, Michael S. P. Kelley, Miguel de Val-Borro, and Jian-Yang Li <sbpy.dev@gmail.com>",
+            "maintainer": "Michael S. P. Kelley <msk@astro.umd.edu>, Henry Hsieh, and Jian-Yang Li",
             "stable": false,
-            "home_url": "https://github.com/NASA-Planetary-Science/sbpy",
+            "home_url": "https://sbpy.org",
             "repo_url": "https://github.com/NASA-Planetary-Science/sbpy",
             "pypi_name": "sbpy",
             "description": "A Python Module for Small-Body Planetary Astronomy",
