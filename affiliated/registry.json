@@ -716,7 +716,7 @@
         },
         {
             "name": "Halotools",
-            "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
+            "maintainer": "Andrew Hearin, Nick van Alfen <ahearin@nal.gov>",
             "stable": true,
             "home_url": "https://halotools.readthedocs.io",
             "repo_url": "https://github.com/astropy/halotools",
