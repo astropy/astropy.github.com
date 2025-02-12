@@ -10,129 +10,129 @@
             "description": "ZodiPy is a Python tool for simulating the zodiacal emission that a solar system observer sees, either in the form of timestreams or binned HEALPix maps.",
             "coordinated": false,
             "review": {
-               "functionality": "Specialized package",
-               "ecointegration": "Partial",
-               "documentation": "Good",
-               "testing": "Good",
-               "devstatus": "Good",
-               "python3": "Yes",
-               "last-updated": "2024-02-24"
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2024-02-24"
             }
-          },
-          {
-          "name": "regularizePSF",
-          "maintainer": "Marcus Hughes <marcus.hughes@swri.org>",
-          "stable": true,
-          "home_url": "https://punch-mission.github.io/regularizepsf/",
-          "repo_url": "https://github.com/punch-mission/regularizepsf",
-          "pypi_name": "regularizepsf",
-          "description": "regularizePSF is a package for manipulating and correcting variable point spread functions in astronomical images",
-          "coordinated": false,
-          "review": {
-             "functionality": "General package",
-             "ecointegration": "Partial",
-             "documentation": "Good",
-             "testing": "Good",
-             "devstatus": "Good",
-             "python3": "Yes",
-             "last-updated": "2023-04-21"
-          }
         },
         {
-          "name": "BayesicFitting",
-          "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
-          "stable": true,
-          "home_url": "https://bayesicfitting.nl/",
-          "repo_url": "https://github.com/dokester/BayesicFitting",
-          "pypi_name": "BayesicFitting",
-          "description": "General purpose toolbox for Bayesian fitting and evidence calculation.",
-          "coordinated": false,
-          "review": {
-            "functionality": "General package",
-            "ecointegration": "Partial",
-            "documentation": "Good",
-            "testing": "Partial",
-            "devstatus": "Good",
-            "python3": "Yes",
-            "last-updated": "2021-11-25"
-          }
+            "name": "regularizePSF",
+            "maintainer": "Marcus Hughes <marcus.hughes@swri.org>",
+            "stable": true,
+            "home_url": "https://punch-mission.github.io/regularizepsf/",
+            "repo_url": "https://github.com/punch-mission/regularizepsf",
+            "pypi_name": "regularizepsf",
+            "description": "regularizePSF is a package for manipulating and correcting variable point spread functions in astronomical images",
+            "coordinated": false,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2023-04-21"
+            }
         },
         {
-          "name": "PyCBC",
-          "maintainer": "Alexander Harvey Nitz <alex.nitz@gmail.com>",
-          "stable": true,
-          "home_url": "https://pycbc.org/",
-          "repo_url": "https://github.com/gwastro/pycbc",
-          "pypi_name": "pycbc",
-          "description": "Core package to analyze gravitational-wave data, find signals, and study their parameters.",
-          "coordinated": false,
-          "review": {
-            "functionality": "Specialized package",
-            "ecointegration": "Partial",
-            "documentation": "Partial",
-            "testing": "Partial",
-            "devstatus": "Good",
-            "python3": "Yes",
-            "last-updated": "2021-10-22"
-          }
+            "name": "BayesicFitting",
+            "maintainer": "Do Kester and Migo Mueller <dokester@home.nl>",
+            "stable": true,
+            "home_url": "https://bayesicfitting.nl/",
+            "repo_url": "https://github.com/dokester/BayesicFitting",
+            "pypi_name": "BayesicFitting",
+            "description": "General purpose toolbox for Bayesian fitting and evidence calculation.",
+            "coordinated": false,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2021-11-25"
+            }
         },
         {
-          "name": "SpectraPy",
-          "maintainer": "Marco Fumana <marco.fumana@inaf.it>",
-          "stable": true,
-          "home_url": "https://mcfuman.gitlab.io/SpectraPy/",
-          "repo_url": "https://gitlab.com/mcfuman/SpectraPy/",
-          "pypi_name": "",
-          "description": "SpectraPy is a Python3 library, which collects algorithms and methods for data reduction of astronomical spectra obtained by a through slits spectrograph. The library is designed to be spectrograph independent. Current implementation is focused on the extraction of 2D spectra.",
-          "coordinated": false,
-          "review": {
-             "functionality": "General package",
-             "ecointegration": "Partial",
-             "documentation": "Good",
-             "testing": "Good",
-             "devstatus": "Functional but low activity",
-             "python3": "Yes",
-             "last-updated": "2021-10-14"
-          }
+            "name": "PyCBC",
+            "maintainer": "Alexander Harvey Nitz <alex.nitz@gmail.com>",
+            "stable": true,
+            "home_url": "https://pycbc.org/",
+            "repo_url": "https://github.com/gwastro/pycbc",
+            "pypi_name": "pycbc",
+            "description": "Core package to analyze gravitational-wave data, find signals, and study their parameters.",
+            "coordinated": false,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Partial",
+                "testing": "Partial",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2021-10-22"
+            }
         },
         {
-          "name": "statmorph",
-          "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
-          "stable": true,
-          "home_url": "https://statmorph.readthedocs.io/",
-          "repo_url": "https://github.com/vrodgom/statmorph",
-          "pypi_name": "statmorph",
-          "description": "A Python package for calculating non-parametric morphological diagnostics of galaxy images, as well as fitting 2D Sérsic profiles.",
-          "image": null,
-          "coordinated": false,
-          "review": {
-             "functionality": "Specialized package",
-             "ecointegration": "Good",
-             "documentation": "Good",
-             "testing": "Good",
-             "devstatus": "Good",
-             "python3": "Yes",
-             "last-updated": "2021-01-12"
-          }
+            "name": "SpectraPy",
+            "maintainer": "Marco Fumana <marco.fumana@inaf.it>",
+            "stable": true,
+            "home_url": "https://mcfuman.gitlab.io/SpectraPy/",
+            "repo_url": "https://gitlab.com/mcfuman/SpectraPy/",
+            "pypi_name": "",
+            "description": "SpectraPy is a Python3 library, which collects algorithms and methods for data reduction of astronomical spectra obtained by a through slits spectrograph. The library is designed to be spectrograph independent. Current implementation is focused on the extraction of 2D spectra.",
+            "coordinated": false,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Functional but low activity",
+                "python3": "Yes",
+                "last-updated": "2021-10-14"
+            }
         },
         {
-          "name": "lenstronomy",
-          "maintainer": "Simon Birrer, Anowar Shajib, and Daniel Gilman <sibirrer@gmail.com>",
-          "stable": true,
-          "home_url": "https://lenstronomy.readthedocs.io",
-          "repo_url": "https://github.com/lenstronomy/lenstronomy",
-          "pypi_name": "lenstronomy",
-          "description": "Multi-purpose gravitational lensing and image modeling package",
-          "coordinated": false,
-          "review": {
-             "functionality": "Specialized package",
-             "ecointegration": "Partial",
-             "documentation": "Good",
-             "testing": "Good",
-             "devstatus": "Good",
-             "python3": "Yes",
-             "last-updated": "2020-07-24"
-          }
+            "name": "statmorph",
+            "maintainer": "Vicente Rodriguez-Gomez <vicente.rodgom@gmail.com>",
+            "stable": true,
+            "home_url": "https://statmorph.readthedocs.io/",
+            "repo_url": "https://github.com/vrodgom/statmorph",
+            "pypi_name": "statmorph",
+            "description": "A Python package for calculating non-parametric morphological diagnostics of galaxy images, as well as fitting 2D Sérsic profiles.",
+            "image": null,
+            "coordinated": false,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2021-01-12"
+            }
+        },
+        {
+            "name": "lenstronomy",
+            "maintainer": "Simon Birrer, Anowar Shajib, and Daniel Gilman <sibirrer@gmail.com>",
+            "stable": true,
+            "home_url": "https://lenstronomy.readthedocs.io",
+            "repo_url": "https://github.com/lenstronomy/lenstronomy",
+            "pypi_name": "lenstronomy",
+            "description": "Multi-purpose gravitational lensing and image modeling package",
+            "coordinated": false,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2020-07-24"
+            }
         },
         {
             "name": "astropy core package",
@@ -716,7 +716,7 @@
         },
         {
             "name": "Halotools",
-            "maintainer": "Andrew Hearin <andrew.hearin@yale.edu>",
+            "maintainer": "Andrew Hearin <ahearin@anl.gov>, Nick van Alfen <nvanalfen2@gmail.com>",
             "stable": true,
             "home_url": "https://halotools.readthedocs.io",
             "repo_url": "https://github.com/astropy/halotools",
@@ -895,45 +895,45 @@
             }
         },
         {
-           "name": "astropy-healpix",
-           "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com> and Leo Singer <leo.p.singer@nasa.gov>",
-           "stable": false,
-           "repo_url": "https://github.com/astropy/astropy-healpix",
-           "home_url": "https://astropy-healpix.readthedocs.io/",
-           "pypi_name": "astropy-healpix",
-           "description": "A BSD-licensed HEALPix implementation for Astropy",
-           "image": null,
-           "coordinated": true,
-           "review": {
-             "functionality": "General package",
-               "ecointegration": "Good",
-               "documentation": "Good",
-               "testing": "Good",
-               "devstatus": "Heavy development",
-               "python3": "Yes",
-               "last-updated": "2017-11-27"
-           }
-       },
-       {
-          "name": "Saba",
-          "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
-          "stable": true,
-          "repo_url": "https://github.com/astropy/saba",
-          "home_url": "https://saba.readthedocs.io",
-          "pypi_name": "saba",
-          "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
-          "coordinated": false,
-          "review": {
-            "functionality": "General package",
-              "ecointegration": "Good",
-              "documentation": "Good",
-              "testing": "Good",
-              "devstatus": "Functional but low activity",
-              "python3": "Yes",
-              "last-updated": "2017-09-26"
-          }
-       },
-       {
+            "name": "astropy-healpix",
+            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com> and Leo Singer <leo.p.singer@nasa.gov>",
+            "stable": false,
+            "repo_url": "https://github.com/astropy/astropy-healpix",
+            "home_url": "https://astropy-healpix.readthedocs.io/",
+            "pypi_name": "astropy-healpix",
+            "description": "A BSD-licensed HEALPix implementation for Astropy",
+            "image": null,
+            "coordinated": true,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Heavy development",
+                "python3": "Yes",
+                "last-updated": "2017-11-27"
+            }
+        },
+        {
+            "name": "Saba",
+            "maintainer": "Michele Costa <m.t.costa@keele.ac.uk>",
+            "stable": true,
+            "repo_url": "https://github.com/astropy/saba",
+            "home_url": "https://saba.readthedocs.io",
+            "pypi_name": "saba",
+            "description": "A Package which allows astropy.modeling to interface with sherpa's fitting routines",
+            "coordinated": false,
+            "review": {
+                "functionality": "General package",
+                "ecointegration": "Good",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Functional but low activity",
+                "python3": "Yes",
+                "last-updated": "2017-09-26"
+            }
+        },
+        {
             "name": "dust_extinction",
             "maintainer": "Karl Gordon",
             "stable": false,
@@ -952,8 +952,8 @@
                 "python3": "Yes",
                 "last-updated": "2018-5-25"
             }
-         },
-         {
+        },
+        {
             "name": "feets",
             "maintainer": "Juan B Cabral <jbc.developr@gmail.com>",
             "stable": true,
@@ -972,8 +972,8 @@
                 "python3": "Yes",
                 "last-updated": "2018-11-27"
             }
-         },
-         {
+        },
+        {
             "name": "corral",
             "maintainer": "Toros Survey Team",
             "stable": true,
@@ -1050,27 +1050,27 @@
                 "python3": "Yes",
                 "last-updated": "2019-07-23"
             }
-          },
-          {
-             "name": "astroalign",
-             "maintainer": "Martin Beroiz <martinberoiz@gmail.com>",
-             "stable": true,
-             "home_url": "http://astroalign.readthedocs.io/",
-             "repo_url": "https://github.com/quatrope/astroalign",
-             "pypi_name": "astroalign",
-             "description": "Astrometric registration of images when no WCS info is available",
-             "coordinated": false,
-             "review": {
-                 "functionality": "Specialized package",
-                 "ecointegration": "Partial",
-                 "documentation": "Good",
-                 "testing": "Good",
-                 "devstatus": "Good",
-                 "python3": "Yes",
-                 "last-updated": "2019-08-15"
-             }
-          },
-          {
+        },
+        {
+            "name": "astroalign",
+            "maintainer": "Martin Beroiz <martinberoiz@gmail.com>",
+            "stable": true,
+            "home_url": "http://astroalign.readthedocs.io/",
+            "repo_url": "https://github.com/quatrope/astroalign",
+            "pypi_name": "astroalign",
+            "description": "Astrometric registration of images when no WCS info is available",
+            "coordinated": false,
+            "review": {
+                "functionality": "Specialized package",
+                "ecointegration": "Partial",
+                "documentation": "Good",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2019-08-15"
+            }
+        },
+        {
             "name": "mocpy",
             "maintainer": "François-Xavier Pineau <francois-xavier.pineau@astro.unistra.fr>, Matthieu Baumann <matthieu.baumann@astro.unistra.fr>, and Thomas Boch <thomas.boch@astro.unistra.fr>",
             "stable": true,
@@ -1088,8 +1088,8 @@
                 "python3": "Yes",
                 "last-updated": "2019-11-04"
             }
-          },
-          {
+        },
+        {
             "name": "ligo.skymap",
             "maintainer": "Leo Singer <leo.singer@ligo.org>",
             "stable": true,
@@ -1106,9 +1106,9 @@
                 "devstatus": "Good",
                 "python3": "Yes",
                 "last-updated": "2020-07-01"
-              }
-           },
-          {
+            }
+        },
+        {
             "name": "agnpy",
             "maintainer": "Cosimo Nigro <cosimonigro2@gmail.com>",
             "stable": true,
@@ -1137,13 +1137,13 @@
             "description": "History of astronomy package, historical geocentric models and number systems",
             "coordinated": false,
             "review": {
-                 "functionality": "Specialized package",
-                 "ecointegration": "Good",
-                 "documentation": "Partial",
-                 "testing": "Good",
-                 "devstatus": "Good",
-                 "python3": "Yes",
-                 "last-updated": "2022-02-05"
+                "functionality": "Specialized package",
+                "ecointegration": "Good",
+                "documentation": "Partial",
+                "testing": "Good",
+                "devstatus": "Good",
+                "python3": "Yes",
+                "last-updated": "2022-02-05"
             }
         }
     ]
