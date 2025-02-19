@@ -153,6 +153,9 @@ function ghuser_translator(fullname, ghname) {
         return 'None';
     } else {
         var urltext = 'https://github.com/' + ghname;
+        if (fullname === null) {
+            fullname = ghname;
+        }
         return '<a href="' + urltext + '">' + fullname + '</a>';
     }
 }
