@@ -415,7 +415,7 @@ when you see them as options.</p>
               continue;
           }
 
-          namerow = tab.insertRow(i*4 + 1);
+          namerow = tab.insertRow(-1);
 
           nmcell = namerow.insertCell(0);
           urlcell = namerow.insertCell(1);
@@ -429,7 +429,7 @@ when you see them as options.</p>
           repocell.innerHTML = repo_translator(package["repository_link"]);
           //pypicell.innerHTML = pypi_translator(package["package_name"]);  // FIXME: https://github.com/pyOpenSci/pyopensci.github.io/issues/390
 
-          descrow = tab.insertRow(i*4 + 2);
+          descrow = tab.insertRow(-1);
           descrow.insertCell(0).innerHTML = "";
           desccell = descrow.insertCell(1);
           desccell.colSpan = "3";
@@ -444,7 +444,7 @@ when you see them as options.</p>
 		        }
 		      } 
 
-          maintrow = tab.insertRow(i*4 + 3);
+          maintrow = tab.insertRow(-1);
           maintrow.insertCell(0).innerHTML = "";
           maintcell = maintrow.insertCell(1);
           maintcell.colSpan = "3";
