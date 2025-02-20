@@ -403,6 +403,9 @@ when you see them as options.</p>
 
        var tab = document.getElementById("pyos-package-table");
 
+       // Sort alphabetically by package name (case-insensitive)
+       parsed.sort((a, b) => a.package_name.toLowerCase().localeCompare(b.package_name.toLowerCase()));
+
 		   var info = "";
 		   for (var p=0; p<parsed.length; p++) {
 		      var package = parsed[p];
