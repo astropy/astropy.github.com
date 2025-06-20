@@ -112,7 +112,7 @@
                 "Policies: <a href='https://github.com/astropy/astropy-project/blob/main/finance/process/policies.rst'>Finance Committee Operating Policies</a>.",
                 "Meeting records: <a href='https://docs.google.com/document/d/1OpSEtJC0jQINTB-YNexxgnHX7-J6HRSkiPKYWBSCOfg/edit?usp=sharing'>Finance Running Notes</a>.",
                 "Communication within the finance committee happens through regular Zoom meetings and a private Slack channel.",
-                "Contact the Finance Committee via email to <a href='mailto:finance@astropy.org'>finance@astropy.org</a>, tagging the <a href='https://github.com/orgs/astropy/teams/finance-committee'>github team @astropy/finance-committee</a>, or via <pre>finance-committee</pre> public channel in Astropy Slack workspace.",
+                "Contact the Finance Committee via email to <a href='mailto:finance@astropy.org'>finance@astropy.org</a>, tagging the <a href='https://github.com/orgs/astropy/teams/finance-committee'>github team @astropy/finance-committee</a>, or via <i>#finance-committee</i> public channel in Astropy Slack workspace.",
                 "Finance committee members send project updates to appropriate email lists (e.g. <a href='https://groups.google.com/u/1/g/astropy-dev'>astropy-dev</a>)."
             ]
         }]
