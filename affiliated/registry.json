@@ -1,24 +1,5 @@
 {
     "packages": [
-        {
-            "name": "ZodiPy",
-            "maintainer": "Metin San <metin.san@astro.uio.no>",
-            "stable": true,
-            "home_url": "https://cosmoglobe.github.io/zodipy/",
-            "repo_url": "https://github.com/cosmoglobe/zodipy/",
-            "pypi_name": "zodipy",
-            "description": "ZodiPy is a Python tool for simulating the zodiacal emission that a solar system observer sees, either in the form of timestreams or binned HEALPix maps.",
-            "coordinated": false,
-            "review": {
-               "functionality": "Specialized package",
-               "ecointegration": "Partial",
-               "documentation": "Good",
-               "testing": "Good",
-               "devstatus": "Good",
-               "python3": "Yes",
-               "last-updated": "2024-02-24"
-            }
-          },
           {
           "name": "regularizePSF",
           "maintainer": "Marcus Hughes <marcus.hughes@swri.org>",
@@ -688,26 +669,6 @@
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
                 "documentation": "Good",
-                "testing": "Good",
-                "devstatus": "Good",
-                "python3": "Yes",
-                "last-updated": "2017-11-08"
-            }
-        },
-        {
-            "name": "stingray",
-            "maintainer": "Daniela Huppenkothen, Matteo Bachetti, Abigail Stevens, Simone Migliari, and Paul Balm",
-            "stable": false,
-            "repo_url": "https://github.com/StingraySoftware/stingray",
-            "home_url": "https://stingraysoftware.github.io",
-            "pypi_name": "stingray",
-            "description": "Python library for spectral-timing analysis of X-ray data.",
-            "image": null,
-            "coordinated": false,
-            "review": {
-                "functionality": "Specialized package",
-                "ecointegration": "Partial",
-                "documentation": "Partial",
                 "testing": "Good",
                 "devstatus": "Good",
                 "python3": "Yes",
