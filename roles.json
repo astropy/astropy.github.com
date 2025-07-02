@@ -236,7 +236,7 @@
 	    },
 	    {
                 "subrole-head": "Learn content and infrastructure",
-                "description": "Maintain the infrastructure and edit content of the <a href='https://www.astropy.org/astropy-tutorials/'>Tutorials website</a>, including:",
+                "description": "Maintain the infrastructure and edit content of the <a href='https://learn.astropy.org/'>Tutorials website</a>, including:",
                 "details": [
                     "Facilitating the display and discoverability of the tutorials",
                     "Rendering of the Jupyter notebooks",
