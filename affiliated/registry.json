@@ -857,7 +857,7 @@
         },
         {
            "name": "astropy-healpix",
-           "maintainer": "Thomas Robitaille and Leo Singer <leo.p.singer@nasa.gov>",
+           "maintainer": "Leo Singer and Thomas Robitaille <leo.p.singer@nasa.gov>",
            "stable": false,
            "repo_url": "https://github.com/astropy/astropy-healpix",
            "home_url": "https://astropy-healpix.readthedocs.io/",
