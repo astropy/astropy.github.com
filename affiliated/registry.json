@@ -137,7 +137,7 @@
         },
         {
             "name": "specutils",
-            "maintainer": "Nicholas Earl, Adam Ginsburg, Ricky O'Steen, and Erik Tollerud",
+            "maintainer": "Adam Ginsburg, Ricky O'Steen, and Erik Tollerud <adam.g.ginsburg@gmail.com>",
             "stable": false,
             "home_url": "https://specutils.readthedocs.io",
             "repo_url": "https://github.com/astropy/specutils",
@@ -157,7 +157,7 @@
         },
         {
             "name": "specreduce",
-            "maintainer": "Tim Pickering and Erik Tollerud",
+            "maintainer": "Tim Pickering, Erik Tollerud, Kyle Conroy, Clare Shanahan, and Hannu Parviainen <te.pickering@gmail.com>",
             "stable": false,
             "home_url": "https://specreduce.readthedocs.io",
             "repo_url": "https://github.com/astropy/specreduce",
@@ -197,7 +197,7 @@
         },
         {
             "name": "photutils",
-            "maintainer": "Larry Bradley and Brigitta Sipőcz <lbradley@stsci.edu>",
+            "maintainer": "Larry Bradley <lbradley@stsci.edu>",
             "stable": false,
             "home_url": "https://photutils.readthedocs.io/",
             "repo_url": "https://github.com/astropy/photutils",
@@ -317,7 +317,7 @@
         },
         {
             "name": "reproject",
-            "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com>",
+            "maintainer": "Thomas Robitaille, Stuart Mumford, and Sam Van Kooten <thomas.robitaille@gmail.com>",
             "stable": true,
             "home_url": "https://reproject.readthedocs.io",
             "repo_url": "https://github.com/astropy/reproject",
@@ -817,7 +817,7 @@
         },
         {
             "name": "regions",
-            "maintainer": "Larry Bradley and Adam Ginsburg",
+            "maintainer": "Larry Bradley and Adam Ginsburg <lbradley@stsci.edu>",
             "stable": false,
             "repo_url": "https://github.com/astropy/regions",
             "home_url": "https://astropy-regions.readthedocs.io",
@@ -857,7 +857,7 @@
         },
         {
            "name": "astropy-healpix",
-           "maintainer": "Thomas Robitaille <thomas.robitaille@gmail.com> and Leo Singer <leo.p.singer@nasa.gov>",
+           "maintainer": "Thomas Robitaille and Leo Singer <leo.p.singer@nasa.gov>",
            "stable": false,
            "repo_url": "https://github.com/astropy/astropy-healpix",
            "home_url": "https://astropy-healpix.readthedocs.io/",

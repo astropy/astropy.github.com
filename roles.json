@@ -161,7 +161,7 @@
                 "people": [
                     "Stuart Mumford"
                 ]
-            },            
+            },
             {
                 "role": "Conferences",
                 "people": [
@@ -174,7 +174,7 @@
                 "people": [
                     "Brett Morris"
                 ]
-            },            
+            },
             {
                 "role": "Mastodon",
                 "people": [
@@ -350,7 +350,7 @@
                 ]
             }
 
-        ],        
+        ],
         "responsibilities": [
             {
                 "subrole-head": "Technical Lead",
@@ -579,11 +579,11 @@
         "role-head": "Astropy coordinated package maintainer",
         "sub-roles": [
             {
-                "role": "astroquery",
+                "role": "asdf-astropy",
                 "people": [
-                    "Clara Brasseur",
-                    "Adam Ginsburg",
-                    "Brigitta Sip\u0151cz"
+                    "Brett Graham",
+                    "Nadia Dencheva",
+                    "Perry Greenfield"
                 ]
             },
             {
@@ -594,9 +594,10 @@
                 ]
             },
             {
-                "role": "photutils",
+                "role": "astroquery",
                 "people": [
-                    "Larry Bradley"
+                    "Adam Ginsburg",
+                    "Brigitta Sip\u0151cz"
                 ]
             },
             {
@@ -606,19 +607,9 @@
                 ]
             },
             {
-                "role": "specutils",
+                "role": "photutils",
                 "people": [
-                    "Adam Ginsburg",
-                    "Ricky O'Steen",
-                    "Erik Tollerud"
-                ]
-            },
-            {
-                "role": "reproject",
-                "people": [
-                    "Stuart Mumford",
-                    "Thomas Robitaille",
-                    "Sam Van Kooten"
+                    "Larry Bradley"
                 ]
             },
             {
@@ -629,11 +620,11 @@
                 ]
             },
             {
-                "role": "asdf-astropy",
+                "role": "reproject",
                 "people": [
-                    "Nadia Dencheva",
-                    "Perry Greenfield",
-                    "Brett Graham"
+                    "Thomas Robitaille",
+                    "Stuart Mumford",
+                    "Sam Van Kooten"
                 ]
             },
             {
@@ -644,6 +635,14 @@
                     "Kyle Conroy",
                     "Clare Shanahan",
                     "Hannu Parviainen"
+                ]
+            },
+            {
+                "role": "specutils",
+                "people": [
+                    "Adam Ginsburg",
+                    "Ricky O'Steen",
+                    "Erik Tollerud"
                 ]
             }
         ],
