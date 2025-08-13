@@ -177,7 +177,7 @@
         },
         {
             "name": "astroquery",
-            "maintainer": "Adam Ginsburg and Brigitta Sipőcz <adam.g.ginsburg@gmail.com>",
+            "maintainer": "Adam Ginsburg and Brigitta Sipőcz <astropy.astroquery@gmail.com>",
             "stable": true,
             "home_url": "https://astroquery.readthedocs.io",
             "repo_url": "https://github.com/astropy/astroquery",
