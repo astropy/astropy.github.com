@@ -137,7 +137,7 @@
         },
         {
             "name": "specutils",
-            "maintainer": "Ricky O'Steen, Adam Ginsburg, and Erik Tollerud <rosteen@stsci.edu>",
+            "maintainer": "Ricky O'Steen, Adam Ginsburg, Erik Tollerud and Kelle Cruz <rosteen@stsci.edu>",
             "stable": false,
             "home_url": "https://specutils.readthedocs.io",
             "repo_url": "https://github.com/astropy/specutils",
