@@ -648,7 +648,7 @@
             }
         ],
         "responsibilities": {
-            "description": "Maintain an astropy coordinated package, including:",
+            "description": "Maintain an <a href='https://www.astropy.org/affiliated/index.html#coordinated-package-list'>astropy coordinated package</a>, including:",
             "details": [
                 "Maintaining the github repository for the coordinated package",
                 "Maintaining the coordinated package's infrastructure (usually via the helpers and package template)",
