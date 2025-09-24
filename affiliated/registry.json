@@ -217,7 +217,7 @@
         },
         {
             "name": "asdf-astropy",
-            "maintainer": "Brett Graham, Nadia Dencheva, and Perry Greenfield <bgraham@stsci.edu>",
+            "maintainer": "Brett Graham, Nadia Dencheva, Perry Greenfield, and Stuart Mumford <bgraham@stsci.edu>",
             "stable": true,
             "home_url": "https://asdf-astropy.readthedocs.io/en/latest/",
             "repo_url": "https://github.com/astropy/asdf-astropy",
