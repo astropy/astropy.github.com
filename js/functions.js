@@ -288,12 +288,13 @@ function populateRoles(data, tstat, xhr) {
 
 
 function populateTables(data, tstat, xhr) {
-    populatePackageTable('coordinated', filter_pkg_data(data, "coordinated", true));
-    populatePackageTable('affiliated', filter_pkg_data(data, "coordinated", false));
+    populatePackageTable('coordinated', filter_pkg_data2(data, "coordinated", true, "emeritus", false));
+    populatePackageTable('affiliated', filter_pkg_data2(data, "coordinated", false, "emeritus", false));
+    populatePackageTable('emeritus', filter_pkg_data1(data, "emeritus", true));
 }
 
 
-function filter_pkg_data(data, field, value) {
+function filter_pkg_data1(data, field, value) {
     if (data === null) {
       return null;
     }
@@ -308,6 +309,20 @@ function filter_pkg_data(data, field, value) {
     return {'packages': filtered_data};
 }
 
+function filter_pkg_data2(data, field1, value1, field2, value2) {
+    if (data === null) {
+        return null;
+    }
+    var pkgs = data.packages;
+    var filtered_data = [];
+
+    for (i = 0; i < pkgs.length; i++) {
+        if ((pkgs[i][field1] == value1) && (pkgs[i][field2] == value2)) {
+            filtered_data.push(pkgs[i]);
+        }
+    }
+    return { 'packages': filtered_data };
+}
 
 function populatePackageTable(tableid, data) {
     // Now we get the table and prepare it
@@ -391,6 +406,7 @@ var review_name_map = {"functionality": "Functionality",
 var review_default_color = "brightgreen";
 var review_color_map = {'Unmaintained': "red",
     "Functional but low activity": "orange",
+    "Functional but unmaintained": "orange",
     "Good": "brightgreen",
     "Partial": "orange",
     "No": "orange",
