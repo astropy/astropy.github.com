@@ -93,7 +93,7 @@ def process_html(fn, newcontributors, indent='\t\t\t'):
                 else:
                     if '<ul class="team">' in l:
                         lines.append(l)
-                        lines.append(" " * 12 + "<!--- the list below is auto-generated from getteam.py, use that to update --->")
+                        lines.append(f"{<!--- the list below is auto-generated from getteam.py, use that to update --->:>12}")
                 #skip otherwise
             else:
                 # if '<ul class="coordinators">' in l:
