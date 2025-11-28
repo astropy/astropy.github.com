@@ -65,7 +65,10 @@ def extract_names_list(docs, sectionname, warner=print):
 
     names = []
     for litem in litems:
-        names.append(''.join(litem.traverse(lambda n: isinstance(n, nodes.Text))))
+        # Use astext() to get the concatenated text content of the list item
+        # instead of joining node objects which can produce unexpected
+        # characters when their string representation is used.
+        names.append(litem.astext())
 
     return names
 
@@ -90,6 +93,7 @@ def process_html(fn, newcontributors, indent='\t\t\t'):
                 else:
                     if '<ul class="team">' in l:
                         lines.append(l)
+                        lines.append(f"{<!--- the list below is auto-generated from getteam.py, use that to update --->:>12}")
                 #skip otherwise
             else:
                 # if '<ul class="coordinators">' in l:
