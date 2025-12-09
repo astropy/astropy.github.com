@@ -272,6 +272,27 @@
         }
     },
     {
+        "role": "APE editor",
+        "url": "APE_editor",
+        "people": [
+            "Clara Brasseur",
+            "Aarya Patil",
+			"Nathaniel Starkman",
+            "Erik Tollerud",
+			"Kyle Westfall"
+		],
+        "deputy": ["Unfilled"],
+        "role-head": "APE editor",
+        "responsibilities": {
+            "description": "Oversee APE submissions as laid out in <a href='https://github.com/astropy/astropy-APEs/blob/main/APE1.rst'>APE 1</a>, including:",
+            "details": [
+                "Perform editorial reviews of new APE submissions",
+                "Shepherd the APE discussions and redirect them to astropy-dev, as needed",
+                "Monitor and maintain <a href='https://github.com/astrofrog/astropy-APEs'>astropy-APEs</a> repository"
+            ]
+        }
+    },
+    {
         "role": "Release team",
         "url": "release_team",
         "people": [
