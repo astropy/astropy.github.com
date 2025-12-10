@@ -9,6 +9,7 @@
           "pypi_name": "regularizepsf",
           "description": "regularizePSF is a package for manipulating and correcting variable point spread functions in astronomical images",
           "coordinated": false,
+          "emeritus": false,
           "review": {
              "functionality": "General package",
              "ecointegration": "Partial",
@@ -28,6 +29,7 @@
           "pypi_name": "BayesicFitting",
           "description": "General purpose toolbox for Bayesian fitting and evidence calculation.",
           "coordinated": false,
+          "emeritus": false,
           "review": {
             "functionality": "General package",
             "ecointegration": "Partial",
@@ -47,6 +49,7 @@
           "pypi_name": "pycbc",
           "description": "Core package to analyze gravitational-wave data, find signals, and study their parameters.",
           "coordinated": false,
+          "emeritus": false,
           "review": {
             "functionality": "Specialized package",
             "ecointegration": "Partial",
@@ -66,14 +69,15 @@
           "pypi_name": "",
           "description": "SpectraPy is a Python3 library, which collects algorithms and methods for data reduction of astronomical spectra obtained by a through slits spectrograph. The library is designed to be spectrograph independent. Current implementation is focused on the extraction of 2D spectra.",
           "coordinated": false,
+          "emeritus": true,
           "review": {
              "functionality": "General package",
              "ecointegration": "Partial",
              "documentation": "Good",
              "testing": "Good",
-             "devstatus": "Functional but low activity",
+             "devstatus": "Functional but unmaintained",
              "python3": "Yes",
-             "last-updated": "2021-10-14"
+             "last-updated": "2025-07-05"
           }
         },
         {
@@ -86,6 +90,7 @@
           "description": "A Python package for calculating non-parametric morphological diagnostics of galaxy images, as well as fitting 2D Sérsic profiles.",
           "image": null,
           "coordinated": false,
+          "emeritus": false,
           "review": {
              "functionality": "Specialized package",
              "ecointegration": "Good",
@@ -105,6 +110,7 @@
           "pypi_name": "lenstronomy",
           "description": "Multi-purpose gravitational lensing and image modeling package",
           "coordinated": false,
+          "emeritus": false,
           "review": {
              "functionality": "Specialized package",
              "ecointegration": "Partial",
@@ -245,6 +251,7 @@
             "description": "Ginga is a Python toolkit for building viewers for astronomical and scientific images stored in numpy data arrays and displaying them on a variety of different display platforms. The toolkit provides many features for building a viewer, including a flexible plugin framework that is provided as a customizable reference viewer for FITS images.",
             "image": "https://ejeschke.github.io/ginga/images/Ginga_screenshot_MacOSX-1024x613.jpg",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -265,6 +272,7 @@
             "description": "Tools for machine learning and data mining in Astronomy.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -285,6 +293,7 @@
             "image": null,
             "description": "Python replacements for functions that are part of the IDL built-in library, or part of astronomical IDL libraries. The emphasis is on reproducing results of the astronomical library functions. Only the bare minimum of IDL built-in functions are implemented to support this.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -305,6 +314,7 @@
             "description": "A Python module aimed at producing publication-quality plots of astronomical imaging data in FITS format. The module uses Matplotlib, a powerful and interactive plotting package. It is capable of creating output files in several graphical formats, including EPS, PDF, PS, PNG, and SVG.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -345,6 +355,7 @@
             "description": "Access to the Virtual Observatory through Python using IVOA Standards.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -365,6 +376,7 @@
             "description": "A Python package for gamma-ray astronomy",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -405,6 +417,7 @@
             "image": "https://avatars1.githubusercontent.com/u/5490746?v=3&s=500",
             "description": "Supernova light curve models in Python. SNCosmo synthesizes supernova spectra and photometry from SN models, and has functions for fitting and sampling SN model parameters given photometric light curve data. It includes built-in supernova models such as the SALT2, MLCS2k2, Hsiao, Nugent, PSNID, SNANA and Whalen models, a variety of built-in bandpasses and magnitude systems, and allows custom models, bandpasses, and magnitude systems to be defined.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -425,6 +438,7 @@
             "image": null,
             "description": "Linked data visualizations across multiple files.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -445,14 +459,15 @@
             "image": null,
             "description": "Python module to parse DS9 and CIAO region files.",
             "coordinated": false,
+            "emeritus": true,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
                 "documentation": "Good",
                 "testing": "Partial",
-                "devstatus": "Good",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -465,14 +480,15 @@
             "description": "A package for functionality like IRAF's imexamine.",
             "image": null,
             "coordinated": false,
+            "emeritus": true,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
                 "documentation": "Good",
                 "testing": "Partial",
-                "devstatus": "Good",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -485,6 +501,7 @@
             "image": null,
             "description": "Python package for handling spherical polygons that represent arbitrary regions of the sky.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Needs work",
@@ -505,6 +522,7 @@
             "image": null,
             "description": "Package for managing the world coordinate system (WCS) of astronomical data.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -525,6 +543,7 @@
             "image": null,
             "description": "Library for reading and analyzing astrophysical spectral data cubes.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -545,6 +564,7 @@
             "description": "An open source Python package to help astronomers plan observations.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -565,6 +585,7 @@
             "description": "A high-performance package to detect and remove cosmic rays from astronomical images.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -585,6 +606,7 @@
             "description": "Derivation of non-thermal particle distributions through MCMC spectral fitting.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -605,14 +627,15 @@
             "image": null,
             "description": "Package for doing astronomical spectroscopy fitting of interstellar ices.",
             "coordinated": false,
+            "emeritus": true,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
                 "documentation": "Partial",
                 "testing": "Good",
-                "devstatus": "Functional but low activity",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2022-01-12"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -625,6 +648,7 @@
             "image": null,
             "description": "A Python package for gravitational and galactic dynamics. gala contains functionality for representing gravitational potential models, numerically integrating orbits, and non-linear dynamics. gala also relies heavily on Astropy's unit and coordinates subpackages. (Note: this was previously listed on pypi as 'astro-gala', and older versions can still be installed with that name)",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -645,6 +669,7 @@
             "image": null,
             "description": "A Python 2 and 3 package for galactic dynamics.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
@@ -665,6 +690,7 @@
             "description": "Spectral-timing analysis of X-ray data from the command line (formerly known as MaLTPyNT).",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -685,6 +711,7 @@
             "description": "Generate Monte Carlo realizations of mock galaxy populations using cosmological simulations.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
@@ -705,14 +732,15 @@
             "description": "Galaxy cluster properties and NFW profiles (with miscentering option).",
             "image": null,
             "coordinated": false,
+            "emeritus": true,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
                 "documentation": "Good",
                 "testing": "Good",
-                "devstatus": "Good",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -725,6 +753,7 @@
             "description": "Multi-Architecture-Raytrace-Xraymission-Simulator (MARXS) is a toolsuite to ray-trace X-ray observatories. It is primarily aimed at astronomical X-ray satellites and sounding rocket payloads, but can be used to ray-trace experiments in the laboratory as well.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -745,6 +774,7 @@
             "description": "A toolkit for spectroscopic input/output, plotting, fitting, and manipulation.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -765,6 +795,7 @@
             "description": "Package for the analysis of 1-D spectra for astronomy.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -785,14 +816,15 @@
             "description": "Astrodynamics and Orbital Mechanics computations",
             "image": null,
             "coordinated": false,
+            "emeritus": true,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
                 "documentation": "Good",
                 "testing": "Partial",
-                "devstatus": "Heavy development",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -805,14 +837,15 @@
             "description": "A Python astronomy package for HiPS : Hierarchical Progressive Surveys.",
             "image": null,
             "coordinated": false,
+            "emeritus": true,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
                 "documentation": "Partial",
                 "testing": "Good",
-                "devstatus": "Heavy development",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2017-11-08"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -845,6 +878,7 @@
             "description": "A Python astronomy package for synthetic photometry.",
             "image": "http://synphot.readthedocs.io/en/latest/_images/spectrum-2.png",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -885,6 +919,7 @@
             "description": "Interstellar dust extinction curves",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -905,6 +940,7 @@
             "description": "feATURE eXTRACTOR FOR tIME sERIES.",
             "image": "https://github.com/carpyncho/feets/raw/master/res/logo_medium.png",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
@@ -925,14 +961,15 @@
             "description": "Corral will solve your pipeline needs by merging a database full connection interface with a MVC model, by making you able of editing your custom schemas and adding the possibility of writting specific processing steps following a intuitive data handling model.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
                 "documentation": "Partial",
                 "testing": "Good",
-                "devstatus": "Good",
+                "devstatus": "Functional but unmaintained",
                 "python3": "Yes",
-                "last-updated": "2018-8-21"
+                "last-updated": "2025-07-05"
             }
         },
         {
@@ -945,6 +982,7 @@
             "description": "Radio baseband IO: readers and writers for VLBI and other baseband data formats.",
             "image": null,
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -964,6 +1002,7 @@
             "pypi_name": "sbpy",
             "description": "A Python Module for Small-Body Planetary Astronomy",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
@@ -983,6 +1022,7 @@
             "pypi_name": "einsteinpy",
             "description": "A Python Package for General Relativity and Gravitational Astronomy",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
@@ -1002,6 +1042,7 @@
              "pypi_name": "astroalign",
              "description": "Astrometric registration of images when no WCS info is available",
              "coordinated": false,
+             "emeritus": false,
              "review": {
                  "functionality": "Specialized package",
                  "ecointegration": "Partial",
@@ -1021,6 +1062,7 @@
             "pypi_name": "mocpy",
             "description": "MOCPy is a Python library allowing easy creation, parsing and manipulation of MOCs (Multi-Order Coverage maps). These coverage maps heavily rely on the HEALPix sky partionning scheme. A MOC is therefore a set of HEALPix cells at different orders. This allows the description of any arbitrary maps on the sky.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Partial",
@@ -1040,6 +1082,7 @@
             "pypi_name": "ligo.skymap",
             "description": "Read, write, generate, simulate, and visualize LIGO/Virgo gravitational-wave probability sky maps.",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Good",
@@ -1059,6 +1102,7 @@
             "pypi_name": "agnpy",
             "description": "Modelling Active Galactic Nuclei radiative processes with python. agnpy focuses on the numerical computation of the photon spectra produced by leptonic radiative processes in jetted Active Galactic Nuclei (AGN).",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                 "functionality": "Specialized package",
                 "ecointegration": "Partial",
@@ -1078,6 +1122,7 @@
             "pypi_name": "kanon",
             "description": "History of astronomy package, historical geocentric models and number systems",
             "coordinated": false,
+            "emeritus": false,
             "review": {
                  "functionality": "Specialized package",
                  "ecointegration": "Good",
