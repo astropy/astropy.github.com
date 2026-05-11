@@ -21,7 +21,7 @@ There are several ways in which you can give feedback.
   If you would like a reply (e.g., an acknowledgement of your comment), please request it.
 - For the extremely impatient, astropy developers often can be found in the `Astropy Slack team <https://astropy.slack.com>`__ (get an account `here <http://joinslack.astropy.org>`__).
   Slack is basically a live web chat.
-- If you would like to participate in discussions about how the Project is run, please join the `Developer Email List [astropy-dev] <http://groups.google.com/group/astropy-dev>`__.
+- If you would like to participate in discussions about how the Project is run, please join the `Developer Email List [astropy-dev] <https://groups.google.com/group/astropy-dev>`__.
 
 .. _astropy-org-contribute-issues:
 
@@ -31,7 +31,7 @@ Reporting Issues
 If you have found a bug in Astropy please report it.
 The preferred way is to create a new issue on the Astropy `GitHub issue page <https://github.com/astropy/astropy/issues>`__; that requires `creating a free account <https://github.com>`__ on GitHub if you do not have one.
 
-If you prefer not to create a GitHub account, please report the issue to either the `astropy mailing list <https://mail.python.org/mailman/listinfo/astropy>`__, the `astropy-dev mailing list <http://groups.google.com/group/astropy-dev>`__ or sending a private email to the astropy core developers at feedback@astropy.org
+If you prefer not to create a GitHub account, please report the issue to either the `astropy mailing list <https://mail.python.org/mailman/listinfo/astropy>`__, the `astropy-dev mailing list <https://groups.google.com/group/astropy-dev>`__ or sending a private email to the astropy core developers at feedback@astropy.org
 
 Please include an example that demonstrates the issue that will allow the developers to reproduce and fix the problem.
 You may be asked to also provide information about your operating system and a full Python stack trace; the Astropy developers will walk you through obtaining a stack trace if it is necessary.
@@ -41,7 +41,7 @@ You may be asked to also provide information about your operating system and a f
 Contribute code or documentation
 --------------------------------
 
-If you are interested in contributing fixes, code or documentation to Astropy (whether the core package or affiliated packages), you should join the `astropy-dev <http://groups.google.com/group/astropy-dev>`__ mailing list/forum.
+If you are interested in contributing fixes, code or documentation to Astropy (whether the core package or affiliated packages), you should join the `astropy-dev <https://groups.google.com/group/astropy-dev>`__ mailing list/forum.
 For the core, start looking at any related `issues <https://github.com/astropy/astropy/issues>`__.
 In particular, we have introduced a labeling system used across most Astropy-related packages which will allow you to find good starting issues.
 Good labels to start with are `Good-first-issue <https://github.com/astropy/astropy/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22>`__ and `Package-novice <https://github.com/search?p=2&q=label%3Apackage-novice&ref=searchresults&state=open&type=Issues&utf8=%E2%9C%93>`__ which means you don't need much prior experience of the package.
@@ -76,14 +76,14 @@ They will have shown a sustained commitment to Astropy by participating actively
 This could involve submitting pull requests and participating in reviews, or discussions in other channels such as mailing lists or Slack, or other contributions as defined by a particular role.
 Finally, they need to express a desire to maintain this involvement going forward and accept the responsibility of having a role.
 For example, being a core sub-package maintainer involves interacting with users and responding to bug reports in a timely manner.
-If you are interested in taking on such a role, you can volunteer either on `astropy-dev <http://groups.google.com/group/astropy-dev>`__, by talking to a holder of the role you are interested in, or a coordination committee member.
+If you are interested in taking on such a role, you can volunteer either on `astropy-dev <https://groups.google.com/group/astropy-dev>`__, by talking to a holder of the role you are interested in, or a coordination committee member.
 
 .. _astropy-org-contribute-affiliated:
 
 Develop an affiliated package
 -----------------------------
 
-Whether you have an idea for a new Astronomy package, or already have a package that you want to integrate with the Astropy project, you can develop an affiliated package! You'll want to join the `astropy-dev <http://groups.google.com/group/astropy-dev>`__ list so you can notify other developers of your intent to develop an affiliated package, and the `astropy-affiliated-maintainers <https://groups.google.com/forum/#!forum/astropy-affiliated-maintainers>`__ mailing list to be kept informed of any discussions related to setting up affiliated packages.
+Whether you have an idea for a new Astronomy package, or already have a package that you want to integrate with the Astropy project, you can develop an affiliated package! You'll want to join the `astropy-dev <https://groups.google.com/group/astropy-dev>`__ list so you can notify other developers of your intent to develop an affiliated package, and the `astropy-affiliated-maintainers <https://groups.google.com/forum/#!forum/astropy-affiliated-maintainers>`__ mailing list to be kept informed of any discussions related to setting up affiliated packages.
 Then you can check out the section on :ref:`astropy-org-affiliated-instructions` to get started.
 
 .. _astropy-org-contribute-financially:

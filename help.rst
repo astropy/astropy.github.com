@@ -23,7 +23,7 @@ most comfortable with.
   - Post questions or start discussions about anything related to
   Python programming applied to astronomy.
 - `Astropy Developers Email List
-  [astropy-dev@googlegroups.com] <http://groups.google.com/group/astropy-dev>`__
+  [astropy-dev@googlegroups.com] <https://groups.google.com/group/astropy-dev>`__
   - Start discussions and ask questions about changing or adding
   functionality to the ``astropy`` package. This is also the place
   where significant announcements for contributors/developers are
