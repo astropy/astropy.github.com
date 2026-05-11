@@ -63,16 +63,16 @@ We suggest this badge:
 
 |Powered by Astropy Badge|
 
-Which is available at the URL http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
+Which is available at the URL https://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
 You can place the following in your ``README.md`` file to get the badge:
 
 .. code-block:: markdown
 
-    [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](https://www.astropy.org/)
+    [![astropy](https://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](https://www.astropy.org/)
 
 .. |Powered by Astropy| image:: https://www.astropy.org/images/astropy_powered.png
    :width: 256px
-.. |Powered by Astropy Badge| image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
+.. |Powered by Astropy Badge| image:: https://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
 
 
 .. raw:: html
