@@ -13,7 +13,7 @@ Contribute feedback
 
 There are several ways in which you can give feedback.
 
-- If you would like to give feedback and participate in discussions, we encourage you to join the `astropy mailing list <http://mail.python.org/mailman/listinfo/astropy>`__ and post there.
+- If you would like to give feedback and participate in discussions, we encourage you to join the `astropy mailing list <https://mail.python.org/mailman/listinfo/astropy>`__ and post there.
   This is the easiest way to have a discussion with both developers and other users.
 - Feature requests from the community are welcome and encouraged.
 - If you have feedback you would prefer to keep private, you can e-mail feedback@astropy.org.
@@ -59,7 +59,7 @@ If it's a more complex change, we suggest you follow the :external+astropy-dev:r
 If you aren't familiar with github, we suggest you looking over our :external+astropy-dev:ref:`workflow documentation <astropy-fix-example>`.
 Once your code is accepted, you are officially an Astropy contributor and eligible to be included on the author list of future publications.
 
-If you want to propose a larger change to Astropy, there's a procedure for that: `Astropy Proposals for Enhancement (APEs) <https://github.com/astropy/astropy-APEs>`__ (modeled after Python's `PEPs <http://legacy.python.org/dev/peps/>`__).
+If you want to propose a larger change to Astropy, there's a procedure for that: `Astropy Proposals for Enhancement (APEs) <https://github.com/astropy/astropy-APEs>`__ (modeled after Python's `PEPs <https://legacy.python.org/dev/peps/>`__).
 The sort of changes that APEs are intended for include plans for new sub-packages, wide-ranging code re-organizations, a new procedure needing review by a lot of the Astropy community, or an informational document on some decision for Astropy that you want remembered.
 For more background on APEs, check out `APE #1 <https://github.com/astropy/astropy-APEs/blob/main/APE1.rst>`__ and the `APE repository's README <https://github.com/astropy/astropy-APEs/blob/main/README.rst>`__.
 There is also a `wiki page on Astropy's github repository <https://github.com/astropy/astropy/wiki/APE-Overview>`__ that has an overview of the existing APEs.
