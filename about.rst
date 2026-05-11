@@ -5,7 +5,7 @@ About The Astropy Project
 
 The Astropy Project is a community effort to develop a core
 package for astronomy using the `Python programming
-language <http://www.python.org>`__ and improve usability,
+language <https://www.python.org>`__ and improve usability,
 interoperability, and collaboration between astronomy Python
 packages. The core *astropy* package contains functionality aimed
 at professional astronomers and astrophysicists, but may be useful
