@@ -29,7 +29,7 @@ Reporting Issues
 ----------------
 
 If you have found a bug in Astropy please report it.
-The preferred way is to create a new issue on the Astropy `GitHub issue page <http://github.com/astropy/astropy/issues>`__; that requires `creating a free account <https://github.com>`__ on GitHub if you do not have one.
+The preferred way is to create a new issue on the Astropy `GitHub issue page <https://github.com/astropy/astropy/issues>`__; that requires `creating a free account <https://github.com>`__ on GitHub if you do not have one.
 
 If you prefer not to create a GitHub account, please report the issue to either the `astropy mailing list <https://mail.python.org/mailman/listinfo/astropy>`__, the `astropy-dev mailing list <http://groups.google.com/group/astropy-dev>`__ or sending a private email to the astropy core developers at feedback@astropy.org
 

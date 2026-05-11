@@ -108,7 +108,7 @@ developers.
 Report bugs and Contribute
 --------------------------
 
-If you encounter something you believe to be a mistake, error, or bug, the best way to get it addressed is to report it on the `github issue tracker <http://github.com/astropy/astropy/issues>`__.
+If you encounter something you believe to be a mistake, error, or bug, the best way to get it addressed is to report it on the `github issue tracker <https://github.com/astropy/astropy/issues>`__.
 If you aren't sure if something is a bug or not, or if you don't have a Github account, feel free to ask on one of the :ref:`forums <astropy-org-help>`.
 If you believe you know how to fix the problem, please consider :ref:`contributing <astropy-org-contribute>`!
 

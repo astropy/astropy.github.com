@@ -37,7 +37,7 @@ If you are submitting an article to another journal, or have no other specific p
 
 .. code-block:: latex
 
-   This work made use of Astropy: \footnote{http://www.astropy.org} a community-developed core Python package and an ecosystem of tools and resources for astronomy \citep{astropy:2013, astropy:2018, astropy:2022}.
+   This work made use of Astropy: \footnote{https://www.astropy.org} a community-developed core Python package and an ecosystem of tools and resources for astronomy \citep{astropy:2013, astropy:2018, astropy:2022}.
 
 As an alternative, the BibTeX record recommended for a given version of Astropy is available from the Python package itself:
 
@@ -54,7 +54,7 @@ If you are giving a presentation or talk featuring work/research that makes use 
 
 |Powered by Astropy|
 
-The logo is also available `with white text <http://www.astropy.org/images/astropy_powered_white.png>`__, or the SVG originals can be obtained at the `astropy-logo github repository. <http://github.com/astropy/astropy-logo>`__
+The logo is also available `with white text <https://www.astropy.org/images/astropy_powered_white.png>`__, or the SVG originals can be obtained at the `astropy-logo github repository. <https://github.com/astropy/astropy-logo>`__
 
 In Projects
 -----------
@@ -68,9 +68,9 @@ You can place the following in your ``README.md`` file to get the badge:
 
 .. code-block:: markdown
 
-    [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)
+    [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](https://www.astropy.org/)
 
-.. |Powered by Astropy| image:: http://www.astropy.org/images/astropy_powered.png
+.. |Powered by Astropy| image:: https://www.astropy.org/images/astropy_powered.png
    :width: 256px
 .. |Powered by Astropy Badge| image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
 

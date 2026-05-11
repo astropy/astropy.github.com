@@ -14,7 +14,7 @@ core Python package for Astronomy:
     .. image:: /_static/img/astropy_logo_notext.png
         :width: 100px
 
-    http://www.astropy.org
+    https://www.astropy.org
 
 Astropy is a community-driven Python package intended to contain much of
 the core functionality and common tools needed for astronomy and
@@ -39,7 +39,7 @@ Note that the Astropy 3.x series only supports Python 3. Python 2 users
 can continue to use the 2.x (LTS) series (but without new features).
 
 Instructions for installing Astropy are provided on our
-`website <http://www.astropy.org>`__, and extensive documentation can be
+`website <https://www.astropy.org>`__, and extensive documentation can be
 found at:
 
      https://docs.astropy.org
@@ -66,7 +66,7 @@ repository:
 Over 300 developers have contributed code to Astropy so far, and you can
 find out more about the team behind Astropy here:
 
-     http://www.astropy.org/team.html
+     https://www.astropy.org/team.html
 
 As a reminder, Astropy v2.0 (our long term support release) will
 continue to be supported with bug fixes (but no new features) until the
