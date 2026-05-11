@@ -87,9 +87,13 @@ urlretrieve(
 
 # Linkcheck
 linkcheck_ignore = [
+    # These sites blocked CI
     r"https://doi\.org/\d+",
+    "http://joinslack.astropy.org",
+    "https://www.astrobetter.com/",
+    "https://numfocus.medium.com/",
     # This page has cloudflare captcha on it
-    r"https://aas.org/press/astropy-collaboration-receive-2025-berkeley-prize",
+    "https://aas.org/press/astropy-collaboration-receive-2025-berkeley-prize",
 ]
 linkcheck_anchors = False
 linkcheck_timeout = 20

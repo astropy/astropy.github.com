@@ -54,7 +54,11 @@ If you are giving a presentation or talk featuring work/research that makes use 
 
 |Powered by Astropy|
 
-The logo is also available `with white text <https://www.astropy.org/images/astropy_powered_white.png>`__, or the SVG originals can be obtained at the `astropy-logo github repository. <https://github.com/astropy/astropy-logo>`__
+The logo is also available with white text:
+
+|Powered by Astropy with white text|
+
+The SVG originals can be obtained at the `astropy-logo github repository <https://github.com/astropy/astropy-logo>`__.
 
 In Projects
 -----------
@@ -70,7 +74,9 @@ You can place the following in your ``README.md`` file to get the badge:
 
     [![astropy](https://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](https://www.astropy.org/)
 
-.. |Powered by Astropy| image:: https://www.astropy.org/images/astropy_powered.png
+.. |Powered by Astropy| image:: _static/img/astropy_powered.png
+   :width: 256px
+.. |Powered by Astropy with white text| image:: _static/img/astropy_powered_white.png
    :width: 256px
 .. |Powered by Astropy Badge| image:: https://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
 
