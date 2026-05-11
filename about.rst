@@ -51,7 +51,7 @@ Until then, however, it is a separate package, and may not be in
 the *astropy* namespace.
 
 The authoritative listing of current affiliated packages is
-available at http://affiliated.astropy.org. That page also
+available at https://www.astropy.org/affiliated/ . That page also
 describes the process to get a package listed as an affiliated
 package.
 
@@ -59,7 +59,7 @@ License
 -------
 
 Astropy is licensed under a `three-clause BSD
-license <http://opensource.org/licenses/BSD-3-Clause>`__. For
+license <https://opensource.org/licenses/BSD-3-Clause>`__. For
 details, see the
 `LICENSE.rst <https://github.com/astropy/astropy/blob/main/LICENSE.rst>`__
 file in the astropy repository.
@@ -77,12 +77,12 @@ Fiscal Sponsor
 --------------
 
 Astropy is a Sponsored Project of
-`NumFOCUS <http://www.numfocus.org/>`__, a 501(c)(3) nonprofit
+`NumFOCUS <https://www.numfocus.org/>`__, a 501(c)(3) nonprofit
 charity in the United States.
-`NumFOCUS <http://www.numfocus.org/>`__ provides Astropy with
+`NumFOCUS <https://www.numfocus.org/>`__ provides Astropy with
 fiscal, legal, and administrative support to help ensure the
 health and sustainability of the project. Visit
-`numfocus.org <http://www.numfocus.org/>`__ for more information.
+`numfocus.org <https://www.numfocus.org/>`__ for more information.
 
 .. image:: _static/img/Numfocus_stamp.png
    :width: 299px
