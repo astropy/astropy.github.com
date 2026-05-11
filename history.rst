@@ -93,7 +93,7 @@ conference, many of the astropy core developers were attending.
 For example, the initial Code of Conduct for the Astropy Project
 was written at the conference and the “Python in Astronomy”
 Facebook group was started, among `other
-activities <http://openastronomy.org/pyastro/2015/>`__.
+activities <https://openastronomy.org/pyastro/2015/>`__.
 
 The intent from the first coordination meeting in 2011 was to put
 some functionality into more specialized packages, called

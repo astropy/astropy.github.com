@@ -68,5 +68,5 @@ present code of conduct.
 Parts of this code of conduct have been adapted from the PSF code
 of conduct.
 
-The Astropy Community Code of Conduct is licensed under a `Creative Commons Attribution 4.0 International License <http://creativecommons.org/licenses/by/4.0/>`__.
+The Astropy Community Code of Conduct is licensed under a `Creative Commons Attribution 4.0 International License <https://creativecommons.org/licenses/by/4.0/>`__.
 We encourage other communities related to ours to use or adapt this code as they see fit.
