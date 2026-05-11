@@ -87,8 +87,8 @@ package for Astronomy (Astropy Collaboration, 2013).
 
 where (Astropy Collaboration, 2013) is a citation to the `Astropy
 Paper <https://doi.org/10.1051/0004-6361/201322068>`__
-(`ADS <http://adsabs.harvard.edu/abs/2013A%26A...558A..33A>`__ -
-`BibTeX <http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&data_type=BIBTEX&db_key=AST&nocookieset=1>`__).
+(`ADS <https://adsabs.harvard.edu/abs/2013A%26A...558A..33A>`__ -
+`BibTeX <https://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2013A%26A...558A..33A&data_type=BIBTEX&db_key=AST&nocookieset=1>`__).
 
 Please feel free to forward this announcement to anyone you think might
 be interested in this release.

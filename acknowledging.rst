@@ -18,8 +18,8 @@ If you use Astropy Project tools and resources for work/research presented in a 
 We encourage you to cite all three papers, but if space is limited, please cite the most recent paper:
 
 - `Astropy Paper III (v5.0) <https://arxiv.org/abs/2206.14220>`__ (`ADS <https://ui.adsabs.harvard.edu/abs/2022ApJ...935..167A>`__ - `BibTeX <https://ui.adsabs.harvard.edu/abs/2022ApJ...935..167A/exportcitation>`__)
-- `Astropy Paper II (v2.0) <https://arxiv.org/abs/1801.02634>`__ (`ADS <http://adsabs.harvard.edu/abs/2018arXiv180102634T>`__ - `BibTeX <https://ui.adsabs.harvard.edu/abs/2018AJ....156..123A/exportcitation>`__)
-- `Astropy Paper I (v0.2) <https://doi.org/10.1051/0004-6361/201322068>`__ (`ADS <http://adsabs.harvard.edu/abs/2013A%26A...558A..33A>`__ - `BibTeX <https://ui.adsabs.harvard.edu/abs/2013A%26A...558A..33A/exportcitation>`__ - :ref:`10k citations <astropy-org-paper-10k>`)
+- `Astropy Paper II (v2.0) <https://arxiv.org/abs/1801.02634>`__ (`ADS <https://adsabs.harvard.edu/abs/2018arXiv180102634T>`__ - `BibTeX <https://ui.adsabs.harvard.edu/abs/2018AJ....156..123A/exportcitation>`__)
+- `Astropy Paper I (v0.2) <https://doi.org/10.1051/0004-6361/201322068>`__ (`ADS <https://adsabs.harvard.edu/abs/2013A%26A...558A..33A>`__ - `BibTeX <https://ui.adsabs.harvard.edu/abs/2013A%26A...558A..33A/exportcitation>`__ - :ref:`10k citations <astropy-org-paper-10k>`)
 
 .. raw:: html
 
@@ -81,7 +81,7 @@ You can place the following in your ``README.md`` file to get the badge:
     function copyBibtex() {
       var bibtex2013 = `@article{astropy:2013,
           Adsnote = {Provided by the SAO/NASA Astrophysics Data System},
-          Adsurl = {http://adsabs.harvard.edu/abs/2013A%26A...558A..33A},
+          Adsurl = {https://adsabs.harvard.edu/abs/2013A%26A...558A..33A},
           Archiveprefix = {arXiv},
           Author = {{Astropy Collaboration} and {Robitaille}, T.~P. and {Tollerud}, E.~J. and {Greenfield}, P. and {Droettboom}, M. and {Bray}, E. and {Aldcroft}, T. and {Davis}, M. and {Ginsburg}, A. and {Price-Whelan}, A.~M. and {Kerzendorf}, W.~E. and {Conley}, A. and {Crighton}, N. and {Barbary}, K. and {Muna}, D. and {Ferguson}, H. and {Grollier}, F. and {Parikh}, M.~M. and {Nair}, P.~H. and {Unther}, H.~M. and {Deil}, C. and {Woillez}, J. and {Conseil}, S. and {Kramer}, R. and {Turner}, J.~E.~H. and {Singer}, L. and {Fox}, R. and {Weaver}, B.~A. and {Zabalza}, V. and {Edwards}, Z.~I. and {Azalee Bostroem}, K. and {Burke}, D.~J. and {Casey}, A.~R. and {Crawford}, S.~M. and {Dencheva}, N. and {Ely}, J. and {Jenness}, T. and {Labrie}, K. and {Lim}, P.~L. and {Pierfederici}, F. and {Pontzen}, A. and {Ptak}, A. and {Refsdal}, B. and {Servillat}, M. and {Streicher}, O.},
           Doi = {10.1051/0004-6361/201322068},
