@@ -502,12 +502,6 @@
                 ]
             },
             {
-                "role": "astropy.samp",
-                "people": [
-                    "Unfilled"
-                ]
-            },
-            {
                 "role": "astropy.stats",
                 "people": [
                     "Larry Bradley"
