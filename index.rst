@@ -49,7 +49,7 @@ The Astropy community is committed to supporting the :ref:`astropy-org-coc`.
 
     .. rst-class:: whatsnew
 
-    What's new in `Astropy 7.2 <https://docs.astropy.org/en/stable/whatsnew/7.2.html>`__
+    What's new in `Astropy 8.0 <https://docs.astropy.org/en/stable/whatsnew/8.0.html>`__
 
     .. raw:: html
 
