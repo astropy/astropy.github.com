@@ -43,16 +43,8 @@ Contribute code or documentation
 
 If you are interested in contributing fixes, code or documentation to Astropy (whether the core package or affiliated packages), you should join the `astropy-dev <https://groups.google.com/group/astropy-dev>`__ mailing list/forum.
 For the core, start looking at any related `issues <https://github.com/astropy/astropy/issues>`__.
-In particular, we have introduced a labeling system used across most Astropy-related packages which will allow you to find good starting issues.
-Good labels to start with are `Good-first-issue <https://github.com/astropy/astropy/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22>`__ and `Package-novice <https://github.com/search?p=2&q=label%3Apackage-novice&ref=searchresults&state=open&type=Issues&utf8=%E2%9C%93>`__ which means you don't need much prior experience of the package.
-You can use the following links to find all the issues labeled this way and also labeled by how much work they involve:
 
-- `Effort-low <https://github.com/search?p=2&q=label%3Apackage-novice+label%3Aeffort-low&ref=searchresults&state=open&type=Issues&utf8=%E2%9C%93>`__: issues that should take a few hours at most
-- `Effort-medium <https://github.com/search?p=2&q=label%3Apackage-novice+label%3Aeffort-medium&ref=searchresults&state=open&type=Issues&utf8=%E2%9C%93>`__: issues that should take a few days at most
-- `Effort-high <https://github.com/search?p=2&q=label%3Apackage-novice+label%3Aeffort-high&ref=searchresults&state=open&type=Issues&utf8=%E2%9C%93>`__: longer term issues
-
-You may also want to familiarize yourself with the :external+astropy-dev:ref:`developer documentation <developer-docs>`, particularly the :external+astropy-dev:ref:`coding <code-guide>` and :external+astropy-dev:ref:`documentation <documentation-guidelines>` guidelines, and our `AI usage <https://github.com/astropy/astropy-project/blob/main/policies/ai-policy.md>`__ policy.
-
+It is strongly encouraged that you familiarize yourself with the :external+astropy-dev:ref:`developer documentation <developer-docs>`, particularly the :external+astropy-dev:ref:`coding <code-guide>` and :external+astropy-dev:ref:`documentation <documentation-guidelines>` guidelines, and our `AI usage <https://github.com/astropy/astropy-project/blob/main/policies/ai-policy.md>`__ policy.
 
 Once you have a change to propose, if it's a simple fix to just a single file, you can even just browse to the appropriate file and use the "edit" button on github.
 If it's a more complex change, we suggest you follow the :external+astropy-dev:ref:`developer install instructions <create-isolated-env>`, and use that with `Astropy's github page <https://github.com/astropy/astropy>`__ to issue a pull request with your changes.
