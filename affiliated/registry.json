@@ -397,7 +397,7 @@
         },
         {
             "name": "sncosmo",
-            "maintainer": "Kyle Barbary",
+            "maintainer": "Kyle Barbary and Ben Rose <ben_rose@baylor.edu>",
             "stable": true,
             "home_url": "https://sncosmo.readthedocs.io",
             "repo_url": "https://github.com/sncosmo/sncosmo",
