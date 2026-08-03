@@ -151,7 +151,7 @@
                 ]
             },
             {
-                "role": "Slack/Matrix",
+                "role": "Slack",
                 "people": [
                     "Stuart Mumford"
                 ]
