@@ -90,9 +90,10 @@ linkcheck_ignore = [
     # These sites blocked CI
     r"https://doi\.org/\d+",
     "http://joinslack.astropy.org",
-    "https://www.astrobetter.com/",
+    "https://astropy.slack.com",
     "https://numfocus.medium.com/",
     "https://ui.adsabs.harvard.edu/",
+    "https://www.astrobetter.com/",
     # This page has cloudflare captcha on it
     "https://aas.org/press/astropy-collaboration-receive-2025-berkeley-prize",
 ]
