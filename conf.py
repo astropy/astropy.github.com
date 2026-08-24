@@ -92,6 +92,7 @@ linkcheck_ignore = [
     "http://joinslack.astropy.org",
     "https://www.astrobetter.com/",
     "https://numfocus.medium.com/",
+    "https://ui.adsabs.harvard.edu/",
     # This page has cloudflare captcha on it
     "https://aas.org/press/astropy-collaboration-receive-2025-berkeley-prize",
 ]
