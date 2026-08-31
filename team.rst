@@ -48,6 +48,7 @@ Active Voting Members
 =====================
 
 - Tom Aldcroft
+- Sam Bianco
 - Larry Bradley
 - Clara Brasseur
 - Michael K. Brewer
@@ -55,6 +56,7 @@ Active Voting Members
 - Kyle Conroy
 - Simon Conseil
 - Lia Corrales
+- Michael Coughlin
 - Matt Craig
 - Kelle Cruz
 - Nadia Dencheva
@@ -62,7 +64,6 @@ Active Voting Members
 - Tom Donaldson
 - Wilfred Gee
 - Adam Ginsburg
-- Lauren Glattly
 - Perry Greenfield
 - Moritz Günther
 - Derek Homeier
@@ -101,6 +102,7 @@ Emeritus Voting Members
 - Juan Luis Cano Rodríguez
 - Steve Crawford
 - Michael Droettboom
+- Lauren Glattly
 - Michael Seifert
 - Edward Slavich
 - Zé Vinícius
