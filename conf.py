@@ -92,6 +92,7 @@ linkcheck_ignore = [
     "http://joinslack.astropy.org",
     "https://astropy.slack.com",
     "https://numfocus.medium.com/",
+    "https://numfocus.myspreadshop.com/",
     "https://ui.adsabs.harvard.edu/",
     "https://www.astrobetter.com/",
     # This page has cloudflare captcha on it
