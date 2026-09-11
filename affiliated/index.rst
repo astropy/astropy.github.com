@@ -228,7 +228,7 @@ It is important that you understand your reviews will be done in public. There i
     </script>
 
     <script>
-        fetch('https://raw.githubusercontent.com/pyOpenSci/pyopensci.github.io/main/_data/packages.yml')
+        fetch('https://raw.githubusercontent.com/pyOpenSci/pyopensci.github.io/refs/heads/main/data/packages.yml')
         .then(response => response.text())
         .then(yamlString => {
             var parsed = yaml.parse(yamlString);
