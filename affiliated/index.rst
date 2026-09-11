@@ -228,7 +228,7 @@ It is important that you understand your reviews will be done in public. There i
     </script>
 
     <script>
-        fetch('https://raw.githubusercontent.com/pyOpenSci/pyopensci.github.io/main/_data/packages.yml')
+        fetch('https://raw.githubusercontent.com/pyOpenSci/pyopensci.github.io/refs/heads/main/data/packages.yml')
         .then(response => response.text())
         .then(yamlString => {
             var parsed = yaml.parse(yamlString);
@@ -251,7 +251,10 @@ It is important that you understand your reviews will be done in public. There i
             if (!found_astropy) {
                 continue;
             }
-
+		    var pkgname = package["package_name"];
+		    if (pkgname === "astropy") {
+			    continue;
+		    }
             namerow = tab.insertRow(-1);
 
             nmcell = namerow.insertCell(0);
@@ -259,12 +262,12 @@ It is important that you understand your reviews will be done in public. There i
             repocell = namerow.insertCell(2);
             pypicell = namerow.insertCell(3);
 
-            nmcell.innerHTML = package["package_name"];
+            nmcell.innerHTML = pkgname;
             nmcell.className = 'first-package-row'
             nmcell.setAttribute('width', 100)
             urlcell.innerHTML = url_translator(package["gh_meta"]["documentation"]);
             repocell.innerHTML = repo_translator(package["repository_link"]);
-            //pypicell.innerHTML = pypi_translator(package["package_name"]);  // FIXME: https://github.com/pyOpenSci/pyopensci.github.io/issues/390
+            //pypicell.innerHTML = pypi_translator(pkgname);  // FIXME: https://github.com/pyOpenSci/pyopensci.github.io/issues/390
 
             descrow = tab.insertRow(-1);
             descrow.insertCell(0).innerHTML = "";
