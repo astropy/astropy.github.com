@@ -7,13 +7,13 @@ a.sd-btn {
 }
 
 a.sd-btn {
-    color: var(--sst-lightest-color);
+    color: var(--sst-darkest-color);
     background-image: linear-gradient(var(--sst-accent-color-muted), var(--sst-accent-color-bright));
 }
 
 a.sd-btn:hover,
 a.sd-btn:visited:hover {
-    color: var(--sst-dark-color);
+    color: var(--sst-darkest-color);
     background: rgba(255, 255, 255, 0.3);
     background-blend-mode: lighten;
     background-image: linear-gradient(var(--sst-accent-color-muted), var(--sst-accent-color-bright));
