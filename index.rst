@@ -239,7 +239,7 @@ encouraged to submit talks, etc. and other relevant materials.
     }
 
     .acknowledge{
-        color:grey;
+        color:var(--sst-dark-color);
         font-size: 12px;
         margin-top:0px;
         margin-bottom:10px;
