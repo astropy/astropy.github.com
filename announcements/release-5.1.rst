@@ -36,7 +36,7 @@ New and improved major functionality in this release includes:
 In addition, hundreds of smaller improvements and fixes have been made.
 An overview of the changes is provided at:
 
-     `https://docs.astropy.org/en/stable/whatsnew/5.1.html <https://docs.astropy.org/en/v5.1/whatsnew/5.1.html>`__
+     `https://docs.astropy.org/en/stable/whatsnew/5.1.html <https://web.archive.org/web/20220617141908/https://docs.astropy.org/en/stable/whatsnew/5.1.html>`__
 
 Instructions for installing astropy are provided on our
 `website <https://www.astropy.org>`__, and extensive documentation can be

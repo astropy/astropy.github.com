@@ -59,7 +59,7 @@ License
 -------
 
 Astropy is licensed under a `three-clause BSD
-license <https://opensource.org/licenses/BSD-3-Clause>`__. For
+license <https://opensource.org/license/BSD-3-Clause>`__. For
 details, see the
 `LICENSE.rst <https://github.com/astropy/astropy/blob/main/LICENSE.rst>`__
 file in the astropy repository.
@@ -77,13 +77,13 @@ Fiscal Sponsor
 --------------
 
 Astropy is a Sponsored Project of
-`NumFOCUS <https://www.numfocus.org/>`__, a 501(c)(3) nonprofit
+`NumFOCUS <https://numfocus.org/>`__, a 501(c)(3) nonprofit
 charity in the United States.
-`NumFOCUS <https://www.numfocus.org/>`__ provides Astropy with
+`NumFOCUS <https://numfocus.org/>`__ provides Astropy with
 fiscal, legal, and administrative support to help ensure the
 health and sustainability of the project. Visit
-`numfocus.org <https://www.numfocus.org/>`__ for more information.
+`numfocus.org <https://numfocus.org/>`__ for more information.
 
 .. image:: _static/img/Numfocus_stamp.png
    :width: 299px
-   :target: https://www.numfocus.org
+   :target: https://numfocus.org
