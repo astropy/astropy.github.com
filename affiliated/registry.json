@@ -544,7 +544,7 @@
             "pypi_name": "astroplan",
             "description": "An open source Python package to help astronomers plan observations.",
             "image": null,
-            "coordinated": false,
+            "coordinated": true,
             "review": {
                 "functionality": "General package",
                 "ecointegration": "Good",
