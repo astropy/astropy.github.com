@@ -83,7 +83,7 @@ from urllib.request import urlretrieve
 
 urlretrieve(
     "https://raw.githubusercontent.com/astropy/astropy/refs/heads/main/docs/credits.rst",
-    filename="credits.rst",
+    filename="core-credits.rst",
 )
 
 # Linkcheck

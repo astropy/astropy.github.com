@@ -15,7 +15,6 @@ Astropy
    help
    history
    team
-   astropy-credits
 
 .. raw:: html
 
