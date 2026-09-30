@@ -284,7 +284,7 @@ The CXC has supported multiple staff members to work on the Astropy project, equ
 
 .. _CaltecIPAC:
 
-IPAC at CalTech
+IPAC at Caltech
 ---------------
 
 The NASA/IPAC Infrared Science Archive (IRSA) at Caltech curates and serves the science products and documentation for many space- and ground-based observatories.
