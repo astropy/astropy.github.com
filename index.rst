@@ -18,7 +18,7 @@ Astropy
 
 .. raw:: html
 
-    <div id="container" class="container always-light-theme">
+    <div id="container" class="container">
       <div class="row logo-container">
         <div class="col-md-8 mx-auto">
 
@@ -185,6 +185,10 @@ encouraged to submit talks, etc. and other relevant materials.
       background-size: cover;
     }
 
+    html[data-theme="dark"] body {
+      background-image: url("/_static/img/background_invert.jpg");
+    }
+
     h1 {
       display: none;
     }
@@ -192,13 +196,6 @@ encouraged to submit talks, etc. and other relevant materials.
     h2 {
         font-size: 120%;
         margin-top: 30px;
-        /* Always light theme */
-        color: var(--sst-darker-color) !important;
-    }
-
-    code {
-      /* Always light theme */
-      color: #912583;
     }
 
     .bd-sidebar-secondary {
@@ -224,7 +221,6 @@ encouraged to submit talks, etc. and other relevant materials.
 
     p.whatsnew {
       margin-bottom: 0;
-      color: var(--sst-darkest-color);
     }
 
     div#container>section,
