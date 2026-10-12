@@ -481,7 +481,6 @@
             {
                 "role": "astropy.io.votable",
                 "people": [
-                    "Thomas Boch",
                     "Tom Donaldson",
                     "Pey Lian Lim"
                 ]
