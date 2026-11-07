@@ -337,7 +337,7 @@
         },
         {
             "name": "PyVO",
-            "maintainer": "Adrian Damian, Brigitta Sipőcz, Manon Marchand, Markus Demleitner, and Tom Donaldson",
+            "maintainer": "Adrian Damian, Brigitta Sipőcz, Manon Marchand, Markus Demleitner, Tom Donaldson, and Stelios Voutsinas",
             "stable": true,
             "home_url": "https://pyvo.readthedocs.io/",
             "repo_url": "https://github.com/astropy/pyvo",
