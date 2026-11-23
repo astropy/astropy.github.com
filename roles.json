@@ -481,8 +481,10 @@
             {
                 "role": "astropy.io.votable",
                 "people": [
+                    "Markus Demleitner",
                     "Tom Donaldson",
                     "Pey Lian Lim",
+                    "Brigitta Sipőcz",
                     "Stelios Voutsinas"
                 ]
             },
